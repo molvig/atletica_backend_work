@@ -3,7 +3,7 @@
 
 
 
-<div class="table-responsive">
+<div class="grid_3">
 	<center><h3>Sök efter medlemmar </h3>
 	<p>Du kan söka på förnamn, efternamm, personnummer (ex 861128) eller kundnummer. <br> Tänk på att sökordet måste vara minst 4 tecken långt. </p>
 	
@@ -17,7 +17,7 @@
 </form>
 </center>
 <br>
-
+</div>
 <?php
 	$medlem ="";
 	$medlem = $_GET['medlem'];
@@ -45,7 +45,7 @@ $found .= "<tr>" . "<td>" . $row["kundnr"] . "</td>" . "<td>" . $row["fnamn"] . 
 
 } ?>
 
-<div class="grid_8">
+<div class="grid_12">
 <div class="panel panel-success">
   <!-- Default panel contents -->
   <div class="panel-heading">
@@ -76,7 +76,7 @@ $found .= "<tr>" . "<td>" . $row["kundnr"] . "</td>" . "<td>" . $row["fnamn"] . 
 
 } else { ?>
 
-<div class="grid_6">
+<div class="grid_12">
 <div class="panel panel-danger">
   <!-- Default panel contents -->
   <div class="panel-heading">
@@ -92,7 +92,7 @@ $found .= "<tr>" . "<td>" . $row["kundnr"] . "</td>" . "<td>" . $row["fnamn"] . 
 
 
 
-
+</div>
 
 <?php }
 

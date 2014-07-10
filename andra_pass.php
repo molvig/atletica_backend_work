@@ -43,6 +43,15 @@
     </div>
   </div>
   </div>
+
+ <div class="form-group">
+  <div class="col-sm-10">
+    <label for="tiden" class="col-sm-2 control-label">Tid</label>
+    <input type="time">
+    <input type="date" class="form-control" id="tiden">
+</div> 
+   </div> 
+  
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Veckodag</label>
     <div class="col-sm-10">
@@ -90,6 +99,6 @@
     </div>
   </div>
 </form>
-
+</div>
 
 <?php include("inc/footer.php"); ?>

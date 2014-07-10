@@ -21,12 +21,12 @@
   <body>
 <form class="form-group" role="form" method="post" action="index.php">
   <div class="form-group">
-    <label for="exampleInputEmail1">Användarnamn</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Användarnamn">
+    <label for="username">Användarnamn</label>
+    <input type="text" class="form-control" id="username" placeholder="Användarnamn">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Lösenord</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Lösenord">
+    <label for="password">Lösenord</label>
+    <input type="password" class="form-control" id="password" placeholder="Lösenord">
   </div>
   <div class="checkbox">
   </div>
