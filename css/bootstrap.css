@@ -2012,6 +2012,25 @@ select[multiple].input-lg {
   border: 1px solid transparent;
   border-radius: 4px;
 }
+.btns {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
 .btn:focus,
 .btn:active:focus,
 .btn.active:focus {
@@ -2045,6 +2064,12 @@ fieldset[disabled] .btn {
   color: #333;
   background-color: #fff;
   border-color: #ccc;
+}
+.btn-schema {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  width: 100%;
 }
 .btn-default:hover,
 .btn-default:focus,
@@ -4647,8 +4672,8 @@ a.list-group-item.active:hover,
 a.list-group-item.active:focus {
   z-index: 2;
   color: #fff;
-  background-color: #428bca;
-  border-color: #428bca;
+  background-color: #888A8B;
+  border-color: #888A8B;
 }
 a.list-group-item.active .list-group-item-heading,
 a.list-group-item.active:hover .list-group-item-heading,
