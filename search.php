@@ -3,28 +3,65 @@
 
 
 
-<div class="grid_3">
-	<center><h3>Sök efter medlemmar </h3>
-	<p>Du kan söka på förnamn, efternamm, personnummer (ex 861128) eller kundnummer. <br> Tänk på att sökordet måste vara minst 4 tecken långt. </p>
-	
-
-	<form role="form" method="GET" action="search.php">
-  <div class="form-group">
-    <label for="medlem">Sök efter en medlem</label>
-    <input type="text" class="form-control" name="medlem" id="medlem" placeholder="">
+<div class="grid_12">
+  <div class="grid_12">
+        <div class="grid_2"></div>
+        <div class="grid_7">
+        	<center>
+            <h3>Sök efter medlemmar </h3>
+          	<p>Du kan söka på förnamn, efternamm, personnummer (ex 861128) eller kundnummer. <br> 
+            Tänk på att sökordet måste vara minst 4 tecken långt. </p>
+          </center>
+        </div>
+        <div class="grid_3"></div>
   </div>
-  <button type="submit" name="submit"  class="btn btn-default">Sök</button>
-</form>
-</center>
-<br>
+
+
+  <div class="grid_12">
+      <form role="form" method="GET" action="search.php">
+        <div class="grid_2"></div>
+        <div class="grid_7">
+          <center>
+            <label>Sök efter en medlem
+              <input type="search" class="form-control" name="medlem" id="medlem" placeholder="">
+            </label>
+          </center>
+        </div>
+        <div class="grid_3"></div>   
+  </div>
+
+
+  <div class="grid_12">
+        <div class="grid_2"></div> 
+        <div class="grid_7">
+          <center>
+            <button type="submit" name="submit"  class="btn btn-default">Sök</button>
+          </center>
+        </div>
+        <div class="grid_3"></div>    
+  </div>
+   
+      </form>
 </div>
 <?php
 	$medlem ="";
 	$medlem = $_GET['medlem'];
 	$sok = $_GET['submit'];
 
- if(strlen($medlem)<=3) {
-   	 echo "<center>" . "<h5>" . "Ditt sökord är för kort! <br>" . "</h5>" . "<p>Tänk på att sökordet måste bestå av minst fyra tecken.</p>" . "</center>";
+ if(strlen($medlem)<=3) { ?>
+
+
+  <div class="grid_12">
+        <div class="grid_2"></div> 
+        <div class="grid_7">
+			<?php echo "<center>" . "<h5>" . "Ditt sökord är för kort! <br>" . "</h5>" . "<p>Tänk på att sökordet måste bestå av minst fyra tecken.</p>" . "</center>"; ?>
+ 		</div>
+        <div class="grid_3"></div>    
+  </div>
+
+
+
+   	<?php 
      } 
 else{
 	            
@@ -45,7 +82,10 @@ $found .= "<tr>" . "<td>" . $row["kundnr"] . "</td>" . "<td>" . $row["fnamn"] . 
 
 } ?>
 
-<div class="grid_12">
+
+  <div class="grid_12">
+        <div class="grid_2"></div> 
+        <div class="grid_7">
 <div class="panel panel-success">
   <!-- Default panel contents -->
   <div class="panel-heading">
@@ -67,8 +107,16 @@ $found .= "<tr>" . "<td>" . $row["kundnr"] . "</td>" . "<td>" . $row["fnamn"] . 
 
 	</table> 
 </div>
+        </div>
+        <div class="grid_3"></div>    
+  </div>
 
-</div>
+
+
+
+
+
+
 
 
 
@@ -76,7 +124,12 @@ $found .= "<tr>" . "<td>" . $row["kundnr"] . "</td>" . "<td>" . $row["fnamn"] . 
 
 } else { ?>
 
-<div class="grid_12">
+
+
+
+  <div class="grid_12">
+        <div class="grid_2"></div> 
+        <div class="grid_7">
 <div class="panel panel-danger">
   <!-- Default panel contents -->
   <div class="panel-heading">
@@ -84,15 +137,14 @@ $found .= "<tr>" . "<td>" . $row["kundnr"] . "</td>" . "<td>" . $row["fnamn"] . 
 <h5><?php echo 'Det fanns ingen medlem som matchar: ' . "<strong>" . $medlem . "</strong>"; ?></h5>
 
   </div>
-
 </div>
+        </div>
+        <div class="grid_3"></div>    
+  </div>
 
-</div>
 
 
 
-
-</div>
 
 <?php }
 

@@ -8,7 +8,6 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
-    <!--<link rel="stylesheet" href="css/style.css" type="text/css" media="screen"> -->
     <link rel="stylesheet" href="css/grid.css" type="text/css" media="screen">
     <link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
 
