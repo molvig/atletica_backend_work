@@ -4810,6 +4810,7 @@ a.list-group-item-danger.active:focus {
 }
 .panel-title > a {
   color: inherit;
+  text-decoration: none;
 }
 .panel-footer {
   padding: 10px 15px;
