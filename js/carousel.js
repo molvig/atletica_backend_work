@@ -33,7 +33,8 @@
   Carousel.DEFAULTS = {
     interval: 5000,
     pause: 'hover',
-    wrap: true
+    wrap: true,
+    swipe: true
   }
 
   Carousel.prototype.keydown = function (e) {
