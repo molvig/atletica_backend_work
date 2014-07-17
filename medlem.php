@@ -1,4 +1,5 @@
 <?php include("inc/db_con.php"); ?>
+
 <?php include("inc/header.php"); ?>
 
 
@@ -56,7 +57,7 @@
 
         <div class="grid_6">
           <label>Medlemsnummer
-            <p>2369</p></label>
+            <p>12354</p></label>
         </div>
 
        <div class="grid_6">
@@ -101,26 +102,107 @@
           <div class="grid_6">
           <label>Korttyp:</label><br>
 
+          <div class="radio">
             <label>
-         		  <input type="radio" id="year" name="korttyp" value="year">Årskort   
-             </label><br>
-
-            <label>
-              <input type="radio" id="ag" name="korttyp" value="ag">Autogiro
-            </label><br>
-
-            <label>
-          	 <input type="radio" id="klipp" name="korttyp" value="klipp">Klippkort
+              <input type="radio" name="korttyp" id="year" value="year" >
+              Årskort
             </label>
+            <fieldset id="myfields1"  disabled>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="artyp" id="arkombi" value="arkombi" >
+                    Kombi (gym & gruppträning)
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="artyp" id="arstyrka" value="arstyrka" >
+                      Styrketräning (endast gym)
+                  </label>
+                </div>
+                </fieldset>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="korttyp" id="month" value="month">
+              Månadskort
+            </label>
+              <fieldset id="myfields" disabled>
+                   <div class="radio ">
+                  <label>
+                    <input type="radio" name="montyp" id="kombi" value="kombi" >
+                    Kombi (gym & gruppträning)
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="montyp" id="styrka" value="styrka" >
+                      Styrketräning (endast gym)
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="montyp" id="dagtid" value="dagtid" >
+                    Dagtid (fram till kl 16:00)
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="montyp" id="ungdom" value="ungdom" >
+                    Ungdom (gymnasiet)
+                  </label>
+                </div>
+                </fieldset>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="korttyp" id="autogiro" value="autogiro">
+              Autogiro
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="korttyp" id="klipp" value="klipp">
+              Klippkort
+            </label>
+          </div>
+
         		 </div>
+
+         <div class="grid_12">
+
+              <label>Anteckning
+              <textarea class="form-control" name="note" id="note" placeholder="Något som kan vara värt att veta..."></textarea></label>
+
          </div>
+
+        
         <div class="grid_6">
           <button type="submit" name="submit"  class="btn btn-default">Lägg till medlem</button>
         </div>
+</div>
+
+
     </form>
 
     <br>
 </div>
 
+<script>
+
+$("#year").click(function() {$("#myfields").prop("disabled", true);});
+$("#month").click(function() {$("#myfields").prop("disabled", false);});
+$("#autogiro").click(function() {$("#myfields").prop("disabled", true);});
+$("#klipp").click(function() {$("#myfields").prop("disabled", true);});
+
+</script>
+
 
 <?php include("inc/footer.php"); ?>
+
+
+
+
+
+
+

@@ -1,10 +1,4 @@
-$(document).foundation({
-  orbit: {
-    animation: 'slide',
-    timer_speed: 1000,
-    pause_on_hover: true,
-    animation_speed: 500,
-    navigation_arrows: true,
-    bullets: false
-  }
-});
+$("#month").click(function() {$("#myfields").prop("disabled", false);});
+$("#year").click(function() {$("#myfields").prop("disabled", true);});
+$("#autogiro").click(function() {$("#myfields").prop("disabled", true);});
+$("#klipp").click(function() {$("#myfields").prop("disabled", true);});
