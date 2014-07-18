@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `instruktorer` (
   `instname` varchar(20) NOT NULL,
   PRIMARY KEY (`instname`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumpning av Data i tabell `instruktorer`

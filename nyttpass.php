@@ -17,7 +17,7 @@
 	if(!empty($_POST)){
 	    $nyttpass = $_POST['nyttpass'];
 		try {
-			 $query = ("INSERT INTO pass (passname) VALUES (:nyttpass)");
+			 $query = ("INSERT INTO passen (passname) VALUES (:nyttpass)");
 			    $q = $db -> prepare($query);
 			    $q-> execute(array(':nyttpass'=>$nyttpass));
 

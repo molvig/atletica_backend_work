@@ -48,7 +48,7 @@
 	$medlem = $_GET['medlem'];
 	$sok = $_GET['submit'];
 
- if(strlen($medlem)<=3) { ?>
+ if(strlen($medlem)<=2) { ?>
 
 
   <div class="grid_12">
@@ -77,8 +77,9 @@ $result = $stmt->fetchAll();
 $found=""?>
 
 
+
 <?php foreach( $result as $row ) {
-$found .= "<tr>" . "<td>" . $row["kundnr"] . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>" . "</tr>";
+$found .= "<tr>" . "<td>" . "<a href='medlemedit.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>" . "</tr>" ;
 
 } ?>
 
@@ -86,6 +87,7 @@ $found .= "<tr>" . "<td>" . $row["kundnr"] . "</td>" . "<td>" . $row["fnamn"] . 
   <div class="grid_12">
         <div class="grid_2"></div> 
         <div class="grid_7">
+
 <div class="panel panel-success">
   <!-- Default panel contents -->
   <div class="panel-heading">
@@ -93,7 +95,7 @@ $found .= "<tr>" . "<td>" . $row["kundnr"] . "</td>" . "<td>" . $row["fnamn"] . 
  <th><h4><?php echo "Antal träffar: ", $stmt->rowCount();  ?></h4></th>
 
   </div>
-
+<div class="panel panel-default">
   	<table class="table">
 		<tr>
 		  <td><h5>Kundnummer</h5></td>
@@ -101,10 +103,11 @@ $found .= "<tr>" . "<td>" . $row["kundnr"] . "</td>" . "<td>" . $row["fnamn"] . 
 		  <td><h5>Efternamn</h5></td>
 		  <td><h5>Personnummer</h5></td>
 		</tr>
-		
-<?php echo $found; ?>
-		
+		  
 
+  <?php echo $found; ?>
+		
+</div>
 	</table> 
 </div>
         </div>

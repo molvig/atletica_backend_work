@@ -1,6 +1,6 @@
 	
 	<?php try {
-			$results = $db -> query ("SELECT * FROM pass");
+			$results = $db -> query ("SELECT * FROM passen");
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
