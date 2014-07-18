@@ -180,12 +180,13 @@
         <div class="grid_6">
           <button type="submit" name="submit"  class="btn btn-default">Lägg till medlem</button>
         </div>
+
 </div>
 
 
     </form>
 
-    <br>
+
 </div>
 
 <script>

@@ -1,6 +1,6 @@
 	
 	<?php try {
-			$results = $db -> query ("SELECT * FROM passen");
+			$results = $db -> query ("SELECT * FROM pass");
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
@@ -12,6 +12,6 @@
 	$pass = "";
 
 	foreach ($passen as $p) {
-		$pass .= "<option value='passnamn'>" . $p['passnamn'] . "</option>";
+		$pass .= "<option value='passname'>" . $p['passname'] . "</option>";
 	}    
    
