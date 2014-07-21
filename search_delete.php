@@ -9,8 +9,9 @@
         <div class="grid_3"></div>
         <div class="grid_6">
         	<center>
-            <h3>Sök efter medlemmar </h3>
-          	<p>Du kan söka på förnamn, efternamm, personnummer (ex 861128) eller kundnummer. <br> 
+            <h3>Ta bort en medlem</h3>
+             <h4 style="color:red">OBS! Detta går inte ångra. </h4>
+            <p>Du kan söka på förnamn, efternamm, personnummer (ex 861128) eller kundnummer. <br> 
             Tänk på att sökordet måste vara minst 4 tecken långt. </p>
           </center>
         </div>
@@ -19,7 +20,7 @@
 
 
   <div class="grid_12">
-      <form role="form" method="GET" action="search.php">
+      <form role="form" method="GET" action="delete_medlem.php">
         <div class="grid_3"></div>
         <div class="grid_6">
           <center>
@@ -45,22 +46,7 @@
       </form>
 </div>
 
-	
-<script>
 
-$("#year").click(function() {$("#myfields").prop("disabled", true);});
-$("#month").click(function() {$("#myfields").prop("disabled", false);});
-$("#autogiro").click(function() {$("#myfields").prop("disabled", true);});
-$("#klipp").click(function() {$("#myfields").prop("disabled", true);});
-
-</script>
 
 
 <?php include("inc/footer.php"); ?>
-
-
-
-
-
-
-

@@ -59,8 +59,20 @@
       </form> -->
       <ul class="nav navbar-nav navbar-left">
         <li><a href="index.php"> <span class="glyphicon glyphicon-eye-open"></span> Överblick</a></li>
-        <li><a href="medlem.php"><span class="glyphicon glyphicon-user"></span> Medlemmar</a></li>
         
+        <li class="dropdown">
+          <a href="medlem.php" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Medlemmar<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="medlem.php">Sök medlem</a></li>
+            <li><a href="nymedlem.php">Lägg till ny medlem</a></li>
+            <li><a href="medlem.php">Uppdatera medlem</a></li>
+            <li class="divider"></li>
+            <li><a href="#">länk</a></li>
+            <li><a href="#">länk</a></li>
+            <li class="divider"></li>
+            <li><a href="search_delete.php" style="color:red">Radera medlem</a></li>
+          </ul>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list-alt"></span> Schema<b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -73,9 +85,10 @@
             <li class="divider"></li>
             <li><a href="andra_pass.php">Lägg till nytt pass</a></li>
           </ul>
+        </li>
           <li><a href="statistik.php">  <span class="glyphicon glyphicon-stats"></span> Statistik</a></li>
           <li><a href="installningar.php"><span class="glyphicon glyphicon-wrench"></span> Inställningar</a></li>
-        </li>
+        
       </ul>
       
       <ul class="nav navbar-nav navbar-right">

@@ -1,11 +1,9 @@
 <?php include("inc/db_con.php"); ?>
-<?php include("inc/getmedlem.php"); ?>
 <?php include("inc/header.php"); ?>
-
-
+	
 <div class="grid_5">
   <div class="grid_12">
-  <h3>Uppdatera medlem </h3>
+  <h3>Lägg till ny medlem </h3>
   </div>
 	 <form role="form" action="#" method="post">
 
@@ -13,12 +11,12 @@
 
         <div class="grid_6">
           <label>Medlemsnummer
-            <p><?php echo $kundnr; ?></p></label>
+            <p>12354</p></label>
         </div>
 
        <div class="grid_6">
           <label>Personnummer
-            <p><?php echo $personnr; ?></p></label>
+            <input type="text" class="form-control" name="pnummer" id="pnummer" placeholder="ex 861128"></label>
         </div>
 
     </div>
@@ -28,12 +26,12 @@
 
           <div class="grid_6">
             <label>Förnamn
-            	<p><?php echo $fnamn; ?></p></label>
+            	<input type="text" class="form-control" name="fnamn" id="fnamn" placeholder=""></label>
           </div>
 
           <div class="grid_6">
             <label>Efternamn
-            	<input type="text" class="form-control" name="enamn" id="enamn" value='<?php echo $enamn; ?>'></label>
+            	<input type="text" class="form-control" name="enamn" id="enamn" placeholder=""></label>
            </div>
 
        </div>
@@ -42,31 +40,22 @@
 
           <div class="grid_6">
             <label>Telefonnummer
-              <input type="tel" class="form-control" name="phone" id="phone" value='<?php echo $telefon; ?>'></label>
+              <input type="tel" class="form-control" name="phone" id="phone" placeholder=""></label>
           </div>
 
           <div class="grid_6">
             <label>Email
-              <input type="email" class="form-control" name="mail" id="mail" value='<?php echo $mail; ?>'></label>
+              <input type="email" class="form-control" name="mail" id="mail" placeholder=""></label>
            </div>
 
        </div>
-
-
-
-           <div class="grid_12">
-
-        <div class="grid_6">
-          <label>Kortet är giltligt till
-            <p><?php echo $kortdatum; ?></p></label>
-        </div>
-
-    </div>
 <br>
+    
+
         <div class="grid_12"> 
           <div class="grid_6">
           <div class="form-group">
-            <label>Ändra korttyp
+            <label>Korttyp
                  <select class="form-control">
                     <optgroup label="Årskort">
                       <option value="arkombi">Kombi (gym & gruppträning)</option>
@@ -85,10 +74,9 @@
          </div>
           
 
-             </div>
-    
+        		 </div>
 
-          <div class="grid_12">
+         <div class="grid_12">
 
               <label>Anteckning
               <textarea class="form-control" name="note" id="note" placeholder="Något som kan vara värt att veta..."></textarea></label>
@@ -97,7 +85,7 @@
 
         
         <div class="grid_6">
-          <button type="submit" name="submit"  class="btn btn-default">Uppdatera</button>
+          <button type="submit" name="submit"  class="btn btn-default">Lägg till medlem</button>
         </div>
 
 </div>
@@ -107,4 +95,7 @@
 
 
 </div>
+
+
+
 <?php include("inc/footer.php"); ?>

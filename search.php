@@ -48,7 +48,7 @@
 	$medlem = $_GET['medlem'];
 	$sok = $_GET['submit'];
 
- if(strlen($medlem)<=2) { ?>
+ if(strlen($medlem)<=3) { ?>
 
 
   <div class="grid_12">

@@ -5,6 +5,7 @@
     <script src="jquery.min.js"></script>
     <script src="js/popover.js"></script>
     <script src="js/tooltip.js"></script>
+      <script src="js/modal.js"></script>
   </body>
 </html>
 

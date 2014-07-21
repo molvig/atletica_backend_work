@@ -5,7 +5,8 @@
 
 <div class="grid_5">
   <div class="grid_12">
-  <h3>Uppdatera medlem </h3>
+  <h3>Radera medlem</h3>
+
   </div>
 	 <form role="form" action="#" method="post">
 
@@ -63,29 +64,6 @@
 
     </div>
 <br>
-        <div class="grid_12"> 
-          <div class="grid_6">
-          <div class="form-group">
-            <label>Ändra korttyp
-                 <select class="form-control">
-                    <optgroup label="Årskort">
-                      <option value="arkombi">Kombi (gym & gruppträning)</option>
-                      <option value="arstyrka">Styrketräning (endast gym)</option>
-                    </optgroup>
-                    <optgroup label="Månadskort">
-                      <option value="kombi">Kombi (gym & gruppträning)</option>
-                      <option value="styrka">Styrketräning (endast gym)</option>
-                      <option value="dagtid">Dagtid (fram till kl 16:00)</option>
-                      <option value="ungdom">Ungdom (gymnasiet)</option>
-                    </optgroup>
-                      <option value="autogiro">Autogiro</option>
-                      <option value="klipp">Klippkort</option>
-                  </select></label>
-              </div>
-         </div>
-          
-
-             </div>
     
 
           <div class="grid_12">
@@ -97,7 +75,8 @@
 
         
         <div class="grid_6">
-          <button type="submit" name="submit"  class="btn btn-default">Uppdatera</button>
+          <button type="submit" name="submit"  class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Radera medlem</button>
+            <h5 style="color:red">Om du raderar denna medlemmen är det permanent och det går inte att återskapa eller ångra.</h5>
         </div>
 
 </div>
@@ -108,3 +87,6 @@
 
 </div>
 <?php include("inc/footer.php"); ?>
+
+
+
