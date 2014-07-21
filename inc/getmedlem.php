@@ -10,7 +10,7 @@
 	 $kortdatum="";
 
 	 try {
-			$results = $db -> query ("SELECT kundnr, personnr, fnamn, enamn, telefon, mail, kortdatum FROM medlemmar WHERE kundnr ={$id_medlem} ");
+			$results = $db -> query ("SELECT kundnr, personnr, fnamn, enamn, telefon, kortdatum FROM medlemmar WHERE kundnr ={$id_medlem} ");
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
