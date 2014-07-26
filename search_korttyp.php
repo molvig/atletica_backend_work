@@ -1,3 +1,4 @@
+
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
 
@@ -8,9 +9,9 @@
         <div class="grid_2"></div>
         <div class="grid_7">
         	<center>
-            <h3>Sök efter medlemmar </h3>
-          	<p>Du kan söka på förnamn, efternamm, personnummer (ex 861128) eller kundnummer. <br> 
-            Tänk på att sökordet måste vara minst 4 tecken långt. </p>
+            <h3>Sök efter typ av medlemskort </h3>
+          	<p>Välj vilket typ av medlemsskap. 
+             </p>
           </center>
         </div>
         <div class="grid_3"></div>
@@ -18,12 +19,15 @@
 
 
   <div class="grid_12">
-      <form role="form" method="GET" action="search.php">
+      <form role="form" method="GET" action="search_korttyp.php">
         <div class="grid_2"></div>
         <div class="grid_7">
           <center>
-            <label>Sök efter en medlem
-              <input type="search" class="form-control" name="medlem" id="medlem" placeholder="">
+            <label>Välj korttyp
+            	<select type="search" class="form-control" name="korttyp" id="korttyp" >
+            	<?php echo $kort ?>	
+            	</select>
+             
             </label>
           </center>
         </div>
@@ -43,9 +47,10 @@
    
       </form>
 </div>
+
 <?php
 	$medlem ="";
-	$medlem = $_GET['medlem'];
+	$medlem = $_GET['korttyp'];
 	$sok = $_GET['submit'];
 
  if(strlen($medlem)<=3) { ?>
@@ -65,7 +70,7 @@
      } 
 else{
 	            
-	$query = "SELECT * FROM medlemmar WHERE personnr LIKE :search OR enamn LIKE :search OR fnamn LIKE :search OR kundnr LIKE :search OR korttyp LIKE :search";
+	$query = "SELECT * FROM medlemmar WHERE korttyp LIKE :search";
 	$stmt = $db ->prepare($query);
 	$stmt->bindValue(':search', '%' . $medlem . '%', PDO::PARAM_INT);
 	$stmt->execute();

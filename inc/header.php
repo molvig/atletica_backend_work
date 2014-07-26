@@ -67,7 +67,7 @@
             <li><a href="nymedlem.php">Lägg till ny medlem</a></li>
             <li><a href="medlem.php">Uppdatera medlem</a></li>
             <li class="divider"></li>
-            <li><a href="#">länk</a></li>
+            <li><a href="medlem_korttyp.php">Sök korttyp</a></li>
             <li><a href="#">länk</a></li>
             <li class="divider"></li>
             <li><a href="search_delete.php" style="color:red">Radera medlem</a></li>
