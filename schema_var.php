@@ -1,8 +1,11 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
+  <div class="grid_2">
+  <?php include("inc/menyschema.php"); ?>
+  
+</div>
 
-
-<div class="grid_12">
+<div class="grid_10">
 <center><h3>Vårschema 2014</h3></center>
 <div class="grid_1a">
 		<div class="list-group">

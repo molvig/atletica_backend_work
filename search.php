@@ -1,9 +1,12 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
 
+  <div class="grid_2">
+  <?php include("inc/menymedlem.php"); ?>
+  
+</div>
 
-
-<div class="grid_12">
+<div class="grid_10">
   <div class="grid_12">
         <div class="grid_2"></div>
         <div class="grid_7">

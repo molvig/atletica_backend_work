@@ -12,6 +12,8 @@
 
 
 <div class="grid_8">
+
+<p>Just nu visas schemat</p><h4>Vår</h4>
 	<form role="form" action="#" method="post">
 
 	  <div class="form-group">

@@ -1,5 +1,7 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
+<?php include("inc/veckansfokus.php"); ?>
+
 
 
 <div class="grid_2">
@@ -17,8 +19,8 @@
           <div class="grid_12">
 
               <label>Veckans fokus
-              <textarea class="form-control"  name="fokus" id="fokus" value=""></textarea></label><br>
-              <i>Senast ändrad: <?php ?></i>
+              <textarea class="form-control" rows="20" style="width:400px;" name="fokus" id="fokus"> <?php echo $veckansfokus_text ;  ?></textarea></label><br>
+              <i>Senast ändrad: <?php echo $uppdaterad; ?></i>
 		</div>
 
         
@@ -33,6 +35,8 @@
 
 
 
-
+   
 
 <?php include("inc/footer.php"); ?>
+
+

@@ -1,6 +1,4 @@
 <?php include("inc/db_con.php"); ?>
-<?php include("inc/passnamn.php"); ?>
-<?php include("inc/instruktorer.php"); ?>
 <?php include("inc/header.php"); ?>
 
 
