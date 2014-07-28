@@ -57,7 +57,20 @@
 </div>
  </div>
 
-<div class="grid_2">
+<div class="grid_8">
+	<div class="grid_8">
+
+	</div>	
+
+	<div class="grid_4">
+		<p class="sticky taped" >
+			<strong>VECKANS FOKUS</strong><br />
+			<?php ?>
+			<br />
+			<br />
+			<i>Uppdaterad: <?php ?></i>
+		</p>
+	</div>	
 
 </div>	
 
@@ -98,3 +111,10 @@
 
 
 <?php include("inc/footer.php"); ?>
+
+
+
+
+
+
+

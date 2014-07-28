@@ -17,6 +17,9 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+
+
   </head>
   <body>
 
@@ -67,10 +70,10 @@
             <li><a href="nymedlem.php">Lägg till ny medlem</a></li>
             <li><a href="medlem.php">Uppdatera medlem</a></li>
             <li class="divider"></li>
-            <li><a href="medlem_korttyp.php">Sök korttyp</a></li>
+            <li><a href="#">Link</a></li>
             <li><a href="#">länk</a></li>
             <li class="divider"></li>
-            <li><a href="search_delete.php" style="color:red">Radera medlem</a></li>
+            
           </ul>
         </li>
         <li class="dropdown">
@@ -86,9 +89,32 @@
             <li><a href="andra_pass.php">Lägg till nytt pass</a></li>
           </ul>
         </li>
-          <li><a href="statistik.php">  <span class="glyphicon glyphicon-stats"></span> Statistik</a></li>
-          <li><a href="installningar.php"><span class="glyphicon glyphicon-wrench"></span> Inställningar</a></li>
-        
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-stats"></span> Statistik<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="medlem_korttyp.php">Sök korttyp</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </li>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Systeminställningar<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="veckansfokus.php">Veckans fokus</a></li>
+            <li><a href="aktuelltschema.php">Välj aktuellt schema</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="divider"></li>
+            <li><a href="search_delete.php" style="color:red">Radera medlem</a></li>
+            <li><a href="#">Link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">

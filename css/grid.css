@@ -9,14 +9,14 @@
 .grid_1a{ width: 13.2%;}
 .grid_2 { width: 15%; }/*150px*/
 .grid_3 { width: 23.5%; }/*235px*/
-.grid_4 { width: 32%; overflow-y: scroll; max-height: 800px;}/*320px*/
+.grid_4 { width: 32%; }/*320px*/
 .grid_5 { width: 43.5%; }/*405px*/
 .grid_6 { width: 49%; }/*490px*/
 .grid_7 { width: 57.5%;}/*575px*/
 .grid_8 { width: 66%; }/*660px*/
 .grid_9 { width: 74.5%; }/*745px*/
 .grid_10 { width: 83%; }/*830px*/
-.grid_11 { width: 91.5%; } /*915px*/
+.grid_11 { width: 91.5%; overflow-y: scroll; max-height: 800px;} /*915px*/
 .grid_12 { width: 100%; }
 
 .grid_1,
