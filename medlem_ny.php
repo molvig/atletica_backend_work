@@ -18,7 +18,7 @@
         </div>
 
        <div class="grid_6">
-          <label>Personnummer
+          <label>Personnummer (8 siffror)
             <input type="text" class="form-control" name="pnummer" id="pnummer" placeholder="ex 861128"></label>
         </div>
 
@@ -75,10 +75,27 @@
                   </select></label>
               </div>
          </div>
-          
+                <div class="grid_6">
+            <label>Gäller från
+              <input type="date" class="form-control" name="date" id="date" value="<?php echo date('Y-m-d');?>"></label>
+           </div>
 
         		 </div>
+         <div class="grid_12">
 
+            <div class="grid_6">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Nyckelkort
+                </label>
+              </div>
+            </div>
+
+            <div class="grid_6">
+
+             </div>
+
+         </div>
          <div class="grid_12">
 
               <label>Anteckning

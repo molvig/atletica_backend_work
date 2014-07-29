@@ -1,5 +1,4 @@
 <?php include("inc/db_con.php"); ?>
-
 <?php include("inc/header.php"); ?>
 
   <div class="grid_2">
@@ -22,7 +21,7 @@
 
 
   <div class="grid_12">
-      <form role="form" method="GET" action="search.php">
+      <form role="form" method="GET" action="medlem_search_result.php">
         <div class="grid_3"></div>
         <div class="grid_6">
           <center>
@@ -47,16 +46,6 @@
    
       </form>
 </div>
-
-	
-<script>
-
-$("#year").click(function() {$("#myfields").prop("disabled", true);});
-$("#month").click(function() {$("#myfields").prop("disabled", false);});
-$("#autogiro").click(function() {$("#myfields").prop("disabled", true);});
-$("#klipp").click(function() {$("#myfields").prop("disabled", true);});
-
-</script>
 
 
 <?php include("inc/footer.php"); ?>

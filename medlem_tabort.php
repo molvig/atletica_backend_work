@@ -1,5 +1,4 @@
 <?php include("inc/db_con.php"); ?>
-<?php include("inc/getmedlem.php"); ?>
 <?php include("inc/header.php"); ?>
 <div class="grid_2">
   <?php include("inc/menyinst.php"); ?>
@@ -17,12 +16,12 @@
 
         <div class="grid_6">
           <label>Medlemsnummer
-            <p><?php echo $kundnr; ?></p></label>
+            <p><?php  ?></p></label>
         </div>
 
        <div class="grid_6">
           <label>Personnummer
-            <p><?php echo $personnr; ?></p></label>
+            <p><?php ?></p></label>
         </div>
 
     </div>
@@ -32,13 +31,13 @@
 
           <div class="grid_6">
             <label>Förnamn
-            	<p><?php echo $fnamn; ?></p></label>
+            	<p><?php ?></p></label>
           </div>
 
           <div class="grid_6">
             <label>Efternamn
-            	<input type="text" class="form-control" name="enamn" id="enamn" value='<?php echo $enamn; ?>'></label>
-           </div>
+              <p><?php ?></p></label>
+          </div>
 
        </div>
 
@@ -46,12 +45,12 @@
 
           <div class="grid_6">
             <label>Telefonnummer
-              <input type="tel" class="form-control" name="phone" id="phone" value='<?php echo $telefon; ?>'></label>
+              <p><?php ?></p></label>
           </div>
 
           <div class="grid_6">
             <label>Email
-              <input type="email" class="form-control" name="mail" id="mail" value='<?php echo $mail; ?>'></label>
+              <p><?php ?></p></label>
            </div>
 
        </div>
@@ -62,19 +61,11 @@
 
         <div class="grid_6">
           <label>Kortet är giltligt till
-            <p><?php echo $kortdatum; ?></p></label>
+            <p><?php ?></p></label>
         </div>
 
     </div>
 <br>
-    
-
-          <div class="grid_12">
-
-              <label>Anteckning
-              <textarea class="form-control" name="note" id="note" placeholder="Något som kan vara värt att veta..."></textarea></label>
-
-         </div>
 
         
         <div class="grid_6">

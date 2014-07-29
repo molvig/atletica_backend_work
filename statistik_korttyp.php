@@ -1,5 +1,4 @@
 <?php include("inc/db_con.php"); ?>
-<?php include("inc/korttyp.php"); ?>
 <?php include("inc/header.php"); ?>
 
 

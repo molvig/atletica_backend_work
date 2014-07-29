@@ -42,39 +42,17 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <!--<ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link</a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>-->
-      <!--<form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Vad letar du efter?">
-        </div>
-        <button type="submit" class="btn btn-default">Sök</button>
-      </form> -->
+
       <ul class="nav navbar-nav navbar-left">
         <li><a href="index.php"> <span class="glyphicon glyphicon-eye-open"></span> Överblick</a></li>
         
         <li class="dropdown">
           <a href="medlem.php" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Medlemmar<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="medlem.php">Sök medlem</a></li>
-            <li><a href="nymedlem.php">Lägg till ny medlem</a></li>
-            <li><a href="medlem.php">Uppdatera medlem</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Link</a></li>
+            <li><a href="medlem_search.php">Sök medlem</a></li>
+            <li><a href="medlem_ny.php">Lägg till ny medlem</a></li>
+            <li><a href="medlem_uppdatera.php">Uppdatera medlem</a></li>
+            <li><a href="medlem_boka.php">Boka medlem på pass</a></li>
             <li><a href="#">länk</a></li>
             <li class="divider"></li>
             
@@ -96,12 +74,7 @@
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-stats"></span> Statistik<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="medlem_korttyp.php">Sök korttyp</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+            <li><a href="statistik_korttyp.php">Sök korttyp</a></li>
             <li class="divider"></li>
             <li><a href="#">Link</a></li>
           </ul>
@@ -109,14 +82,11 @@
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Systeminställningar<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="veckansfokus.php">Veckans fokus</a></li>
-            <li><a href="aktuelltschema.php">Välj aktuellt schema</a></li>
+            <li><a href="installningar_veckansfokus.php">Veckans fokus</a></li>
+            <li><a href="installningar_aktuelltschema.php">Välj aktuellt schema</a></li>
             <li><a href="#">Link</a></li>
             <li class="divider"></li>
-            <li><a href="search_delete.php" style="color:red">Radera medlem</a></li>
-            <li><a href="#">Link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Link</a></li>
+            <li><a href="medlem_tabort.php" style="color:red">Radera medlem</a></li>
           </ul>
         </li>
       </ul>

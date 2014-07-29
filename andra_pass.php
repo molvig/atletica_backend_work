@@ -11,7 +11,7 @@
     <div class="col-sm-4">
      <select name="pass" class="form-control">
 					<?php echo $pass ?>
-				</select><span class="help-block"><a href="nyttpass.php">Saknas passet? Klicka här</a></span>
+				</select><span class="help-block"><a href="installningar_nyttpass.php">Saknas passet? Klicka här</a></span>
     </div>
   </div>
     <div class="form-group">
@@ -77,7 +77,7 @@
     <div class="col-sm-4">
      <select name="pass" class="form-control">
           <?php echo $instruktor ?>
-        </select><span class="help-block"><a href="nyinstruktor.php">Saknas instruktören? Klicka här</a></span>
+        </select><span class="help-block"><a href="installningar_nyinstruktor.php">Saknas instruktören? Klicka här</a></span>
     </div>
     </div>
   </div>

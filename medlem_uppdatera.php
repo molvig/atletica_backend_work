@@ -1,5 +1,4 @@
 <?php include("inc/db_con.php"); ?>
-<?php include("inc/getmedlem.php"); ?>
 <?php include("inc/header.php"); ?>
 
   <div class="grid_2">
@@ -16,12 +15,12 @@
 
         <div class="grid_6">
           <label>Medlemsnummer
-            <p><?php echo $kundnr; ?></p></label>
+            <p><?php   ?></p></label>
         </div>
 
        <div class="grid_6">
           <label>Personnummer
-            <p><?php echo $personnr; ?></p></label>
+            <p><?php   ?></p></label>
         </div>
 
     </div>
@@ -31,12 +30,12 @@
 
           <div class="grid_6">
             <label>Förnamn
-            	<p><?php echo $fnamn; ?></p></label>
+            	<p><?php  ?></p></label>
           </div>
 
           <div class="grid_6">
             <label>Efternamn
-            	<input type="text" class="form-control" name="enamn" id="enamn" value='<?php echo $enamn; ?>'></label>
+            	<input type="text" class="form-control" name="enamn" id="enamn" value='<?php  ?>'></label>
            </div>
 
        </div>
@@ -45,26 +44,18 @@
 
           <div class="grid_6">
             <label>Telefonnummer
-              <input type="tel" class="form-control" name="phone" id="phone" value='<?php echo $telefon; ?>'></label>
+              <input type="tel" class="form-control" name="phone" id="phone" value='<?php   ?>'></label>
           </div>
 
           <div class="grid_6">
             <label>Email
-              <input type="email" class="form-control" name="mail" id="mail" value='<?php echo $mail; ?>'></label>
+              <input type="email" class="form-control" name="mail" id="mail" value='<?php  ?>'></label>
            </div>
 
        </div>
 
 
 
-           <div class="grid_12">
-
-        <div class="grid_6">
-          <label>Kortet är giltligt till
-            <p><?php echo $kortdatum; ?></p></label>
-        </div>
-
-    </div>
 <br>
         <div class="grid_12"> 
           <div class="grid_6">
@@ -86,10 +77,47 @@
                   </select></label>
               </div>
          </div>
-          
+        <div class="grid_6">
+          <label>Kortet är giltligt till
+            <p><?php   ?></p></label>
+        </div>
 
              </div>
-    
+         <div class="grid_12">
+
+        <div class="grid_6">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Nyckelkort
+            </label>
+          </div>
+        </div>
+
+          <div class="grid_6">
+            <label>Passantal
+              <input type="text" class="form-control" name="passantal" id="passantal" value='<?php  ?>'></label>
+           </div>
+
+     </div>
+
+ <div class="grid_12">
+        <div class="grid_6">
+          if(kort = fryst)
+          {
+          <button type="submit" name="submit"  class="btn btn-default">Tina kort</button>
+          }
+          else
+          {
+          <button type="submit" name="submit"  class="btn btn-default">Frys kort</button>
+          }
+        </div>
+        
+          <div class="grid_6">
+            <label>Kortet frystes
+              <input type="text" class="form-control" name="passantal" id="passantal" value='<?php  ?>'></label>
+           </div>
+
+     </div>
 
           <div class="grid_12">
 

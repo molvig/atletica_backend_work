@@ -21,7 +21,7 @@
 
 
   <div class="grid_12">
-      <form role="form" method="GET" action="search.php">
+      <form role="form" method="GET" action="medlem_search_result.php">
         <div class="grid_2"></div>
         <div class="grid_7">
           <center>
@@ -68,7 +68,7 @@
      } 
 else{
 	            
-	$query = "SELECT * FROM medlemmar WHERE personnr LIKE :search OR enamn LIKE :search OR fnamn LIKE :search OR kundnr LIKE :search OR korttyp LIKE :search";
+	$query = "SELECT * FROM medlemmar WHERE personnr LIKE :search OR enamn LIKE :search OR fnamn LIKE :search OR kundnr LIKE :search";
 	$stmt = $db ->prepare($query);
 	$stmt->bindValue(':search', '%' . $medlem . '%', PDO::PARAM_INT);
 	$stmt->execute();
@@ -82,7 +82,7 @@ $found=""?>
 
 
 <?php foreach( $result as $row ) {
-$found .= "<tr>" . "<td>" . "<a href='medlemedit.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>" .  "<td>"  . $row["korttyp"] .  "</td>" . "</tr>" ;
+$found .= "<tr>" . "<td>" . "<a href='medlem_uppdatera.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>" .  "<td>"  . $row["korttyp"] .  "</td>" . "</tr>" ;
 
 } ?>
 
