@@ -24,13 +24,15 @@
 <div class="grid_8">
 	<div class="grid_8"></div>	
 	<div class="grid_4">
-		<p class="sticky taped" >
+		<div class="sticky taped">
+		<p >
 			<strong>VECKANS FOKUS</strong><br />
 			<?php echo $veckansfokus_text; ?>
 			<br />
 			<br />
 			<i>Uppdaterad: <?php echo $uppdaterad; ?></i>
 		</p>
+		</div>
 	</div>	
 
 

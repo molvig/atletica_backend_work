@@ -18,6 +18,10 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+   <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+    <script>
+            tinymce.init({selector:'textarea', menubar: false, forced_root_block : false});
+    </script> 
 
 
   </head>
