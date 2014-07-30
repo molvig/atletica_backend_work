@@ -3,9 +3,12 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.js"></script>
     <script src="jquery.min.js"></script>
+
+
+    <!-- js kod som kanske inte behövs?
     <script src="js/popover.js"></script>
     <script src="js/tooltip.js"></script>
-      <script src="js/modal.js"></script>
+      <script src="js/modal.js"></script> -->
   </body>
 </html>
 

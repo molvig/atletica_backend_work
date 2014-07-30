@@ -3,10 +3,8 @@
 	    Schema
 	  </a>
 	  <a href="schema_var.php" class="list-group-item">Vår</a>
-	  <a href="#" class="list-group-item">Sommar</a>
-	  <a href="#" class="list-group-item">Höst</a>
-	  <a href="#" class="list-group-item">Vinter</a>
-	  <a href="#" class="list-group-item">Påsk</a>
-	  <a href="#" class="list-group-item">Jul</a>
+	  <a href="schema_sommar.php" class="list-group-item">Sommar</a>
+	  <a href="schema_host.php" class="list-group-item">Höst</a>
+	  <a href="schema_vinter.php" class="list-group-item">Vinter</a>
 
 	</div>

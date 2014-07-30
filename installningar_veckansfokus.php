@@ -19,7 +19,7 @@
           <div class="grid_12">
 
               <label><h3>Veckans fokus</h3>
-              <textarea class="form-control" rows="20" style="width:400px;" name="fokus" id="fokus"> <?php echo $veckansfokus_text ;  ?></textarea></label><br>
+              <textarea class="form-control" rows="20" style="width:400px;" name="veckansfokus_uppdatera" id="veckansfokus_uppdatera"> <?php echo $veckansfokus_text ;  ?></textarea></label><br>
               <i>Senast ändrad: <?php echo $uppdaterad; ?></i>
 
                

@@ -6,7 +6,14 @@
 </div>
 
 <div class="grid_10">
-<center><h3>Vårschema 2014</h3></center>
+<center><h3>Vårschema 2015</h3></center>
+
+<!-- Växlar mellan veckorna-->
+<ul class="pager">
+  <li class="previous disabled"><a href="#">&larr; Föregående vecka</a></li>
+  <li class="next"><a href="#">Nästa vecka &rarr;</a></li>
+</ul>
+
 <div class="grid_1a">
 		<div class="list-group">
 		  <a href="#" class="list-group-item active">

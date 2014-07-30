@@ -78,7 +78,7 @@
               </div>
          </div>
         <div class="grid_6">
-          <label>Kortet är giltligt till
+          <label>Kortet är giltigt till
             <p><?php   ?></p></label>
         </div>
 
