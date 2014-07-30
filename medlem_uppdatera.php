@@ -77,10 +77,11 @@
                   </select></label>
               </div>
          </div>
-        <div class="grid_6">
-          <label>Kortet är giltigt till
-            <p><?php   ?></p></label>
-        </div>
+          <div class="grid_6">
+            <label>Gäller från <br>
+              <input type="text" name="date" class="tcal" value="<?php ?>" >
+            </label>
+           </div>
 
              </div>
          <div class="grid_12">
@@ -95,7 +96,7 @@
 
           <div class="grid_6">
             <label>Passantal
-              <input type="text" class="form-control" name="passantal" id="passantal" value='<?php  ?>'></label>
+              <input type="text" class="form-control" name="passantal" id="passantal" value='4'></label>
            </div>
 
      </div>
@@ -114,7 +115,7 @@
         
           <div class="grid_6">
             <label>Kortet frystes
-              <input type="text" class="form-control" name="passantal" id="passantal" value='<?php  ?>'></label>
+              <input type="text" class="form-control" name="passantal" id="passantal" value='<?php echo date('Y-m-d'); ?>'></label>
            </div>
 
      </div>

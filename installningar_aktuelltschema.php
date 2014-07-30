@@ -12,28 +12,75 @@
 
 
 <div class="grid_8">
+<form action="#">
+	<div class="grid_12">
 
-<p>Just nu visas schemat</p><h4>Vår</h4>
-	<form role="form" action="#" method="post">
+    	<div class="grid_3">
+          
+          <label>Vårschemat gäller från
+          	<p>2014-08-05</p>
+          </label>
+        </div>
 
-	  <div class="form-group">
-	    <label for="aktuelltschema" class="col-sm-2 control-label">Välj aktuellt schema som ska visas på hemsidan:</label>
-		    <div class="col-sm-4">
-						<select name="schema" class="form-control">
-							<option value="var">Vår</option>
-							<option value="pask">Påsk</option>
-							<option value="sommar">Sommar</option>
-							<option value="host">Höst</option>
-							<option value="vinter">Vinter</option>
-							<option value="jul">Jul</option>
-						</select>
-		    </div>
-	  </div>
-	        <div class="grid_12">
-	          <button type="submit" name="submit"  class="btn btn-default">Spara</button>
-	        </div>
-	</form>
 
-</div>
+		<div class="grid_6">
+          <label>Till  <br>
+          <input type="text" name="date" class="tcal" value=""></label>
+        </div>
+	    	
+
+	</div>
+	<div class="grid_12">
+	    	
+    	<div class="grid_3">
+          
+          <label>Sommarschemat gäller från
+          	<p>2014-08-05</p>
+          </label>
+        </div>
+
+		<div class="grid_6">
+          <label>Till  <br>
+          <input type="text" name="date" class="tcal" value=""></label>
+        </div>
+	</div>
+
+	<div class="grid_12">
+	    	
+    	<div class="grid_3">
+          
+          <label>Höstschemat gäller från
+          	<p>2014-08-05</p>
+          </label>
+        </div>
+
+		<div class="grid_6">
+          <label>Till  <br>
+          <input type="text" name="date" class="tcal" value=""></label>
+        </div>
+	</div>
+
+	<div class="grid_12">
+	    	
+    	<div class="grid_3">
+          
+          <label>Vinterschemat gäller från
+          	<p>2014-08-05</p>
+          </label>
+        </div>
+		<div class="grid_6">
+          <label>Till  <br>
+          <input type="text" name="date" class="tcal" value=""></label>
+        </div>
+	</div>
+
+        <div class="grid_6">
+          <button type="submit" name="submit"  class="btn btn-default">Spara</button>
+        </div>
+</form>
+</div> 
+
+
+
 
 <?php include("inc/footer.php"); ?>

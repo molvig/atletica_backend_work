@@ -83,8 +83,9 @@
               </div>
          </div>
                 <div class="grid_6">
-            <label>Gäller från
-              <input type="date" class="form-control" name="date" id="date" value="<?php echo date('Y-m-d');?>"></label>
+            <label>Gäller från <br>
+        <input type="text" name="date" class="tcal" value="<?php echo date('Y-m-d');?>" >
+      </label>
            </div>
 
         		 </div>
