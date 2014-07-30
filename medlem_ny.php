@@ -25,9 +25,13 @@
         </div>
 
        <div class="grid_6">
-          <label>Personnummer (8 siffror)
-            <input type="text" class="form-control" name="pnummer" id="pnummer" placeholder="ex 861128"></label>
+          <label>Personnummer</label> <br>
+               <div class="grid_4"><select class="form-control"  id ="date" name = "dd"></select></div>
+               <div class="grid_4"><select class="form-control"  id ="month" name = "mm"></select></div>
+               <div class="grid_4"><select class="form-control" id ="year" name = "yyyy"></select></div>
+
         </div>
+          
 
     </div>
 
@@ -107,7 +111,7 @@
          <div class="grid_12">
 
               <label>Anteckning
-              <textarea class="form-control" name="note" id="note" placeholder="Något som kan vara värt att veta..."></textarea></label>
+              <textarea rows="6" cols="80" class="form-control" name="note" id="note" row="6" placeholder="Något som kan vara värt att veta..."></textarea></label>
 
          </div>
 

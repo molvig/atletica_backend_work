@@ -61,13 +61,13 @@
     <label for="inputEmail3" class="col-sm-2 control-label">Veckodag</label>
     <div class="col-sm-4">
 				<select name="days" class="form-control">
-				<option value="Monday">Måndag</option>
-				<option value="Tuesday">Tisdag</option>
-				<option value="Wednesday">Onsdag</option>
-				<option value="Thursday">Torsdag</option>
-				<option value="Friday">Fredag</option>
-				<option value="Saturday">Lördag</option>
-				<option value="Sunday">Söndag</option>
+				<option value="1">Måndag</option>
+				<option value="2">Tisdag</option>
+				<option value="3">Onsdag</option>
+				<option value="4">Torsdag</option>
+				<option value="5">Fredag</option>
+				<option value="6">Lördag</option>
+				<option value="7">Söndag</option>
 				</select>
     </div>
   </div>
@@ -102,3 +102,4 @@
 </div>
 
 <?php include("inc/footer.php"); ?>
+
