@@ -86,6 +86,8 @@
             <li><a href="installningar_veckansfokus.php">Veckans fokus</a></li>
             <li><a href="installningar_aktuelltschema.php">Välj aktuellt schema</a></li>
             <li><a href="installningar_schema_uppdatera.php">Ändra i originalschema</a></li>
+            <li><a href="installningar_nyinstruktor.php">Instruktörer</a></li>
+            <li><a href="installningar_nyttpass.php">Pass</a></li>
             <li class="divider"></li>
             <li><a href="medlem_tabort.php" style="color:red">Radera medlem</a></li>
           </ul>
