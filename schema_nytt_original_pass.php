@@ -96,7 +96,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Uppdatera</button>
+      <button type="submit" class="btn btn-default">Lägg till nytt pass</button>
     </div>
   </div>
 </form>
