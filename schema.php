@@ -19,7 +19,7 @@
 		  <a href="#" class="list-group-item active">
 		    Måndag <?php ?>
 		  </a>
-		  <a href="schema_uppdatera_pass.php" class="list-group-item">8.30 Zumba</a>
+		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>
@@ -29,7 +29,7 @@
 		  <a href="#" class="list-group-item active">
 		    Tisdag <?php ?>
 		  </a>
-		  <a href="#" class="list-group-item">8.30 Zumba</a>
+		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>
@@ -38,7 +38,7 @@
 	<div class="list-group">
 		  <a href="#" class="list-group-item active">
 		    Onsdag <?php ?>
-		  <a href="#" class="list-group-item">8.30 Zumba</a>
+		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>
@@ -48,7 +48,7 @@
 		  <a href="#" class="list-group-item active">
 		    Torsdag <?php ?>
 		  </a>
-		  <a href="#" class="list-group-item">8.30 Zumba</a>
+		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>
@@ -58,7 +58,7 @@
 		  <a href="#" class="list-group-item active">
 		    Fredag <?php ?>
 		  </a>
-		  <a href="#" class="list-group-item">8.30 Zumba</a>
+		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>
@@ -68,7 +68,7 @@
 		  <a href="#" class="list-group-item active">
 		    Lördag <?php ?>
 		  </a>
-		  <a href="#" class="list-group-item">8.30 Zumba</a>
+		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>
@@ -78,7 +78,7 @@
 		  <a href="#" class="list-group-item active">
 		    Söndag <?php ?>
 		  </a>
-		  <a href="#" class="list-group-item">8.30 Zumba</a>
+		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>

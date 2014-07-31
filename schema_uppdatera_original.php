@@ -14,7 +14,7 @@
 		  <a href="#" class="list-group-item active">
 		    Måndag
 		  </a>
-		  <a href="schema_uppdatera_pass_original_host.php" class="list-group-item">Lägg till nytt pass</a>
+		  <a href="schema_uppdatera_original_pass.php" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
 </div>
@@ -24,7 +24,7 @@
 		  <a href="#" class="list-group-item active">
 		    Tisdag
 		  </a>
-		  <a href="schema_uppdatera_pass_original_host.php" class="list-group-item">Lägg till nytt pass</a>
+		  <a href="schema_uppdatera_original_pass.php" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
 </div>
@@ -34,7 +34,7 @@
 		  <a href="#" class="list-group-item active">
 		    Onsdag
 		  </a>
-		  <a href="schema_uppdatera_pass_original_host.php" class="list-group-item">Lägg till nytt pass</a>
+		  <a href="schema_uppdatera_original_pass.php" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
 </div>
@@ -44,7 +44,7 @@
 		  <a href="#" class="list-group-item active">
 		    Torsdag
 		  </a>
-		  <a href="schema_uppdatera_pass_original_host.php" class="list-group-item">Lägg till nytt pass</a>
+		  <a href="schema_uppdatera_original_pass.php" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
 </div>
@@ -54,7 +54,7 @@
 		  <a href="#" class="list-group-item active">
 		    Fredag
 		  </a>
-		  <a href="schema_uppdatera_pass_original_host.php" class="list-group-item">Lägg till nytt pass</a>
+		  <a href="schema_uppdatera_original_pass.php" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
 </div>
@@ -64,7 +64,7 @@
 		  <a href="#" class="list-group-item active">
 		    Lördag
 		  </a>
-		  <a href="schema_uppdatera_pass_original_host.php" class="list-group-item">Lägg till nytt pass</a>
+		  <a href="schema_uppdatera_original_pass.php" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
 </div>
@@ -74,7 +74,7 @@
 		  <a href="#" class="list-group-item active">
 		    Söndag
 		  </a>
-		  <a href="schema_uppdatera_pass_original_host.php" class="list-group-item">Lägg till nytt pass</a>
+		  <a href="schema_uppdatera_original_pass.php" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
 </div>
