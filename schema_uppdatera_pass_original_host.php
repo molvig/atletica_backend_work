@@ -1,6 +1,7 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
-
+<?php include("inc/getpass.php"); ?>
+<?php include("inc/getinstruktorer.php"); ?>
 
 
 <h3>Lägg till pass i höstschema 2014</h3>
@@ -74,8 +75,7 @@
   </div>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Instruktör</label>
-    <div class="col-sm-4">
-      <?php include("inc/getinstruktorer.php"); ?>
+    <div class="col-sm-4">     
      <select name="instruktor" class="form-control">
           <?php echo $instnamnet ?>
         </select><span class="help-block"><a href="installningar_nyinstruktor.php">Saknas instruktören? Klicka här</a></span>
