@@ -25,8 +25,8 @@
     <label for="inputEmail3" class="col-sm-2 control-label">Pass</label>
     <div class="col-sm-4">
      <select name="pass" class="form-control">
-					<?php echo $pass ?>
-				</select><span class="help-block"><a href="installningar_nyttpass.php">Saknas passet? Klicka här</a></span>
+          <?php echo $pass ?>
+        </select><span class="help-block"><a href="installningar_nyttpass.php">Saknas passet? Klicka här</a></span>
     </div>
   </div>
     <div class="form-group">
@@ -55,7 +55,7 @@
             <div class="col-sm-4">
                 <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut()" >
             </div>
-          <input type="hidden" id="starttid" name="sluttid" value=""/> 
+          <input type="hidden" id="sluttid" name="sluttid" value=""/> 
         <script>
           jQuery('#datetimepicker2').datetimepicker({
             datepicker:false,
@@ -76,15 +76,15 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Veckodag</label>
     <div class="col-sm-4">
-				<select name="days" class="form-control">
-				<option value="1">Måndag</option>
-				<option value="2">Tisdag</option>
-				<option value="3">Onsdag</option>
-				<option value="4">Torsdag</option>
-				<option value="5">Fredag</option>
-				<option value="6">Lördag</option>
-				<option value="7">Söndag</option>
-				</select>
+        <select name="days" class="form-control">
+        <option value="1">Måndag</option>
+        <option value="2">Tisdag</option>
+        <option value="3">Onsdag</option>
+        <option value="4">Torsdag</option>
+        <option value="5">Fredag</option>
+        <option value="6">Lördag</option>
+        <option value="7">Söndag</option>
+        </select>
     </div>
   </div>
   </div>
@@ -101,9 +101,9 @@
     <div class="form-group">
     <label for="schema" class="col-sm-2 control-label">Vilket schema?</label>
     <div class="col-sm-4">
-				<select name="schema" class="form-control">
-				<option value="3">Höst</option>
-				</select>
+        <select name="schema" class="form-control">
+        <option value="3">Höst</option>
+        </select>
     </div>
   </div>
   </div>
