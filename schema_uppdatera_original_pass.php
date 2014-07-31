@@ -3,6 +3,20 @@
 <?php include("inc/getpass.php"); ?>
 <?php include("inc/getinstruktorer.php"); ?>
 
+<script type="text/javascript">
+  //document.getElementById("starttid").value = document.getElementById("datetimepicker1").value;
+  //$( "#datetimepicker1" ).click(function() {  
+  function changeHiddenStart()
+  {  
+  document.getElementById("starttid").value = document.getElementById("datetimepicker1").value;  
+}
+
+ function changeHiddenSlut()
+  {  
+  document.getElementById("sluttid").value = document.getElementById("datetimepicker2").value;  
+}
+
+</script>
 
 <h3>Lägg till pass i höstschema 2014</h3>
 
@@ -24,9 +38,10 @@
     <div class="form-group">
                     <label for="datetimepicker" class="col-sm-2 control-label">Starttid</label>
                     <div class="col-sm-4">
-                        <input id="datetimepicker1" type="text" class="form-control"  >
+                        <input id="datetimepicker1" type="text" class="form-control"  onchange="changeHiddenStart()" >
                     </div>
-                  
+                  <input type="hidden" id="starttid" name="starttid" value=""/> 
+
                 <script>
                   jQuery('#datetimepicker1').datetimepicker({
                     datepicker:false,
@@ -38,9 +53,9 @@
   <div class="form-group">
             <label for="datetimepicker" class="col-sm-2 control-label">Sluttid</label>
             <div class="col-sm-4">
-                <input id="datetimepicker2" type="text" class="form-control"  >
+                <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut()" >
             </div>
-          
+          <input type="hidden" id="starttid" name="sluttid" value=""/> 
         <script>
           jQuery('#datetimepicker2').datetimepicker({
             datepicker:false,
