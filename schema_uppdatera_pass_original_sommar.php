@@ -101,4 +101,33 @@
 </form>
 </div>
 
+
+ <div class="input-append bootstrap-timepicker">
+<input id="timepicker2" type="text" class="input-small">
+<span class="add-on">
+<i class="icon-time"></i>
+</span>
+</div>
+ 
+<script type="text/javascript">
+    $('#timepicker2').timepicker({
+    minuteStep: 1,
+    template: 'modal',
+    appendWidgetTo: 'body',
+    showSeconds: true,
+    showMeridian: false,
+    defaultTime: false
+    });
+</script>
+
 <?php include("inc/footer.php"); ?>
+
+
+
+
+
+
+
+
+
+
