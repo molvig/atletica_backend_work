@@ -57,8 +57,6 @@
             <li><a href="medlem_uppdatera.php">Uppdatera medlem</a></li>
             <li><a href="medlem_boka.php">Boka medlem på pass</a></li>
             <li><a href="#">länk</a></li>
-            <li class="divider"></li>
-            
           </ul>
         </li>
         <li class="dropdown">
@@ -68,8 +66,6 @@
             <li><a href="schema_sommar.php">Sommar</a></li>
             <li><a href="schema_host.php">Höst</a></li>
             <li><a href="schema_vinter.php">Vinter</a></li>
-            <li class="divider"></li>
-            <li><a href="andra_pass.php">Lägg till nytt pass</a></li>
           </ul>
         </li>
           <li class="dropdown">
@@ -77,7 +73,6 @@
           <ul class="dropdown-menu">
             <li><a href="statistik_korttyp.php">Sök korttyp</a></li>
             <li><a href="statistik_nyamedlemmar.php">Nya medlemmar</a></li>
-            <li class="divider"></li>
             <li><a href="#">Link</a></li>
           </ul>
         </li>

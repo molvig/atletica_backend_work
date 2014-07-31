@@ -11,512 +11,76 @@
 <!-- Växlar mellan veckorna-->
 <ul class="pager">
   <li class="previous disabled"><a href="#">&larr; Föregående vecka</a></li>
-  <li class="next"><a href="#">Nästa vecka &rarr;</a></li>
+  <li class="next"><a href="schema_host_nextweek.php">Nästa vecka &rarr;</a></li>
 </ul>
 
 <div class="grid_1a">
-		<div class="list-group">
+	<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		   Måndag
+		    Måndag <?php ?>
 		  </a>
-		  <div class="panel-group" id="accordion">
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-				         8.30 Zumba
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseOne" class="panel-collapse collapse">
-				      <div class="panel-body">
-				        Shake that ass!
-				      </div>
-				    </div>
-				  </div>
+		  <a href="schema_uppdatera_pass.php" class="list-group-item">8.30 Zumba</a>
 
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-			          9.00 Core 30
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseTwo" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Gott för magen.
-			      </div>
-			    </div>
-			  </div>
-
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-			         16.15 Cardio Intervall
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseThree" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Högintensivt stationsträningspass. Alla arbetar efter egen förmåga.
-			      </div>
-			    </div>
-			  </div>
-	  		
-	  		<div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-			         17.00 TRX
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseFour" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Häng i lianer som en apa!
-			      </div>
-			    </div>
-			  </div>
-
-		 </div>
-		</div>
-	</div>		
-
-	<div class="grid_1a">
-		<div class="list-group">
-		  <a href="#" class="list-group-item active">
-		   Tisdag
-		  </a>
-		  <div class="panel-group" id="accordion">
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-				         8.30 Zumba
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseOne" class="panel-collapse collapse">
-				      <div class="panel-body">
-				        Shake that ass!
-				      </div>
-				    </div>
-				  </div>
-
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-			          9.00 Core 30
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseTwo" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Gott för magen.
-			      </div>
-			    </div>
-			  </div>
-
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-			         16.15 Cardio Intervall
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseThree" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Högintensivt stationsträningspass. Alla arbetar efter egen förmåga.
-			      </div>
-			    </div>
-			  </div>
-	  		
-	  		<div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-			         17.00 TRX
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseFour" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Häng i lianer som en apa!
-			      </div>
-			    </div>
-			  </div>
-
-		 </div>
-		</div>
-	</div>		
+	</div>
+</div>
 
 <div class="grid_1a">
-		<div class="list-group">
+	<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		   Onsdag
+		    Tisdag <?php ?>
 		  </a>
-		  <div class="panel-group" id="accordion">
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-				         8.30 Zumba
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseOne" class="panel-collapse collapse">
-				      <div class="panel-body">
-				        Shake that ass!
-				      </div>
-				    </div>
-				  </div>
+		  <a href="#" class="list-group-item">8.30 Zumba</a>
 
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-			          9.00 Core 30
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseTwo" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Gott för magen.
-			      </div>
-			    </div>
-			  </div>
-
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-			         16.15 Cardio Intervall
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseThree" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Högintensivt stationsträningspass. Alla arbetar efter egen förmåga.
-			      </div>
-			    </div>
-			  </div>
-	  		
-	  		<div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-			         17.00 TRX
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseFour" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Häng i lianer som en apa!
-			      </div>
-			    </div>
-			  </div>
-
-		 </div>
-		</div>
-	</div>		
+	</div>
+</div>
 
 <div class="grid_1a">
-		<div class="list-group">
+	<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		   Torsdag
-		  </a>
-		  <div class="panel-group" id="accordion">
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-				         8.30 Zumba
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseOne" class="panel-collapse collapse">
-				      <div class="panel-body">
-				        Shake that ass!
-				      </div>
-				    </div>
-				  </div>
+		    Onsdag <?php ?>
+		  <a href="#" class="list-group-item">8.30 Zumba</a>
 
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-			          9.00 Core 30
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseTwo" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Gott för magen.
-			      </div>
-			    </div>
-			  </div>
-
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-			         16.15 Cardio Intervall
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseThree" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Högintensivt stationsträningspass. Alla arbetar efter egen förmåga.
-			      </div>
-			    </div>
-			  </div>
-	  		
-	  		<div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-			         17.00 TRX
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseFour" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Häng i lianer som en apa!
-			      </div>
-			    </div>
-			  </div>
-
-		 </div>
-		</div>
-	</div>		
+	</div>
+</div>
 
 <div class="grid_1a">
-		<div class="list-group">
+	<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		   Fredag
+		    Torsdag <?php ?>
 		  </a>
-		  <div class="panel-group" id="accordion">
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-				         8.30 Zumba
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseOne" class="panel-collapse collapse">
-				      <div class="panel-body">
-				        Shake that ass!
-				      </div>
-				    </div>
-				  </div>
+		  <a href="#" class="list-group-item">8.30 Zumba</a>
 
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-			          9.00 Core 30
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseTwo" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Gott för magen.
-			      </div>
-			    </div>
-			  </div>
-
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-			         16.15 Cardio Intervall
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseThree" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Högintensivt stationsträningspass. Alla arbetar efter egen förmåga.
-			      </div>
-			    </div>
-			  </div>
-	  		
-	  		<div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-			         17.00 TRX
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseFour" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Häng i lianer som en apa!
-			      </div>
-			    </div>
-			  </div>
-
-		 </div>
-		</div>
-	</div>		
+	</div>
+</div>
 
 <div class="grid_1a">
-		<div class="list-group">
+	<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		   Lördag
+		    Fredag <?php ?>
 		  </a>
-		  <div class="panel-group" id="accordion">
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-				         8.30 Zumba
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseOne" class="panel-collapse collapse">
-				      <div class="panel-body">
-				        Shake that ass!
-				      </div>
-				    </div>
-				  </div>
+		  <a href="#" class="list-group-item">8.30 Zumba</a>
 
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-			          9.00 Core 30
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseTwo" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Gott för magen.
-			      </div>
-			    </div>
-			  </div>
-
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-			         16.15 Cardio Intervall
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseThree" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Högintensivt stationsträningspass. Alla arbetar efter egen förmåga.
-			      </div>
-			    </div>
-			  </div>
-	  		
-	  		<div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-			         17.00 TRX
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseFour" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Häng i lianer som en apa!
-			      </div>
-			    </div>
-			  </div>
-
-		 </div>
-		</div>
-	</div>		
+	</div>
+</div>
 
 <div class="grid_1a">
-		<div class="list-group">
+	<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		   Söndag
+		    Lördag <?php ?>
 		  </a>
-		  <div class="panel-group" id="accordion">
-				  <div class="panel panel-default">
-				    <div class="panel-heading">
-				      <h4 class="panel-title">
-				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-				         8.30 Zumba
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseOne" class="panel-collapse collapse">
-				      <div class="panel-body">
-				        Shake that ass!
-				      </div>
-				    </div>
-				  </div>
+		  <a href="#" class="list-group-item">8.30 Zumba</a>
 
+	</div>
+</div>
 
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-			          9.00 Core 30
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseTwo" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Gott för magen.
-			      </div>
-			    </div>
-			  </div>
+<div class="grid_1a">
+	<div class="list-group">
+		  <a href="#" class="list-group-item active">
+		    Söndag <?php ?>
+		  </a>
+		  <a href="#" class="list-group-item">8.30 Zumba</a>
 
-
-			  <div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-			         16.15 Cardio Intervall
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseThree" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Högintensivt stationsträningspass. Alla arbetar efter egen förmåga.
-			      </div>
-			    </div>
-			  </div>
-	  		
-	  		<div class="panel panel-default">
-			    <div class="panel-heading">
-			      <h4 class="panel-title">
-			        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-			         17.00 TRX
-			        </a>
-			      </h4>
-			    </div>
-			    <div id="collapseFour" class="panel-collapse collapse">
-			      <div class="panel-body">
-			        Häng i lianer som en apa!
-			      </div>
-			    </div>
-			  </div>
-
-		 </div>
-		</div>
-	</div>		
+	</div>
 </div>
 
 

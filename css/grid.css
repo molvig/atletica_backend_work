@@ -6,7 +6,7 @@
 
  */
 .grid_1 { width: 6.5%;}/*65px*/
-.grid_1a{ width: 13.2%;}
+.grid_1a{ width: 13.8%;}
 .grid_2 { width: 15%; }/*150px*/
 .grid_3 { width: 23.5%; }/*235px*/
 .grid_4 { width: 32%; }/*320px*/
@@ -32,12 +32,12 @@
 .grid_10,
 .grid_11,
 .grid_12 {
-	margin: 0 0.5% 0.5% 0.5%;
-	padding-right: 0.3%;
+	margin: 0 0.2% 0.2% 0.2%;
+	padding-right: 0.2%;
 	float: left;
 	display: block;
 	border-style: solid;
-	border-color: transparent;
+	border-color: black;
 }
 
 

@@ -14,7 +14,7 @@
 	$passnamnet ="";
           foreach($passnamn as $p){
 
-				 $passnamnet .=  "<strong>" .$p['passnamn'] . "</strong>" . " " . $p['passbeskrivning'] . "<br>";
+				 $passnamnet .=  "<strong>" .$p['passnamn'] . "</strong>" . " " . $p['passbeskrivning'] . "<br />";
 				}
 
 ?>

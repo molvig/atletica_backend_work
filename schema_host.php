@@ -17,84 +17,69 @@
 <div class="grid_1a">
 	<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		    Måndag 28 Juli
+		    Måndag <?php ?>
 		  </a>
 		  <a href="schema_uppdatera_pass.php" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
 <div class="grid_1a">
 	<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		    Tisdag 29 Juli
+		    Tisdag <?php ?>
 		  </a>
 		  <a href="#" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
 <div class="grid_1a">
 	<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		    Onsdag 30 Juli 
-		  </a>
+		    Onsdag <?php ?>
 		  <a href="#" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
 <div class="grid_1a">
 	<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		    Torsdag 31 Juli
+		    Torsdag <?php ?>
 		  </a>
 		  <a href="#" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
 <div class="grid_1a">
 	<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		    Fredag 1 Augusti
+		    Fredag <?php ?>
 		  </a>
 		  <a href="#" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
 <div class="grid_1a">
 	<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		    Lördag 2 Augusti
+		    Lördag <?php ?>
 		  </a>
 		  <a href="#" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
 <div class="grid_1a">
 	<div class="list-group">
 		  <a href="#" class="list-group-item active">
-		    Söndag 3 Augusti
+		    Söndag <?php ?>
 		  </a>
 		  <a href="#" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
