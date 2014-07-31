@@ -217,7 +217,7 @@
 		
 		startDate:	false, // new Date(), '1986/12/08', '-1970/01/05','-1970/01/05', 
 		
-		step:60,
+		step:5,
 		monthChangeSpinner:true,
 		closeOnDateSelect:false,
 		closeOnWithoutClick:true,
