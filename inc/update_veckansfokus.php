@@ -1,13 +1,13 @@
 
 <?php
-$fokus ="";
+$veckansfokus_text ="";
 
   if(!empty($_POST)){
-      $fokus =($_POST['veckansfokus_uppdatera']);
+      $veckansfokus_text =($_POST['veckansfokus_uppdatera']);
     try {
        $query = ("UPDATE veckansfokus SET veckansfokus=:veckansfokus_uppdatera WHERE veckansfokusID=1");
           $q = $db -> prepare($query);
-          $q-> execute(array(':veckansfokus_uppdatera'=>$fokus));
+          $q-> execute(array(':veckansfokus_uppdatera'=>$veckansfokus_text));
 
           if($query){
           echo '<center>' . '<h4>' . 'Du har uppdaterat veckans fokus!' . '</h4>' . '</center>';
@@ -24,4 +24,7 @@ $fokus ="";
 
 
 ?>
-    <?php include ("getveckansfokus.php");?>
+
+
+
+

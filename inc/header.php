@@ -23,9 +23,11 @@
 
    <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
     <script>
-            tinymce.init({selector:'#veckansfokus_uppdatera', menubar: false, forced_root_block : false});
+            tinymce.init({selector:'#veckansfokus_uppdatera', menubar: false, format_blocks: false, forced_root_block : false});
     </script> 
-
+<script>
+    $('#myModal').modal(options)
+</script> 
 
   </head>
   <body>

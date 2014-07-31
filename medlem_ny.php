@@ -115,18 +115,43 @@
 
          </div>
 
-        
-        <div class="grid_6">
-          <button type="submit" name="submit"  class="btn btn-default">Lägg till medlem</button>
-        </div>
-
-</div>
 
 
     </form>
+        
+            <!-- Button trigger modal -->
+            <button class="btn btn-default" data-toggle="modal" data-target="#myModal">
+              Lägg till medlem
+            </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Ny medlem</h4>
+                </div>
+                <div class="modal-body">
+                  Du har nu skapat en ny medlem
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Stäng</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
 </div>
+     
+    </div>
+  </div>
+</div>
+
+</div>
+
+
 
 
 
