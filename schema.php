@@ -11,7 +11,7 @@
 <!-- Växlar mellan veckorna-->
 <ul class="pager">
   <li class="previous disabled"><a href="#">&larr; Föregående vecka</a></li>
-  <li class="next"><a href="schema_host_nextweek.php">Nästa vecka &rarr;</a></li>
+  <li class="next"><a href="schema_nextweek.php">Nästa vecka &rarr;</a></li>
 </ul>
 
 <div class="grid_1a">

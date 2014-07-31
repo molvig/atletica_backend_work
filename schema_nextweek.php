@@ -10,7 +10,7 @@
 
 <!-- Växlar mellan veckorna-->
 <ul class="pager">
-  <li class="previous"><a href="schema_host.php">&larr; Föregående vecka</a></li>
+  <li class="previous"><a href="schema.php">&larr; Föregående vecka</a></li>
   <li class="next"><a href="#">Nästa vecka &rarr;</a></li>
 </ul>
 
@@ -20,9 +20,7 @@
 		    Måndag 4 Augusti
 		  </a>
 		  <a href="#" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
@@ -32,9 +30,7 @@
 		    Tisdag 5 Augusti
 		  </a>
 		  <a href="#" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
@@ -44,9 +40,7 @@
 		    Onsdag 6 Augusti
 		  </a>
 		  <a href="#" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
@@ -56,9 +50,7 @@
 		    Torsdag 7 Augusti
 		  </a>
 		  <a href="#" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
@@ -68,9 +60,7 @@
 		    Fredag 8 Augusti
 		  </a>
 		  <a href="#" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
@@ -80,9 +70,7 @@
 		    Lördag 9 Augusti
 		  </a>
 		  <a href="#" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
@@ -92,9 +80,7 @@
 		    Söndag 10 Augusti
 		  </a>
 		  <a href="#" class="list-group-item">8.30 Zumba</a>
-		  <a href="#" class="list-group-item">9.00 Core 30</a>
-		  <a href="#" class="list-group-item">16.15 Cardio Intervall</a>
-		  <a href="#" class="list-group-item">17.00 TRX</a>
+
 	</div>
 </div>
 
