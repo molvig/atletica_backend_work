@@ -86,7 +86,7 @@
     <label for="schema" class="col-sm-2 control-label">Vilket schema?</label>
     <div class="col-sm-4">
 				<select name="schema" class="form-control">
-				<option value="fall">Höst</option>
+				<option value="3">Höst</option>
 				</select>
     </div>
   </div>
