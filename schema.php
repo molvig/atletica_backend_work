@@ -6,7 +6,7 @@
 </div>
 
 <div class="grid_10">
-<center><h3>Höstschema 2014</h3></center>
+<center><h3>Schema 2014</h3></center>
 
 <!-- Växlar mellan veckorna-->
 <ul class="pager">
