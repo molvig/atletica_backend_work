@@ -8,6 +8,10 @@
     <script src="jquery.min.js"></script>
   <script type="text/javascript">date_populate("date", "month", "year");</script>
 
+ 
+  <script src="/jquery.js"></script>
+  <script src="/jquery.datetimepicker.js"></script>
+
     <!-- js kod som kanske inte behövs?
     <script src="js/popover.js"></script>
     <script src="js/tooltip.js"></script>

@@ -98,27 +98,25 @@
       <button type="submit" class="btn btn-default">Uppdatera</button>
     </div>
   </div>
+
+  <div class="form-group">
+    <label for="datetimepicker" class="col-sm-2 control-label">Tid</label>
+    <div class="col-sm-4">
+        <input id="datetimepicker2" type="text" >
+    </div>
+  
+<script>
+  jQuery('#datetimepicker2').datetimepicker({
+    datepicker:false,
+    format:'H:i'
+  });
+</script> 
+</div>
+
 </form>
 </div>
 
 
- <div class="input-append bootstrap-timepicker">
-<input id="timepicker2" type="text" class="input-small">
-<span class="add-on">
-<i class="icon-time"></i>
-</span>
-</div>
- 
-<script type="text/javascript">
-    $('#timepicker2').timepicker({
-    minuteStep: 1,
-    template: 'modal',
-    appendWidgetTo: 'body',
-    showSeconds: true,
-    showMeridian: false,
-    defaultTime: false
-    });
-</script>
 
 <?php include("inc/footer.php"); ?>
 
