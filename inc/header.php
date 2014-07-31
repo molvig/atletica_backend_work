@@ -70,10 +70,10 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list-alt"></span> Schema<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="schema_var.php">Vår</a></li>
-            <li><a href="schema_sommar.php">Sommar</a></li>
-            <li><a href="schema_host.php">Höst</a></li>
-            <li><a href="schema_vinter.php">Vinter</a></li>
+            <li><a href="schema.php">Vår</a></li>
+            <li><a href="schema.php">Sommar</a></li>
+            <li><a href="schema.php">Höst</a></li>
+            <li><a href="schema.php">Vinter</a></li>
           </ul>
         </li>
           <li class="dropdown">
