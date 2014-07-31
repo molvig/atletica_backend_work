@@ -1,5 +1,7 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
+<?php include("inc/getpass.php"); ?>
+<?php include("inc/getinstruktorer.php"); ?>
 
 
 
@@ -26,27 +28,33 @@
       <input type="text" class="form-control" id="inputPassword3" placeholder="Extra information, ex flera instruktörer">
     </div>
   </div>
+    <div class="form-group">
+                    <label for="datetimepicker" class="col-sm-2 control-label">Starttid</label>
+                    <div class="col-sm-4">
+                        <input id="datetimepicker1" type="text" class="form-control"  >
+                    </div>
+                  
+                <script>
+                  jQuery('#datetimepicker1').datetimepicker({
+                    datepicker:false,
+                    format:'H:i'
+                  });
+                </script> 
+  </div>
+  
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Startar</label>
-    <div class="col-sm-4">
-				<select name="start" class="form-control">
-				<option value="Sandra">16.00</option>
-				<option value="Olivia">16.15</option>
-				<option value="Ellinor">16.30</option>
-				</select>
-    </div>
-  </div>
-  </div>
-  <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Slutar</label>
-    <div class="col-sm-4">
-				<select name="slut" class="form-control">
-				<option value="Sandra">17.00</option>
-				<option value="Olivia">17.15</option>
-				<option value="Ellinor">17.30</option>
-				</select>
-    </div>
-  </div>
+            <label for="datetimepicker" class="col-sm-2 control-label">Sluttid</label>
+            <div class="col-sm-4">
+                <input id="datetimepicker2" type="text" class="form-control"  >
+            </div>
+          
+        <script>
+          jQuery('#datetimepicker2').datetimepicker({
+            datepicker:false,
+            format:'H:i'
+          });
+        </script> 
+</div>
   </div>
 
  <!--<div class="form-group">
@@ -76,7 +84,7 @@
     <label for="inputEmail3" class="col-sm-2 control-label">Instruktör</label>
     <div class="col-sm-4">
      <select name="pass" class="form-control">
-          <?php echo $instruktor ?>
+          <?php echo $instnamnet ?>
         </select><span class="help-block"><a href="installningar_nyinstruktor.php">Saknas instruktören? Klicka här</a></span>
     </div>
     </div>
