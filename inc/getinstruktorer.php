@@ -14,7 +14,7 @@
 	$instnamnet ="";
           foreach($instnamn as $i){
 
-				 $instnamnet .= $i['instnamn']. "<br>";
+				 $instnamnet .= "<option value='".$i['instnamn']."'>".$i['instnamn']."</option>";
 				}
 
 ?>

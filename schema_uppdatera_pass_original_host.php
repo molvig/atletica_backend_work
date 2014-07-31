@@ -75,8 +75,9 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Instruktör</label>
     <div class="col-sm-4">
-     <select name="pass" class="form-control">
-          <?php echo $instruktor ?>
+      <?php include("inc/getinstruktorer.php"); ?>
+     <select name="instruktor" class="form-control">
+          <?php echo $instnamnet ?>
         </select><span class="help-block"><a href="installningar_nyinstruktor.php">Saknas instruktören? Klicka här</a></span>
     </div>
     </div>

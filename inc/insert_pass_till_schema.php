@@ -3,10 +3,10 @@ if(!empty($_POST)){
 
 $schemaId = $_POST['schema'];
 $antalPlatser = $_POST['platser'];
-$information = $_POST['schema'];
+$information = $_POST['information'];
 $passNamn = $_POST['pass'];
 $instruktor = $_POST['instruktor'];
-$startTid = $_POST['start']; //måste ha riktiga värden
+$startTid = $_POST['start']; 
 $slutTid = $_POST['slut'];
 $veckoDag = $_POST['days'];
 
