@@ -66,17 +66,36 @@
 
     </div>
 <br>
-
+</form>
         
-        <div class="grid_6">
-          <button type="submit" name="submit"  class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Radera medlem</button>
-            <h5 style="color:red">Om du raderar denna medlemmen är det permanent och det går inte att återskapa eller ångra.</h5>
-        </div>
+            <!-- Button trigger modal -->
+            <button class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+              <span class="glyphicon glyphicon-trash"></span> Radera medlem
+            </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Radera</h4>
+                </div>
+                <div class="modal-body">
+                 Vill du verkligen radera denna medlem? Om du väljer att radera kommer medlemmen att raderas. Det går inte att ångra eller återskapa. 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger">Radera</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Avbryt</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
 </div>
 
 
-    </form>
+    
 
 
 </div>

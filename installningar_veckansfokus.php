@@ -8,11 +8,11 @@
 	<?php include("inc/menyinst.php"); ?>
 	
 </div>
+<div class="grid_6">
 
+ 	<form role="form" action="installningar_veckansfokus_post.php" method="post">
 
- 	 <form role="form" action="#" method="post">
-
-    <div class="grid_6">
+    
 
     
 
@@ -33,12 +33,13 @@
           <button type="submit" name="submit"  class="btn btn-default">Uppdatera</button>
         </div>
 
-</div>
 
 
-    </form>
 <?php include("inc/update_veckansfokus.php"); ?>
-   
+  </form>
+
+
+ </div>  
 
 <?php include("inc/footer.php"); ?>
 
