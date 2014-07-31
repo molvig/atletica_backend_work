@@ -1,7 +1,17 @@
-<?php include("inc/db_con.php"); ?>
-<?php include("inc/header.php"); ?>
-<?php include("inc/getpass.php"); ?>
-<?php include("inc/getinstruktorer.php"); ?>
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../js/bootstrap.js"></script>
+    <script src="../jquery.min.js"></script>
+  <script type="../text/javascript">date_populate("date", "month", "year");</script>
+
+ 
+  <script src="/jquery.js"></script>
+  <script src="/jquery.datetimepicker.js"></script>
+<?php include("../inc/db_con.php"); ?>
+<?php include("../inc/header.php"); ?>
+<?php include("../inc/getpass.php"); ?>
+<?php include("../inc/getinstruktorer.php"); ?>
 
 
 <h3>Lägg till pass i höstschema 2014</h3>
@@ -24,7 +34,7 @@
     <div class="form-group">
                     <label for="datetimepicker" class="col-sm-2 control-label">Starttid</label>
                     <div class="col-sm-4">
-                        <input id="datetimepicker1" type="text" class="form-control"  >
+                        <input id="datetimepicker1" type="text" class="form-control" onchange="changeHidden()" >
                     </div>
                   <input type="hidden" id="starttid" name="starttid" value=""/> 
                 <script>
@@ -104,11 +114,16 @@
 <script>
 $(document).ready(function() {
   //document.getElementById("starttid").value = document.getElementById("datetimepicker1").value;
-  $( "#datetimepicker1" ).change(function() {
-alert( "Handler for .change() called." );
+  //$( "#datetimepicker1" ).click(function() {  
+  function changeHidden()
+  {  
+  document.getElementById("starttid").value = document.getElementById("datetimepicker1").value;
+  alert( document.getElementById("starttid").value );
+}
 });
+ 
 });
 
 </script>
-<?php include("inc/footer.php"); ?>
+<?php include("../inc/footer.php"); ?>
 
