@@ -4,7 +4,7 @@
 <?php include("inc/getinstruktorer.php"); ?>
 
 
-<h3>Lägg till pass i höstschema 2014</h3>
+<h3>Lägg till pass i schema 2014</h3>
 
 <form class="form-horizontal" role="form" action="#" method="post">
   <div class="form-group">
