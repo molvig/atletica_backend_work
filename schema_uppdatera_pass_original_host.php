@@ -6,7 +6,7 @@
 
 <h3>Lägg till pass i höstschema 2014</h3>
 
-<form class="form-horizontal" role="form" action="#" method="post">
+<form class="form-horizontal" id="passForm" role="form" action="#" method="post">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Pass</label>
     <div class="col-sm-4">
@@ -26,12 +26,12 @@
                     <div class="col-sm-4">
                         <input id="datetimepicker1" type="text" class="form-control"  >
                     </div>
-                  
+                  <input type="hidden" id="starttid" name="starttid" value=""/> 
                 <script>
                   jQuery('#datetimepicker1').datetimepicker({
                     datepicker:false,
                     format:'H:i'
-                  });
+                  });                  
                 </script> 
   </div>
   
@@ -40,7 +40,7 @@
             <div class="col-sm-4">
                 <input id="datetimepicker2" type="text" class="form-control"  >
             </div>
-          
+          <input type="hidden" id="sluttid" value=""/> 
         <script>
           jQuery('#datetimepicker2').datetimepicker({
             datepicker:false,
@@ -101,6 +101,14 @@
   </div>
 </form>
 </div>
+<script>
+$(document).ready(function() {
+  //document.getElementById("starttid").value = document.getElementById("datetimepicker1").value;
+  $( "#datetimepicker1" ).change(function() {
+alert( "Handler for .change() called." );
+});
+});
 
+</script>
 <?php include("inc/footer.php"); ?>
 

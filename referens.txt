@@ -1,0 +1,4 @@
+<a href="linkA.php" onclick="document.getElementById( 'hiddenField'
+).value = 'A'";>...</a>
+<a href="linkB.php" onclick="document.getElementById( 'hiddenField'
+).value = 'B'";>...</a>
