@@ -21,7 +21,7 @@
   <body>
     <div class="container">
 
-      <form class="form-signin" role="form">
+      <form class="form-signin" role="form" action="index.php">
         <h2 class="form-signin-heading">Logga in i ATLETICAS administrationssystem</h2>
         <input type="text" class="form-control" placeholder="Användarnamn" required autofocus>
         <input type="password" class="form-control" placeholder="Lösenord" required>
