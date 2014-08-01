@@ -38,7 +38,7 @@ $_SESSION['schemaID'] = $schemaID ;
 
             <?php if ($schemaID == 'schemaid=4'){ 
 
-            echo ">Vinterschema";
+            echo "Vinterschema";
 
             }?></h3></center>
 
