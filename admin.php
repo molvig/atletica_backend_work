@@ -19,20 +19,21 @@
     <![endif]-->
   </head>
   <body>
-<form class="form-group" role="form" method="post" action="index.php">
-  <div class="form-group">
-    <label for="username">Användarnamn</label>
-    <input type="text" class="form-control" id="username" placeholder="Användarnamn">
-  </div>
-  <div class="form-group">
-    <label for="password">Lösenord</label>
-    <input type="password" class="form-control" id="password" placeholder="Lösenord">
-  </div>
-  <div class="checkbox">
-  </div>
-  <button type="submit" class="btn btn-default">Logga in</button>
-</form>
+    <div class="container">
 
+      <form class="form-signin" role="form" action="index.php">
+        <h2 class="form-signin-heading">Logga in i ATLETICAS administrationssystem</h2>
+        <input type="text" class="form-control" placeholder="Användarnamn" required autofocus>
+        <input type="password" class="form-control" placeholder="Lösenord" required>
+        <div class="checkbox">
+          <label>
+            
+          </label>
+        </div>
+        <button class="btn btn-lg btn-default btn-block" type="submit">Logga in</button>
+      </form>
+
+    </div>
 
 
 
