@@ -1,13 +1,45 @@
 <?php include("inc/db_con.php"); ?>
+<?php session_start();?>
+<?php $schemasID = $_SESSION['schemaID']; ?>
+
+
 <?php include("inc/header.php"); ?>
 <?php include("inc/get_dag_schema.php"); ?>
+<?php include("inc/get_pass_schema.php"); ?>
 <?php include("inc/getpass.php"); ?>
 <?php include("inc/getinstruktorer.php"); ?>
 
-<?php echo $dagID; ?>
 
 
-<h3>Lägg till pass i schema 2014</h3>
+<!-- <?php echo $schemasID ?>
+
+<?php echo $dagID; ?> -->
+
+
+
+<center><h3>Lägg till pass i <?php if ($schemasID == 'schemaid=1'){ 
+
+            echo "vårschema";
+
+            }?>
+
+            <?php if ($schemasID == 'schemaid=2'){ 
+
+            echo "sommarschema";
+
+            }?>
+
+            <?php if ($schemasID == 'schemaid=3'){ 
+
+            echo "höstschema";
+
+            }?>
+
+            <?php if ($schemasID == 'schemaid=4'){ 
+
+            echo ">vinterschema";
+
+            }?></h3></center><br><br>
 
 <form class="form-horizontal" role="form" action="#" method="post">
   <div class="form-group">
@@ -122,7 +154,30 @@
     <label for="schema" class="col-sm-2 control-label">Vilket schema?</label>
     <div class="col-sm-4">
 				<select name="schema" class="form-control">
-      <option value="3">Höst</option>
+            <?php if ($schemasID == 'schemaid=1'){ 
+
+            echo "<option value='1'>Vår</option>";
+
+            }?>
+
+            <?php if ($schemasID == 'schemaid=2'){ 
+
+            echo "<option value='2'>Sommar</option>";
+
+            }?>
+
+            <?php if ($schemasID == 'schemaid=3'){ 
+
+            echo "<option value='3'>Höst</option>";
+
+            }?>
+
+            <?php if ($schemasID == 'schemaid=4'){ 
+
+            echo "<option value='4'>Vinter</option>";
+
+            }?>
+
 				</select>
     </div>
   </div>

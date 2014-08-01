@@ -3,7 +3,8 @@
 <?php
 session_start();
 // store session data
-$_SESSION['schemaID'] = $schemaID;
+$_SESSION['schemaID'] = $schemaID ;
+
 ?>
 
 
@@ -16,7 +17,30 @@ $_SESSION['schemaID'] = $schemaID;
 
 <div class="grid_10">
 	<?php echo $schemaID; ?>
-<center><h3>Schema 2014</h3></center>
+
+<center><h3><?php if ($schemaID == 'schemaid=1'){ 
+
+            echo "Vårschema";
+
+            }?>
+
+            <?php if ($schemaID == 'schemaid=2'){ 
+
+            echo "Sommarschema";
+
+            }?>
+
+            <?php if ($schemaID == 'schemaid=3'){ 
+
+            echo "Höstschema";
+
+            }?>
+
+            <?php if ($schemaID == 'schemaid=4'){ 
+
+            echo ">Vinterschema";
+
+            }?></h3></center>
 
 
 
