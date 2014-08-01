@@ -13,12 +13,11 @@
   <li class="previous"><a href="schema.php">&larr; Föregående vecka</a></li>
   <li class="next"><a href="#">Nästa vecka &rarr;</a></li>
 </ul>
-
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
-		    Måndag
-		  </a>
+		  <p class="list-group-item active">
+		    Måndag <?php ?>
+		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -26,9 +25,9 @@
 
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
-		    Tisdag
-		  </a>
+		  <p class="list-group-item active">
+		    Tisdag <?php ?>
+		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -36,9 +35,9 @@
 
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
-		    Onsdag
-		  </a>
+		  <p class="list-group-item active">
+		    Onsdag <?php ?>
+		    </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -46,9 +45,9 @@
 
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
-		    Torsdag
-		  </a>
+		  <p class="list-group-item active">
+		    Torsdag <?php ?>
+		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -56,9 +55,9 @@
 
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
-		    Fredag
-		  </a>
+		  <p class="list-group-item active">
+		    Fredag <?php ?>
+		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -66,9 +65,9 @@
 
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
-		    Lördag
-		  </a>
+		  <p class="list-group-item active">
+		    Lördag <?php ?>
+		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -76,24 +75,14 @@
 
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
-		    Söndag
-		  </a>
+		  <p class="list-group-item active">
+		    Söndag <?php ?>
+		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>
 
-
-		   
-		  
-		   
-		 
-		   
-		 
-		   
-		 
-		   
 		 
 		  
 		 

@@ -16,9 +16,9 @@
 
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
+		  <p class="list-group-item active">
 		    Måndag <?php ?>
-		  </a>
+		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -26,9 +26,9 @@
 
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
+		  <p class="list-group-item active">
 		    Tisdag <?php ?>
-		  </a>
+		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -36,8 +36,9 @@
 
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
+		  <p class="list-group-item active">
 		    Onsdag <?php ?>
+		    </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -45,9 +46,9 @@
 
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
+		  <p class="list-group-item active">
 		    Torsdag <?php ?>
-		  </a>
+		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -55,9 +56,9 @@
 
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
+		  <p class="list-group-item active">
 		    Fredag <?php ?>
-		  </a>
+		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -65,9 +66,9 @@
 
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
+		  <p class="list-group-item active">
 		    Lördag <?php ?>
-		  </a>
+		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -75,9 +76,9 @@
 
 <div class="grid_1a">
 	<div class="list-group">
-		  <a href="#" class="list-group-item active">
+		  <p class="list-group-item active">
 		    Söndag <?php ?>
-		  </a>
+		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
