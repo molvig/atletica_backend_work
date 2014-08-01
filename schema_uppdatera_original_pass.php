@@ -1,7 +1,12 @@
 <?php include("inc/db_con.php"); ?>
+
 <?php include("inc/header.php"); ?>
+<?php include("inc/get_dag_schema.php"); ?>
+
 <?php include("inc/getpass.php"); ?>
 <?php include("inc/getinstruktorer.php"); ?>
+
+
 
 <script type="text/javascript">
   //document.getElementById("starttid").value = document.getElementById("datetimepicker1").value;
@@ -19,14 +24,15 @@
 
 </script>
 
-<h3>Lägg till pass i schema 2014</h3>
+<h3>Lägg till pass i schema 2014 </h3>
+<?php echo $_GET['dagID']; ?>
 
 <form class="form-horizontal" role="form" action="#" method="post">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Pass</label>
     <div class="col-sm-4">
      <select name="pass" class="form-control">
-          <?php echo $pass ?>
+          <?php echo $pass; ?>
         </select><span class="help-block"><a href="installningar_nyttpass.php">Saknas passet? Klicka här</a></span>
     </div>
   </div>

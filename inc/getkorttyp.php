@@ -14,3 +14,5 @@
 		$kort .= "<option value='korttyp'>" . $k['korttyp'] . "</option>";
 	}    
    
+
+               ?>
