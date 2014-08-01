@@ -6,9 +6,13 @@ $antalPlatser = $_POST['platser'];
 $information = $_POST['information'];
 $passNamn = $_POST['pass'];
 $instruktor = $_POST['instruktor'];
-$startTid = $_POST['start']; 
-$slutTid = $_POST['slut'];
+$startTid = $_POST['starttid']; 
+$slutTid = $_POST['sluttid'];
 $veckoDag = $_POST['days'];
+$installt = 0;
+$reserv = 20;
+$extraPass = 0;
+
 
 $date1 = ""; //startdatum för schemat
 $date2 = ""; //slutdatum för schemat
@@ -39,10 +43,15 @@ $sql = 'CALL Admin_AddClassToSchedule(:scId, :inst, :antP,
     
 $stmt = $db->prepare($sql);
 
+$testOut = "";
 for($i = strtotime($day, strtotime($date1)); $i <= $date2; $i = strtotime('+1 week', $i))
 {
-    $stmt-> execute(array(':scId' => $schemaId,                            
-                            ':antP' => $antalPlatser,                            
+    try
+    {
+    $stmt-> execute(array(':scId' => $schemaId,
+                            ':inst' => $installt,                            
+                            ':antP' => $antalPlatser,
+                            ':antR' => $reserv,                            
                             ':d' => date('Y-m-d', $i),
                             ':info' => $information,
                             ':pNamn' => $passNamn,
@@ -53,6 +62,14 @@ for($i = strtotime($day, strtotime($date1)); $i <= $date2; $i = strtotime('+1 we
                             ':ePass' => $extraPass
                         )
     );
+}
+catch(Exception e)
+{
+    echo e;
+}
+    //$testOut .= "datum " .date('Y-m-d', $i). " scid ".$schemaId." inst ".$installt." platser ".$antalPlatser." reserv ".$reserv." info "
+    //.$information." namn ".$passNamn." intr ".$instruktor." start ".$startTid." slut ".$slutTid." dag ".$veckoDag.
+    //" extra ".$extraPass. "<br />";
 }
 }
   
