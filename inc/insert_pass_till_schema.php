@@ -18,12 +18,12 @@ $date1 = ""; //startdatum för schemat
 $date2 = ""; //slutdatum för schemat
 try {
             $results = $db -> prepare ("SELECT startdatum, slutdatum FROM schematyp
-                where schemaId = :schemaId");
+                where schemaTyp = :schemaId");
 
             $results->execute(array(':schemaId' => $schemaId));
     } 
     catch (Exception $e) {
-            echo "Data could not be retrieved from the database";
+            echo $e; //"Data could not be retrieved from the database";
             exit;
     }
 
@@ -63,10 +63,10 @@ for($i = strtotime($day, strtotime($date1)); $i <= $date2; $i = strtotime('+1 we
                         )
     );
 }
-catch(Exception e)
+catch(Exception $e)
 {
-    echo e;
-}
+    echo "error: ".$e." ";
+    }
     //$testOut .= "datum " .date('Y-m-d', $i). " scid ".$schemaId." inst ".$installt." platser ".$antalPlatser." reserv ".$reserv." info "
     //.$information." namn ".$passNamn." intr ".$instruktor." start ".$startTid." slut ".$slutTid." dag ".$veckoDag.
     //" extra ".$extraPass. "<br />";
