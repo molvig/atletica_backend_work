@@ -37,7 +37,7 @@
 
             <?php if ($schemasID == 'schemaid=4'){ 
 
-            echo ">vinterschema";
+            echo "vinterschema";
 
             }?></h3></center><br><br>
 
