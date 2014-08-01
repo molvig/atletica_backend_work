@@ -6,14 +6,15 @@
 <script type="text/javascript">
   //document.getElementById("starttid").value = document.getElementById("datetimepicker1").value;
   //$( "#datetimepicker1" ).click(function() {  
-  function changeHiddenStart()
+  function changeHiddenStart(text)
   {  
-  document.getElementById("starttid").value = document.getElementById("datetimepicker1").value;  
+    //alert(text);
+  document.getElementById("starttid").value = text; //document.getElementById("datetimepicker1").value;  
 }
 
- function changeHiddenSlut()
+ function changeHiddenSlut(text)
   {  
-  document.getElementById("sluttid").value = document.getElementById("datetimepicker2").value;  
+  document.getElementById("sluttid").value = text; //document.getElementById("datetimepicker2").value;  
 }
 
 </script>
@@ -38,14 +39,14 @@
     <div class="form-group">
                     <label for="datetimepicker" class="col-sm-2 control-label">Starttid</label>
                     <div class="col-sm-4">
-                        <input id="datetimepicker1" type="text" class="form-control"  onchange="changeHiddenStart()" >
+                        <input id="datetimepicker1" type="text" class="form-control" onChange="changeHiddenStart(this.value)">
                     </div>
                   <input type="hidden" id="starttid" name="starttid" value=""/> 
 
                 <script>
                   jQuery('#datetimepicker1').datetimepicker({
                     datepicker:false,
-                    format:'H:i'
+                    format:'H:i'                    
                   });
                 </script> 
   </div>
@@ -53,7 +54,7 @@
   <div class="form-group">
             <label for="datetimepicker" class="col-sm-2 control-label">Sluttid</label>
             <div class="col-sm-4">
-                <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut()" >
+                <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut(this.value)" >
             </div>
           <input type="hidden" id="sluttid" name="sluttid" value=""/> 
         <script>
