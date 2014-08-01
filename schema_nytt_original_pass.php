@@ -1,7 +1,10 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
+<?php include("inc/get_dag_schema.php"); ?>
 <?php include("inc/getpass.php"); ?>
 <?php include("inc/getinstruktorer.php"); ?>
+
+<?php echo $dagID; ?>
 
 
 <h3>Lägg till pass i schema 2014</h3>
@@ -62,13 +65,45 @@
     <label for="inputEmail3" class="col-sm-2 control-label">Veckodag</label>
     <div class="col-sm-4">
 				<select name="days" class="form-control">
-				<option value="1">Måndag</option>
-				<option value="2">Tisdag</option>
-				<option value="3">Onsdag</option>
-				<option value="4">Torsdag</option>
-				<option value="5">Fredag</option>
-				<option value="6">Lördag</option>
-				<option value="7">Söndag</option>
+
+        <?php if ($dagID == 'dagid=1'){ 
+
+         echo "<option value='1'>Måndag</option>";
+
+        }?>
+        <?php if ($dagID == 'dagid=2'){ 
+
+         echo "<option value='2'>Tisdag</option>";
+
+        }?>
+        <?php if ($dagID == 'dagid=3'){ 
+
+         echo "<option value='3'>Onsdag</option>";
+
+        }?>
+        <?php if ($dagID == 'dagid=4'){ 
+
+         echo "<option value='4'>Torsdag</option>";
+
+        }?>
+        <?php if ($dagID == 'dagid=5'){ 
+
+         echo "<option value='5'>Fredag</option>";
+
+        }?>
+				
+        <?php if ($dagID == 'dagid=6'){ 
+
+         echo "<option value='6'>Lördag</option>";
+
+        }?>
+
+        <?php if ($dagID == 'dagid=7'){ 
+
+         echo "<option value='7'>Söndag</option>";
+
+        }?>        
+
 				</select>
     </div>
   </div>
@@ -87,7 +122,7 @@
     <label for="schema" class="col-sm-2 control-label">Vilket schema?</label>
     <div class="col-sm-4">
 				<select name="schema" class="form-control">
-				<option value="3">Höst</option>
+      <option value="3">Höst</option>
 				</select>
     </div>
   </div>
