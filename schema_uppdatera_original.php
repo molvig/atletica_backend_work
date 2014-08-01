@@ -1,11 +1,10 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/get_pass_schema.php"); ?>
 <?php
-session_start();
-// store session data
-$_SESSION['schemaID'] = $schemaID ;
 
+$_SESSION['schemaID'] = $schemaID ;
 ?>
+
 
 
 <?php include("inc/header.php"); ?>

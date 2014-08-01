@@ -1,5 +1,5 @@
 <?php include("inc/db_con.php"); ?>
-<?php session_start();?>
+
 <?php $schemasID = $_SESSION['schemaID']; ?>
 
 

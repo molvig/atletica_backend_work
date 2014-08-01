@@ -23,7 +23,7 @@
 
         <div class="grid_6">
           <label>Medlemsnummer
-            <p><?php echo $kundnret ?></p></label> 
+            <p><?php echo $kundnr['kundnr']; ?></p></label> 
         </div>
 
        <div class="grid_6">

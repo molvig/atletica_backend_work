@@ -1,28 +1,27 @@
-
-
-
-
-
-
+<?php include ('db_con.php'); ?>
     <?php
 
-
-
+$kundnr="";
+$kund=0;
 	 try {
-			$results = $db -> query ("SELECT kundnr FROM medlemmar ORDER BY kundnr DESC LIMIT 1;");
+			$results = $db -> query ("SELECT kundnr FROM medlemmar");
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
 			exit;
 	}
 
-	$kundnr = ($results -> fetchAll(PDO::FETCH_ASSOC));
-	$kundnret ="";
-	
+	$kundnr = ($results -> fetch(PDO::FETCH_ASSOC));
+
+
           foreach($kundnr as $k){
 
-				 $kundnret .= $k['kundnr'];
-
+				 $kund = $k['kundnr'];
 				}
 
+	
+echo $kund;
+
 ?>
+
+
