@@ -1,21 +1,36 @@
 <?php
 	 
 	if(!empty($_POST)){
-	    $nyttpass = $_POST['nyttpass'];
-	    $passbeskrivning = $_POST['passbeskrivning'];
+	    $personnr = $_POST['personnr'];
+	   	$fnamn = $_POST['fnamn'];
+	   	$enamn = $_POST['enamn'];
+	   	$telefonnr = $_POST['phone'];
+	   	$email = $_POST['mail'];
+	   	$medlemsstart= $_POST['medlemsstart'];
+	   	$anteckning = $_POST['note'];
+
 		try {
-			 $query = ("INSERT INTO pass (passnamn,passbeskrivning) VALUES (:nyttpass, :passbeskrivning)");
+			 $query = ("INSERT INTO medlemmar (kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, medlemsstart) VALUES (:kundnr, :personnr, :fnamn, :enamn, :phone, :mail, :note, :medlemsstart)");
 			    $q = $db -> prepare($query);
-			    $q-> execute(array(':nyttpass'=>$nyttpass,
-			    					':passbeskrivning' =>$passbeskrivning));
+			    $q-> execute(array(':kundnr'=>$biggestkundnr,
+			    					':personnr'=>$personnr,
+			    					':fnamn'=>$fnamn,
+			    					':enamn'=>$enamn,
+			    					':phone'=>$telefonnr,
+			    					':mail'=>$email,
+			    					':note'=>$anteckning,
+			    					':medlemsstart'=>$medlemsstart,
+
+
+			    					));
 
 		  		if($query){ ?>
-		    	<div class="grid_12"> <?php echo  '<h4>' . 'Du har lagt till '. '<strong>' . $nyttpass  .'</strong>' .' som ett nytt pass!' . '</h4>'; ?> </div>
+		    	<div class="grid_12"> <?php echo  '<h4>' . 'Du har lagt till en ny medlem!' . '</h4>'; ?> </div>
 			 <?php	}
 		} 
 		catch (Exception $e) {?>
 
-			<div class="grid_12"> <?php echo '<h4>' . 'Hoppsan! <br> Passet du försöker lägga till finns redan...' . '</h4>';?> </div>
+			<div class="grid_12"> <?php echo '<h4>' . 'Oj, det har blivit något fel...' . '</h4>';?> </div>
 		<?php }
 			   
 
@@ -26,5 +41,3 @@
 
 
 
-
-SELECT kundnr FROM medlemmar ORDER BY kundnr DESC LIMIT 1;

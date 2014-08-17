@@ -10,17 +10,19 @@
   <h3>Uppdatera medlem </h3>
   </div>
 	 <form role="form" action="#" method="post">
-
+  
+    <legend>Personlig information</legend>
+    <fieldset>
     <div class="grid_12">
 
-        <div class="grid_6">
-          <label>Medlemsnummer
-            <p><?php   ?></p></label>
-        </div>
+          <div class="grid_6">
+            <label>Medlemsnummer
+              <input type="date" class="form-control" name="kundnr" id="kundnr" value="" readonly></label>
+          </div>
 
        <div class="grid_6">
           <label>Personnummer
-            <p><?php   ?></p></label>
+            <input type="personnr" class="form-control" name="personnr" id="personr" value="" readonly></label>
         </div>
 
     </div>
@@ -30,7 +32,7 @@
 
           <div class="grid_6">
             <label>Förnamn
-            	<p><?php  ?></p></label>
+            	<input type="fnamn" class="form-control" name="fnamn" id="fnamn" value="" readonly></label>
           </div>
 
           <div class="grid_6">
@@ -53,14 +55,33 @@
            </div>
 
        </div>
+                 <div class="grid_12">
+
+              <label>Anteckning
+              <textarea  rows="6" cols="80" class="form-control" name="note" id="note" row="6" placeholder="Något som kan vara värt att veta..."></textarea></label>
+
+         </div>
 
 
-
+</fieldset>
 <br>
+<legend>Medlemsskap</legend>
         <div class="grid_12"> 
           <div class="grid_6">
+            <label>Har varit medlem sedan
+             <input type="date" class="form-control" name="startdatum" id="startdatum" value="<?php  ?>" readonly></label>
+           </div>
+          <div class="grid_6">
+            <label>Passantal
+              <input type="text" class="form-control" name="passantal" id="passantal" value='4'></label>
+           </div>
+          <div class="grid_12">
+            <label>KortID
+             <input type="date" class="form-control" name="kortID" id="kortID" value="<?php  ?>" readonly></label>
+           </div>
+          <div class="grid_6">
           <div class="form-group">
-            <label>Ändra korttyp
+            <label>Korttyp
                  <select class="form-control">
                     <optgroup label="Årskort">
                       <option value="arkombi">Kombi (gym & gruppträning)</option>
@@ -78,15 +99,37 @@
               </div>
          </div>
           <div class="grid_6">
-            <label>Gäller från <br>
+            <label>Gäller till <br>
               <input type="text" name="date" class="tcal" value="<?php ?>" >
             </label>
            </div>
 
              </div>
-         <div class="grid_12">
 
+
+ <div class="grid_12">
+ <?php $fryst=0; ?>
         <div class="grid_6">
+         <?php if($fryst==1)
+           { ?>
+           <br>
+               <button type="submit" name="submit"  class="btn btn-default">Tina kort</button>
+           <?php }
+          else
+          { ?>
+        <br>
+                <button type="submit" name="submit"  class="btn btn-default">Frys kort</button>
+         <?php } ?>
+        </div>
+        
+          <div class="grid_6">
+            <label>Kortet frystes
+             <input type="date" class="form-control" name="frysdate" id="frysdate" value="" readonly></label>
+           </div>
+
+     </div>
+
+          <div class="grid_12">
           <div class="checkbox">
             <label>
               <input type="checkbox"> Nyckelkort
@@ -94,42 +137,10 @@
           </div>
         </div>
 
-          <div class="grid_6">
-            <label>Passantal
-              <input type="text" class="form-control" name="passantal" id="passantal" value='4'></label>
-           </div>
 
-     </div>
-
- <div class="grid_12">
+     
         <div class="grid_6">
-          if(kort = fryst)
-          {
-          <button type="submit" name="submit"  class="btn btn-default">Tina kort</button>
-          }
-          else
-          {
-          <button type="submit" name="submit"  class="btn btn-default">Frys kort</button>
-          }
-        </div>
-        
-          <div class="grid_6">
-            <label>Kortet frystes
-              <input type="text" class="form-control" name="passantal" id="passantal" value='<?php echo date('Y-m-d'); ?>'></label>
-           </div>
-
-     </div>
-
-          <div class="grid_12">
-
-              <label>Anteckning
-              <textarea class="form-control" name="note" id="note" placeholder="Något som kan vara värt att veta..."></textarea></label>
-
-         </div>
-
-        
-        <div class="grid_6">
-          <button type="submit" name="submit"  class="btn btn-default">Uppdatera</button>
+          <button type="submit" name="submit"  class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Uppdatera</button>
         </div>
 
 </div>
@@ -139,4 +150,11 @@
 
 
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 <?php include("inc/footer.php"); ?>

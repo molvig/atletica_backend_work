@@ -1,6 +1,5 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
-<?php include("inc/nytt_medlemsnummer.php"); ?>
 
 	<div class="grid_2">
   <?php include("inc/menymedlem.php"); ?> 
@@ -17,23 +16,21 @@
   <div class="grid_12">
   <h3>Lägg till ny medlem </h3>
   </div>
-	 <form role="form" action="#" method="post">
+	 <form role="form" action="medlem_ny_post.php" method="post">
 
     <div class="grid_12">
 
-        <div class="grid_6">
-          <label>Medlemsnummer
-            <p><?php echo $kundnr['kundnr']; ?></p></label> 
-        </div>
+
+          <div class="grid_6">
+            <?php include("inc/nytt_medlemsnummer.php"); ?>
+            <label>Medlemsnummer
+              <input type="date" class="form-control" name="kundnr" id="kundnr" value="<?php echo $biggestkundnr; ?>" readonly></label>
+          </div>
 
        <div class="grid_6">
-          <label>Personnummer</label> <br>
-               <div class="grid_4"><select class="form-control"  id ="date" name = "dd"></select></div>
-               <div class="grid_4"><select class="form-control"  id ="month" name = "mm"></select></div>
-               <div class="grid_4"><select class="form-control" id ="year" name = "yyyy"></select></div>
-
-        </div>
-          
+            <label>Personnummer
+              <input type="text" class="form-control" name="personnr" id="personnr" placeholder="ex. 861128" onkeypress='validate(event)'></label>
+          </div>
 
     </div>
 
@@ -42,12 +39,12 @@
 
           <div class="grid_6">
             <label>Förnamn
-            	<input type="text" class="form-control" name="fnamn" id="fnamn" placeholder=""></label>
+            	<input type="text" class="form-control" name="fnamn" id="fnamn" placeholder="" required></label>
           </div>
 
           <div class="grid_6">
             <label>Efternamn
-            	<input type="text" class="form-control" name="enamn" id="enamn" placeholder=""></label>
+            	<input type="text" class="form-control" name="enamn" id="enamn" placeholder="" required></label>
            </div>
 
        </div>
@@ -56,12 +53,12 @@
 
           <div class="grid_6">
             <label>Telefonnummer
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder=""></label>
+              <input type="tel" class="form-control" name="phone" id="phone" placeholder="" required></label>
           </div>
 
           <div class="grid_6">
             <label>Email
-              <input type="email" class="form-control" name="mail" id="mail" placeholder=""></label>
+              <input type="email" class="form-control" name="mail" id="mail" placeholder="" required></label>
            </div>
 
        </div>
@@ -90,7 +87,7 @@
          </div>
                 <div class="grid_6">
             <label>Gäller från <br>
-        <input type="text" name="date" class="tcal" value="<?php echo date('Y-m-d');?>" >
+        <input type="text" name="medlemsstart" id="medlemsstart" class="tcal" value="<?php echo date('Y-m-d');?>" >
       </label>
            </div>
 
@@ -116,33 +113,16 @@
               <textarea rows="6" cols="80" class="form-control" name="note" id="note" row="6" placeholder="Något som kan vara värt att veta..."></textarea></label>
 
          </div>
-
+            <button type="submit" class="btn btn-default">
+             <span class="glyphicon glyphicon-floppy-disk"></span> Lägg till medlem
+            </button>
 
 
     </form>
+    <?php include("inc/insert_nymedlem.php");?>
         
-            <!-- Button trigger modal -->
-            <button class="btn btn-default" data-toggle="modal" data-target="#myModal">
-              Lägg till medlem
-            </button>
 
-          <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Ny medlem</h4>
-                </div>
-                <div class="modal-body">
-                  Du har nu skapat en ny medlem
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Stäng</button>
-                </div>
-              </div>
-            </div>
-          </div>
+
 
 
 </div>

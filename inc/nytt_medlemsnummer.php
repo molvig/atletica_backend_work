@@ -1,27 +1,27 @@
-<?php include ('db_con.php'); ?>
+
     <?php
-
-$kundnr="";
-$kund=0;
-	 try {
-			$results = $db -> query ("SELECT kundnr FROM medlemmar");
-	} 
-	catch (Exception $e) {
-			echo "Data could not be retrieved from the database";
-			exit;
-	}
-
-	$kundnr = ($results -> fetch(PDO::FETCH_ASSOC));
+$rows="";
 
 
-          foreach($kundnr as $k){
+		 try {
+				$results = $db->query("SELECT kundnr FROM medlemmar");
+		} 
+		catch (Exception $e) {
+				echo "Data could not be retrieved from the database";
+				exit;
+		}
 
-				 $kund = $k['kundnr'];
-				}
+		$rows = ($results -> fetchAll(PDO::FETCH_ASSOC));
+		$kund="";
+		foreach ($rows as $row) {
+	   $kund = $row['kundnr'];
+		}
 
+
+		$biggestkundnr = $kund+1;
 	
-echo $kund;
 
 ?>
+
 
 

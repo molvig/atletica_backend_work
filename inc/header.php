@@ -68,7 +68,7 @@
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-list-alt"></span> Schema<b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-calendar"></span> Schema<b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="schema.php">Vår</a></li>
             <li><a href="schema.php">Sommar</a></li>
