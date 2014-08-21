@@ -1,5 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
+<?php include("inc/getkorttyp.php"); ?>
 
 	<div class="grid_2">
   <?php include("inc/menymedlem.php"); ?> 
@@ -70,24 +71,13 @@
           <div class="form-group">
             <label>Korttyp
                  <select class="form-control">
-                    <optgroup label="Årskort">
-                      <option value="arkombi">Kombi (gym & gruppträning)</option>
-                      <option value="arstyrka">Styrketräning (endast gym)</option>
-                    </optgroup>
-                    <optgroup label="Månadskort">
-                      <option value="kombi">Kombi (gym & gruppträning)</option>
-                      <option value="styrka">Styrketräning (endast gym)</option>
-                      <option value="dagtid">Dagtid (fram till kl 16:00)</option>
-                      <option value="ungdom">Ungdom (gymnasiet)</option>
-                    </optgroup>
-                      <option value="autogiro">Autogiro</option>
-                      <option value="klipp">Klippkort</option>
+                  <?php echo $kort; ?>
                   </select></label>
               </div>
          </div>
                 <div class="grid_6">
             <label>Gäller från <br>
-        <input type="text" name="medlemsstart" id="medlemsstart" class="tcal" value="<?php echo date('Y-m-d');?>" >
+     <input type="text" name="kortgiltigt" id="kortgiltigt" class="tcal" value="<?php echo date('Y-m-d');?>" >
       </label>
            </div>
 
@@ -97,7 +87,7 @@
             <div class="grid_6">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox"> Nyckelkort
+                  <input type="checkbox" id="nyckelkort"> Nyckelkort
                 </label>
               </div>
             </div>
@@ -136,5 +126,8 @@
 
 
 
+<script> 
+    document.getElementById('nyckelkort').SetAttribute('disabled', true)
+</script>
 
 <?php include("inc/footer.php"); ?>

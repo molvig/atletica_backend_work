@@ -1,5 +1,5 @@
 	<?php try {
-			$results = $db -> query ("SELECT korttyp FROM medlemmar");
+			$results = $db -> query ("SELECT kort, korttyp FROM korttyp");
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
@@ -11,7 +11,7 @@
 	$kort = "";
 
 	foreach ($korttyp as $k) {
-		$kort .= "<option value='korttyp'>" . $k['korttyp'] . "</option>";
+		$kort .= "<option value=". $k['kort'] . ">" . $k['korttyp'] . "</option>";
 	}    
    
 

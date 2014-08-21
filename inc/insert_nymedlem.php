@@ -6,36 +6,49 @@
 	   	$enamn = $_POST['enamn'];
 	   	$telefonnr = $_POST['phone'];
 	   	$email = $_POST['mail'];
-	   	$medlemsstart= $_POST['medlemsstart'];
+	   	$kortgiltigt= $_POST['kortgiltigt'];
 	   	$anteckning = $_POST['note'];
+	   	$korttyp = $_POST['korttyp'];
+
+
 
 		try {
-			 $query = ("INSERT INTO medlemmar (kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, medlemsstart) VALUES (:kundnr, :personnr, :fnamn, :enamn, :phone, :mail, :note, :medlemsstart)");
+			$db->beginTransaction();
+			 $query = ("INSERT INTO medlemmar (kundnr, personnr, fnamn, enamn, telefon, mail, anteckning) VALUES (:kundnr, :personnr, :fnamn, :enamn, :phone, :mail, :note)");
 			    $q = $db -> prepare($query);
-			    $q-> execute(array(':kundnr'=>$biggestkundnr,
+			    $q -> execute(array(':kundnr'=>$biggestkundnr,
 			    					':personnr'=>$personnr,
 			    					':fnamn'=>$fnamn,
 			    					':enamn'=>$enamn,
 			    					':phone'=>$telefonnr,
 			    					':mail'=>$email,
-			    					':note'=>$anteckning,
-			    					':medlemsstart'=>$medlemsstart,
-
+			    					':note'=>$anteckning
 
 			    					));
+			   $query = ("INSERT INTO medlemskort (kundnr, giltigt, korttyp) VALUES (:kundnr, :kortgiltigt, :korttyp)");
+			    $q = $db -> prepare($query);
+			    $q -> execute(array(':kundnr'=>$biggestkundnr,
+			    					':kortgiltigt'=>$kortgiltigt,
+			    					':korttyp'=>$korttyp
+
+			    					));
+			    $db->commit();
 
 		  		if($query){ ?>
 		    	<div class="grid_12"> <?php echo  '<h4>' . 'Du har lagt till en ny medlem!' . '</h4>'; ?> </div>
 			 <?php	}
 		} 
-		catch (Exception $e) {?>
-
+		catch (Exception $e) {
+			$db->rollBack();?>
 			<div class="grid_12"> <?php echo '<h4>' . 'Oj, det har blivit något fel...' . '</h4>';?> </div>
 		<?php }
 			   
 
 	}
 	?>
+
+
+
 
 
 
