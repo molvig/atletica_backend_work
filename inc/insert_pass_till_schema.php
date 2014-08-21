@@ -60,20 +60,18 @@ try {
 echo $schemaId;
 $date2 = strtotime($date2);
 
-$sql = 'CALL Admin_AddClassToSchedule(:scId, :inst, :antP, 
-		:antR, :d, :info,
-		:pNamn, :iNamn, :stTid, 
-		:slTid, :vDag, :ePass)';
-    
-$stmt = $db->prepare($sql);
-
-$testOut = "";
 for($i = strtotime($day, strtotime($date1)); $i <= $date2; $i = strtotime('+1 week', $i))
 {
+    
+    $sql = 'insert into bokningsbara(installt, antalplatser, reservplatser, datum, information, passnamn, instnamn,
+starttid, sluttid, veckodag, extrapass) 
+    values(:inst, :antP, :antR, :d, :info, :pNamn, :iNamn, :stTid, :slTid, :vDag, :ePass);';
+    
+    $stmt = $db->prepare($sql);
+
     try
     {
-    $stmt-> execute(array(':scId' => $schemaId,
-                            ':inst' => $installt,                            
+    $stmt-> execute(array(':inst' => $installt,                            
                             ':antP' => $antalPlatser,
                             ':antR' => $reserv,                            
                             ':d' => date('Y-m-d', $i),
@@ -86,6 +84,17 @@ for($i = strtotime($day, strtotime($date1)); $i <= $date2; $i = strtotime('+1 we
                             ':ePass' => $extraPass
                         )
     );
+    $insertId = $db->lastInsertId();
+
+    $results->closeCursor();
+
+    $sql = 'insert into schema (bokningsbarID, schematyp)
+    values(:bId, :scId);';
+    $stmt = $db->prepare($sql);
+
+    $stmt->execute(array(':bid' => $insertId, ':scId', $schemaId));
+   $results->closeCursor();
+    
 }
 catch(Exception $e)
 {
