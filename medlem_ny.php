@@ -70,7 +70,7 @@
           <div class="grid_6">
           <div class="form-group">
             <label>Korttyp
-                 <select class="form-control">
+                 <select class="form-control" id="korttyp" name="korttyp">
                   <?php echo $kort; ?>
                   </select></label>
               </div>

@@ -25,7 +25,7 @@
 			    					':note'=>$anteckning
 
 			    					));
-			   $query = ("INSERT INTO medlemskort (kundnr, giltigt, korttyp) VALUES (:kundnr, :kortgiltigt, :korttyp)");
+			   $query = ("INSERT INTO medlemskort (kundnr, giltigt, kort) VALUES (:kundnr, :kortgiltigt, :korttyp)");
 			    $q = $db -> prepare($query);
 			    $q -> execute(array(':kundnr'=>$biggestkundnr,
 			    					':kortgiltigt'=>$kortgiltigt,
@@ -40,6 +40,7 @@
 		} 
 		catch (Exception $e) {
 			$db->rollBack();?>
+			<?php echo $e; ?>
 			<div class="grid_12"> <?php echo '<h4>' . 'Oj, det har blivit något fel...' . '</h4>';?> </div>
 		<?php }
 			   
