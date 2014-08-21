@@ -8,7 +8,7 @@
 <?php include("inc/get_pass_schema.php"); ?>
 <?php include("inc/getpass.php"); ?>
 <?php include("inc/getinstruktorer.php"); ?>
-
+<?php include("inc/insert_pass_till_schema.php"); ?>
 
 
 <!-- <?php echo $schemasID ?>
@@ -59,29 +59,17 @@
     <div class="form-group">
                     <label for="datetimepicker" class="col-sm-2 control-label">Starttid</label>
                     <div class="col-sm-4">
-                        <input id="datetimepicker1" type="text" class="form-control"  >
+                        <input id="datetimepicker1" type="text" class="form-control" onchange="changeHiddenStart()" >
                     </div>
-                  
-                <script>
-                  jQuery('#datetimepicker1').datetimepicker({
-                    datepicker:false,
-                    format:'H:i'
-                  });
-                </script> 
+                  <input type="hidden" id="starttid" name="starttid" value=""/>                
   </div>
   
   <div class="form-group">
             <label for="datetimepicker" class="col-sm-2 control-label">Sluttid</label>
             <div class="col-sm-4">
-                <input id="datetimepicker2" type="text" class="form-control"  >
+                <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut()">
             </div>
-          
-        <script>
-          jQuery('#datetimepicker2').datetimepicker({
-            datepicker:false,
-            format:'H:i'
-          });
-        </script> 
+          <input type="hidden" id="sluttid" name="sluttid" value=""/>     
 </div>
   </div>
 
@@ -191,6 +179,27 @@
   </div>
 </form>
 </div>
+<script>
+jQuery('#datetimepicker1').datetimepicker({
+                    datepicker:false,
+                    format:'H:i'
+                  });
 
+jQuery('#datetimepicker2').datetimepicker({
+            datepicker:false,
+            format:'H:i'
+          });
+
+  function changeHiddenStart()
+  {  
+  document.getElementById("starttid").value = document.getElementById("datetimepicker1").value; 
+}
+ 
+ function changeHiddenSlut()
+  {  
+  document.getElementById("sluttid").value = document.getElementById("datetimepicker2").value;
+  }
+
+</script>
 <?php include("inc/footer.php"); ?>
 
