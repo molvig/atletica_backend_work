@@ -30,7 +30,7 @@
 
        <div class="grid_6">
             <label>Personnummer
-              <input type="text" class="form-control" name="personnr" id="personnr" placeholder="ex. 861128" onkeypress='validate(event)'></label>
+              <input type="text" class="form-control" name="personnr" id="personnr" placeholder="åå-mm-dd" onkeypress='validate(event)'></label>
           </div>
 
     </div>
@@ -87,7 +87,7 @@
             <div class="grid_6">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" id="nyckelkort"> Nyckelkort
+                  <input type="checkbox" name="nyckelkort" id="nyckelkort" value='1'> Nyckelkort
                 </label>
               </div>
             </div>

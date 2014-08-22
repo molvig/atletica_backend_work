@@ -20,6 +20,7 @@
 	 $korttypen="";
 	 $fryst="";
 	 $frysdatum="";
+	 $nyckelkort="";
 
 
 	 try {
@@ -49,7 +50,7 @@
 
 
 	 try {
-			$results = $db -> query ("SELECT kortID, kort, giltigt, fryst, frysdatum FROM medlemskort WHERE kundnr ={$kundnr} ");
+			$results = $db -> query ("SELECT kortID, kort, giltigt, nyckelkort, fryst, frysdatum FROM medlemskort WHERE kundnr ={$kundnr} ");
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
@@ -63,6 +64,7 @@
 				$kortID .= $k['kortID'];
 				$kortet .= $k['kort'];
 				$giltigt .= $k['giltigt'];
+				$nyckelkort .= $k['nyckelkort'];
 				$fryst .= $k['fryst'];
 				$frysdatum .= $k['frysdatum'];
 

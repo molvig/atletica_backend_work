@@ -53,18 +53,31 @@ else{
 	$stmt = $db ->prepare($query);
 	$stmt->bindValue(':search', '%' . $medlem . '%', PDO::PARAM_INT);
 	$stmt->execute();
+
+
 	
 if ($stmt->rowCount() > 0) { 
-$result = $stmt->fetchAll(); 
-$stmt->closeCursor();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+$found="";
 
-$found=""
+$stmt->closeCursor(); 
 
 
 
 foreach( $result as $row ) {
-$found .= "<tr>" . "<td>" . "<a href='medlem_uppdatera.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>". "</tr>" ;
+$query = "SELECT giltigt FROM medlemskort WHERE kundnr = {$row['kundnr']}";
+$stmt = $db ->prepare($query);
+$stmt->execute();
 
+$giltigt = $stmt->fetch(PDO::FETCH_ASSOC); 
+$dagarkvar = $giltigt['giltigt'];
+
+$today = date("Y-m-d");  
+$daysleft = (strtotime("$dagarkvar 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; 
+
+$found .= "<tr>" . "<td>" . "<a href='medlem_uppdatera.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>". "<td>"  . $daysleft .  "</td>". "</tr>" ;
+
+$stmt->closeCursor(); 
 } ?>
 
 
@@ -86,6 +99,7 @@ $found .= "<tr>" . "<td>" . "<a href='medlem_uppdatera.php?pid=". $row['kundnr']
 		  <td><h5>Förnamn</h5></td>
 		  <td><h5>Efternamn</h5></td>
 		  <td><h5>Personnummer</h5></td>
+      <td><h5>Dagar kvar</h5></td>
 		</tr>
 		  
 

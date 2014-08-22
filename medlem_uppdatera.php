@@ -1,6 +1,7 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
 <?php include("inc/getmedlem.php"); ?>
+<?php include("inc/getkorttyp.php"); ?>
 
   <div class="grid_2">
   <?php include("inc/menymedlem.php"); ?>
@@ -98,8 +99,8 @@
 
           <div class="grid_12">
             <div class="grid_6">
-              <label>Korttyp
-                <input type="text" class="form-control" name="kort" id="kort" value="<?php echo  $korttypen; ?>" ></label>
+              <label>Aktuell korttyp
+                <input type="text" class="form-control" name="kort" id="kort" value="<?php echo  $korttypen; ?>" readonly></label>
             </div>
           <div class="grid_6">
             <label>Gäller till <br>
@@ -107,42 +108,43 @@
             </label>
            </div>
         </div>
-       
+
+        <div class="grid_12">
+         <div class="grid_6">
+          <div class="form-group">
+            <label>Ändra korttyp
+                 <select class="form-control" id="korttyp" name="korttyp">
+                  <?php echo $kort; ?>
+                  </select></label>
+              </div>
+         </div>
+      </div>
 
 
- <div class="grid_12">
-        
-         <?php if($fryst==1)
+          <div class="grid_12">
+            <?php if($nyckelkort==1)
            { ?>
            
-           <div class="grid_6">
-            <br>
-               <button type="submit" name="submit"  class="btn btn-default">Tina kort</button>
-          </div>
-
             <div class="grid_6">
-            <label>Kortet frystes
-             <input type="date" class="form-control" name="frysdate" id="frysdate" value="<?php echo date('Y-m-d', strtotime($frysdatum)); ?>" readonly></label>
-           </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="nyckelkort" id="nyckelkort" value='1' checked> Nyckelkort
+                </label>
+              </div>
+            </div>
            <?php }
           else
           { ?>
         
-        <div class="grid_6">
-          <br>
-                <button type="submit" name="submit"  class="btn btn-default">Frys kort</button>
-        </div>
+            <div class="grid_6">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="nyckelkort" id="nyckelkort" value='1'> Nyckelkort
+                </label>
+              </div>
+            </div>
          <?php } ?>
-        
 
-     </div>
-
-          <div class="grid_12">
-          <div class="checkbox">
-            <label>
-              <input type="checkbox"> Nyckelkort
-            </label>
-          </div>
         </div>
 
 

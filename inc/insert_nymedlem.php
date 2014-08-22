@@ -10,8 +10,26 @@
 	   	$anteckning = $_POST['note'];
 	   	$korttyp = $_POST['korttyp'];
 
+	   	if (isset($_POST['nyckelkort'])) {$nyckelkort = 1;}
+	   		else {$nyckelkort = 0;}
 
 
+/*	
+
+	   if ($korttyp == "AG"){$kortgiltigt = $kortgiltigt + nästa år}
+	   if ($korttyp == "K"){$kortgiltigt = $kortgiltigt + 365dagar}
+	   if ($korttyp == "KL"){$kortgiltigt = $kortgiltigt + 168 dagar}
+	   if ($korttyp == "MD"){$kortgiltigt = $kortgiltigt + 30dagar}
+	   if ($korttyp == "MK"){$kortgiltigt = $kortgiltigt + 30dagar}
+	   if ($korttyp == "MS"){$kortgiltigt = $kortgiltigt + 30dagar}
+	   if ($korttyp == "MU"){$kortgiltigt = $kortgiltigt + 30dagar}
+	   if ($korttyp == "O"){$kortgiltigt = $kortgiltigt + ?????}
+	   if ($korttyp == "S"){$kortgiltigt = $kortgiltigt + 365dagar}
+	   if ($korttyp == "V1"){$kortgiltigt = $kortgiltigt + 7dagar}
+	   if ($korttyp == "V2"){$kortgiltigt = $kortgiltigt + 14dagar}
+
+
+*/
 		try {
 			$db->beginTransaction();
 			 $query = ("INSERT INTO medlemmar (kundnr, personnr, fnamn, enamn, telefon, mail, anteckning) VALUES (:kundnr, :personnr, :fnamn, :enamn, :phone, :mail, :note)");
@@ -25,11 +43,12 @@
 			    					':note'=>$anteckning
 
 			    					));
-			   $query = ("INSERT INTO medlemskort (kundnr, giltigt, kort) VALUES (:kundnr, :kortgiltigt, :korttyp)");
+			   $query = ("INSERT INTO medlemskort (kundnr, giltigt, kort, nyckelkort) VALUES (:kundnr, :kortgiltigt, :korttyp, :nyckelkort)");
 			    $q = $db -> prepare($query);
 			    $q -> execute(array(':kundnr'=>$biggestkundnr,
 			    					':kortgiltigt'=>$kortgiltigt,
-			    					':korttyp'=>$korttyp
+			    					':korttyp'=>$korttyp,
+			    					':nyckelkort'=>$nyckelkort
 
 			    					));
 			    $db->commit();
