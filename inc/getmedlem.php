@@ -1,6 +1,7 @@
 
 
-    <?php  $id_medlem = $_GET['pid'];
+    <?php  
+     $id_medlem = $_GET['pid'];
 	 $kundnr ="";
 	 $personnr ="";
 	 $fnamn ="";
@@ -17,6 +18,8 @@
 	 $korttyp="";
 	 $giltigt="";
 	 $korttypen="";
+	 $fryst="";
+	 $frysdatum="";
 
 
 	 try {
@@ -46,7 +49,7 @@
 
 
 	 try {
-			$results = $db -> query ("SELECT kortID, kort, giltigt FROM medlemskort WHERE kundnr ={$kundnr} ");
+			$results = $db -> query ("SELECT kortID, kort, giltigt, fryst, frysdatum FROM medlemskort WHERE kundnr ={$kundnr} ");
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
@@ -60,8 +63,16 @@
 				$kortID .= $k['kortID'];
 				$kortet .= $k['kort'];
 				$giltigt .= $k['giltigt'];
+				$fryst .= $k['fryst'];
+				$frysdatum .= $k['frysdatum'];
 
              }
+
+
+
+$today = date("Y-m-d");  
+$daysleft = (strtotime("$giltigt 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; 
+     
 
 
 

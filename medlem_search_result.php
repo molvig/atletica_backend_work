@@ -53,16 +53,16 @@ else{
 	$stmt = $db ->prepare($query);
 	$stmt->bindValue(':search', '%' . $medlem . '%', PDO::PARAM_INT);
 	$stmt->execute();
-
-
 	
 if ($stmt->rowCount() > 0) { 
 $result = $stmt->fetchAll(); 
-$found=""?>
+$stmt->closeCursor();
+
+$found=""
 
 
 
-<?php foreach( $result as $row ) {
+foreach( $result as $row ) {
 $found .= "<tr>" . "<td>" . "<a href='medlem_uppdatera.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>". "</tr>" ;
 
 } ?>

@@ -67,6 +67,17 @@
 </fieldset>
 <br>
 <legend>Medlemsskap</legend>
+            <div class="grid_12">
+              <?php if ($daysleft>=0)
+              { ?>
+              <div class="alert alert-success"><span class="glyphicon glyphicon-thumbs-up"></span> <?php echo $daysleft;?> dagar kvar</div>
+             <?php }
+             else  
+             {?>
+              <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> <?php echo $daysleft;?> dagar kvar</div> 
+           <?php }?>
+           </div>
+
         <div class="grid_12"> 
           <div class="grid_6">
             <label>Har varit medlem sedan
@@ -76,44 +87,53 @@
             <label>Passantal
               <input type="text" class="form-control" name="passantal" id="passantal" value="<?php echo $passantal; ?>"></label>
            </div>
-          <div class="grid_12">
+        </div>
+
+        <div class="grid_12">
+          <div class="grid_6">
             <label>KortID
              <input type="text" class="form-control" name="kortID" id="kortID" value="<?php echo $kortID; ?>" readonly></label>
            </div>
-          <div class="grid_6">
-          <div class="form-group">
-            <label>Korttyp
-              <input type="text" class="form-control" name="kort" id="kort" value="<?php echo  $korttypen; ?>" ></label>
-              </div>
-         </div>
+          </div> 
+
+          <div class="grid_12">
+            <div class="grid_6">
+              <label>Korttyp
+                <input type="text" class="form-control" name="kort" id="kort" value="<?php echo  $korttypen; ?>" ></label>
+            </div>
           <div class="grid_6">
             <label>Gäller till <br>
               <input type="text" name="date" class="tcal" value="<?php echo date('Y-m-d', strtotime($giltigt)); ?>" >
             </label>
            </div>
-
-             </div>
+        </div>
+       
 
 
  <div class="grid_12">
- <?php $fryst=0; ?>
-        <div class="grid_6">
+        
          <?php if($fryst==1)
            { ?>
-           <br>
+           
+           <div class="grid_6">
+            <br>
                <button type="submit" name="submit"  class="btn btn-default">Tina kort</button>
+          </div>
+
+            <div class="grid_6">
+            <label>Kortet frystes
+             <input type="date" class="form-control" name="frysdate" id="frysdate" value="<?php echo date('Y-m-d', strtotime($frysdatum)); ?>" readonly></label>
+           </div>
            <?php }
           else
           { ?>
-        <br>
-                <button type="submit" name="submit"  class="btn btn-default">Frys kort</button>
-         <?php } ?>
-        </div>
         
-          <div class="grid_6">
-            <label>Kortet frystes
-             <input type="date" class="form-control" name="frysdate" id="frysdate" value="" readonly></label>
-           </div>
+        <div class="grid_6">
+          <br>
+                <button type="submit" name="submit"  class="btn btn-default">Frys kort</button>
+        </div>
+         <?php } ?>
+        
 
      </div>
 
@@ -132,17 +152,8 @@
         </div>
 
 </div>
-
-
-    </form>
-
+</form>
 
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 <?php include("inc/footer.php"); ?>
