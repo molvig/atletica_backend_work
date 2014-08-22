@@ -3,7 +3,7 @@ if(!empty($_POST)){
 
 $schemaId = $_POST['schema'];
 $antalPlatser = $_POST['platser'];
-$information = $_POST['information'];
+$information = ""; //$_POST['information'];
 $passNamn = $_POST['pass'];
 $instruktor = $_POST['instruktor'];
 $startTid = $_POST['starttid']; 
@@ -14,25 +14,25 @@ $reserv = 20;
 $extraPass = 0;
 
 $day = "";
-if ($veckoDag = 1) {
+if ($veckoDag == 1) {
     $day = "Monday";
 }
-if ($veckoDag = 2) {
+if ($veckoDag == 2) {
     $day = "Tuesday";
 }
-if ($veckoDag = 3) {
+if ($veckoDag == 3) {
     $day = "Wendsday";
 }
-if ($veckoDag = 4) {
+if ($veckoDag == 4) {
     $day = "Thursday";
 }
-if ($veckoDag = 5) {
+if ($veckoDag == 5) {
     $day = "Friday";
 }
-if ($veckoDag = 6) {
+if ($veckoDag == 6) {
     $day = "Saturday";
 }
-if ($veckoDag = 7) {
+if ($veckoDag == 7) {
     $day = "Sunday";
 }
 
@@ -55,16 +55,25 @@ try {
             
     $date1 = $sc['startdatum'];
     $date2 = $sc['slutdatum'];
-    echo "start-slut ". $date1. " - ". $date2 ;
-    $results->closeCursor();   
-echo $schemaId;
+    
+    $results->closeCursor();  
+
+    $stTime = explode(":", $startTid);
+    $stDate = new DateTime('0000-01-01');
+    $stDate->setTime($stTime[0],$stTime[1]);
+
+    $slTime = explode(":", $slutTid);
+    $slDate = new DateTime('0000-01-01');
+    $slDate->setTime($slTime[0],$stTime[1]);
+
+
 $date2 = strtotime($date2);
 
 for($i = strtotime($day, strtotime($date1)); $i <= $date2; $i = strtotime('+1 week', $i))
 {
     
     $sql = 'insert into bokningsbara(installt, antalplatser, reservplatser, datum, information, passnamn, instnamn,
-starttid, sluttid, veckodag, extrapass) 
+    starttid, sluttid, veckodag, extrapass) 
     values(:inst, :antP, :antR, :d, :info, :pNamn, :iNamn, :stTid, :slTid, :vDag, :ePass);';
     
     $stmt = $db->prepare($sql);
@@ -78,8 +87,8 @@ starttid, sluttid, veckodag, extrapass)
                             ':info' => $information,
                             ':pNamn' => $passNamn,
                             ':iNamn' => $instruktor,
-                            ':stTid' => $startTid,
-                            ':slTid' => $slutTid,
+                            ':stTid' => $stDate->format('Y-m-d H:i:s'),
+                            ':slTid' => $stDate->format('Y-m-d H:i:s'),
                             ':vDag' => $veckoDag,
                             ':ePass' => $extraPass
                         )
@@ -88,11 +97,11 @@ starttid, sluttid, veckodag, extrapass)
 
     $results->closeCursor();
 
-    $sql = 'insert into schema (bokningsbarID, schematyp)
+    $sql = 'insert into schemat (bokningsbarID, schematyp)
     values(:bId, :scId);';
     $stmt = $db->prepare($sql);
 
-    $stmt->execute(array(':bid' => $insertId, ':scId', $schemaId));
+    $stmt->execute(array(':bId' => $insertId, ':scId'=> $schemaId));
    $results->closeCursor();
     
 }
