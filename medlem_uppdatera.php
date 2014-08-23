@@ -94,7 +94,7 @@
         <div class="grid_12">
           <div class="grid_6">
             <label>KortID
-             <input type="text" class="form-control" name="kortID" id="kortID" value="<?php echo $kortID; ?>" readonly></label>
+             <input type="text" class="form-control" name="kortID" id="kortID" value="<?php echo $aktivtkort ?>" readonly></label>
            </div>
 
           <div class="grid_6">
@@ -131,11 +131,11 @@
           <div class="grid_12">
             <div class="grid_6">
               <label>Aktuellt kort
-                <input type="text" class="form-control" name="kort" id="kort" value="<?php echo  $korttypen; ?>" readonly></label>
+                <input type="text" class="form-control" name="kort" id="kort" value="<?php echo $korttypen; ?>" readonly></label>
             </div>
           <div class="grid_6">
             <label>Gäller till <br>
-              <input type="text" name="date" class="form-control" value="<?php echo date('Y-m-d', strtotime($giltigt)); ?>" readonly>
+              <input type="text" name="date" class="form-control" value="<?php echo date('Y-m-d', strtotime($giltigttill)); ?>" readonly>
             </label>
            </div>
         </div>
@@ -207,7 +207,7 @@
                     <td><h5>Gäller till</h5></td>
                     <td><h5>Status</h5></td>
                   </tr>
-                   <?php echo $found; ?>
+                   <?php echo $allakort; ?>
                 </table>
               </div>
            </div>   

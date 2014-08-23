@@ -16,15 +16,21 @@
 	 $kortID="";
 	 $kortet="";
 	 $korttyp="";
-	 $giltigt="";
+	 $giltigtfran="";
+	 $giltigttill="";
 	 $korttypen="";
 	 $fryst="";
 	 $frysdatum="";
 	 $nyckelkort="";
+	 $aktivtkort="";
+	 $allakort="";
+	 $status="";
+
+	 
 
 
 	 try {
-			$results = $db -> query ("SELECT kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, meddelande, medlemsstart, passantal  FROM medlemmar WHERE kundnr ={$id_medlem} ");
+			$results = $db -> query ("SELECT kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, meddelande, medlemsstart, passantal, nyckelkort  FROM medlemmar WHERE kundnr ={$id_medlem}");
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
@@ -44,36 +50,67 @@
 	 			 $anteckning .= $m['anteckning'];
 	 			 $medlemsstart .= $m['medlemsstart'];
 				 $passantal.= $m['passantal'];
+				 $nyckelkort .= $m['nyckelkort'];
              }
 
 
 
 
 	 try {
-			$results = $db -> query ("SELECT kortID, kort, giltigtfran, giltigttill, nyckelkort, fryst, frysdatum FROM medlemskort WHERE kundnr ={$kundnr} ");
+	 		$today = date("Y-m-d"); 
+			$results = $db -> query ("SELECT kortID, kort, giltigtfran, giltigttill FROM medlemskort WHERE kundnr ={$kundnr} AND giltigtfran <= '{$today}' AND giltigttill >= '{$today}'"); 
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
+			echo $e;
 			exit;
 	}
 	$kort = ($results -> fetchAll(PDO::FETCH_ASSOC));
-	$found="";
+	
           foreach($kort as $k){
 
-				$kortID .= $k['kortID'];
+				$aktivtkort .= $k['kortID'];
 				$kortet .= $k['kort'];
-				$giltigt .= $k['giltigttill'];
-				$nyckelkort .= $k['nyckelkort'];
-				$fryst .= $k['fryst'];
-				$frysdatum .= $k['frysdatum'];
-
+				$giltigtfran .= $k['giltigtfran'];
+				$giltigttill .= $k['giltigttill'];
+				
              }
-            foreach($kort as $row){ 
-$found.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $row["kort"] . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . $row["giltigttill"] . "</td>" . "<td>"  . $row["fryst"] .  "</td>". "</tr>" ;
- }
+
+
+
+
+ try {
+			$results = $db -> query ("SELECT kortID, kort, giltigtfran, giltigttill FROM medlemskort WHERE kundnr ={$kundnr}");
+	} 
+	catch (Exception $e) {
+			echo "Data could not be retrieved from the database";
+			echo $e;
+			exit;
+	}
+	$rows = ($results -> fetchAll(PDO::FETCH_ASSOC));
+	$allakort="";
+	$today = date("Y-m-d"); 
+
+	if ($giltigtfran <= $today AND $giltigttill >= $today) {$status="Aktivt";}
+
+	else{$status="Ej aktivt";}
+
+           foreach($rows as $row){
+
+					$allakort.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $row["kort"] . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . $row["giltigttill"] . "</td>" . "<td>"  . $status .  "</td>". "</tr>" ;
+ 			}
+
+
+
+
+
+
+
+
+
 
 $today = date("Y-m-d");  
-$daysleft = (strtotime("$giltigt 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; 
+$daysleft = (strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; 
      
 
 
@@ -95,6 +132,5 @@ $daysleft = (strtotime("$giltigt 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")
 
 
 ?>
-
 
 

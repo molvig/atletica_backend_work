@@ -40,7 +40,7 @@
 
 		try {
 			$db->beginTransaction();
-			 $query = ("INSERT INTO medlemmar (kundnr, personnr, fnamn, enamn, telefon, mail, anteckning) VALUES (:kundnr, :personnr, :fnamn, :enamn, :phone, :mail, :note)");
+			 $query = ("INSERT INTO medlemmar (kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, nyckelkort) VALUES (:kundnr, :personnr, :fnamn, :enamn, :phone, :mail, :note, :nyckelkort)");
 			    $q = $db -> prepare($query);
 			    $q -> execute(array(':kundnr'=>$biggestkundnr,
 			    					':personnr'=>$personnr,
@@ -49,15 +49,16 @@
 			    					':phone'=>$telefonnr,
 			    					':mail'=>$email,
 			    					':note'=>$anteckning
+			    					':nyckelkort'=>$nyckelkort
 
 			    					));
-			   $query = ("INSERT INTO medlemskort (kundnr, giltigtfran, giltigttill, kort, nyckelkort) VALUES (:kundnr, :kortgiltigtfran, :kortgiltigttill, :korttyp, :nyckelkort)");
+			   $query = ("INSERT INTO medlemskort (kundnr, giltigtfran, giltigttill, kort) VALUES (:kundnr, :kortgiltigtfran, :kortgiltigttill, :korttyp)");
 			    $q = $db -> prepare($query);
 			    $q -> execute(array(':kundnr'=>$biggestkundnr,
 									':kortgiltigtfran'=>$kortgiltigtfran,
 			    					':kortgiltigttill'=>$giltigttill,
 			    					':korttyp'=>$korttyp,
-			    					':nyckelkort'=>$nyckelkort
+			    					
 
 			    					));
 			    $db->commit();
