@@ -41,20 +41,22 @@ $_SESSION['schemaID'] = $schemaID ;
 
             }?></h3></center>
 
-
-
+<?php
+	echo $schema; ?>
+<!--
 <div class="grid_1a">
-	<div class="list-group">
+	<div class="list-group" name="1">
 		  <a href="#" class="list-group-item active">
 		    Måndag
-		  </a>
+		  </a>	
+
 		  <a href="schema_nytt_original_pass.php?dagid=1" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
 </div>
 
 <div class="grid_1a">
-	<div class="list-group">
+	<div class="list-group" namne="2">
 		  <a href="#" class="list-group-item active">
 		    Tisdag
 		  </a>
@@ -112,6 +114,6 @@ $_SESSION['schemaID'] = $schemaID ;
 	</div>
 </div>
 
-
+-->
 
 <?php include("inc/footer.php"); ?>

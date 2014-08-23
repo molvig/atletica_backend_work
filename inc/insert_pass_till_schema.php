@@ -46,7 +46,8 @@ try {
             $results->execute(array(':schemaId' => $schemaId));
 
     } 
-    catch (Exception $e) {
+    catch (Exception $e) 
+    {
             echo $e; //"Data could not be retrieved from the database";
             exit;
     }
@@ -69,50 +70,53 @@ try {
 
 $date2 = strtotime($date2);
 
-for($i = strtotime($day, strtotime($date1)); $i <= $date2; $i = strtotime('+1 week', $i))
-{
-    
-    $sql = 'insert into bokningsbara(installt, antalplatser, reservplatser, datum, information, passnamn, instnamn,
-    starttid, sluttid, veckodag, extrapass) 
-    values(:inst, :antP, :antR, :d, :info, :pNamn, :iNamn, :stTid, :slTid, :vDag, :ePass);';
-    
-    $stmt = $db->prepare($sql);
-
-    try
+    for($i = strtotime($day, strtotime($date1)); $i <= $date2; $i = strtotime('+1 week', $i))
     {
-    $stmt-> execute(array(':inst' => $installt,                            
-                            ':antP' => $antalPlatser,
-                            ':antR' => $reserv,                            
-                            ':d' => date('Y-m-d', $i),
-                            ':info' => $information,
-                            ':pNamn' => $passNamn,
-                            ':iNamn' => $instruktor,
-                            ':stTid' => $stDate->format('Y-m-d H:i:s'),
-                            ':slTid' => $stDate->format('Y-m-d H:i:s'),
-                            ':vDag' => $veckoDag,
-                            ':ePass' => $extraPass
-                        )
-    );
-    $insertId = $db->lastInsertId();
+        
+        $sql = 'insert into bokningsbara(installt, antalplatser, reservplatser, datum, information, passnamn, instnamn,
+        starttid, sluttid, veckodag, extrapass) 
+        values(:inst, :antP, :antR, :d, :info, :pNamn, :iNamn, :stTid, :slTid, :vDag, :ePass);';
+        
+        $stmt = $db->prepare($sql);
 
-    $results->closeCursor();
+        try
+        {
+        $stmt-> execute(array(':inst' => $installt,                            
+                                ':antP' => $antalPlatser,
+                                ':antR' => $reserv,                            
+                                ':d' => date('Y-m-d', $i),
+                                ':info' => $information,
+                                ':pNamn' => $passNamn,
+                                ':iNamn' => $instruktor,
+                                ':stTid' => $stDate->format('Y-m-d H:i:s'),
+                                ':slTid' => $stDate->format('Y-m-d H:i:s'),
+                                ':vDag' => $veckoDag,
+                                ':ePass' => $extraPass
+                            )
+        );
+        $insertId = $db->lastInsertId();
 
-    $sql = 'insert into schemat (bokningsbarID, schematyp)
-    values(:bId, :scId);';
-    $stmt = $db->prepare($sql);
+        $results->closeCursor();
 
-    $stmt->execute(array(':bId' => $insertId, ':scId'=> $schemaId));
-   $results->closeCursor();
-    
+        $sql = 'insert into schemat (bokningsbarID, schematyp)
+        values(:bId, :scId);';
+        $stmt = $db->prepare($sql);
+
+        $stmt->execute(array(':bId' => $insertId, ':scId'=> $schemaId));
+       $results->closeCursor();
+        
+        }
+        catch(Exception $e)
+        {
+            echo $e;
+            }
+            //$testOut .= "datum " .date('Y-m-d', $i). " scid ".$schemaId." inst ".$installt." platser ".$antalPlatser." reserv ".$reserv." info "
+            //.$information." namn ".$passNamn." intr ".$instruktor." start ".$startTid." slut ".$slutTid." dag ".$veckoDag.
+            //" extra ".$extraPass. "<br />";
+        }
 }
-catch(Exception $e)
+else
 {
-    echo "error: ".$e." ";
-    }
-    //$testOut .= "datum " .date('Y-m-d', $i). " scid ".$schemaId." inst ".$installt." platser ".$antalPlatser." reserv ".$reserv." info "
-    //.$information." namn ".$passNamn." intr ".$instruktor." start ".$startTid." slut ".$slutTid." dag ".$veckoDag.
-    //" extra ".$extraPass. "<br />";
+    echo "FEL";
 }
-}
-  
 ?>
