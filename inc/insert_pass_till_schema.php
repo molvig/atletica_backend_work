@@ -21,7 +21,7 @@ if ($veckoDag == 2) {
     $day = "Tuesday";
 }
 if ($veckoDag == 3) {
-    $day = "Wendsday";
+    $day = "Wednesday";
 }
 if ($veckoDag == 4) {
     $day = "Thursday";
@@ -56,7 +56,7 @@ try {
             
     $date1 = $sc['startdatum'];
     $date2 = $sc['slutdatum'];
-    
+    //echo $date1." ".$date2;
     $results->closeCursor();  
 
     $stTime = explode(":", $startTid);
@@ -70,8 +70,9 @@ try {
 
 $date2 = strtotime($date2);
 
-    for($i = strtotime($day, strtotime($date1)); $i <= $date2; $i = strtotime('+1 week', $i))
+    for($o = strtotime($day, strtotime($date1)); $o <= $date2; $o = strtotime('+1 week', $o))
     {
+        //echo " ". date('Y-m-d', $o)."\n";
         
         $sql = 'insert into bokningsbara(installt, antalplatser, reservplatser, datum, information, passnamn, instnamn,
         starttid, sluttid, veckodag, extrapass) 
@@ -84,12 +85,12 @@ $date2 = strtotime($date2);
         $stmt-> execute(array(':inst' => $installt,                            
                                 ':antP' => $antalPlatser,
                                 ':antR' => $reserv,                            
-                                ':d' => date('Y-m-d', $i),
+                                ':d' => date('Y-m-d', $o),
                                 ':info' => $information,
                                 ':pNamn' => $passNamn,
                                 ':iNamn' => $instruktor,
                                 ':stTid' => $stDate->format('Y-m-d H:i:s'),
-                                ':slTid' => $stDate->format('Y-m-d H:i:s'),
+                                ':slTid' => $slDate->format('Y-m-d H:i:s'),
                                 ':vDag' => $veckoDag,
                                 ':ePass' => $extraPass
                             )
@@ -109,14 +110,8 @@ $date2 = strtotime($date2);
         catch(Exception $e)
         {
             echo $e;
-            }
-            //$testOut .= "datum " .date('Y-m-d', $i). " scid ".$schemaId." inst ".$installt." platser ".$antalPlatser." reserv ".$reserv." info "
-            //.$information." namn ".$passNamn." intr ".$instruktor." start ".$startTid." slut ".$slutTid." dag ".$veckoDag.
-            //" extra ".$extraPass. "<br />";
+            }        
         }
-}
-else
-{
-    echo "FEL";
-}
+    }
+
 ?>

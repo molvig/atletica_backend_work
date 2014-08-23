@@ -1,6 +1,9 @@
  <?php 
  $schemaID = $_SERVER['QUERY_STRING'] ;
- /*
+ $url=strtok($_SERVER["REQUEST_URI"],'?');
+
+if($url =='/atletica_backend_work/schema_uppdatera_original.php')
+{
  $prevDayName = "";
  $slutDag = "";
  $schema = "";
@@ -33,9 +36,10 @@
 	return $day;
 }
 
-$sql = 'SELECT b.bokningsbarID, veckodag, starttid, passnamn FROM bokningsbara as b , schemat as s 
+$sql = 'SELECT distinct b.bokningsbarID, veckodag, Time(starttid) as tid, passnamn FROM bokningsbara as b , schemat as s 
 	WHERE b.bokningsbarID = s.bokningsbarID 
-	AND s.schematyp = :scID 
+	AND s.schematyp = :scID
+	group by passnamn, veckodag
 	order by b.veckodag asc;';
 
 try {
@@ -62,7 +66,7 @@ foreach ($sc as $row)
 	}
 	if (SetDayName($row['veckodag']) == $prevDayName) 
 	{
-		$schema .= "<a href=\"schema_uppdatera_original_pass.php?passId=\"".$row['bokningsbarID']."\" class=\"list-group-item\"/>".$row['starttid']." ".$row['passnamn']."</a>\n";		
+		$schema .= "<a href=\"schema_uppdatera_original_pass.php?passId=\"".$row['bokningsbarID']."\" class=\"list-group-item\"/>".$row['tid']." ".$row['passnamn']."</a>\n";		
 	}
 	else
 	{
@@ -75,7 +79,7 @@ foreach ($sc as $row)
 		$schema .= "<div class=\"grid_1a\"> \n
 			<div class=\"list-group\"> \n
 				<a href=\"#\" class=\"list-group-item active\">".SetDayName($row['veckodag'])."</a> \n";
-		$schema .= "<a href=\"schema_uppdatera_original_pass.php?passId=\"".$row['bokningsbarID']."\" class=\"list-group-item\"/>".$row['starttid']." ".$row['passnamn']."</a>\n";		
+		$schema .= "<a href=\"schema_uppdatera_original_pass.php?passId=\"".$row['bokningsbarID']."\" class=\"list-group-item\"/>".$row['tid']." ".$row['passnamn']."</a>\n";		
 	}
 	
 }
@@ -126,7 +130,7 @@ if($dayNo == 7 && $tommtSchema == 0)
 {
 $schema .= $slutDag;
 }
-*/
+}
  ?>
 
  
