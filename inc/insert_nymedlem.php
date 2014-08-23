@@ -7,7 +7,7 @@
 	   	$telefonnr = $_POST['phone'];
 	   	$email = $_POST['mail'];
 	   	$kortgiltigtfran = $_POST['kortgiltigtfran'];
-	   
+	   	$giltigttillspecial = $_POST['kortgiltigttill'];
 	   	$anteckning = $_POST['note'];
 	   	$korttyp = $_POST['korttyp'];
 
@@ -32,11 +32,11 @@
 	   if ($korttyp == "YS"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); }
 	   if ($korttyp == "YSTUDENT"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); }
 
-/*		if ($korttyp == "SPECIAL"){$giltigttill = date('Y-m-d', strtotime($kortgiltigt. ' + 2 days')); }
+		if ($korttyp == "SPECIAL"){$giltigttill = date('Y-m-d', strtotime($giltigttillspecial)); }
 
 
-	   if ($korttyp == "10"){$giltigttill = date('Y-m-d', strtotime($kortgiltigt. ' + 2 days')); }
-*/
+	  /* if ($korttyp == "10"){$giltigttill = date('Y-m-d', strtotime($giltigttillspecial)); } */
+
 
 		try {
 			$db->beginTransaction();

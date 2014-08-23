@@ -1,4 +1,8 @@
-    
+<div class="grid_12">
+    <div class="footer">
+      </div>
+    </div> 
+    </div> 
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

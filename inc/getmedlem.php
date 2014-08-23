@@ -50,27 +50,27 @@
 
 
 	 try {
-			$results = $db -> query ("SELECT kortID, kort, giltigt, nyckelkort, fryst, frysdatum FROM medlemskort WHERE kundnr ={$kundnr} ");
+			$results = $db -> query ("SELECT kortID, kort, giltigtfran, giltigttill, nyckelkort, fryst, frysdatum FROM medlemskort WHERE kundnr ={$kundnr} ");
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
 			exit;
 	}
-
 	$kort = ($results -> fetchAll(PDO::FETCH_ASSOC));
-
+	$found="";
           foreach($kort as $k){
 
 				$kortID .= $k['kortID'];
 				$kortet .= $k['kort'];
-				$giltigt .= $k['giltigt'];
+				$giltigt .= $k['giltigttill'];
 				$nyckelkort .= $k['nyckelkort'];
 				$fryst .= $k['fryst'];
 				$frysdatum .= $k['frysdatum'];
 
              }
-
-
+            foreach($kort as $row){ 
+$found.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $row["kort"] . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . $row["giltigttill"] . "</td>" . "<td>"  . $row["fryst"] .  "</td>". "</tr>" ;
+ }
 
 $today = date("Y-m-d");  
 $daysleft = (strtotime("$giltigt 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; 

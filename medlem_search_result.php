@@ -65,12 +65,12 @@ $stmt->closeCursor();
 
 
 foreach( $result as $row ) {
-$query = "SELECT giltigt FROM medlemskort WHERE kundnr = {$row['kundnr']}";
+$query = "SELECT giltigttill FROM medlemskort WHERE kundnr = {$row['kundnr']}";
 $stmt = $db ->prepare($query);
 $stmt->execute();
 
 $giltigt = $stmt->fetch(PDO::FETCH_ASSOC); 
-$dagarkvar = $giltigt['giltigt'];
+$dagarkvar = $giltigt['giltigttill'];
 
 $today = date("Y-m-d");  
 $daysleft = (strtotime("$dagarkvar 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; 

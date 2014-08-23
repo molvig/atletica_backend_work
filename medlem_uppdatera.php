@@ -68,6 +68,7 @@
 </fieldset>
 <br>
 <legend>Medlemsskap</legend>
+<fieldset>
             <div class="grid_12">
               <?php if ($daysleft>=0)
               { ?>
@@ -95,11 +96,41 @@
             <label>KortID
              <input type="text" class="form-control" name="kortID" id="kortID" value="<?php echo $kortID; ?>" readonly></label>
            </div>
+
+          <div class="grid_6">
+            <?php if($nyckelkort==1)
+           { ?>
+           
+            <div class="grid_6">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="nyckelkort" id="nyckelkort" value='1' checked> Nyckelkort
+                </label>
+              </div>
+            </div>
+           <?php }
+          else
+          { ?>
+        
+            <div class="grid_6">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="nyckelkort" id="nyckelkort" value='1'> Nyckelkort
+                </label>
+              </div>
+            </div>
+         <?php } ?>
+
+        </div>
+
+
+
+
           </div> 
 
           <div class="grid_12">
             <div class="grid_6">
-              <label>Aktuell kort
+              <label>Aktuellt kort
                 <input type="text" class="form-control" name="kort" id="kort" value="<?php echo  $korttypen; ?>" readonly></label>
             </div>
           <div class="grid_6">
@@ -108,12 +139,22 @@
             </label>
            </div>
         </div>
-
-<div class="grid_12"> 
+</fieldset>
+<br>
+<legend>Nytt medlemskort</legend>
+<fieldset>
+            <div class="grid_12">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="checknyttkort" id="checknyttkort"> <h4>Lägg till nytt kort</h4> <i>(Måste vara ikryssad för att lägga till ett nytt kort)</i>
+                </label>
+              </div>
+            </div>
+      <div class="grid_12"> 
           <div class="grid_6">
              <div class="form-group">
-            <label>Lägg till ett nytt kort
-                 <select class="form-control" id="korttyp" name="korttyp" onchange="specialkort()">
+            <label>Lägg till ett nytt kort 
+                 <select class="form-control" id="nyttkort" name="nyttkort" onchange="specialkort()">
                   <?php echo $kort; ?>
                   </select></label>
               </div>
@@ -153,49 +194,49 @@
              </div>
         </div>
 
-
           <div class="grid_12">
-            <?php if($nyckelkort==1)
-           { ?>
-           
-            <div class="grid_6">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="nyckelkort" id="nyckelkort" value='1' checked> Nyckelkort
-                </label>
+            <div class="grid_12">
+              <h4>Befintliga Medlemskort</h4>
+
+               <div class="panel panel-default">
+                  <table class="table">
+                  <tr>
+                    <td><h5>KortID</h5></td>
+                    <td><h5>Korttyp</h5></td>
+                    <td><h5>Gäller från</h5></td>
+                    <td><h5>Gäller till</h5></td>
+                    <td><h5>Status</h5></td>
+                  </tr>
+                   <?php echo $found; ?>
+                </table>
               </div>
-            </div>
-           <?php }
-          else
-          { ?>
-        
-            <div class="grid_6">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="nyckelkort" id="nyckelkort" value='1'> Nyckelkort
-                </label>
-              </div>
-            </div>
-         <?php } ?>
-
-        </div>
+           </div>   
+           </div>
 
 
-     
+
+</fieldset>  
+
+
+
         <div class="grid_6">
           <button type="submit" name="submit"  class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Uppdatera</button>
         </div>
 
-</div>
-</form>
 
+
+</form>
 </div>
+
+
+
+
 
 
 <script>
 function specialkort()
 {
-  var x=document.getElementById("korttyp");
+  var x=document.getElementById("nyttkort");
 
     if (x.value=='SPECIAL')
     {
@@ -218,8 +259,6 @@ function specialkort()
 
 }
 </script>
-
-
 
 
 

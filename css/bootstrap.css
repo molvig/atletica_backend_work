@@ -6277,3 +6277,10 @@ button.close {
 .xdsoft_scroller_box{
 position:relative;
 }
+
+.footer {
+
+  padding: 50px;
+  margin: 50px;
+  height: 50px;
+}
