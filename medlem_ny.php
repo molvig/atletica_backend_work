@@ -25,12 +25,12 @@
           <div class="grid_6">
             <?php include("inc/nytt_medlemsnummer.php"); ?>
             <label>Medlemsnummer
-              <input type="date" class="form-control" name="kundnr" id="kundnr" value="<?php echo $biggestkundnr; ?>" readonly></label>
+              <input type="text" class="form-control" name="kundnr" id="kundnr" value="<?php echo $biggestkundnr; ?>" readonly></label>
           </div>
 
        <div class="grid_6">
             <label>Personnummer
-              <input type="text" class="form-control" name="personnr" id="personnr" placeholder="åå-mm-dd" onkeypress='validate(event)'></label>
+              <input type="text" class="form-control" name="personnr" id="personnr" placeholder="ååmmdd" onkeypress="return isNumberKey(event)" required></label>
           </div>
 
     </div>
@@ -68,20 +68,49 @@
 
         <div class="grid_12"> 
           <div class="grid_6">
-          <div class="form-group">
+             <div class="form-group">
             <label>Korttyp
-                 <select class="form-control" id="korttyp" name="korttyp">
+                 <select class="form-control" id="korttyp" name="korttyp" onchange="specialkort()">
                   <?php echo $kort; ?>
                   </select></label>
               </div>
-         </div>
-                <div class="grid_6">
-            <label>Gäller från <br>
-     <input type="text" name="kortgiltigt" id="kortgiltigt" class="tcal" value="<?php echo date('Y-m-d');?>" >
-      </label>
-           </div>
+            </div>
+            <div class="grid_6" id="gallerfran" name="gallerfran">
+              <label>Gäller från <br>
+               <input type="text" name="kortgiltigtfran" id="kortgiltigtfran" class="tcal" value="<?php echo date('Y-m-d');?>" >
+              </label>
+            </div>
+        </div>
 
-        		 </div>
+
+        <div class="grid_12"  id="specialkort" name="specialkort" style="visibility:hidden"> 
+
+            <div class="grid_6" id="10kort" name="10kort" style="visibility:hidden">
+              <label>Antal 10-kort<br>
+               <select class="form-control" name="antal10kort" id="antal10kort">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+               </select>
+              </label>
+            
+            </div>
+
+            <div class="grid_6">
+            <label>Gäller till <br>
+              <input type="text" name="kortgiltigttill" id="kortgiltigttill" class="tcal" value="<?php echo date('Y-m-d');?>" >
+            </label>
+             </div>
+        </div>
+        		 
+
          <div class="grid_12">
 
             <div class="grid_6">
@@ -126,8 +155,39 @@
 
 
 
-<script> 
-    document.getElementById('nyckelkort').SetAttribute('disabled', true)
+<script>
+function specialkort()
+{
+  var x=document.getElementById("korttyp");
+
+    if (x.value=='SPECIAL')
+    {
+        document.getElementById("specialkort").style.visibility='visible';
+    }
+    else {
+        document.getElementById("specialkort").style.visibility='hidden';
+    }
+
+    if (x.value=='10')
+    {
+      document.getElementById("gallerfran").style.visibility='hidden';
+      document.getElementById("specialkort").style.visibility='hidden';
+      document.getElementById("10kort").style.visibility='visible';
+    }
+    else {
+       document.getElementById("gallerfran").style.visibility='visible';
+       document.getElementById("10kort").style.visibility='hidden';
+    }
+
+}
 </script>
 
+<script>
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+</script>
 <?php include("inc/footer.php"); ?>

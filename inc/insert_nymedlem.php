@@ -6,30 +6,38 @@
 	   	$enamn = $_POST['enamn'];
 	   	$telefonnr = $_POST['phone'];
 	   	$email = $_POST['mail'];
-	   	$kortgiltigt= $_POST['kortgiltigt'];
+	   	$kortgiltigtfran = $_POST['kortgiltigtfran'];
+	   
 	   	$anteckning = $_POST['note'];
 	   	$korttyp = $_POST['korttyp'];
 
 	   	if (isset($_POST['nyckelkort'])) {$nyckelkort = 1;}
 	   		else {$nyckelkort = 0;}
 
-
-/*	
-
-	   if ($korttyp == "AG"){$kortgiltigt = $kortgiltigt + nästa år}
-	   if ($korttyp == "K"){$kortgiltigt = $kortgiltigt + 365dagar}
-	   if ($korttyp == "KL"){$kortgiltigt = $kortgiltigt + 168 dagar}
-	   if ($korttyp == "MD"){$kortgiltigt = $kortgiltigt + 30dagar}
-	   if ($korttyp == "MK"){$kortgiltigt = $kortgiltigt + 30dagar}
-	   if ($korttyp == "MS"){$kortgiltigt = $kortgiltigt + 30dagar}
-	   if ($korttyp == "MU"){$kortgiltigt = $kortgiltigt + 30dagar}
-	   if ($korttyp == "O"){$kortgiltigt = $kortgiltigt + ?????}
-	   if ($korttyp == "S"){$kortgiltigt = $kortgiltigt + 365dagar}
-	   if ($korttyp == "V1"){$kortgiltigt = $kortgiltigt + 7dagar}
-	   if ($korttyp == "V2"){$kortgiltigt = $kortgiltigt + 14dagar}
+	
+		
 
 
+
+	   if ($korttyp == "AG12"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days'));  }
+	   if ($korttyp == "AG12DAG"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); }
+	   if ($korttyp == "AG24"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 730 days')); }
+	   if ($korttyp == "H"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 183 days')); }
+	   if ($korttyp == "HS"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 183 days')); }
+	   if ($korttyp == "MD"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); }
+	   if ($korttyp == "MK"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); }
+	   if ($korttyp == "MS"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); }
+	   if ($korttyp == "MU"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); }
+	   if ($korttyp == "YK"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); }
+	   if ($korttyp == "YS"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); }
+	   if ($korttyp == "YSTUDENT"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); }
+
+/*		if ($korttyp == "SPECIAL"){$giltigttill = date('Y-m-d', strtotime($kortgiltigt. ' + 2 days')); }
+
+
+	   if ($korttyp == "10"){$giltigttill = date('Y-m-d', strtotime($kortgiltigt. ' + 2 days')); }
 */
+
 		try {
 			$db->beginTransaction();
 			 $query = ("INSERT INTO medlemmar (kundnr, personnr, fnamn, enamn, telefon, mail, anteckning) VALUES (:kundnr, :personnr, :fnamn, :enamn, :phone, :mail, :note)");
@@ -43,10 +51,11 @@
 			    					':note'=>$anteckning
 
 			    					));
-			   $query = ("INSERT INTO medlemskort (kundnr, giltigt, kort, nyckelkort) VALUES (:kundnr, :kortgiltigt, :korttyp, :nyckelkort)");
+			   $query = ("INSERT INTO medlemskort (kundnr, giltigtfran, giltigttill, kort, nyckelkort) VALUES (:kundnr, :kortgiltigtfran, :kortgiltigttill, :korttyp, :nyckelkort)");
 			    $q = $db -> prepare($query);
 			    $q -> execute(array(':kundnr'=>$biggestkundnr,
-			    					':kortgiltigt'=>$kortgiltigt,
+									':kortgiltigtfran'=>$kortgiltigtfran,
+			    					':kortgiltigttill'=>$giltigttill,
 			    					':korttyp'=>$korttyp,
 			    					':nyckelkort'=>$nyckelkort
 

@@ -99,26 +99,59 @@
 
           <div class="grid_12">
             <div class="grid_6">
-              <label>Aktuell korttyp
+              <label>Aktuell kort
                 <input type="text" class="form-control" name="kort" id="kort" value="<?php echo  $korttypen; ?>" readonly></label>
             </div>
           <div class="grid_6">
             <label>Gäller till <br>
-              <input type="text" name="date" class="tcal" value="<?php echo date('Y-m-d', strtotime($giltigt)); ?>" >
+              <input type="text" name="date" class="form-control" value="<?php echo date('Y-m-d', strtotime($giltigt)); ?>" readonly>
             </label>
            </div>
         </div>
 
-        <div class="grid_12">
-         <div class="grid_6">
-          <div class="form-group">
-            <label>Ändra korttyp
-                 <select class="form-control" id="korttyp" name="korttyp">
+<div class="grid_12"> 
+          <div class="grid_6">
+             <div class="form-group">
+            <label>Lägg till ett nytt kort
+                 <select class="form-control" id="korttyp" name="korttyp" onchange="specialkort()">
                   <?php echo $kort; ?>
                   </select></label>
               </div>
-         </div>
-      </div>
+            </div>
+            <div class="grid_6" id="gallerfran" name="gallerfran">
+              <label>Gäller från <br>
+               <input type="text" name="kortgiltigt" id="kortgiltigt" class="tcal" value="<?php echo date('Y-m-d');?>" >
+              </label>
+            </div>
+        </div>
+
+
+        <div class="grid_12"  id="specialkort" name="specialkort" style="visibility:hidden"> 
+
+            <div class="grid_6" id="10kort" name="10kort" style="visibility:hidden">
+              <label>Antal 10-kort<br>
+               <select class="form-control" name="antal10kort" id="antal10kort">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+               </select>
+              </label>
+            
+            </div>
+
+            <div class="grid_6">
+            <label>Gäller till <br>
+              <input type="text" name="kortgiltigttill" id="kortgiltigttill" class="tcal" value="<?php echo date('Y-m-d');?>" >
+            </label>
+             </div>
+        </div>
 
 
           <div class="grid_12">
@@ -157,5 +190,37 @@
 </form>
 
 </div>
+
+
+<script>
+function specialkort()
+{
+  var x=document.getElementById("korttyp");
+
+    if (x.value=='SPECIAL')
+    {
+        document.getElementById("specialkort").style.visibility='visible';
+    }
+    else {
+        document.getElementById("specialkort").style.visibility='hidden';
+    }
+
+    if (x.value=='10')
+    {
+      document.getElementById("gallerfran").style.visibility='hidden';
+      document.getElementById("specialkort").style.visibility='hidden';
+      document.getElementById("10kort").style.visibility='visible';
+    }
+    else {
+       document.getElementById("gallerfran").style.visibility='visible';
+       document.getElementById("10kort").style.visibility='hidden';
+    }
+
+}
+</script>
+
+
+
+
 
 <?php include("inc/footer.php"); ?>
