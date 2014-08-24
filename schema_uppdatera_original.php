@@ -41,15 +41,12 @@ $_SESSION['schemaID'] = $schemaID ;
 
             }?></h3></center>
 
-<?php
-	echo $schema; ?>
-<!--
 <div class="grid_1a">
 	<div class="list-group" name="1">
 		  <a href="#" class="list-group-item active">
 		    Måndag
 		  </a>	
-
+			<?php echo $mon; ?>
 		  <a href="schema_nytt_original_pass.php?dagid=1" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
@@ -60,6 +57,7 @@ $_SESSION['schemaID'] = $schemaID ;
 		  <a href="#" class="list-group-item active">
 		    Tisdag
 		  </a>
+		  <?php echo $tue; ?>
 		  <a href="schema_nytt_original_pass.php?dagid=2" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
@@ -70,6 +68,7 @@ $_SESSION['schemaID'] = $schemaID ;
 		  <a href="#" class="list-group-item active">
 		    Onsdag
 		  </a>
+		  <?php echo $wed; ?>
 		  <a href="schema_nytt_original_pass.php?dagid=3" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
@@ -80,6 +79,7 @@ $_SESSION['schemaID'] = $schemaID ;
 		  <a href="#" class="list-group-item active">
 		    Torsdag
 		  </a>
+		  <?php echo $thu; ?>
 		  <a href="schema_nytt_original_pass.php?dagid=4" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
@@ -90,6 +90,7 @@ $_SESSION['schemaID'] = $schemaID ;
 		  <a href="#" class="list-group-item active">
 		    Fredag
 		  </a>
+		  <?php echo $fri; ?>
 		  <a href="schema_nytt_original_pass.php?dagid=5" class="list-group-item">Lägg till nytt pass</a>
 	</div>
 </div>
@@ -99,6 +100,7 @@ $_SESSION['schemaID'] = $schemaID ;
 		  <a href="#" class="list-group-item active">
 		    Lördag
 		  </a>
+		  <?php echo $sat; ?>
 		  <a href="schema_nytt_original_pass.php?dagid=6" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
@@ -109,11 +111,10 @@ $_SESSION['schemaID'] = $schemaID ;
 		  <a href="#" class="list-group-item active">
 		    Söndag
 		  </a>
+		  <?php echo $sun; ?>
 		  <a href="schema_nytt_original_pass.php?dagid=7" class="list-group-item">Lägg till nytt pass</a>
 
 	</div>
 </div>
-
--->
 
 <?php include("inc/footer.php"); ?>
