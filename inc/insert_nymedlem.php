@@ -48,7 +48,7 @@
 			    					':enamn'=>$enamn,
 			    					':phone'=>$telefonnr,
 			    					':mail'=>$email,
-			    					':note'=>$anteckning
+			    					':note'=>$anteckning,
 			    					':nyckelkort'=>$nyckelkort
 
 			    					));
