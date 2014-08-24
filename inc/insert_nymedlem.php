@@ -10,14 +10,13 @@
 	   	$giltigttillspecial = $_POST['kortgiltigttill'];
 	   	$anteckning = $_POST['note'];
 	   	$korttyp = $_POST['korttyp'];
+	   	$today = date("Y-m-d");  
+
 
 	   	if (isset($_POST['nyckelkort'])) {$nyckelkort = 1;}
 	   		else {$nyckelkort = 0;}
 
 	
-		
-
-
 
 	   if ($korttyp == "AG12"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days'));  }
 	   if ($korttyp == "AG12DAG"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); }
@@ -34,6 +33,8 @@
 
 		if ($korttyp == "SPECIAL"){$giltigttill = date('Y-m-d', strtotime($giltigttillspecial)); }
 
+		if($kortgiltigtfran >= $today) {$aktivtkort=1;}
+		else {$aktivtkort=0;}
 
 	  /* if ($korttyp == "10"){$giltigttill = date('Y-m-d', strtotime($giltigttillspecial)); } */
 
@@ -52,12 +53,13 @@
 			    					':nyckelkort'=>$nyckelkort
 
 			    					));
-			   $query = ("INSERT INTO medlemskort (kundnr, giltigtfran, giltigttill, kort) VALUES (:kundnr, :kortgiltigtfran, :kortgiltigttill, :korttyp)");
+			   $query = ("INSERT INTO medlemskort (kundnr, giltigtfran, giltigttill, kort, aktivtkort) VALUES (:kundnr, :kortgiltigtfran, :kortgiltigttill, :korttyp, :aktivtkort)");
 			    $q = $db -> prepare($query);
 			    $q -> execute(array(':kundnr'=>$biggestkundnr,
 									':kortgiltigtfran'=>$kortgiltigtfran,
 			    					':kortgiltigttill'=>$giltigttill,
 			    					':korttyp'=>$korttyp,
+			    					':aktivtkort'=>$aktivtkort,
 			    					
 
 			    					));

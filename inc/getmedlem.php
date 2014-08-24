@@ -23,8 +23,10 @@
 	 $frysdatum="";
 	 $nyckelkort="";
 	 $aktivtkort="";
+	 $aktivtkortID="";
 	 $allakort="";
 	 $status="";
+	 $kortstatus="";
 
 	 
 
@@ -53,12 +55,12 @@
 				 $nyckelkort .= $m['nyckelkort'];
              }
 
-
+/* giltigtfran <= '{$today}' AND giltigttill >= '{$today} */
 
 
 	 try {
 	 		$today = date("Y-m-d"); 
-			$results = $db -> query ("SELECT kortID, kort, giltigtfran, giltigttill FROM medlemskort WHERE kundnr ={$kundnr} AND giltigtfran <= '{$today}' AND giltigttill >= '{$today}'"); 
+			$results = $db -> query ("SELECT kortID, kort, giltigtfran, giltigttill FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1"); 
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
@@ -69,7 +71,7 @@
 	
           foreach($kort as $k){
 
-				$aktivtkort .= $k['kortID'];
+				$aktivtkortID .= $k['kortID'];
 				$kortet .= $k['kort'];
 				$giltigtfran .= $k['giltigtfran'];
 				$giltigttill .= $k['giltigttill'];
@@ -80,7 +82,7 @@
 
 
  try {
-			$results = $db -> query ("SELECT kortID, kort, giltigtfran, giltigttill FROM medlemskort WHERE kundnr ={$kundnr}");
+			$results = $db -> query ("SELECT kortID, kort, giltigtfran, giltigttill FROM medlemskort WHERE kundnr ={$kundnr} ORDER BY giltigttill DESC");
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
@@ -91,13 +93,19 @@
 	$allakort="";
 	$today = date("Y-m-d"); 
 
-	if ($giltigtfran <= $today AND $giltigttill >= $today) {$status="Aktivt";}
-
-	else{$status="Ej aktivt";}
 
            foreach($rows as $row){
+           	$results = $db -> query ("SELECT aktivtkort FROM medlemskort WHERE kundnr ={$kundnr}");
+           	$aktivtkort = ($results -> fetchAll(PDO::FETCH_ASSOC));
+			$status = $aktivtkort['aktivtkort'];
 
-					$allakort.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $row["kort"] . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . $row["giltigttill"] . "</td>" . "<td>"  . $status .  "</td>". "</tr>" ;
+
+			if ($status == 1) {$kortstatus = "Aktivt";}
+			else {$kortstatus = "Ej aktivt";}
+
+
+
+					$allakort.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $row["kort"] . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . $row["giltigttill"] . "</td>" . "<td>"  . $kortstatus.  "</td>". "</tr>" ;
  			}
 
 

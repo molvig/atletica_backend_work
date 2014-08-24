@@ -94,7 +94,7 @@
         <div class="grid_12">
           <div class="grid_6">
             <label>KortID
-             <input type="text" class="form-control" name="kortID" id="kortID" value="<?php echo $aktivtkort ?>" readonly></label>
+             <input type="text" class="form-control" name="kortID" id="kortID" value="<?php echo $aktivtkortID; ?>" readonly></label>
            </div>
 
           <div class="grid_6">
