@@ -37,10 +37,10 @@
 		</div>
 	</div>
 
-<div class="grid_2">
+<div class="grid_1">
 </div>
 
-	<div class="grid_2">
+	<div class="grid_3">
 		<div class="sticky taped">
 		<p >
 			<strong>VECKANS FOKUS</strong><br />

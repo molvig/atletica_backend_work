@@ -54,10 +54,11 @@ else{
 	$stmt->bindValue(':search', '%' . $medlem . '%', PDO::PARAM_INT);
 	$stmt->execute();
 
-
+ $antal = $stmt->rowCount(); 
 	
 if ($stmt->rowCount() > 0) { 
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+
 $found="";
 
 $stmt->closeCursor(); 
@@ -78,6 +79,7 @@ $daysleft = (strtotime("$dagarkvar 00:00:00 GMT")-strtotime("$today 00:00:00 GMT
 $found .= "<tr>" . "<td>" . "<a href='medlem_uppdatera.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>". "<td>"  . $daysleft .  "</td>". "</tr>" ;
 
 $stmt->closeCursor(); 
+
 } ?>
 
 
@@ -89,7 +91,7 @@ $stmt->closeCursor();
   <!-- Default panel contents -->
   <div class="panel-heading">
 
- <th><h4><?php echo "Antal träffar: ", $stmt->rowCount();  ?></h4></th>
+ <th><h4><?php echo "Antal träffar: ", $antal;  ?></h4></th>
 
   </div>
 <div class="panel panel-default">
