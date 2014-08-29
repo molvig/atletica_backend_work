@@ -7,11 +7,12 @@
   <?php include("inc/menymedlem.php"); ?>
   
 </div>
+
 <div class="grid_5">
   <div class="grid_12">
   <h3>Uppdatera medlem </h3>
   </div>
-	 <form role="form" action="#" method="post">
+	 <form role="form" action="medlem_uppdatera_post.php" method="post">
   
     <legend>Personlig information</legend>
     <fieldset>
@@ -222,7 +223,7 @@
         <div class="grid_6">
           <button type="submit" name="submit"  class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Uppdatera</button>
         </div>
-
+<?php include ('inc/update_medlem.php'); ?>
 
 
 </form>

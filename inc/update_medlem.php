@@ -2,14 +2,11 @@
 <?php
 
   if(!empty($_POST)){
-
+      $kundnummer = $_POST['kundnr'];
       $enamn = $_POST['enamn'];
       $telefonnr = $_POST['phone'];
       $email = $_POST['mail'];
-      $kortgiltigtfran = $_POST['kortgiltigtfran'];
-      $giltigttillspecial = $_POST['kortgiltigttill'];
       $anteckning = $_POST['note'];
-      $korttyp = $_POST['korttyp'];
       $passantal = $_POST['passantal'];
       $nyttkort = $_POST['nyttkort'];
 
@@ -18,18 +15,26 @@
 
 
     try {
-       $query = ("UPDATE veckansfokus SET veckansfokus=:veckansfokus_uppdatera WHERE veckansfokusID=1");
+       $query = ("UPDATE medlemmar SET enamn=:enamn, telefon=:phone, mail=:mail, anteckning=:note, passantal=:passantal, nyckelkort=:nyckelkort WHERE kundnr={$kundnummer}");
           $q = $db -> prepare($query);
-          $q-> execute(array(':veckansfokus_uppdatera'=>$veckansfokus_text));
+          $q-> execute(array(':enamn'=>$enamn,
+                            ':phone'=>$telefonnr,
+                            ':mail'=>$email,
+                            ':note'=>$anteckning,
+                            ':passantal'=>$passantal,
+                            ':nyckelkort'=>$nyckelkort
+
+            ));
 
           if($query){
-          echo '<center>' . '<h4>' . 'Du har uppdaterat veckans fokus!' . '</h4>' . '</center>';
+          echo '<center>' . '<h4>' . 'Du har uppdaterat följande medlem!' . '</h4>' . '</center>';
 	
         }
     } 
     catch (Exception $e) {
 
       echo '<center>' . '<h4>' . 'Hoppsan! Något är fel...' . '</h4>' . '</center>';
+      echo $e;
     }
          
 

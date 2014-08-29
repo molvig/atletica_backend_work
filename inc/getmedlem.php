@@ -22,9 +22,7 @@
 	 $fryst="";
 	 $frysdatum="";
 	 $nyckelkort="";
-	 $aktivtkort="";
 	 $aktivtkortID="";
-	 $allakort="";
 	 $status="";
 	 $kortstatus="";
 
@@ -32,14 +30,20 @@
 
 
 	 try {
-			$results = $db -> query ("SELECT kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, meddelande, medlemsstart, passantal, nyckelkort  FROM medlemmar WHERE kundnr ={$id_medlem}");
+			$query = ("SELECT kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, meddelande, medlemsstart, passantal, nyckelkort  FROM medlemmar WHERE kundnr ={$id_medlem}");
+			$stmt = $db ->prepare($query);
+			$stmt->execute();
+
+
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
 			exit;
 	}
 
-	$member = ($results -> fetchAll(PDO::FETCH_ASSOC));
+	$member = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+	
+
 
           foreach($member as $m){
 
@@ -54,20 +58,23 @@
 				 $passantal.= $m['passantal'];
 				 $nyckelkort .= $m['nyckelkort'];
              }
+	$stmt->closeCursor(); 	
 
-/* giltigtfran <= '{$today}' AND giltigttill >= '{$today} */
 
 
 	 try {
 	 		$today = date("Y-m-d"); 
-			$results = $db -> query ("SELECT kortID, kort, giltigtfran, giltigttill FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1"); 
+			$query = ("SELECT kortID, kort, giltigtfran, giltigttill FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1"); 
+			$stmt = $db ->prepare($query);
+			$stmt->execute();
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
 			echo $e;
 			exit;
 	}
-	$kort = ($results -> fetchAll(PDO::FETCH_ASSOC));
+	$kort= $stmt->fetchAll(PDO::FETCH_ASSOC); 
+	$stmt->closeCursor(); 
 	
           foreach($kort as $k){
 
@@ -82,39 +89,41 @@
 
 
  try {
-			$results = $db -> query ("SELECT kortID, kort, giltigtfran, giltigttill FROM medlemskort WHERE kundnr ={$kundnr} ORDER BY giltigttill DESC");
+			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, aktivtkort FROM medlemskort WHERE kundnr ={$kundnr} ORDER BY giltigttill DESC");
+			$stmt = $db ->prepare($query);
+			$stmt->execute();
+
+			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			$allakort="";
+			$today = date("Y-m-d"); 
+			$stmt->closeCursor(); 
+
+
+           foreach($rows as $row){
+           /*
+	           	$query = ("SELECT korttyp FROM korttyp WHERE kort = {$row['kort']}");
+				$stmt = $db ->prepare($query);
+				$stmt->execute();
+				$kortet = $stmt->fetch(PDO::FETCH_ASSOC); 
+				$korttyp = $kortet['korttyp']; 
+			*/
+
+				if ($row['aktivtkort'] == 1) 
+						{$kortstatus = "Aktivt";}
+				else 
+						{$kortstatus = "Ej aktivt";}
+
+				$allakort.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $row['kort'] . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . $row["giltigttill"] . "</td>" . "<td>"  . $kortstatus .  "</td>". "</tr>" ;
+	 			
+	 			$stmt->closeCursor(); 
+ 			}
+
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";
 			echo $e;
 			exit;
 	}
-	$rows = ($results -> fetchAll(PDO::FETCH_ASSOC));
-	$allakort="";
-	$today = date("Y-m-d"); 
-
-
-           foreach($rows as $row){
-           	$results = $db -> query ("SELECT aktivtkort FROM medlemskort WHERE kundnr ={$kundnr}");
-           	$aktivtkort = ($results -> fetchAll(PDO::FETCH_ASSOC));
-			$status = $aktivtkort['aktivtkort'];
-
-
-			if ($status == 1) {$kortstatus = "Aktivt";}
-			else {$kortstatus = "Ej aktivt";}
-
-
-
-					$allakort.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $row["kort"] . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . $row["giltigttill"] . "</td>" . "<td>"  . $kortstatus.  "</td>". "</tr>" ;
- 			}
-
-
-
-
-
-
-
-
 
 
 $today = date("Y-m-d");  
@@ -124,12 +133,16 @@ $daysleft = (strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 G
 
 
 	 try {
-			$results = $db -> query ("SELECT korttyp FROM korttyp WHERE kort = '{$kortet}'");
-			
-			while($korttyp = $results->fetch(PDO::FETCH_ASSOC))
-				 {
-				   $korttypen = ($korttyp['korttyp']);
-				 }
+	 		$query = ("SELECT korttyp FROM korttyp WHERE kort = '{$kortet}'");
+			$stmt = $db ->prepare($query);
+			$stmt->execute();
+
+			while ($rows = $stmt->fetch(PDO::FETCH_ASSOC))
+			{
+				$korttypen = ($rows['korttyp']);
+			}
+			$stmt->closeCursor(); 
+
 
 	} 
 	catch (Exception $e) {
