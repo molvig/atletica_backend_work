@@ -1,11 +1,11 @@
 <?php
- 		$today = date("Y-m-d"); 
- 		$kundnummer = $_GET['pid'];
-	    $frystkort = 1;
-	    $frysdatum = $today;
 
-
-
+// check if the form was submitted
+if ($_POST['frys']) {
+    $today = date("Y-m-d"); 
+    $kundnummer = $_POST['kundnr'];
+    $frystkort = 1;
+    $frysdatum = $today;
     try {
        $query = ("UPDATE medlemskort SET fryst=:fryst, frysdatum=:frysdatum WHERE kundnr={$kundnummer} AND aktivtkort=1");
           $q = $db -> prepare($query);
@@ -13,10 +13,10 @@
                             ':frysdatum'=>$frysdatum
 
             ));
-			   
+         
 if($query){
           echo '<center>' . '<h4>' . 'Du har fryst kortet!' . '</h4>' . '</center>';
-	
+  
         }
     } 
     catch (Exception $e) {
@@ -24,5 +24,7 @@ if($query){
       echo '<center>' . '<h4>' . 'Hoppsan! Något är fel...' . '</h4>' . '</center>';
       echo $e;
     }
-	
+}
+
+
 ?>

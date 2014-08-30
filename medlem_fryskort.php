@@ -11,7 +11,7 @@
       <h3>Frys kort </h3>
     </div>
 
-   <form role="form" action="medlem_fryskort_post.php" method="post">
+   <form role="form" action="medlem_fryskort.php<?php echo '?pid='. $kundnr . '"'; ?>"  method="post">
 
     <div class="grid_12">
 
@@ -80,7 +80,7 @@
            
            <div class="grid_6">
             <br>
-               <button type="submit" name="submit"  class="btn btn-default">Tina kort</button>
+               <input type="submit" name="tina" id="tina" class="btn btn-default" value="Tina kort">
           </div>
 
             <div class="grid_6">
@@ -96,11 +96,12 @@
         
         <div class="grid_6">
           <br>
-                <button type="submit" name="submit"  class="btn btn-default">Frys kort</button>       
+                <input type="submit" name="frys" id="frys" class="btn btn-default" value="Frys kort" onClick="window.location.reload(true);">       
         </div>
 
   </div>
 </form>
+<?php include('inc/frys_kort.php'); ?>
 
          <?php } ?>
         

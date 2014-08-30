@@ -63,8 +63,10 @@
             <li><a href="medlem_search.php">Sök medlem</a></li>
             <li><a href="medlem_ny.php">Lägg till ny medlem</a></li>
             <li><a href="medlem_uppdatera.php">Uppdatera medlem</a></li>
+            <li><a href="#">Säga upp autogiro</a></li>
+            <li><a href="medlem_search_frys.php">Frysa kort</a></li>
             <li><a href="medlem_boka.php">Boka medlem på pass</a></li>
-            <li><a href="#">länk</a></li>
+            
           </ul>
         </li>
         <li class="dropdown">
