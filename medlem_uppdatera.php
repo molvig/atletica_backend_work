@@ -17,6 +17,13 @@
     <legend>Personlig information</legend>
     <fieldset>
     <div class="grid_12">
+        <?php if ($fryst==1)
+        { ?>
+        <div class="alert alert-info"><span class="glyphicon glyphicon-lock"></span> Denna medlem har fryst sitt kort!</div>
+       <?php } ?>
+   </div>
+
+    <div class="grid_12">
 
           <div class="grid_6">
             <label>Medlemsnummer
@@ -73,11 +80,11 @@
             <div class="grid_12">
               <?php if ($daysleft>=0)
               { ?>
-              <div class="alert alert-success"><span class="glyphicon glyphicon-thumbs-up"></span> <?php echo $daysleft;?> dagar kvar</div>
+              <div class="alert alert-success"><span class="glyphicon glyphicon-thumbs-up"></span> <?php echo $daysleft;?></div>
              <?php }
              else  
              {?>
-              <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> <?php echo $daysleft;?> dagar kvar</div> 
+              <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> <?php echo $daysleft;?></div> 
            <?php }?>
            </div>
 

@@ -47,7 +47,7 @@
 			<?php echo $veckansfokus_text; ?>
 			<br />
 			<br />
-			<i>Uppdaterad: <?php echo $uppdaterad; ?></i>
+			<i>Uppdaterad: <strong><?php echo date('H:i ', strtotime($uppdaterad));?></strong> (<?php echo date('Y-m-d', strtotime($uppdaterad)); ?>)</i>
 		</p>
 		</div>
 	</div>	

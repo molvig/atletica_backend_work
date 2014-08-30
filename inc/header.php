@@ -64,7 +64,7 @@
             <li><a href="medlem_ny.php">Lägg till ny medlem</a></li>
             <li><a href="medlem_uppdatera.php">Uppdatera medlem</a></li>
             <li><a href="#">Säga upp autogiro</a></li>
-            <li><a href="medlem_search_frys.php">Frysa kort</a></li>
+            <li><a href="medlem_search_frys.php">Frys/Tina kort</a></li>
             <li><a href="medlem_boka.php">Boka medlem på pass</a></li>
             
           </ul>
@@ -83,6 +83,7 @@
           <ul class="dropdown-menu">
             <li><a href="statistik_korttyp.php">Sök korttyp</a></li>
             <li><a href="statistik_nyamedlemmar.php">Nya medlemmar</a></li>
+            <li><a href="statistik_frystakort.php">Frysta kort</a></li>
             <li><a href="#">Link</a></li>
           </ul>
         </li>

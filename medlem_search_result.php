@@ -60,21 +60,32 @@ if ($stmt->rowCount() > 0) {
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC); 
 
 $found="";
+$fryst="";
 
 $stmt->closeCursor(); 
 
 
 
 foreach( $result as $row ) {
-$query = "SELECT giltigttill FROM medlemskort WHERE kundnr = {$row['kundnr']}";
+$query = "SELECT giltigtfran, giltigttill, fryst FROM medlemskort WHERE kundnr = {$row['kundnr']} AND aktivtkort=1";
 $stmt = $db ->prepare($query);
 $stmt->execute();
 
 $giltigt = $stmt->fetch(PDO::FETCH_ASSOC); 
+
+
 $dagarkvar = $giltigt['giltigttill'];
+$fryst = $giltigt['fryst'];
+$giltigtfran = $giltigt['giltigtfran'];
 
 $today = date("Y-m-d");  
-$daysleft = (strtotime("$dagarkvar 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; 
+
+/* FIXA IF-sats så att korts som ej börjat gälla ska visas som EJ-aktiva */
+
+
+if($fryst==1){$daysleft="Fryst";}
+if ($giltigtfran < $today){$daysleft="Ej aktivt";}
+else {$daysleft = (strtotime("$dagarkvar 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; }
 
 $found .= "<tr>" . "<td>" . "<a href='medlem_uppdatera.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>". "<td>"  . $daysleft .  "</td>". "</tr>" ;
 
@@ -113,13 +124,6 @@ $stmt->closeCursor();
         </div>
 
   </div>
-
-
-
-
-
-
-
 
 
 

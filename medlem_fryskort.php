@@ -1,6 +1,7 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
-<?php include("inc/getmedlem_fryskort.php"); ?>
+<?php include("inc/medlem_fryskort.php"); ?>
+
 
 
   <div class="grid_2"> <?php include("inc/menymedlem.php"); ?></div>
@@ -11,7 +12,7 @@
       <h3>Frys kort </h3>
     </div>
 
-   <form role="form" action="medlem_fryskort.php<?php echo '?pid='. $kundnr . '"'; ?>"  method="post">
+   <form role="form" action="medlem_fryskort_post.php<?php echo '?pid='. $kundnr . '"'; ?>"  method="post">
 
     <div class="grid_12">
 
@@ -77,35 +78,38 @@
         
          <?php if($fryst==1)
            { ?>
-           
-           <div class="grid_6">
-            <br>
-               <input type="submit" name="tina" id="tina" class="btn btn-default" value="Tina kort">
+          <div class="grid_6">
+            <label>Dagar som kortet varit fryst
+               <input type="text" class="form-control" name="frysdagar" id="frysdagar" value="<?php echo $aktuellafrysdagar; ?>" readonly></label>
           </div>
 
             <div class="grid_6">
             <label>Kortet frystes
              <input type="date" class="form-control" name="frysdatum" id="frysdatum" value="<?php echo date('Y-m-d', strtotime($frysdatum)); ?>" readonly></label>
             </div>
+           
+           <div class="grid_12">
+            <br>
+               <input type="submit" name="tinakort" id="tinakort" class="btn btn-default" value="Tina kort">
+          </div>
 
-  </div>
-</form>
+
+
            <?php }
           else
           { ?>
         
         <div class="grid_6">
           <br>
-                <input type="submit" name="frys" id="frys" class="btn btn-default" value="Frys kort" onClick="window.location.reload(true);">       
+                <input type="submit" name="fryskort" id="fryskort" class="btn btn-default" value="Frys kort">       
         </div>
+
+
+         <?php } ?>
 
   </div>
 </form>
-<?php include('inc/frys_kort.php'); ?>
-
-         <?php } ?>
-        
-
+      
 </div> 
 
      <?php include("inc/footer.php"); ?>
