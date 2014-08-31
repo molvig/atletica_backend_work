@@ -64,7 +64,7 @@
 
 	 try {
 	 		$today = date("Y-m-d"); 
-			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, fryst FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1"); 
+			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, fryst, frysdatum FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1"); 
 			$stmt = $db ->prepare($query);
 			$stmt->execute();
 	} 
@@ -83,6 +83,7 @@
 				$giltigtfran .= $k['giltigtfran'];
 				$giltigttill .= $k['giltigttill'];
 				$fryst .= $k['fryst'];
+				$frysdatum.= $k['frysdatum'];
 				
              }
 
@@ -112,7 +113,10 @@
 				if ($row['aktivtkort'] == 1 && $row['giltigtfran']<=$today) 
 						{$kortstatus = "Aktivt";}
 
-				else 
+				if ($row['aktivtkort'] == 1 && $row['giltigtfran']>$today) 
+						{$kortstatus = "Ej börjat gälla";}
+
+				if ($row['aktivtkort'] == 0 || $row['giltigttill']<$today) 
 						{$kortstatus = "Ej aktivt";}
 
 				$allakort.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $row['kort'] . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . $row["giltigttill"] . "</td>" . "<td>"  . $kortstatus .  "</td>". "</tr>" ;
@@ -127,8 +131,8 @@
 			exit;
 	}
 
-				if ($row['giltigtfran']>=$today) 
-						{$daysleft = "Kortet har inte börjat gälla än";}
+				if ($row['giltigtfran']>$today) 
+						{$daysleft = "Inaktivt";}
 					
 				else 
 						{$daysleft = ((strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400). " dagar kvar";}

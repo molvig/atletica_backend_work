@@ -78,11 +78,15 @@
 <legend>Medlemsskap</legend>
 <fieldset>
             <div class="grid_12">
-              <?php if ($daysleft>=0)
+              <?php if ($daysleft=="Inaktivt")
+              { ?>
+              <div class="alert alert-warning"><span class="glyphicon glyphicon-flag"></span> <?php echo "Kortet har inte börjat gälla än";?></div>
+             <?php }
+              else if ($daysleft>=0)
               { ?>
               <div class="alert alert-success"><span class="glyphicon glyphicon-thumbs-up"></span> <?php echo $daysleft;?></div>
              <?php }
-             else  
+              else if ($daysleft<0)
              {?>
               <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> <?php echo $daysleft;?></div> 
            <?php }?>

@@ -18,20 +18,50 @@
 
 	
 
-	   if ($korttyp == "AG12"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days'));  }
-	   if ($korttyp == "AG12DAG"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); }
-	   if ($korttyp == "AG24"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 730 days')); }
-	   if ($korttyp == "H"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 183 days')); }
-	   if ($korttyp == "HS"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 183 days')); }
-	   if ($korttyp == "MD"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); }
-	   if ($korttyp == "MK"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); }
-	   if ($korttyp == "MS"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); }
-	   if ($korttyp == "MU"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); }
-	   if ($korttyp == "YK"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); }
-	   if ($korttyp == "YS"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); }
-	   if ($korttyp == "YSTUDENT"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); }
+	   if ($korttyp == "AG12"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days'));
+	   							$bindningsdatum = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days'));
+	   							$ag_aktivt=1;  }
 
-		if ($korttyp == "SPECIAL"){$giltigttill = date('Y-m-d', strtotime($giltigttillspecial)); }
+	   if ($korttyp == "AG12DAG"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days'));
+   								$bindningsdatum = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); 
+								$ag_aktivt=1; }
+
+	   if ($korttyp == "AG24"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 730 days'));
+   								$bindningsdatum = date('Y-m-d', strtotime($kortgiltigtfran. ' + 730 days')); 
+								$ag_aktivt=1; }
+
+
+	   if ($korttyp == "H"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 183 days')); 
+	   							$bindningsdatum = null ;
+	   							$ag_aktivt=0;}
+	   if ($korttyp == "HS"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 183 days')); 
+		   						$bindningsdatum = null ;
+	   							$ag_aktivt=0;}
+	   if ($korttyp == "MD"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); 
+			   					$bindningsdatum = null ;
+	   							$ag_aktivt=0;}
+	   if ($korttyp == "MK"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); 
+		   						$bindningsdatum = null ;
+	   							$ag_aktivt=0;}
+	   if ($korttyp == "MS"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); 
+		   						$bindningsdatum = null ;
+	   							$ag_aktivt=0;}
+	   if ($korttyp == "MU"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); 
+		   						$bindningsdatum = null ;
+	   							$ag_aktivt=0;}
+	   if ($korttyp == "YK"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); 
+		   						$bindningsdatum = null ;
+	   							$ag_aktivt=0;}
+	   if ($korttyp == "YS"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days'));
+		   						$bindningsdatum = null ;
+	   							$ag_aktivt=0;}
+	   if ($korttyp == "YSTUDENT"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); 
+		   						$bindningsdatum = null ;
+	   							$ag_aktivt=0;}
+
+		if ($korttyp == "SPECIAL"){$giltigttill = date('Y-m-d', strtotime($giltigttillspecial)); 
+		   						$bindningsdatum = null ;
+	   							$ag_aktivt=0;}
 
 		if($kortgiltigtfran >= $today) {$aktivtkort=1;}
 		else {$aktivtkort=0;}
@@ -53,13 +83,15 @@
 			    					':nyckelkort'=>$nyckelkort
 
 			    					));
-			   $query = ("INSERT INTO medlemskort (kundnr, giltigtfran, giltigttill, kort, aktivtkort) VALUES (:kundnr, :kortgiltigtfran, :kortgiltigttill, :korttyp, :aktivtkort)");
+			   $query = ("INSERT INTO medlemskort (kundnr, giltigtfran, giltigttill, kort, aktivtkort, bindningsdatum, ag_aktivt) VALUES (:kundnr, :kortgiltigtfran, :kortgiltigttill, :korttyp, :aktivtkort, :bindningsdatum, :ag_aktivt)");
 			    $q = $db -> prepare($query);
 			    $q -> execute(array(':kundnr'=>$biggestkundnr,
 									':kortgiltigtfran'=>$kortgiltigtfran,
 			    					':kortgiltigttill'=>$giltigttill,
 			    					':korttyp'=>$korttyp,
 			    					':aktivtkort'=>$aktivtkort,
+			    					':bindningsdatum'=>$bindningsdatum,
+			    					':ag_aktivt'=>$ag_aktivt
 			    					
 
 			    					));
@@ -78,11 +110,3 @@
 
 	}
 	?>
-
-
-
-
-
-
-
-

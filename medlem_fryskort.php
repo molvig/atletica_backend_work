@@ -11,6 +11,16 @@
     <div class="grid_12">
       <h3>Frys kort </h3>
     </div>
+        <div class="grid_12">
+        <?php if ($fryst==1)
+        { ?>
+        <div class="alert alert-info"><span class="glyphicon glyphicon-lock"></span> Denna medlem har fryst sitt kort!</div>
+       <?php } ?>
+        <?php if ($frysdatum=="1986-11-28")
+        { ?>
+        <div class="alert alert-warning"><span class="glyphicon glyphicon-flag"></span> Denna medlem har fryst sitt kort tidigare</div>
+       <?php } ?>
+   </div>
 
    <form role="form" action="medlem_fryskort_post.php<?php echo '?pid='. $kundnr . '"'; ?>"  method="post">
 

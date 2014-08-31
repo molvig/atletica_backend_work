@@ -16,10 +16,13 @@
 	 $giltigttill="";
 	 $korttypen="";
 	 $fryst="";
-	 $frysdatum="";
+	 $ag_aktivt="";
+	 $bindningsdatum="";
 	 $aktivtkortID="";
 	 $status="";
 	 $kortstatus="";
+	 $tomorrow="";
+	 $sista_dragning ="";
 
 	 
 
@@ -54,7 +57,7 @@
 
 	 try {
 	 		$today = date("Y-m-d"); 
-			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, fryst, frysdatum FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1"); 
+			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, fryst, bindningsdatum, ag_aktivt FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1"); 
 			$stmt = $db ->prepare($query);
 			$stmt->execute();
 
@@ -69,7 +72,8 @@
 			$giltigtfran .= $k['giltigtfran'];
 			$giltigttill .= $k['giltigttill'];
 			$fryst .= $k['fryst'];
-			$frysdatum .= date('Y-m-d', strtotime($k['frysdatum']));
+			$ag_aktivt .= $k['ag_aktivt'];
+			$bindningsdatum .= $k['bindningsdatum'];
 			
          }
 
@@ -83,12 +87,40 @@
 			exit;
 		}
 
+
+			$bindningsdag = date('d', strtotime($bindningsdatum));
+			$bindningsmanad = date('m', strtotime($bindningsdatum));
+			$bindningsyear = date('Y', strtotime($bindningsdatum));
+
 			$today = date("Y-m-d");  
 			$daysleft = (strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400;
-			
-			$aktuellafrysdagar = (strtotime("$today 00:00:00 GMT")-strtotime("$frysdatum 00:00:00 GMT")) / 86400 ;
-			
+			$uppsagningstid = (strtotime("$bindningsdatum 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400;
 
+
+			if ($bindningsdatum < $today){
+			$sista_dragning = date('Y-m-d', mktime(0, 0, 0, date("m")+2  , 28, date("Y"))); 
+			$giltigttill = date('Y-m-d', mktime(0, 0, 0, date("m")+3, 1-1, date("Y")));
+			$status = "Bindningstiden har gått ut";
+			} 
+
+			else if ($uppsagningstid < 30){
+			$sista_dragning = date('Y-m-d', mktime(0, 0, 0, date("m")+2  , 28, date("Y"))); 
+			$giltigttill = date('Y-m-d', mktime(0, 0, 0, date("m")+3, 1-1, date("Y")));
+			$status = "Det är mindre än 30 dagar kvar av bindnigstiden";
+			}
+
+			else if ($uppsagningstid > 30){
+
+				if ($bindningsdag < 28 ){
+					$sista_dragning = date('Y-m-d', mktime(0, 0, 0, $bindningsmanad-1  , 28, date("Y"))); 
+				}
+				else if ($bindningsdag >= 28 ){
+					$sista_dragning = date('Y-m-d', mktime(0, 0, 0, $bindningsmanad  , 28, date("Y"))); 
+				}
+
+			$giltigttill = $giltigttill;
+			$status = "Det är mer än 30 dagar kvar av bindnigstiden";
+			}
 
 	
 		try {
@@ -116,16 +148,17 @@
 <?php
 
 // check if the form was submitted
-if (isset($_POST['fryskort'])) {
+if (isset($_POST['autogiro'])) {
     $today = date("Y-m-d"); 
     $kundnummer = $_POST['kundnr'];
     $frystkort = 1;
     $frysdatum = $today;
     try {
-       $query = ("UPDATE medlemskort SET fryst=:fryst, frysdatum=:frysdatum WHERE kundnr={$kundnummer} AND aktivtkort=1");
+       $query = ("UPDATE medlemskort SET sista_dragning=:sista_dragning WHERE kundnr={$kundnummer} AND aktivtkort=1");
           $q = $db -> prepare($query);
-          $q-> execute(array(':fryst'=>$frystkort,
-                            ':frysdatum'=>$frysdatum
+          $q-> execute(array(':sista_dragning'=>$sista_dragning,
+
+                            
 
             ));
          
@@ -144,35 +177,6 @@ echo ' <script> window.loaction.reload(); </script>';
 
 }
 
-if (isset($_POST['tinakort'])) {
-    $today = date("Y-m-d"); 
-    $kundnummer = $_POST['kundnr'];
-    $frysdatum = $_POST['frysdatum'];
-    $nyttfrysdatum = "1986-11-28";
-    $frystkort = 0;
-    $frysdagar = (strtotime("$today 00:00:00 GMT")-strtotime("$frysdatum 00:00:00 GMT")) / 86400 ;
-    $giltigtill_frys = date('Y-m-d', strtotime($giltigttill.' +'. $frysdagar . 'days')); 
 
-
-    try {
-       $query = ("UPDATE medlemskort SET fryst=:fryst, frysdatum=:nyttfrysdatum, giltigttill=:giltigttill WHERE kundnr={$kundnummer} AND aktivtkort=1");
-          $q = $db -> prepare($query);
-          $q-> execute(array(':fryst'=>$frystkort,
-                            ':nyttfrysdatum'=>$nyttfrysdatum,
-                            ':giltigttill'=>$giltigtill_frys
-
-            ));
-         
-if($query){
-          echo '<center>' . '<h4>' . 'Kortet är nu tinat för' . '</h4>' . '</center>';
-  
-        }
-    } 
-    catch (Exception $e) {
-
-      echo '<center>' . '<h4>' . 'Hoppsan! Något är fel...' . '</h4>' . '</center>';
-      echo $e;
-    }
-  }
 
 ?>
