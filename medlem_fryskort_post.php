@@ -6,7 +6,7 @@
   <div class="grid_2"> <?php include("inc/menymedlem.php"); ?></div>
 
 
-<div class="grid_6"><?php include("inc/medlem_fryskort.php"); ?>
+<div class="grid_6"><?php include("inc/fryskort.php"); ?>
 
 <?php
 $query = "SELECT * FROM medlemmar WHERE kundnr={$kundnummer}";

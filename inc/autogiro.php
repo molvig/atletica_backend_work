@@ -151,19 +151,24 @@
 if (isset($_POST['autogiro'])) {
     $today = date("Y-m-d"); 
     $kundnummer = $_POST['kundnr'];
-    $frystkort = 1;
-    $frysdatum = $today;
+    $bindningsdatum= null;
+    $uppsagnings_datum = $today;
+    $ag_aktivt = 0;
     try {
-       $query = ("UPDATE medlemskort SET sista_dragning=:sista_dragning WHERE kundnr={$kundnummer} AND aktivtkort=1");
+       $query = ("UPDATE medlemskort SET giltigttill=:giltigttill, bindningsdatum=:bindningsdatum, sista_dragning=:sista_dragning, ag_aktivt=:ag_aktivt, uppsagnings_datum=:uppsagnings_datum WHERE kundnr={$kundnummer} AND aktivtkort=1");
           $q = $db -> prepare($query);
-          $q-> execute(array(':sista_dragning'=>$sista_dragning,
+          $q-> execute(array(':giltigttill'=>$giltigttill,
+          					':bindningsdatum' =>$bindningsdatum,
+          					':sista_dragning'=>$sista_dragning,
+          					':ag_aktivt'=> $ag_aktivt,
+          					':uppsagnings_datum' =>$uppsagnings_datum 
 
                             
 
             ));
          
 if($query){
-          echo '<center>' . '<h4>' . 'Kortet är nu fryst för' . '</h4>' . '</center>';
+          echo '<center>' . '<h4>' . 'Autogirot är uppsagt' . '</h4>' . '</center>';
   
         }
     } 

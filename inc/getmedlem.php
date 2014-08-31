@@ -25,6 +25,7 @@
 	 $aktivtkortID="";
 	 $status="";
 	 $kortstatus="";
+	 $ag_aktivt="";
 
 	 
 
@@ -91,7 +92,7 @@
 
 
  try {
-			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, aktivtkort FROM medlemskort WHERE kundnr ={$kundnr} ORDER BY giltigttill DESC");
+			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, aktivtkort, ag_aktivt FROM medlemskort WHERE kundnr ={$kundnr} ORDER BY giltigttill DESC");
 			$stmt = $db ->prepare($query);
 			$stmt->execute();
 
@@ -109,18 +110,26 @@
 				$kortet = $stmt->fetch(PDO::FETCH_ASSOC); 
 				$korttyp = $kortet['korttyp']; 
 			*/
+				$ag_aktivt=$row['ag_aktivt'];
+				$korttyp=$row['kort'];
 
-				if ($row['aktivtkort'] == 1 && $row['giltigtfran']<=$today) 
+				if ($row['aktivtkort'] == 1 && $row['giltigtfran']<=$today || $ag_aktivt==1) 
 						{$kortstatus = "Aktivt";}
 
-				if ($row['aktivtkort'] == 1 && $row['giltigtfran']>$today) 
+				else if ($row['aktivtkort'] == 1 && $row['giltigtfran']>$today) 
 						{$kortstatus = "Ej börjat gälla";}
 
-				if ($row['aktivtkort'] == 0 || $row['giltigttill']<$today) 
+				else if ($row['aktivtkort'] == 0 || $row['giltigttill']<$today || $ag_aktivt==0) 
 						{$kortstatus = "Ej aktivt";}
 
+				if($ag_aktivt==0){		
 				$allakort.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $row['kort'] . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . $row["giltigttill"] . "</td>" . "<td>"  . $kortstatus .  "</td>". "</tr>" ;
-	 			
+	 			}
+
+	 			else if($ag_aktivt==1) 
+	 				{		
+				$allakort.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $row['kort'] . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . "Autogiro" . "</td>" . "<td>"  . $kortstatus .  "</td>". "</tr>" ;
+	 			}
 	 			$stmt->closeCursor(); 
  			}
 
@@ -130,12 +139,19 @@
 			echo $e;
 			exit;
 	}
-
-				if ($row['giltigtfran']>$today) 
+				
+	/*			if ($row['giltigtfran']>$today) 
 						{$daysleft = "Inaktivt";}
 					
 				else 
 						{$daysleft = ((strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400). " dagar kvar";}
+*/
+
+if($fryst==1){$daysleft="Fryst";}
+else if ($giltigtfran > $today){$daysleft="Ej börjat gälla";}
+else if (($korttyp=="AG12" || $korttyp=="AG24" || $korttyp=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
+else {$daysleft = ((strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400) . " dagar kvar"; }
+
 $today = date("Y-m-d");  
 
      

@@ -5,7 +5,7 @@
  <?php 
 
 try {
-  $query = "SELECT medlemmar.kundnr, medlemmar.fnamn, medlemmar.enamn, medlemskort.fryst, medlemskort.frysdatum FROM medlemskort INNER JOIN medlemmar ON medlemmar.kundnr = medlemskort.kundnr AND medlemskort.fryst = 1 ORDER BY medlemskort.frysdatum DESC";  
+  $query = "SELECT medlemmar.kundnr, medlemmar.fnamn, medlemmar.enamn, medlemskort.bindningsdatum, medlemskort.ag_aktivt FROM medlemskort INNER JOIN medlemmar ON medlemmar.kundnr = medlemskort.kundnr AND medlemskort.ag_aktivt=1 ORDER BY medlemskort.bindningsdatum DESC";  
   $stmt = $db ->prepare($query);
   $stmt->execute();
 
@@ -17,9 +17,8 @@ $found="";
 
 
 foreach( $result as $row ) {
-$frysdate = date('Y-m-d', strtotime($row["frysdatum"]));
 
-$found .= "<tr>" . "<td>" . "<a href='medlem_fryskort.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>" . $row["enamn"] . "</td>" . "<td>"  . $frysdate . "</td>" . "</tr>" ;
+$found .= "<tr>" . "<td>" . "<a href='medlem_autogiro.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>" . $row["enamn"] . "</td>" . "<td>"  . $row["bindningsdatum"] . "</td>" . "</tr>" ;
 
 } 
 
@@ -40,14 +39,14 @@ $stmt->closeCursor();
 
 
   <div class="grid_12">
-        <div class="grid_2"><?php include("inc/menystatistik.php"); ?></div> 
+        <div class="grid_2">  <?php include("inc/menystatistik.php"); ?></div> 
         <div class="grid_5">
-
+          
 <div class="panel panel-info">
   <!-- Default panel contents -->
   <div class="panel-heading">
 
- <th><h4><?php echo "Antal frysta kort: ", $antal;  ?></h4></th>
+ <th><h4><?php echo "Aktiva autogiro: ", $antal;  ?></h4></th>
 
   </div>
 <div class="panel panel-default">
@@ -56,7 +55,7 @@ $stmt->closeCursor();
       <td><h5>Kundnummer</h5></td>
       <td><h5>Förnamn</h5></td>
       <td><h5>Efternamn</h5></td>
-      <td><h5>Frysdatum</h5></td>
+      <td><h5>Bindningstid till</h5></td>
     </tr>
       
 

@@ -1,6 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
-<?php include("inc/medlem_fryskort.php"); ?>
+<?php include("inc/fryskort.php"); ?>
 
 
 

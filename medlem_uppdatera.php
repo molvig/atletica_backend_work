@@ -78,11 +78,12 @@
 <legend>Medlemsskap</legend>
 <fieldset>
             <div class="grid_12">
-              <?php if ($daysleft=="Inaktivt")
+
+           <?php if ($daysleft=="Ej börjat gälla")
               { ?>
               <div class="alert alert-warning"><span class="glyphicon glyphicon-flag"></span> <?php echo "Kortet har inte börjat gälla än";?></div>
              <?php }
-              else if ($daysleft>=0)
+              else if ($daysleft=="Autogiro" || $daysleft>=0)
               { ?>
               <div class="alert alert-success"><span class="glyphicon glyphicon-thumbs-up"></span> <?php echo $daysleft;?></div>
              <?php }
@@ -90,6 +91,7 @@
              {?>
               <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> <?php echo $daysleft;?></div> 
            <?php }?>
+         
            </div>
 
         <div class="grid_12"> 

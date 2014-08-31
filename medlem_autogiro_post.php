@@ -6,9 +6,13 @@
   <div class="grid_2"> <?php include("inc/menymedlem.php"); ?></div>
 
 
-<div class="grid_6"><?php include("inc/medlem_fryskort.php"); ?>
+<div class="grid_6"><?php include("inc/autogiro.php"); ?>
 
 <?php
+
+try {
+$kundnummer = $_GET['pid'];
+
 $query = "SELECT * FROM medlemmar WHERE kundnr={$kundnummer}";
   $stmt = $db ->prepare($query);
   $stmt->execute();
@@ -22,10 +26,19 @@ $query = "SELECT * FROM medlemmar WHERE kundnr={$kundnummer}";
 
 foreach( $result as $row ) {
 
-$found .= "<tr>" . "<td>" . "<a href='medlem_fryskort.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>". "</tr>" ;
+$found .= "<tr>" . "<td>" . "<a href='medlem_autogiro.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>". "</tr>" ;
 
 $stmt->closeCursor(); 
-} ?>
+} 
+
+}
+  catch (Exception $e) {
+      echo "Hoppsan det gick inte koppla upp mot databasen...";
+      echo $e;
+      exit;
+  }
+
+?>
 
 
 <div class="panel panel-default">

@@ -84,7 +84,8 @@
             <li><a href="statistik_korttyp.php">Sök korttyp</a></li>
             <li><a href="statistik_nyamedlemmar.php">Nya medlemmar</a></li>
             <li><a href="statistik_frystakort.php">Frysta kort</a></li>
-            <li><a href="#">Link</a></li>
+            <li><a href="statistik_uppsagda_autogiro.php">Uppsagda autogiro</a></li>
+            <li><a href="statistik_aktuella_autogiro.php">Aktuella autogiro</a></li>
           </ul>
         </li>
           <li class="dropdown">

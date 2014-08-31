@@ -1,6 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
-<?php include("inc/medlem_autogiro.php"); ?>
+<?php include("inc/autogiro.php"); ?>
 
 
 
@@ -10,8 +10,12 @@
 <div class="grid_5">
 <fieldset>
   <legend>Säg upp autogiro</legend>
+          <?php if ($fryst==1)
+        { ?>
+        <div class="alert alert-info"><span class="glyphicon glyphicon-lock"></span> Denna medlem har fryst sitt kort!</div>
+       <?php } ?>
 
-   <form role="form" action="medlem_fryskort_post.php<?php echo '?pid='. $kundnr . '"'; ?>"  method="post">
+   <form role="form" action="medlem_autogiro_post.php<?php echo '?pid='. $kundnr . '"'; ?>"  method="post">
 
     <div class="grid_12">
 
@@ -90,19 +94,23 @@ else { ?>
             </label>
            </div>
     </div>
-
-
-    <div class="grid_12">
-          <br>
-             <input type="submit" name="auto" id="auto" class="btn btn-default" value="Säg upp autogiro">
-    </div>
-
-  </div>
+  <div class="grid_12">
+    <input type="submit" name="autogiro" id="autogiro" class="btn btn-default" value="Säg upp autogiro">
+  </div> 
 
 </fieldset>
+
+  
+
+
 </form>
+
+
+
+    </div>
+</div>
       
-</div> 
+
 
  <?php } ?>
 

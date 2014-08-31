@@ -4,7 +4,7 @@
 
 <div class="grid_12">
   <div class="grid_12">
-        <div class="grid_2"></div>
+        <div class="grid_2"><?php include("inc/menystatistik.php"); ?></div>
         <div class="grid_7">
           <center>
             <h3>Sök efter typ av medlemskort </h3>

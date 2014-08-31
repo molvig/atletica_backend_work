@@ -27,8 +27,33 @@
 
 
    </form>
+ 
+
+
+
+<div class="grid_12">
+ <div class="panel panel-info">
+  
+  <div class="panel-heading">
+      <th><h4><?php echo "Nya medlemmar: ", $antal;  ?></h4></th>
+  </div>
+
+  <div class="panel panel-default">
+      <table class="table">
+      <tr>
+        <td><h5>Kundnummer</h5></td>
+        <td><h5>Förnamn</h5></td>
+        <td><h5>Efternamn</h5></td>
+        <td><h5>Medlem sedan</h5></td>
+      </tr>   
+    <?php echo $found; ?>
+      </table> 
+
+  </div>
+  
+</div>
+        </div> 
  </div> 
-
-
+</div> 
 <?php include("inc/footer.php"); ?>
 

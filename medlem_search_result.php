@@ -67,7 +67,7 @@ $stmt->closeCursor();
 
 
 foreach( $result as $row ) {
-$query = "SELECT giltigtfran, giltigttill, fryst, kort FROM medlemskort WHERE kundnr = {$row['kundnr']} AND aktivtkort=1";
+$query = "SELECT giltigtfran, giltigttill, fryst, kort, ag_aktivt FROM medlemskort WHERE kundnr = {$row['kundnr']} AND aktivtkort=1";
 $stmt = $db ->prepare($query);
 $stmt->execute();
 
@@ -78,6 +78,7 @@ $dagarkvar = $giltigt['giltigttill'];
 $fryst = $giltigt['fryst'];
 $giltigtfran = $giltigt['giltigtfran'];
 $korttyp = $giltigt['kort'];
+$ag_aktivt = $giltigt['ag_aktivt'];
 
 $today = date("Y-m-d");  
 
@@ -86,7 +87,7 @@ $today = date("Y-m-d");
 
 if($fryst==1){$daysleft="Fryst";}
 else if ($giltigtfran > $today){$daysleft="Ej börjat gälla";}
-else if ($korttyp=="AG12" || $korttyp=="AG24" || $korttyp=="AG12DAG"){$daysleft="Autogiro";}
+else if (($korttyp=="AG12" || $korttyp=="AG24" || $korttyp=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
 else {$daysleft = (strtotime("$dagarkvar 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; }
 
 $found .= "<tr>" . "<td>" . "<a href='medlem_uppdatera.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>". "<td>"  . $daysleft .  "</td>". "</tr>" ;
