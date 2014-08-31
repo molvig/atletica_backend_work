@@ -12,7 +12,7 @@ $medlemtill = date('Y-m-d', strtotime($medlemtill));
 /*  */
 
 try {
-  $query = "SELECT * FROM medlemmar WHERE medlemsstart >= {$medlemfran} ORDER BY medlemsstart DESC";  
+  $query = "SELECT * FROM medlemmar WHERE medlemsstart >= '$medlemfran' AND medlemsstart <= '$medlemfran' ORDER BY medlemsstart DESC";  
   $stmt = $db ->prepare($query);
   $stmt->execute();
 

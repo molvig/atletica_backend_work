@@ -62,7 +62,7 @@
           <ul class="dropdown-menu">
             <li><a href="medlem_search.php">Sök medlem</a></li>
             <li><a href="medlem_ny.php">Lägg till ny medlem</a></li>
-            <li><a href="medlem_uppdatera.php">Uppdatera medlem</a></li>
+            <li><a href="medlem_search.php">Uppdatera medlem</a></li>
             <li><a href="medlem_search_autogiro.php">Säga upp autogiro</a></li>
             <li><a href="medlem_search_frys.php">Frys/Tina kort</a></li>
             <li><a href="medlem_boka.php">Boka medlem på pass</a></li>
