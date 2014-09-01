@@ -88,6 +88,7 @@ $today = date("Y-m-d");
 if($fryst==1){$daysleft="Fryst";}
 else if ($giltigtfran > $today){$daysleft="Ej börjat gälla";}
 else if (($korttyp=="AG12" ||$korttyp=="AG12+2" || $korttyp=="AG24" ||$korttyp=="AG24+2" || $korttyp=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
+else if ($korttyp=="10"){ $daysleft="Klippkort";} 
 else {$daysleft = (strtotime("$dagarkvar 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; }
 
 $found .= "<tr>" . "<td>" . "<a href='medlem_uppdatera.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>". "<td>"  . $daysleft .  "</td>". "</tr>" ;
