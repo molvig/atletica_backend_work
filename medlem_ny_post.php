@@ -10,9 +10,9 @@
 
 
 
-
+<div class="grid_5">
    <?php include("inc/insert_nymedlem.php");?>
-
+ </div>
 
 
 

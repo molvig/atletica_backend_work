@@ -97,30 +97,51 @@
 			$uppsagningstid = (strtotime("$bindningsdatum 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400;
 
 
-			if ($bindningsdatum < $today){
+
+
+   		if (isset($_POST['undantag'])) {
+	   		
+				if (date("d") < 28 ){
+					$sista_dragning = date('Y-m-d', mktime(0, 0, 0, date("m")+1, 28, date("Y")));
+					$giltigttill = date('Y-m-d', mktime(0, 0, 0, date("m")+2, 1-1, date("Y"))); 
+				}
+				else if (date("d") >= 28 ){
+					$sista_dragning = date('Y-m-d', mktime(0, 0, 0, date("m")+2 , 28, date("Y"))); 
+					$giltigttill = date('Y-m-d', mktime(0, 0, 0, date("m")+3, 1-1, date("Y"))); 
+				}
+
+   		}
+
+	   	else {			
+
+	   		if ($bindningsdatum < $today){
 			$sista_dragning = date('Y-m-d', mktime(0, 0, 0, date("m")+2  , 28, date("Y"))); 
 			$giltigttill = date('Y-m-d', mktime(0, 0, 0, date("m")+3, 1-1, date("Y")));
 			$status = "Bindningstiden har gått ut";
 			} 
 
 			else if ($uppsagningstid < 30){
-			$sista_dragning = date('Y-m-d', mktime(0, 0, 0, date("m")+2  , 28, date("Y"))); 
-			$giltigttill = date('Y-m-d', mktime(0, 0, 0, date("m")+3, 1-1, date("Y")));
+			$sista_dragning = date('Y-m-d', mktime(0, 0, 0, date("m")+1  , 28, date("Y"))); 
+			$giltigttill = date('Y-m-d', mktime(0, 0, 0, date("m")+2, 1-1, date("Y")));
 			$status = "Det är mindre än 30 dagar kvar av bindnigstiden";
 			}
 
 			else if ($uppsagningstid > 30){
 
 				if ($bindningsdag < 28 ){
-					$sista_dragning = date('Y-m-d', mktime(0, 0, 0, $bindningsmanad-1  , 28, date("Y"))); 
+					$sista_dragning = date('Y-m-d', mktime(0, 0, 0, $bindningsmanad-1  , 28, $bindningsyear)); 
 				}
 				else if ($bindningsdag >= 28 ){
-					$sista_dragning = date('Y-m-d', mktime(0, 0, 0, $bindningsmanad  , 28, date("Y"))); 
+					$sista_dragning = date('Y-m-d', mktime(0, 0, 0, $bindningsmanad  , 28, $bindningsyear)); 
 				}
 
 			$giltigttill = $giltigttill;
 			$status = "Det är mer än 30 dagar kvar av bindnigstiden";
 			}
+		}
+
+
+
 
 	
 		try {

@@ -94,6 +94,15 @@ else { ?>
             </label>
            </div>
     </div>
+            <div class="grid_12">
+          <div class="grid_6">
+                <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="undantag"> Undantag för bindningstiden
+                </label>
+              </div>
+          </div>
+    </div>
   <div class="grid_12">
     <input type="submit" name="autogiro" id="autogiro" class="btn btn-default" value="Säg upp autogiro">
   </div> 

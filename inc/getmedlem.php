@@ -149,7 +149,7 @@
 
 if($fryst==1){$daysleft="Fryst";}
 else if ($giltigtfran > $today){$daysleft="Ej börjat gälla";}
-else if (($korttyp=="AG12" || $korttyp=="AG24" || $korttyp=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
+else if (($korttyp=="AG12" || $korttyp=="AG12+2" || $korttyp=="AG24" || $korttyp=="AG24+2" || $korttyp=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
 else {$daysleft = ((strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400) . " dagar kvar"; }
 
 $today = date("Y-m-d");  

@@ -21,12 +21,19 @@
 	   if ($korttyp == "AG12"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days'));
 	   							$bindningsdatum = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days'));
 	   							$ag_aktivt=1;  }
+	   if ($korttyp == "AG12+2"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 425 days'));
+	   							$bindningsdatum = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days'));
+	   							$ag_aktivt=1;  }
 
 	   if ($korttyp == "AG12DAG"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days'));
    								$bindningsdatum = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); 
 								$ag_aktivt=1; }
 
 	   if ($korttyp == "AG24"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 730 days'));
+   								$bindningsdatum = date('Y-m-d', strtotime($kortgiltigtfran. ' + 730 days')); 
+								$ag_aktivt=1; }
+
+		if ($korttyp == "AG24+2"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 790 days'));
    								$bindningsdatum = date('Y-m-d', strtotime($kortgiltigtfran. ' + 730 days')); 
 								$ag_aktivt=1; }
 
