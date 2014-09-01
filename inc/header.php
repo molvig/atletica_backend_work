@@ -29,6 +29,9 @@
     <script>
             tinymce.init({selector:'#veckansfokus_uppdatera', menubar: false, format_blocks: false, forced_root_block : false});
     </script> 
+        <script>
+            tinymce.init({selector:'#meddelande_text', menubar: false, format_blocks: false, forced_root_block : false});
+    </script> 
 <script>
     $('#myModal').modal(options)
 </script> 
@@ -96,6 +99,7 @@
             <li><a href="installningar_schema_uppdatera.php">Ändra i originalschema</a></li>
             <li><a href="installningar_nyinstruktor.php">Instruktörer</a></li>
             <li><a href="installningar_nyttpass.php">Pass</a></li>
+            <li><a href="installningar_kontaktmedlemmar.php">Meddela alla medlemmar</a></li>
             <li class="divider"></li>
             <li><a href="medlem_tabort.php" style="color:red">Radera medlem</a></li>
           </ul>

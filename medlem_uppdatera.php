@@ -153,6 +153,20 @@
             </label>
            </div>
         </div>
+
+<?php if($antalklipp!= null) { ?>
+          <div class="grid_12">
+            <div class="grid_6">
+              <label>Antal klipp kvar
+                <input type="text" class="form-control" name="kort" id="kort" value="<?php echo $antalklipp; ?>" readonly></label>
+            </div>
+          <div class="grid_6">
+            <label>Gäller till <br>
+              <input type="text" name="date" class="form-control" value="" readonly>
+            </label>
+           </div>
+        </div>
+<?php } ?>
 </fieldset>
 <br>
 <legend>Nytt medlemskort</legend>

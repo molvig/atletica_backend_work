@@ -6,17 +6,19 @@
 <div class="grid_2"><?php include("inc/menystatistik.php"); ?></div> 
 <div class="grid_5">
 
+
+
   <form method="post" action="statistik_nyamedlemmar_post.php">
      Nya medlemmar 
   <div class="grid_12">
       <div class="grid_6">
                   <label>Från
-                    <input type="text" name="medlemfran" id="medlemfran" class="tcal" value="<?php echo date('Y-m-d');?>" >
+                    <input type="text" name="medlemfran" id="medlemfran" class="tcal" value="<?php echo $medlemfran; ?>" >
                   </label>
       </div>
             <div class="grid_6">
                   <label>Till
-                    <input type="text" name="medlemtill" id="medlemtill" class="tcal" value="<?php echo date('Y-m-d');?>" >
+                    <input type="text" name="medlemtill" id="medlemtill" class="tcal" value="<?php echo $medlemtill; ?>" >
                   </label>
       </div>
 </div>

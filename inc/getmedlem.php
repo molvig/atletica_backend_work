@@ -26,46 +26,41 @@
 	 $status="";
 	 $kortstatus="";
 	 $ag_aktivt="";
+	 $antalklipp="";
 
 	 
 
+	try {
+					$query = ("SELECT kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, meddelande, medlemsstart, passantal, nyckelkort FROM medlemmar WHERE kundnr ={$id_medlem}");
+					$stmt = $db ->prepare($query);
+					$stmt->execute();
+					}
+					catch (Exception $e) {
+					echo "Data could not be retrieved from the database";
+					exit;
+					}
+					$member = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-	 try {
-			$query = ("SELECT kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, meddelande, medlemsstart, passantal, nyckelkort  FROM medlemmar WHERE kundnr ={$id_medlem}");
-			$stmt = $db ->prepare($query);
-			$stmt->execute();
-
-
-	} 
-	catch (Exception $e) {
-			echo "Data could not be retrieved from the database";
-			exit;
-	}
-
-	$member = $stmt->fetchAll(PDO::FETCH_ASSOC); 
-	
-
-
-          foreach($member as $m){
-
-				 $kundnr .= $m['kundnr'];
-				 $personnr .= $m['personnr'];
-				 $fnamn .= $m['fnamn'];
-				 $enamn .= $m['enamn'];
-				 $telefon .= $m['telefon'];
-				 $mail .= $m['mail'];
-	 			 $anteckning .= $m['anteckning'];
-	 			 $medlemsstart .= $m['medlemsstart'];
-				 $passantal.= $m['passantal'];
-				 $nyckelkort .= $m['nyckelkort'];
-             }
-	$stmt->closeCursor(); 	
+					foreach($member as $m){
+						$kundnr .= $m['kundnr'];
+						$personnr .= $m['personnr'];
+						$fnamn .= $m['fnamn'];
+						$enamn .= $m['enamn'];
+						$telefon .= $m['telefon'];
+						$mail .= $m['mail'];
+						$anteckning .= $m['anteckning'];
+						$medlemsstart .= $m['medlemsstart'];
+						$passantal.= $m['passantal'];
+						$nyckelkort .= $m['nyckelkort'];
+					}
+					
+					$stmt->closeCursor(); 
 
 
 
 	 try {
 	 		$today = date("Y-m-d"); 
-			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, fryst, frysdatum FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1"); 
+			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, fryst, frysdatum, antalklipp FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1"); 
 			$stmt = $db ->prepare($query);
 			$stmt->execute();
 	} 
@@ -85,6 +80,7 @@
 				$giltigttill .= $k['giltigttill'];
 				$fryst .= $k['fryst'];
 				$frysdatum.= $k['frysdatum'];
+				$antalklipp.= $k['antalklipp'];
 				
              }
 

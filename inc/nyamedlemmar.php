@@ -6,13 +6,10 @@
 $medlemfran =$_POST['medlemfran'];
 $medlemtill =$_POST['medlemtill'];
 
-$medlemfran = date('Y-m-d', strtotime($medlemfran));
-$medlemtill = date('Y-m-d', strtotime($medlemtill));
 
-/*  */
 
 try {
-  $query = "SELECT * FROM medlemmar WHERE medlemsstart >= '$medlemfran' AND medlemsstart <= '$medlemfran' ORDER BY medlemsstart DESC";  
+  $query = "SELECT * FROM medlemmar WHERE medlemsstart >= '{$medlemfran}' AND medlemsstart <= '{$medlemtill}' ORDER BY medlemsstart DESC";  
   $stmt = $db ->prepare($query);
   $stmt->execute();
 

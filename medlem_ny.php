@@ -87,7 +87,7 @@
 
             <div class="grid_6" id="10kort" name="10kort" style="visibility:hidden">
               <label>Antal 10-kort<br>
-               <select class="form-control" name="antal10kort" id="antal10kort">
+               <select class="form-control" name="kortantal" id="kortantal">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
