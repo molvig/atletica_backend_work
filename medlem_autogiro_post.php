@@ -26,7 +26,7 @@ $query = "SELECT * FROM medlemmar WHERE kundnr={$kundnummer}";
 
 foreach( $result as $row ) {
 
-$found .= "<tr>" . "<td>" . "<a href='medlem_autogiro.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>". "</tr>" ;
+$found .= "<tr>" . "<td>" . "<a href='medlem_uppdatera.php?pid=". $row['kundnr'] ."'>" . $row["kundnr"] . "</a>" . "</td>" . "<td>" . $row["fnamn"] .  "</td>" . "<td>"  . $row["enamn"] . "</td>" . "<td>"  . $row["personnr"] .  "</td>". "</tr>" ;
 
 $stmt->closeCursor(); 
 } 
