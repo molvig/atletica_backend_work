@@ -11,12 +11,12 @@
   <div class="grid_12">
       <div class="grid_6">
                   <label>Från
-                    <input type="text" name="medlemfran" id="medlemfran" class="tcal" value="<?php echo date('Y-m-d', mktime(0, 0, 0, date("m")-1, date("d"), date("Y")));;?>" >
+                    <input type="text" name="medlemfran" id="medlemfran" class="tcal" value="<?php echo date('Y-m-d', mktime(0, 0, 0, date("m")-1, date("d"), date("Y")));?>" >
                   </label>
       </div>
             <div class="grid_6">
                   <label>Till
-                    <input type="text" name="medlemtill" id="medlemtill" class="tcal" value="<?php echo date('Y-m-d') ;?>" >
+                    <input type="text" name="medlemtill" id="medlemtill" class="tcal" value="<?php echo date('Y-m-d', mktime(0, 0, 0, date("m"), date("d"), date("Y"))) ;?>" >
                   </label>
       </div>
 </div>

@@ -10,8 +10,11 @@
 	$korttyp = ($results -> fetchAll(PDO::FETCH_ASSOC));
 	$kort = "";
 
+
 	foreach ($korttyp as $k) {
 		$kort .= "<option value=". $k['kort'] . ">" . $k['korttyp'] . "</option>";
+		
+
 	}    
    
 

@@ -68,7 +68,6 @@
             <li><a href="medlem_search.php">Uppdatera medlem</a></li>
             <li><a href="medlem_search_autogiro.php">Säga upp autogiro</a></li>
             <li><a href="medlem_search_frys.php">Frys/Tina kort</a></li>
-            <li><a href="medlem_boka.php">Boka medlem på pass</a></li>
             
           </ul>
         </li>
@@ -84,6 +83,7 @@
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-stats"></span> Statistik<b class="caret"></b></a>
           <ul class="dropdown-menu">
+            <li><a href="statistik_bokade.php">Bokade pass</a></li>
             <li><a href="statistik_korttyp.php">Sök korttyp</a></li>
             <li><a href="statistik_nyamedlemmar.php">Nya medlemmar</a></li>
             <li><a href="statistik_frystakort.php">Frysta kort</a></li>

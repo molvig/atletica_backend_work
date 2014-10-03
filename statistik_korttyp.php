@@ -1,57 +1,30 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
+<?php include("inc/getkorttyp.php"); ?>
 
 
 <div class="grid_12">
   <div class="grid_12">
         <div class="grid_2"><?php include("inc/menystatistik.php"); ?></div>
         <div class="grid_7">
-          <center>
-            <h3>Sök efter typ av medlemskort </h3>
-            <p>Välj vilket typ av medlemsskap. 
-             </p>
-          </center>
-        </div>
-        <div class="grid_3"></div>
-  </div>
 
 
-  <div class="grid_12">
-      <form role="form" method="GET" action="search_korttyp.php">
-        <div class="grid_2"></div>
-        <div class="grid_7">
-          <center>
-            <label>Välj korttyp
-              <select type="search" class="form-control" name="korttyp" id="korttyp" >
-              <?php echo $kort ?> 
-              </select>
-             
-            </label>
-          </center>
-        </div>
-        <div class="grid_3"></div>   
-  </div>
+<div class="grid_12">
+   <form method="get" action="statistik_korttyp_post.php">
+      <h4> Sök på korttyp </h4>
+    <div class="grid_12">
+      <div class="grid_6">
+        <select name="korttyp" class="form-control">
+            <?php echo $kort; ?>
+        </select>
+      </div>
+    </div>
+    <div class="grid_12">
+      <button type="submit" class="btn btn-default">Sök
+    </div> 
+  </form>
+</div> 
 
-
-  <div class="grid_12">
-        <div class="grid_2"></div> 
-        <div class="grid_7">
-          <center>
-            <button type="submit" name="submit"  class="btn btn-default">Sök</button>
-          </center>
-        </div>
-        <div class="grid_3"></div>    
-  </div>
-   
-      </form>
-</div>
-
-	<br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
   
 
 

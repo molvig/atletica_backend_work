@@ -94,7 +94,9 @@ else { ?>
             </label>
            </div>
     </div>
-            <div class="grid_12">
+
+    <?php if ($bindningsdatum > $today) { ?>
+        <div class="grid_12">
           <div class="grid_6">
                 <div class="checkbox">
                 <label>
@@ -102,7 +104,9 @@ else { ?>
                 </label>
               </div>
           </div>
-    </div>
+      </div>
+
+   <?php } ?>
   <div class="grid_12">
     <input type="submit" name="autogiro" id="autogiro" class="btn btn-default" value="Säg upp autogiro">
   </div> 

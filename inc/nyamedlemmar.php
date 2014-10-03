@@ -4,12 +4,13 @@
 
  if(!empty($_POST)){
 $medlemfran =$_POST['medlemfran'];
-$medlemtill =$_POST['medlemtill'];
+$medlemtill = $_POST['medlemtill'];
 
+$medlemtills = date('Y-m-d H:i:s', strtotime($medlemtill . ' + 1 day'));
 
 
 try {
-  $query = "SELECT * FROM medlemmar WHERE medlemsstart >= '{$medlemfran}' AND medlemsstart <= '{$medlemtill}' ORDER BY medlemsstart DESC";  
+  $query = "SELECT * FROM medlemmar WHERE medlemsstart >= '{$medlemfran}' AND medlemsstart <= '{$medlemtills}' ORDER BY medlemsstart DESC";  
   $stmt = $db ->prepare($query);
   $stmt->execute();
 
