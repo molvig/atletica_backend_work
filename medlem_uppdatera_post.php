@@ -2,9 +2,10 @@
 <?php include("inc/header.php"); ?>
 
 
+
+
   <div class="grid_2">
   <?php include("inc/menymedlem.php"); ?>
-  
 </div>
 
 <div class="grid_6">

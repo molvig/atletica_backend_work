@@ -1,5 +1,5 @@
 <?php
-	 
+	 $today = date('Y-m-d');
 	if(!empty($_POST)){
 	    $personnr = $_POST['personnr'];
 	   	$fnamn = $_POST['fnamn'];
@@ -97,7 +97,7 @@
 
 
 
-
+if (($kortgiltigtfran >= $today) && ($giltigttill > $kortgiltigtfran)) { 
 		try {
 			$db->beginTransaction();
 			 $query = ("INSERT INTO medlemmar (kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, nyckelkort) VALUES (:kundnr, :personnr, :fnamn, :enamn, :phone, :mail, :note, :nyckelkort)");
@@ -140,4 +140,10 @@
 			   
 
 	}
-	?>
+
+       else { ?>
+        <div class="alert alert-danger" role="alert"><span><p>Det gick <u>INTE</u> att lägga till en ny medlem eftersom startdatumet för kortet ligger tidigare än dagens datum.</p></span></div>
+        
+      <?php }
+	
+} ?>

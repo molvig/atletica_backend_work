@@ -22,8 +22,9 @@ $today = date('Y-m-d');
 
 
 
+    if(isset($_POST['checknyttkort'])){
 
-      if(isset($_POST['checknyttkort']) && ($_POST['nyttkortgiltigt'] >= $today) && ($giltigttill <! $_POST['nyttkortgiltigt']))
+      if(($_POST['nyttkortgiltigt'] >= $today) && ($giltigttill <! $_POST['nyttkortgiltigt']) && ($giltigttill > $kortgiltigtfran))
         {
 
       $nyttkortgiltigtfran = $_POST['nyttkortgiltigt'];
@@ -101,7 +102,7 @@ $today = date('Y-m-d');
                   $antalklipp = null;}
 
 
-    if($nyttkortgiltigtfran >= $today && $nyttkortgiltigtfran > $giltigttill) {$aktivtkort=1;}
+    if(($nyttkortgiltigtfran >= $today) && ($nyttkortgiltigtfran > $giltigttill)) {$aktivtkort=1;}
     else {$aktivtkort=0;}
 
 
@@ -142,7 +143,7 @@ $today = date('Y-m-d');
         <div class="alert alert-danger" role="alert"><span><p>Det gick <u>INTE</u> att lägga till ett nytt medlemskort eftersom startdatumet för det nya kortet ligger tidigare än dagens datum eller så finns det redan ett giltigt kort i samma datumintervall.</p></span></div>
         
       <?php }
-
+}
 
     try {
        $query = ("UPDATE medlemmar SET enamn=:enamn, telefon=:phone, mail=:mail, anteckning=:note, passantal=:passantal, nyckelkort=:nyckelkort WHERE kundnr={$kundnummer}");
