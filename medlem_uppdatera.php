@@ -2,6 +2,8 @@
 <?php include("inc/header.php"); ?>
 <?php include("inc/getmedlem.php"); ?>
 <?php include("inc/getkorttyp.php"); ?>
+<?php include ('inc/update_medlem.php'); ?>
+
 
   <div class="grid_2">
   <?php include("inc/menymedlem.php"); ?>
@@ -149,7 +151,7 @@
             </div>
           <div class="grid_6">
             <label>Gäller till <br>
-              <input type="text" name="date" class="form-control" value="<?php echo date('Y-m-d', strtotime($giltigttill)); ?>" readonly>
+              <input type="text" name="oldgiltigttill" id="oldgiltigttill" class="form-control" value="<?php echo date('Y-m-d', strtotime($giltigttill)); ?>" readonly>
             </label>
            </div>
         </div>
@@ -187,13 +189,18 @@
                   </select></label>
               </div>
             </div>
-            <div class="grid_6" id="gallerfran" name="gallerfran">
+            <div class="grid_6" id="nyttgallerfran" name="nyttgallerfran">
               <label>Gäller från <br>
-               <input type="text" name="kortgiltigt" id="kortgiltigt" class="tcal" value="<?php echo date('Y-m-d');?>" >
+               <input type="text" name="nyttkortgiltigt" id="nyttkortgiltigt" class="tcal" value="<?php echo $nyttdatum; ?>" >
               </label>
             </div>
         </div>
 
+<!--
+        <div class="grid_12">
+          <div class="alert alert-danger" role="alert">Det finns redan ett kort som gäller för detta datum</div>
+        </div>
+-->
 
         <div class="grid_12"  id="specialkort" name="specialkort" style="visibility:hidden"> 
 
@@ -224,7 +231,7 @@
 
           <div class="grid_12">
             <div class="grid_12">
-              <h4>Befintliga Medlemskort</h4>
+              <h4>Befintliga medlemskort</h4>
 
                <div class="panel panel-default">
                   <table class="table">
@@ -250,7 +257,7 @@
         <div class="grid_6">
           <button type="submit" name="submit"  class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Uppdatera</button>
         </div>
-<?php include ('inc/update_medlem.php'); ?>
+
 
 
 </form>

@@ -42,44 +42,44 @@
 	   if ($korttyp == "H"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 183 days')); 
 	   							$bindningsdatum = null ;
 	   							$ag_aktivt=0;}
-	   							$antalklipp = 0;
+	   							$antalklipp = null;
 	   if ($korttyp == "HS"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 183 days')); 
 		   						$bindningsdatum = null ;
 	   							$ag_aktivt=0;
-	   							$antalklipp = 0;}
+	   							$antalklipp = null;}
 	   if ($korttyp == "MD"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); 
 			   					$bindningsdatum = null ;
 	   							$ag_aktivt=0;
-	   							$antalklipp = 0;}
+	   							$antalklipp = null;}
 	   if ($korttyp == "MK"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); 
 		   						$bindningsdatum = null ;
 	   							$ag_aktivt=0;
-	   							$antalklipp = 0;}
+	   							$antalklipp = null;}
 	   if ($korttyp == "MS"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); 
 		   						$bindningsdatum = null ;
 	   							$ag_aktivt=0;
-	   							$antalklipp = 0;}
+	   							$antalklipp = null;}
 	   if ($korttyp == "MU"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 30 days')); 
 		   						$bindningsdatum = null ;
 	   							$ag_aktivt=0;
-	   							$antalklipp = 0;}
+	   							$antalklipp = null;}
 	   if ($korttyp == "YK"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); 
 		   						$bindningsdatum = null ;
 	   							$ag_aktivt=0;
-	   							$antalklipp = 0;}
+	   							$antalklipp = null;}
 	   if ($korttyp == "YS"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days'));
 		   						$bindningsdatum = null ;
 	   							$ag_aktivt=0;
-	   							$antalklipp = 0;}
+	   							$antalklipp = null;}
 	   if ($korttyp == "YSTUDENT"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 365 days')); 
 		   						$bindningsdatum = null ;
 	   							$ag_aktivt=0;
-	   							$antalklipp = 0;}
+	   							$antalklipp = null;}
 
 		if ($korttyp == "SPECIAL"){$giltigttill = date('Y-m-d', strtotime($giltigttillspecial)); 
 		   						$bindningsdatum = null ;
 	   							$ag_aktivt=0;
-	   							$antalklipp = 0;}
+	   							$antalklipp = null;}
 
 		if($kortgiltigtfran >= $today) {$aktivtkort=1;}
 		else {$aktivtkort=0;}
@@ -112,6 +112,7 @@
 			    					':nyckelkort'=>$nyckelkort
 
 			    					));
+
 			   $query = ("INSERT INTO medlemskort (kundnr, giltigtfran, giltigttill, kort, aktivtkort, bindningsdatum, ag_aktivt, antalklipp) VALUES (:kundnr, :kortgiltigtfran, :kortgiltigttill, :korttyp, :aktivtkort, :bindningsdatum, :ag_aktivt, :antalklipp)");
 			    $q = $db -> prepare($query);
 			    $q -> execute(array(':kundnr'=>$biggestkundnr,

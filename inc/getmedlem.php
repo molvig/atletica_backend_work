@@ -112,8 +112,12 @@
 				if ($row['aktivtkort'] == 1 && $row['giltigtfran']<=$today || $ag_aktivt==1) 
 						{$kortstatus = "Aktivt";}
 
+				else if ($row['aktivtkort'] == 0 && $row['giltigttill']>=$today || $ag_aktivt==1) 
+						{$kortstatus = "Aktivt";}
+
 				else if ($row['aktivtkort'] == 1 && $row['giltigtfran']>$today) 
 						{$kortstatus = "Ej börjat gälla";}
+
 
 				else if ($row['aktivtkort'] == 0 || $row['giltigttill']<$today || $ag_aktivt==0) 
 						{$kortstatus = "Ej aktivt";}
@@ -172,6 +176,24 @@ $today = date("Y-m-d");
 			echo $e;
 			exit;
 	}
+
+
+
+      $today = date("Y-m-d"); 
+      $nyttdatum = "";
+
+
+if ($giltigttill >= $today){
+  $nyttdatum = date('Y-m-d', strtotime($giltigttill. ' + 1 day')); 
+}
+
+else {
+   $nyttdatum = $today;
+
+}
+
+
+
 
 
 ?>
