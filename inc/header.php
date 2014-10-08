@@ -68,6 +68,7 @@
             <li><a href="medlem_search.php">Uppdatera medlem</a></li>
             <li><a href="medlem_search_autogiro.php">Säga upp autogiro</a></li>
             <li><a href="medlem_search_frys.php">Frys/Tina kort</a></li>
+            <li><a href="medlem_skuldlista.php">Skuldlista</a></li>
             
           </ul>
         </li>

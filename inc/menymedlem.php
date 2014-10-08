@@ -7,5 +7,6 @@
 	  <a href="medlem_search.php" class="list-group-item">Uppdatera medlem</a>
 	  <a href="medlem_search_autogiro.php" class="list-group-item">Säg upp autogiro</a>
 	  <a href="medlem_search_frys.php" class="list-group-item">Frys/Tina kort</a>
+	  <a href="medlem_skuldlista.php" class="list-group-item">Skuldlista</a>
 
 	</div>
