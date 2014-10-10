@@ -13,20 +13,6 @@ $today = date('Y-m-d');
 
       $giltigttill = $_POST['oldgiltigttill'];
 
-
-
-      if (isset($_POST['nyckelkort'])) {$nyckelkort = 1;}
-        else {$nyckelkort = 0;}
-
-  
-
-
-
-    if(isset($_POST['checknyttkort'])){
-
-      if(($_POST['nyttkortgiltigt'] >= $today) && ($giltigttill <! $_POST['nyttkortgiltigt']) && ($giltigttill > $kortgiltigtfran))
-        {
-
       $nyttkortgiltigtfran = $_POST['nyttkortgiltigt'];
       $nyttgiltigttillspecial = $_POST['kortgiltigttill'];
       $anteckning = $_POST['note'];
@@ -35,8 +21,15 @@ $today = date('Y-m-d');
       $kortantal = $_POST['antal10kort']; 
 
 
+      if (isset($_POST['nyckelkort'])) {$nyckelkort = 1;}
+        else {$nyckelkort = 0;}
 
+ //($giltigttill > $_POST['nyttkortgiltigt'])
 
+    if(isset($_POST['checknyttkort'])){
+
+      if(($nyttkortgiltigtfran >= $today) && ($nyttkortgiltigtfran > $giltigttill) && ($nyttgiltigttillspecial > $nyttkortgiltigtfran))
+        {
 
 
      if ($korttyp == "AG12"){$nyttgiltigttill = date('Y-m-d', strtotime($nyttkortgiltigtfran. ' + 365 days'));
