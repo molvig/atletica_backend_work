@@ -34,6 +34,8 @@ if(isset($_GET['passid']))
 	$passObj = ($results -> fetch(PDO::FETCH_OBJ));
 	$results->closeCursor();
 echo $passObj->schematyp;
+$slut = $passObj->sluttid;
+$start = $passObj->starttid;
 	foreach($passnamn as $p)
 	{
 		if ($p['passnamn'] == $passObj->passnamn) 
@@ -75,6 +77,15 @@ echo $passObj->schematyp;
 	}
 	
 }
+if($slut == "0000-00-00 00:00:00")
+{
+	//använd slut
+	$slut = $_POST["sluttid"];
+}
+elseif ($slut == $_POST["sluttid"]) {
+	$slut = $_POST["sluttid"];
+}
+
 //Då var det dags att uppdatera passen på orginalschemat
 /*uppdatera ett pass på schemat plocka bara det befintliga passid*/
 //select * from bokningsbara where bokningsbarID = :passId
@@ -88,6 +99,11 @@ if(!empty($_POST)){
 	    AND veckodag = :vDag
 	    AND starttid = :sttid';
 
+
+if($start == $_POST["starttid"])
+{
+	//använd start
+}
 
 try 
 		{
@@ -113,14 +129,12 @@ try
 
 		
 			$results = $db -> prepare ($sql);
-			$results->execute(
-				array(':antP' => $_POST["platser"],
+			$results->execute(array(':antP' => $_POST["platser"],
 					':pNamn' => $_POST["pass"],
 					':iNamn' => $_POST["instruktor"],
 					':stTid' => $_POST["starttid"],
-					':slTid' => $_POST"sluttid"],
-					':passId' => $_GET["passid"]				
-				));
+					':slTid' => $slut,
+					':passId' => $_GET["passid"]));
 
 		
 		$results->closeCursor();
