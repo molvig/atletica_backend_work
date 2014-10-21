@@ -33,14 +33,12 @@
 <div class="grid_12">
    <form method="post" action="statistik_bokade_post.php">
       <h4> Sök på instruktör </h4>
-    <div class="grid_12">
       <div class="grid_6">
         <select name="instruktor" class="form-control">
             <?php echo $instnamnet ?>
         </select>
       </div>
-    </div>
-    <div class="grid_12">
+    <div class="grid_6">
       <button type="submit" class="btn btn-default">Sök på instruktör
     </div> 
   </form>
@@ -49,14 +47,12 @@
 <div class="grid_12">
    <form method="post" action="statistik_bokade_post.php">
       <h4> Sök på pass </h4>
-    <div class="grid_12">
-      <div class="grid_6">
+    <div class="grid_6">
         <select name="pass" class="form-control">
             <?php echo $pass ?>
         </select>
       </div>
-    </div>
-    <div class="grid_12">
+    <div class="grid_6">
       <button type="submit" class="btn btn-default">Sök på pass
     </div> 
   </form>
