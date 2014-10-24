@@ -1,5 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
+<?php include("inc/schema_date.php"); ?>
   <div class="grid_2">
   <?php include("inc/menyschema.php"); ?>
   
@@ -16,7 +17,7 @@
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Måndag <?php ?>
+		    Måndag <?php echo $nextmon; ?>
 		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 

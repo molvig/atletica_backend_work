@@ -1,5 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
+<?php include("inc/schema_date.php"); ?>
   <div class="grid_2">
   <?php include("inc/menyschema.php"); ?>
   
@@ -11,13 +12,16 @@
 <!-- Växlar mellan veckorna-->
 <ul class="pager">
   <li class="previous disabled"><a href="#">&larr; Föregående vecka</a></li>
-  <li class="next"><a href="schema_nextweek.php">Nästa vecka &rarr;</a></li>
+  <li class="next"><a href="schema.php">Nästa vecka &rarr;</a></li>
+
+  <button type="submit" class="btn btn-default" id="test" onclick="addweek()">Nästa vecka &rarr;</button>
+            
 </ul>
 
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Måndag <?php ?>
+		    Måndag <span id="mon"> <?php echo $mon; ?> </span>
 		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
@@ -27,7 +31,7 @@
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Tisdag <?php ?>
+		    Tisdag <?php echo $tue; ?>
 		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
@@ -37,7 +41,7 @@
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Onsdag <?php ?>
+		    Onsdag <?php echo $wed;?>
 		    </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
@@ -47,7 +51,7 @@
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Torsdag <?php ?>
+		    Torsdag <?php echo $thu;?>
 		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
@@ -57,7 +61,7 @@
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Fredag <?php ?>
+		    Fredag <?php echo $fri;?>
 		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
@@ -67,7 +71,7 @@
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Lördag <?php ?>
+		    Lördag <?php echo $sat;?>
 		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
@@ -77,12 +81,25 @@
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Söndag <?php ?>
+		    Söndag <?php echo $sun;?>
 		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>
+
+  <script> 
+
+ 	function addweek(){
+  	var oldDate = document.getElementById("mon");
+    var myDate = new Date();
+    myDate.setDate(myDate.getDate()+7);
+    return myDate;
+		}
+
+	document.getElementById("mon").innerHTML = myDate;
+
+    </script> 
 
 
 
