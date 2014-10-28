@@ -1,8 +1,12 @@
 <?php
 //Fyll fälten som ska uppdateras
+if(!empty($_POST)){
+	$startTid = $_POST["starttid"];
+	$slutTid = $_POST["sluttid"];
 
-if(isset($_GET['passid']))
-{
+
+/*if(isset($_GET['passid']))
+{*/
 	try {
 			$results = $db -> query ("SELECT * FROM pass");
 	} 
@@ -76,21 +80,20 @@ $start = $passObj->starttid;
 
 	}
 	
-}
-if($slut == "0000-00-00 00:00:00")
+//}
+/*if($slut == "0000-00-00 00:00:00")
 {
 	//använd slut
 	$slut = $_POST["sluttid"];
 }
 elseif ($slut == $_POST["sluttid"]) {
 	$slut = $_POST["sluttid"];
-}
+}*/
 
 //Då var det dags att uppdatera passen på orginalschemat
 /*uppdatera ett pass på schemat plocka bara det befintliga passid*/
 //select * from bokningsbara where bokningsbarID = :passId
 //select * from schemat where bokningsbarID = :passId
-if(!empty($_POST)){
 	
 	/*uppdatera alla pass på schemat börja med att plocka ut alla passId*/
 	$sql = 'SELECT distinct b.bokningsbarID FROM bokningsbara as b , schemat as s 
@@ -100,9 +103,14 @@ if(!empty($_POST)){
 	    AND starttid = :sttid';
 
 
-if($start == $_POST["starttid"])
+if($start != $startTid)
 {
-	//använd start
+	$start = $startTid;
+}
+
+if($slut != $slutTid)
+{
+	$slut = $slutTid;
 }
 
 try 
@@ -132,7 +140,7 @@ try
 			$results->execute(array(':antP' => $_POST["platser"],
 					':pNamn' => $_POST["pass"],
 					':iNamn' => $_POST["instruktor"],
-					':stTid' => $_POST["starttid"],
+					':stTid' => $start,
 					':slTid' => $slut,
 					':passId' => $_GET["passid"]));
 
