@@ -36,6 +36,8 @@
     $('#myModal').modal(options)
 </script> 
 
+   
+   
 
 
   </head>
