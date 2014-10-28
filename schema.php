@@ -1,27 +1,74 @@
 <?php include("inc/db_con.php"); ?>
+<?php include("inc/get_pass_schema_bokningsbar.php"); ?>
+
+
+
+<?php $_SESSION['schemaID'] = $schemaID ; ?>
+
+
+
 <?php include("inc/header.php"); ?>
-<?php include("inc/schema_date.php"); ?>
+
   <div class="grid_2">
   <?php include("inc/menyschema.php"); ?>
   
 </div>
 
 <div class="grid_10">
-<center><h3>Schema 2014</h3></center>
+
+
+<center><h3><?php if ($schemaID == 'schemaid=1'){ 
+
+            echo "Vårschema";
+
+            }?>
+
+            <?php if ($schemaID == 'schemaid=2'){ 
+
+            echo "Sommarschema";
+
+            }?>
+
+            <?php if ($schemaID == 'schemaid=3'){ 
+
+            echo "Höstschema";
+
+            }?>
+
+            <?php if ($schemaID == 'schemaid=4'){ 
+
+            echo "Vinterschema";
+
+            }?></h3></center>
+
+<form >
 
 <!-- Växlar mellan veckorna-->
-<ul class="pager">
-  <li class="previous disabled"><a href="#">&larr; Föregående vecka</a></li>
-  <li class="next"><a href="schema.php">Nästa vecka &rarr;</a></li>
+<div class="pager">
 
-  <button type="submit" class="btn btn-default" id="test" onclick="addweek()">Nästa vecka &rarr;</button>
+   <input style="float:left;" type="button" class="btn btn-default" onclick="lastweek()" value="&larr; Föregående vecka" />
+
+  <input style="float:right;"type="button" class="btn btn-default" onclick="nextweek()" value="Nästa vecka &rarr;" />
             
-</ul>
+</div>
+
+
 
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Måndag <span id="mon"> <?php echo $mon; ?> </span>
+		    Måndag <input style="background-color:transparent; border:none" id="mon" type="text" name="monday" readonly />
+		     </p> 
+
+		    <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
+
+	</div>
+</div>
+
+<div class="grid_1a">
+	<div class="list-group">
+		  <p class="list-group-item active">
+		    Tisdag <input style="background-color:transparent; border:none" id="tue" type="text" readonly />
 		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
@@ -31,17 +78,7 @@
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Tisdag <?php echo $tue; ?>
-		  </p>
-		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
-
-	</div>
-</div>
-
-<div class="grid_1a">
-	<div class="list-group">
-		  <p class="list-group-item active">
-		    Onsdag <?php echo $wed;?>
+		    Onsdag <input style="background-color:transparent; border:none" id="wed" type="text" readonly />
 		    </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
@@ -51,7 +88,7 @@
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Torsdag <?php echo $thu;?>
+		    Torsdag <input style="background-color:transparent; border:none" id="thu" type="text" readonly />
 		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
@@ -61,7 +98,7 @@
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Fredag <?php echo $fri;?>
+		    Fredag <input style="background-color:transparent; border:none" id="fri" type="text" readonly />
 		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
@@ -71,7 +108,7 @@
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Lördag <?php echo $sat;?>
+		    Lördag <input style="background-color:transparent; border:none" id="sat" type="text" readonly />
 		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
@@ -81,25 +118,18 @@
 <div class="grid_1a">
 	<div class="list-group">
 		  <p class="list-group-item active">
-		    Söndag <?php echo $sun;?>
+		    Söndag <input style="background-color:transparent; border:none" id="sun" type="text" readonly />
 		  </p>
 		  <a href="schema_extra_pass.php" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>
 
-  <script> 
 
- 	function addweek(){
-  	var oldDate = document.getElementById("mon");
-    var myDate = new Date();
-    myDate.setDate(myDate.getDate()+7);
-    return myDate;
-		}
 
-	document.getElementById("mon").innerHTML = myDate;
+</form>
 
-    </script> 
+
 
 
 

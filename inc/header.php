@@ -75,10 +75,10 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-calendar"></span> Schema<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="schema.php">Vår</a></li>
-            <li><a href="schema.php">Sommar</a></li>
-            <li><a href="schema.php">Höst</a></li>
-            <li><a href="schema.php">Vinter</a></li>
+            <li><a href="schema.php?schemaid=1" id="1">Vår</a></li>
+            <li><a href="schema.php?schemaid=2" id="2">Sommar</a></li>
+            <li><a href="schema.php?schemaid=3" id="3">Höst</a></li>
+            <li><a href="schema.php?schemaid=4" id="4">Vinter</a></li>
           </ul>
         </li>
           <li class="dropdown">

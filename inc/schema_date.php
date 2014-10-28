@@ -1,5 +1,7 @@
 <?php
 
+$bokdate = $_REQUEST['monday'];
+
 $startdate = "2014-10-05";
 
 

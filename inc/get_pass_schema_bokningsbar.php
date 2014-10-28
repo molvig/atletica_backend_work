@@ -2,7 +2,9 @@
  $schemaID = $_SERVER['QUERY_STRING'] ;
  $url=strtok($_SERVER["REQUEST_URI"],'?');
 
-if($url =='/atletica_backend_work/schema_uppdatera_original.php')
+
+
+if($url =='/atletica_backend_work/schema.php')
 {
  $mon = "";
  $tue = "";
@@ -13,7 +15,7 @@ if($url =='/atletica_backend_work/schema_uppdatera_original.php')
  $sun = "";
  
 
-$sql = 'SELECT distinct b.bokningsbarID, veckodag, Time(starttid) as tid, passnamn FROM bokningsbara as b , schemat as s 
+$sql = 'SELECT distinct b.bokningsbarID, veckodag, datum, Time(starttid) as tid, passnamn FROM bokningsbara as b , schemat as s 
 	WHERE b.bokningsbarID = s.bokningsbarID 
 	AND s.schematyp = :scID
 	group by passnamn, veckodag

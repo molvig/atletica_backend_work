@@ -11,14 +11,14 @@
 </div>
 
 
-<div class="grid_8">
+<div class="grid_9">
 <form action="#">
 	<div class="grid_12">
 
-    	<div class="grid_3">
+    	<div class="grid_4">
           
           <label>Vårschemat gäller från
-          	<p>2014-08-05</p>
+          	<input type="text" class="form-control" name="date" value="" readonly>
           </label>
         </div>
 
@@ -32,10 +32,10 @@
 	</div>
 	<div class="grid_12">
 	    	
-    	<div class="grid_3">
+    	<div class="grid_4">
           
           <label>Sommarschemat gäller från
-          	<p>2014-08-05</p>
+          	<input type="text" class="form-control"name="date" value="" readonly>
           </label>
         </div>
 
@@ -47,10 +47,10 @@
 
 	<div class="grid_12">
 	    	
-    	<div class="grid_3">
+    	<div class="grid_4">
           
           <label>Höstschemat gäller från
-          	<p>2014-08-05</p>
+          	<input type="text" class="form-control" name="date" value="" readonly>
           </label>
         </div>
 
@@ -62,10 +62,10 @@
 
 	<div class="grid_12">
 	    	
-    	<div class="grid_3">
+    	<div class="grid_4">
           
           <label>Vinterschemat gäller från
-          	<p>2014-08-05</p>
+          	<input type="text" class="form-control" name="date" value="" readonly>
           </label>
         </div>
 		<div class="grid_6">
