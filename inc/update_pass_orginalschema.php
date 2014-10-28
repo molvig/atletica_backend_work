@@ -1,12 +1,7 @@
 <?php
 //Fyll fälten som ska uppdateras
-if(!empty($_POST)){
-	$startTid = $_POST["starttid"];
-	$slutTid = $_POST["sluttid"];
-
-
-/*if(isset($_GET['passid']))
-{*/
+if(isset($_GET['passid']))
+{
 	try {
 			$results = $db -> query ("SELECT * FROM pass");
 	} 
@@ -35,14 +30,14 @@ if(!empty($_POST)){
 		echo "Det blev något fel när databasen skulle kontaktas";
 	}
 
-	$passObj = ($results -> fetch(PDO::FETCH_OBJ));
+	$passObj = ($results -> fetch(PDO::FETCH_ASSOC));
 	$results->closeCursor();
-echo $passObj->schematyp;
-$slut = $passObj->sluttid;
-$start = $passObj->starttid;
+echo $passObj['schematyp'];
+$slut = $passObj['sluttid'];
+$start = $passObj['starttid'];
 	foreach($passnamn as $p)
 	{
-		if ($p['passnamn'] == $passObj->passnamn) 
+		if ($p['passnamn'] == $passObj['passnamn']) 
 		{
 			$pass .= "<option value='".$p['passnamn']."' selected='selected'>".$p['passnamn']."</option>";
 		}
@@ -68,7 +63,7 @@ $start = $passObj->starttid;
 		$instnamnet ="";
             foreach($instnamn as $i)
             {
-		          if($passObj->instnamn == $i['instnamn'])
+		          if($passObj['instnamn'] == $i['instnamn'])
 		          {
 		          	$instnamnet .= "<option value='".$i['instnamn']."' selected = 'selected'>".$i['instnamn']."</option>";
 		          }
@@ -80,7 +75,11 @@ $start = $passObj->starttid;
 
 	}
 	
-//}
+}
+if(!empty($_POST)){
+	$startTid = $_POST["starttid"];
+	$slutTid = $_POST["sluttid"];
+
 /*if($slut == "0000-00-00 00:00:00")
 {
 	//använd slut
@@ -113,19 +112,28 @@ if($slut != $slutTid)
 	$slut = $slutTid;
 }
 
+ $stTime = explode(":", $start);
+    $stDate = new DateTime('0000-01-01');
+    $stDate->setTime($stTime[0],$stTime[1]);
+
+    $slTime = explode(":", $slut);
+    $slDate = new DateTime('0000-01-01');
+    $slDate->setTime($slTime[0],$stTime[1]);
+
 try 
 		{
 			$results = $db -> prepare ($sql);
 			$results->execute(array(':passId' => $_GET["passid"],
-				':scId' => $passObj->schematyp,
-				':vDag' => $passObj->veckodag,
-				':sttid' => $passObj->starttid));
+				':scId' => $passObj['schematyp'],
+				':vDag' => $passObj['veckodag'],
+				':sttid' => $passObj['starttid']));
 
 			$schemalagdapass = ($results -> fetchAll(PDO::FETCH_ASSOC));
 			$results->closeCursor();
 
 	foreach($schemalagdapass as $row)
 	{
+		echo $row['bokningsbarID'];
 		$sql = 'UPDATE bokningsbara set
 		antalplatser = :antP,
 		passnamn = :pNamn,
@@ -140,8 +148,8 @@ try
 			$results->execute(array(':antP' => $_POST["platser"],
 					':pNamn' => $_POST["pass"],
 					':iNamn' => $_POST["instruktor"],
-					':stTid' => $start,
-					':slTid' => $slut,
+					':stTid' => $stDate->format('Y-m-d H:i:s'),
+					':slTid' => $slDate->format('Y-m-d H:i:s'),
 					':passId' => $_GET["passid"]));
 
 		
@@ -154,7 +162,7 @@ try
 		}
 	/*uppdatera schema ett pass bara
 	updatera orginal alla på samma dag tid och schema*/
-
-	
 }
+
+
 ?>

@@ -17,7 +17,7 @@ $sql = 'SELECT distinct b.bokningsbarID, veckodag, Time(starttid) as tid, passna
 	WHERE b.bokningsbarID = s.bokningsbarID 
 	AND s.schematyp = :scID
 	group by passnamn, veckodag
-	order by b.veckodag asc;';
+	order by b.veckodag, tid asc;';
 
 try {
 	$results = $db -> prepare ($sql);

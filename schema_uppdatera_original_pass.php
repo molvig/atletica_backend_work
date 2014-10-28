@@ -21,8 +21,8 @@
 </script>
 
 <h3>Lägg till pass i schema 2014</h3>
-
-<form class="form-horizontal" role="form" action="#" method="post">
+<?php $scid = $passObj['schematyp']; //schema_uppdatera_original.php?schemaid=<?php echo $scid; ?>
+<form class="form-horizontal" role="form" action="javascript:alert("uppdaterad");" method="post">
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Pass</label>
     <div class="col-sm-4">
@@ -34,13 +34,13 @@
     <div class="form-group">
     <label for="platser" class="col-sm-2 control-label">Antal platser</label>
     <div class="col-sm-4">
-      <input type="number" name="platser" min="0" max="100" class="form-control" id="platser" value="<?php echo $passObj->antalplatser; ?>" >
+      <input type="number" name="platser" min="0" max="100" class="form-control" id="platser" value="<?php echo $passObj['antalplatser']; ?>" >
     </div>
   </div>
     <div class="form-group">
                     <label for="datetimepicker" class="col-sm-2 control-label">Starttid</label>
                     <div class="col-sm-4">
-                        <input id="datetimepicker1" type="text" class="form-control" onChange="changeHiddenStart(this.value)" value="<?php echo $passObj->starttid; ?>">
+                        <input id="datetimepicker1" type="text" class="form-control" onChange="changeHiddenStart(this.value)" value="<?php echo $passObj['starttid']; ?>">
                     </div>
                   <input type="hidden" id="starttid" name="starttid" value=""/> 
 
@@ -55,7 +55,7 @@
   <div class="form-group">
             <label for="datetimepicker" class="col-sm-2 control-label">Sluttid</label>
             <div class="col-sm-4">
-                <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut(this.value)" value="<?php echo $passObj->sluttid; ?>" >
+                <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut(this.value)" value="<?php echo $passObj['sluttid']; ?>" >
             </div>
           <input type="hidden" id="sluttid" name="sluttid" value=""/> 
         <script>
@@ -80,39 +80,39 @@
     <div class="col-sm-4">
         <select name="days" class="form-control">
 
-        <?php if ($passObj->veckodag == '1'){ 
+        <?php if ($passObj['veckodag'] == '1'){ 
 
          echo "<option value='1'>Måndag</option>";
 
         }?>
-        <?php if ($passObj->veckodag == '2'){ 
+        <?php if ($passObj['veckodag'] == '2'){ 
 
          echo "<option value='2'>Tisdag</option>";
 
         }?>
-        <?php if ($passObj->veckodag == '3'){ 
+        <?php if ($passObj['veckodag'] == '3'){ 
 
          echo "<option value='3'>Onsdag</option>";
 
         }?>
-        <?php if ($passObj->veckodag == '4'){ 
+        <?php if ($passObj['veckodag'] == '4'){ 
 
          echo "<option value='4'>Torsdag</option>";
 
         }?>
-        <?php if ($passObj->veckodag == '5'){ 
+        <?php if ($passObj['veckodag'] == '5'){ 
 
          echo "<option value='5'>Fredag</option>";
 
         }?>
         
-        <?php if ($passObj->veckodag == '6'){ 
+        <?php if ($passObj['veckodag'] == '6'){ 
 
          echo "<option value='6'>Lördag</option>";
 
         }?>
 
-        <?php if ($passObj->veckodag == '7'){ 
+        <?php if ($passObj == '7'){ 
 
          echo "<option value='7'>Söndag</option>";
 
@@ -136,25 +136,25 @@
     <label for="schema" class="col-sm-2 control-label">Vilket schema?</label>
     <div class="col-sm-4">
         <select name="schema" class="form-control">
-            <?php if ($passObj->schematyp == '1'){ 
+            <?php if ($passObj['schematyp'] == '1'){ 
 
             echo "<option value='1'>Vår</option>";
 
             }?>
 
-            <?php if ($passObj->schematyp == '2'){ 
+            <?php if ($passObj['schematyp'] == '2'){ 
 
             echo "<option value='2'>Sommar</option>";
 
             }?>
 
-            <?php if ($passObj->schematyp == '3'){ 
+            <?php if ($passObj['schematyp'] == '3'){ 
 
             echo "<option value='3'>Höst</option>";
 
             }?>
 
-            <?php if ($passObj->schematyp == '4'){ 
+            <?php if ($passObj['schematyp'] == '4'){ 
 
             echo "<option value='4'>Vinter</option>";
 

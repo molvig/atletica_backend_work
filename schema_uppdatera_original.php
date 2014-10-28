@@ -1,5 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/get_pass_schema.php"); ?>
+<?php include("inc/update_pass_orginalschema.php"); ?>
 <?php $_SESSION['schemaID'] = $schemaID ; ?>
 
 
