@@ -22,12 +22,6 @@
 <h3>Lägg till pass i schema 2014</h3>
 <?php $scid = $passObj['schematyp']; //schema_uppdatera_original.php?schemaid=<?php echo $scid; ?>
 <form class="form-horizontal" role="form" action="#" name="updateForm" method="post">
-<script>
-  function test(){
-    alert("något");
-    document.updateForm.submit();    
-  }
-</script>
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Pass</label>
     <div class="col-sm-4">
@@ -173,8 +167,8 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-    <A href="javascript:test()" class="btn btn-default">Uppdatera</A>
-      <button type="submit" onclick="" class="btn btn-default">Uppdatera</button>
+    
+      <button type="submit" class="btn btn-default">Uppdatera</button>
     </div>
   </div>
 </form>

@@ -131,9 +131,6 @@ try
 
 			$schemalagdapass = ($results -> fetchAll(PDO::FETCH_ASSOC));
 			$results->closeCursor();
-if($sql){ ?>
-		    	<div class="grid_12"> <?php echo  '<h4>' . 'Du har lagt till '. '<strong>' . $_POST['pass']  .'</strong>' .' som ett nytt pass!' . '</h4>'; ?> </div>
-			 <?php	}	
 	foreach($schemalagdapass as $row)
 	{
 		echo $row['bokningsbarID'];
@@ -165,6 +162,11 @@ if($sql){ ?>
 		}
 	/*uppdatera schema ett pass bara
 	updatera orginal alla på samma dag tid och schema*/
+	if($sql){ ?>
+                <div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>
+             <?php  } 
+	echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";
+	
 }
 
 
