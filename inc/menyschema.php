@@ -25,9 +25,10 @@
 	$sch ="";
           foreach($schema as $s){
 
-				 $sch .= "<a href='schema.php?schemaid=".$s['schematyp']."&date=".$s['startdatum']">".$s['schemanamn']."</a>";
+				 $sch .= '<a class="list-group-item"'. ' '. 'href="schema.php?schemaid='.$s['schematyp'] . '&date='. $s['startdatum'] .'">'. $s['schemanamn'] .'</a>';
+
 				}
-				
-				$start = $_GET["date"];
+				echo $sch;
+				//$start = $_GET["date"];
 
 ?>
