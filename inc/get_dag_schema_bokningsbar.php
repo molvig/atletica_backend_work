@@ -1,7 +1,6 @@
  <?php 
 
- $dagID = $_SERVER['QUERY_STRING'] ;
-
+ $dagID = htmlspecialchars($_GET["dagid"]);
 
 
  ?>

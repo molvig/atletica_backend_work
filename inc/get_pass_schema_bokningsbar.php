@@ -30,29 +30,37 @@ $sc = ($results -> fetchAll(PDO::FETCH_ASSOC));
 $results->closeCursor();
 
 
+//style="background-color:pink"
+
+
+
+
 foreach ($sc as $row) 
 {	
+
+
+
 	if (date('d-m-Y', strtotime($row['datum'])) == $mandag)
 	{
-		$mon .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_original_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
+		$mon .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
 	}
 	else if (date('d-m-Y', strtotime($row['datum'])) == $tisdag) {
-		$tue .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_original_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';	
+		$tue .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';	
 	}
 	elseif (date('d-m-Y', strtotime($row['datum'])) == $onsdag) {
-		$wed .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_original_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
+		$wed .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
 	}
 	elseif (date('d-m-Y', strtotime($row['datum'])) == $torsdag) {
-		$thu .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_original_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
+		$thu .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
 	}
 	elseif (date('d-m-Y', strtotime($row['datum'])) == $fredag) {
-		$fri .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_original_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
+		$fri .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
 	}
 	elseif (date('d-m-Y', strtotime($row['datum'])) == $lordag) {
-		$sat .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_original_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
+		$sat .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
 	}
 	elseif (date('d-m-Y', strtotime($row['datum'])) == $sondag) {
-		$sun .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_original_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
+		$sun .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
 	}	
 	
 }
