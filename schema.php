@@ -1,13 +1,7 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/date.php"); ?>
-
-
 <?php include("inc/get_pass_schema_bokningsbar.php"); ?>
-
- <?php $schemaID =  htmlspecialchars($_GET["schemaid"]) ;?>
-
-
-
+<?php $schemaID =  htmlspecialchars($_GET["schemaid"]) ;?>
 <?php include("inc/header.php"); ?>
 
   <div class="grid_2">
@@ -48,12 +42,12 @@
 <div class="pager">
 
 
-	<a href="schema.php?schemaid=<?=$schemaID;?>&date=<?=$next_date;?>"><button style="float:right;" type="submit" class="btn btn-default">Nästa vecka &rarr;</button></a>
-	<a href="schema.php?schemaid=<?=$schemaID;?>&date=<?=$prev_date;?>"><button style="float:left;" type="submit" class="btn btn-default">&larr; Föregående vecka</button></a>
+	<a href="schema.php?schemaid=<?=$schemaID;?>&date=<?=$next_date;?>"><button style="float:right;" type="submit" class="btn btn-default" <?php echo $next_able ;?> >Nästa vecka &rarr;</button></a>
+	<a href="schema.php?schemaid=<?=$schemaID;?>&date=<?=$prev_date;?>"><button style="float:left;" type="submit" class="btn btn-default"  <?php echo $prev_able ;?> >&larr; Föregående vecka</button></a>
 
   
 </div>
-<form method="get">
+
 
 
 
@@ -132,7 +126,7 @@
 </div>
 
 
-</form>
+
 
 
 

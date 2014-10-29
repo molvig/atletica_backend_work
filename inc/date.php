@@ -42,8 +42,11 @@ $fredag = date('d-m-Y', strtotime($mandag .' +4 day'));
 $lordag = date('d-m-Y', strtotime($mandag .' +5 day'));
 $sondag = date('d-m-Y', strtotime($mandag .' +6 day'));
 
+
+
 $prev_date = date('d-m-Y', strtotime($date .' -7 day'));
 $next_date = date('d-m-Y', strtotime($date .' +7 day'));
+
 
 
 
@@ -52,7 +55,22 @@ echo "Startdatum: ".$startdatum. "<br>";
 echo "Slutdatum: ".$slutdatum;
 
 
+if ($mandag == $startdatum)
+{
+$prev_able = "disabled";
+$next_able = "";
+}
 
+else if ($sondag == $slutdatum )
+{
+$prev_able = "";
+$next_able = "disabled";
+}
+
+else{
+$prev_able ="";
+$next_able ="";
+}
 
 
 
