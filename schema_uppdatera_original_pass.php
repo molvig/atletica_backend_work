@@ -25,6 +25,7 @@
 <script>
   function test(){
     alert("något");
+    document.updateForm.submit();    
   }
 </script>
   <div class="form-group">

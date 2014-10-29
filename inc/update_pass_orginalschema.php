@@ -24,9 +24,10 @@ if(isset($_GET['passid']))
 					and s.bokningsbarID = :passId';
 
 		$results = $db -> prepare ($sql);
-		$results->execute(array(':passId' => $_GET["passid"]));		
-
-	} catch (Exception $e) {
+		$results->execute(array(':passId' => $_GET["passid"]));	
+		
+}
+	 catch (Exception $e) {
 		echo "Det blev något fel när databasen skulle kontaktas";
 	}
 
@@ -130,7 +131,9 @@ try
 
 			$schemalagdapass = ($results -> fetchAll(PDO::FETCH_ASSOC));
 			$results->closeCursor();
-
+if($sql){ ?>
+		    	<div class="grid_12"> <?php echo  '<h4>' . 'Du har lagt till '. '<strong>' . $_POST['pass']  .'</strong>' .' som ett nytt pass!' . '</h4>'; ?> </div>
+			 <?php	}	
 	foreach($schemalagdapass as $row)
 	{
 		echo $row['bokningsbarID'];

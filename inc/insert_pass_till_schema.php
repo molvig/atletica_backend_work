@@ -106,7 +106,10 @@ $date2 = strtotime($date2);
         $stmt->execute(array(':bId' => $insertId, ':scId'=> $schemaId));
        $results->closeCursor();
         
-        }
+        if($sql){ ?>
+                <div class="grid_12"> <?php echo  '<h4>' . 'Du har lagt till '. '<strong>' . $_POST['pass']  .'</strong>' .' som ett nytt pass!' . '</h4>'; ?> </div>
+             <?php  }   
+        }        
         catch(Exception $e)
         {
             echo $e;
