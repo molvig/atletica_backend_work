@@ -69,7 +69,7 @@ try {
 
 
 $date2 = strtotime($date2);
-
+$cnt = 0;
     for($o = strtotime($day, strtotime($date1)); $o <= $date2; $o = strtotime('+1 week', $o))
     {
         //echo " ". date('Y-m-d', $o)."\n";
@@ -105,16 +105,20 @@ $date2 = strtotime($date2);
 
         $stmt->execute(array(':bId' => $insertId, ':scId'=> $schemaId));
        $results->closeCursor();
-        
-        if($sql){ ?>
-                <div class="grid_12"> <?php echo  '<h4>' . 'Du har lagt till '. '<strong>' . $_POST['pass']  .'</strong>' .' som ett nytt pass!' . '</h4>'; ?> </div>
-             <?php  }   
+                  
+             $cnt = $cnt + 1;
         }        
         catch(Exception $e)
         {
             echo $e;
-            }        
+                    
         }
+         
+        
     }
+    if($cnt > 0){ ?>
+                <div class="grid_12"> <?php echo  '<h4>' . 'Du har lagt till '. '<strong>' . $_POST['pass']  .'</strong>' .' som ett nytt pass!' . '</h4>'; ?> </div>
+             <?php  }
+}
 
 ?>
