@@ -74,14 +74,17 @@
             
           </ul>
         </li>
-        <li class="dropdown">
+        <li><a href="schema_start.php"> <span class="glyphicon glyphicon-calendar"></span> Schema</a></li>
+        <!--<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-calendar"></span> Schema<b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="schema.php?schemaid=1" id="1">Vår</a></li>
-            <li><a href="schema.php?schemaid=2" id="2">Sommar</a></li>
-            <li><a href="schema.php?schemaid=3" id="3">Höst</a></li>
-            <li><a href="schema.php?schemaid=4" id="4">Vinter</a></li>
-          </ul>
+            <li><a href="schema.php?schemaid=1&date=<?=$mandagen;?>" id="1">Vår</a></li>
+            <li><a href="schema.php?schemaid=2&date=<?=$mandagen;?>" id="2">Sommar</a></li>
+            <li><a href="schema.php?schemaid=3&date=<?=$mandagen;?>" id="3">Höst</a></li>
+            <li><a href="schema.php?schemaid=4&date=<?=$mandagen;?>"id="4">Vinter</a></li> 
+              </ul>
+      -->
+
         </li>
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-stats"></span> Statistik<b class="caret"></b></a>

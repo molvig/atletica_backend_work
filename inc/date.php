@@ -1,48 +1,61 @@
 
- <?php 
-          /*  $day = date("l");
-            
+ <?php
+$schemaID =  htmlspecialchars($_GET["schemaid"]) ;
 
-            if ($day == '1') { $day == 'Måndag';}
-            if ($day == '2') {$day == 'Tisdag'}
-            if ($day == '3') { $day == 'Onsdag'}           
-            if ($day == '4') { $day == 'Torsdag'}           
-            if ($day == '5') { $day == 'Fredag'}
-            if ($day == '6') { $day == 'Lördag'}
-            if ($day == '7') {$day == 'Söndag'}  
-
-$today = date('d-m-Y');
+try {
+     $results = $db -> query ("SELECT schematyp, startdatum, slutdatum FROM schematyp WHERE schematyp={$schemaID}");
+    } 
+    catch (Exception $e) {
+            echo "Data could not be retrieved from the database";
+            exit;
+    }
 
 
-// set current timestamp
-$today = time();
-// calculate the number of days since Monday
-$dow = date('w', $today);
-$offset = $dow - 1;
-if ($offset < 0) {
-    $offset = 6;
-}
-// calculate timestamp for Monday and Sunday
-$monday = $today - ($offset * 86400);
-$tuesday = $monday + (1 * 86400);
-$wednesday = $monday + (2 * 86400);
-$thursday = $monday + (3 * 86400);
-$friday = $monday + (4 * 86400);
-$saturday = $monday + (5 * 86400);
-$sunday = $monday + (6 * 86400);
-// print dates for Monday and Sunday in the current week
-$mandag = date("d-m-Y", $monday);
-$tisdag = date("d-m-Y", $tuesday);
-$onsdag = date("d-m-Y", $wednesday);
-$torsdag = date("d-m-Y", $thursday);
-$fredag = date("d-m-Y", $friday);
-$lordag = date("d-m-Y", $saturday);
-$sondag = date("d-m-Y", $sunday);
+    $schemat = ($results -> fetchAll(PDO::FETCH_ASSOC));
+    $schema = "";
+    $schematyp="";
+    $startdatum="";
+    $slutdatum="";
+
+
+    foreach ($schemat as $s) {
+        $schematyp .= $s['schematyp'];
+        $startdatum .= date("d-m-Y", strtotime($s['startdatum']));
+        $slutdatum .= date("d-m-Y", strtotime($s['slutdatum']));
+        
+
+    }    
+ 
+$start = date("d-m-Y", strtotime($startdatum));
+echo $start;
+
+
+$date = isset($_GET['date']) ? $_GET['date'] : $start;
 
 
 
+$mandag =  $date;
+$tisdag = date('d-m-Y', strtotime($mandag .' +1 day'));
+$onsdag = date('d-m-Y', strtotime($mandag .' +2 day'));
+$torsdag = date('d-m-Y', strtotime($mandag .' +3 day'));
+$fredag = date('d-m-Y', strtotime($mandag .' +4 day'));
+$lordag = date('d-m-Y', strtotime($mandag .' +5 day'));
+$sondag = date('d-m-Y', strtotime($mandag .' +6 day'));
 
-*/
+$prev_date = date('d-m-Y', strtotime($date .' -7 day'));
+$next_date = date('d-m-Y', strtotime($date .' +7 day'));
+
+
+
+echo "Schematyp: ". $schematyp. "<br>";
+echo "Startdatum: ".$startdatum. "<br>";
+echo "Slutdatum: ".$slutdatum;
+
+
+
+
+
+
 
 
   ?>

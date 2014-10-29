@@ -1,9 +1,10 @@
 <?php include("inc/db_con.php"); ?>
-<?php include("inc/get_pass_schema_bokningsbar.php"); ?>
 <?php include("inc/date.php"); ?>
 
 
-<?php $_SESSION['schemaID'] = $schemaID ; ?>
+<?php include("inc/get_pass_schema_bokningsbar.php"); ?>
+
+ <?php $schemaID =  htmlspecialchars($_GET["schemaid"]) ;?>
 
 
 
@@ -17,54 +18,38 @@
 <div class="grid_10">
 
 
-<center><h3><?php if ($schemaID == 'schemaid=1'){ 
+<center><?php if ($schemaID == "1"){ 
 
-            echo "Vårschema";
-
-            }?>
-
-            <?php if ($schemaID == 'schemaid=2'){ 
-
-            echo "Sommarschema";
+            echo "<h3>". "Vårschema". "</h3>". "<h4>". $startdatum. " - ".$slutdatum. "</h4>" ;
 
             }?>
 
-            <?php if ($schemaID == 'schemaid=3'){ 
+            <?php if ($schemaID == "2"){ 
 
-            echo "Höstschema";
+            echo "<h3>". "Sommarschema". "</h3>". "<h4>". $startdatum. " - ".$slutdatum. "</h4>" ;
 
             }?>
 
-            <?php if ($schemaID == 'schemaid=4'){ 
+            <?php if ($schemaID == "3"){ 
 
-            echo "Vinterschema";
+            echo "<h3>". "Höstschema". "</h3>". "<h4>". $startdatum. " - ".$slutdatum. "</h4>" ;
 
-            }?></h3></center>
+            }?>
 
+            <?php if ($schemaID == "4"){ 
 
-            <?php
+            echo "<h3>". "Vinterschema". "</h3>". "<h4>". $startdatum. " - ".$slutdatum. "</h4>" ;
 
+            }?></center>
 
-
-$today = date('Y-m-d');
-$date = new DateTime($today);
-$week = $date->format("W");
-
-
-$week = isset($_GET['date']) ? $_GET['date'] : date('W');
-
-
-
-$prev_week = $week - 1;
-$next_week = $week + 1;
-?>
 
 
 <!-- Växlar mellan veckorna-->
 <div class="pager">
 
-	<a href="?date=<?=$next_week;?>"><button style="float:right;" type="submit" class="btn btn-default">Nästa vecka &rarr;</button></a>
-	<a href="?date=<?=$prev_week;?>"><button style="float:left;" type="submit" class="btn btn-default">&larr; Föregående vecka</button></a>
+
+	<a href="schema.php?schemaid=<?=$schemaID;?>&date=<?=$next_date;?>"><button style="float:right;" type="submit" class="btn btn-default">Nästa vecka &rarr;</button></a>
+	<a href="schema.php?schemaid=<?=$schemaID;?>&date=<?=$prev_date;?>"><button style="float:left;" type="submit" class="btn btn-default">&larr; Föregående vecka</button></a>
 
   
 </div>
@@ -98,6 +83,7 @@ $next_week = $week + 1;
 		  <p class="list-group-item active">
 		    Onsdag <?php echo $onsdag; ?>
 		    </p>
+		    <?php echo $wed; ?>
 		  <a href="schema_extra_pass.php?dagid=3" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -108,6 +94,7 @@ $next_week = $week + 1;
 		  <p class="list-group-item active">
 		   Torsdag <?php echo $torsdag; ?>
 		  </p>
+		  <?php echo $thu; ?>
 		  <a href="schema_extra_pass.php?dagid=4" class="list-group-item">Lägg till extra pass</a>
 	</div>
 </div>
@@ -117,6 +104,7 @@ $next_week = $week + 1;
 		  <p class="list-group-item active">
 		   Fredag <?php echo $fredag; ?>
 		  </p>
+		  <?php echo $fri; ?>
 		  <a href="schema_extra_pass.php?dagid=5" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -127,6 +115,7 @@ $next_week = $week + 1;
 		  <p class="list-group-item active">
 		    Lördag <?php echo $lordag; ?>
 		  </p>
+		  <?php echo $sat; ?>
 		  <a href="schema_extra_pass.php?dagid=6" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
@@ -137,11 +126,11 @@ $next_week = $week + 1;
 		  <p class="list-group-item active">
 		    Söndag <?php echo $sondag; ?>
 		  </p>
+		  <?php echo $sun; ?>
 		  <a href="schema_extra_pass.php?dagid=7" class="list-group-item">Lägg till extra pass</a>
 	</div>
 </div>
 
-<?php include("inc/next_week.php"); ?>
 
 </form>
 
