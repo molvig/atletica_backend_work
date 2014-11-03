@@ -106,8 +106,6 @@
             <li><a href="installningar_nyinstruktor.php">Instruktörer</a></li>
             <li><a href="installningar_nyttpass.php">Pass</a></li>
             <li><a href="installningar_kontaktmedlemmar.php">Meddela alla medlemmar</a></li>
-            <li class="divider"></li>
-            <li><a href="medlem_tabort.php" style="color:red">Radera medlem</a></li>
           </ul>
         </li>
       </ul>
