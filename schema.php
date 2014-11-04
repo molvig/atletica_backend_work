@@ -58,7 +58,7 @@
 		    Måndag <?php echo $mandag; ?>
 		     </p> 
 		      <?php echo $mon; ?>
-		    <a href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=1&date=<?php echo $mandag;?>" class="list-group-item">Lägg till extra pass</a>
+		    <a style="background-color:#C0C0C0; color:#000;" href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=1&date=<?php echo $mandag;?>" class="list-group-item">Lägg till extra pass</a>
 	</div>
 </div>
 
@@ -68,7 +68,7 @@
 		    Tisdag <?php echo $tisdag; ?>
 		  </p>
 		  <?php echo $tue; ?>
-		  <a href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=2&date=<?php echo $tisdag;?>" class="list-group-item">Lägg till extra pass</a>
+		  <a style="background-color:#C0C0C0; color:#000;" href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=2&date=<?php echo $tisdag;?>" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>
@@ -79,7 +79,7 @@
 		    Onsdag <?php echo $onsdag; ?>
 		    </p>
 		    <?php echo $wed; ?>
-		  <a href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=3&date=<?php echo $onsdag;?>" class="list-group-item">Lägg till extra pass</a>
+		  <a style="background-color:#C0C0C0; color:#000;" href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=3&date=<?php echo $onsdag;?>" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>
@@ -90,7 +90,7 @@
 		   Torsdag <?php echo $torsdag; ?>
 		  </p>
 		  <?php echo $thu; ?>
-		  <a href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=4&date=<?php echo $torsdag;?>" class="list-group-item">Lägg till extra pass</a>
+		  <a style="background-color:#C0C0C0; color:#000;" href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=4&date=<?php echo $torsdag;?>" class="list-group-item">Lägg till extra pass</a>
 	</div>
 </div>
 
@@ -100,7 +100,7 @@
 		   Fredag <?php echo $fredag; ?>
 		  </p>
 		  <?php echo $fri; ?>
-		  <a href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=5&date=<?php echo $fredag;?>" class="list-group-item">Lägg till extra pass</a>
+		  <a style="background-color:#C0C0C0; color:#000;" href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=5&date=<?php echo $fredag;?>" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>
@@ -111,7 +111,7 @@
 		    Lördag <?php echo $lordag; ?>
 		  </p>
 		  <?php echo $sat; ?>
-		  <a href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=6&date=<?php echo $lordag;?>" class="list-group-item">Lägg till extra pass</a>
+		  <a style="background-color:#C0C0C0; color:#000;" href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=6&date=<?php echo $lordag;?>" class="list-group-item">Lägg till extra pass</a>
 
 	</div>
 </div>
@@ -122,7 +122,7 @@
 		    Söndag <?php echo $sondag; ?>
 		  </p>
 		  <?php echo $sun; ?>
-		  <a href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=7&date=<?php echo $sondag;?>" class="list-group-item">Lägg till extra pass</a>
+		  <a style="background-color:#C0C0C0; color:#000;" href="schema_extra_pass.php?schemaid=<?php echo $schemaID;?>&dagid=7&date=<?php echo $sondag;?>" class="list-group-item">Lägg till extra pass</a>
 	</div>
 </div>
 
