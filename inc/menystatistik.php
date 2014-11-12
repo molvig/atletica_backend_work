@@ -8,6 +8,8 @@
 	  <a href="statistik_frystakort.php" class="list-group-item">Frysta kort</a>
 	  <a href="statistik_uppsagda_autogiro.php" class="list-group-item">Uppsagda autogiro</a>
 	  <a href="statistik_aktuella_autogiro.php" class="list-group-item">Aktuella autogiro</a>
+	  <a href="statistik_gastlista.php" class="list-group-item">Gästlista</a>
+	  <a href="statistik_installda.php" class="list-group-item">Inställda pass</a>
 
 
 	</div>

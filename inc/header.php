@@ -95,6 +95,8 @@
             <li><a href="statistik_frystakort.php">Frysta kort</a></li>
             <li><a href="statistik_uppsagda_autogiro.php">Uppsagda autogiro</a></li>
             <li><a href="statistik_aktuella_autogiro.php">Aktuella autogiro</a></li>
+            <li><a href="statistik_gastlista.php">Gästlista</a></li>
+            <li><a href="statistik_installda.php">Inställda pass</a></li>
           </ul>
         </li>
           <li class="dropdown">
