@@ -17,11 +17,11 @@ if(isset($_GET['passid']))
           
 
 	try {
-		$sql = 'SELECT b.bokningsbarID, s.schematyp, b.instnamn, b.passnamn, b.starttid, b.sluttid, b.veckodag, b.antalplatser 
+		$sql = "SELECT b.bokningsbarID, s.schematyp, b.instnamn, b.passnamn, TIME_FORMAT(b.starttid, '%H:%i') as sttid, TIME_FORMAT(b.sluttid, '%H:%i') as sltid, b.veckodag, b.antalplatser 
 					from bokningsbara as b, schemat as s 
 					where b.bokningsbarID = :passId
 					and b.bokningsbarID = s.bokningsbarID
-					and s.bokningsbarID = :passId';
+					and s.bokningsbarID = :passId";
 
 		$results = $db -> prepare ($sql);
 		$results->execute(array(':passId' => $_GET["passid"]));	
@@ -34,8 +34,8 @@ if(isset($_GET['passid']))
 	$passObj = ($results -> fetch(PDO::FETCH_ASSOC));
 	$results->closeCursor();
 echo $passObj['schematyp'];
-$slut = $passObj['sluttid'];
-$start = $passObj['starttid'];
+$slut = $passObj['sltid'];
+$start = $passObj['sttid'];
 	foreach($passnamn as $p)
 	{
 		if ($p['passnamn'] == $passObj['passnamn']) 
@@ -78,8 +78,26 @@ $start = $passObj['starttid'];
 	
 }
 if(!empty($_POST)){
-	$startTid = $_POST["starttid"];
-	$slutTid = $_POST["sluttid"];
+	$slutTid = "";
+	$startTid = "";
+	if($_POST["starttid"] != "")
+	{
+		$startTid = $_POST["starttid"];
+	}
+	else
+	{
+		$startTid = $_POST["datetimepicker1"];
+	}
+
+	if($_POST["sluttid"] != "")
+	{
+		$slutTid = $_POST["sluttid"];
+	}
+	else
+	{
+		$slutTid = $_POST["datetimepicker2"];
+	}
+	
 
 /*if($slut == "0000-00-00 00:00:00")
 {
@@ -127,7 +145,7 @@ try
 			$results->execute(array(':passId' => $_GET["passid"],
 				':scId' => $passObj['schematyp'],
 				':vDag' => $passObj['veckodag'],
-				':sttid' => $passObj['starttid']));
+				':sttid' => $passObj['sttid']));
 
 			$schemalagdapass = ($results -> fetchAll(PDO::FETCH_ASSOC));
 			$results->closeCursor();
@@ -165,8 +183,7 @@ try
 	if($sql){ ?>
                 <div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>
              <?php  } 
-	echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";
-	
+	//echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";	
 }
 
 
