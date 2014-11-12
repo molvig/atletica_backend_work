@@ -83,15 +83,17 @@ if(!empty($_POST)){
 	if($_POST["starttid"] != "")
 	{
 		$startTid = $_POST["starttid"];
+		
 	}
 	else
 	{
-		$startTid = $_POST["datetimepicker1"];
+		$startTid = $_POST["datetimepicker1"];		
 	}
 
 	if($_POST["sluttid"] != "")
 	{
 		$slutTid = $_POST["sluttid"];
+		
 	}
 	else
 	{
@@ -137,7 +139,7 @@ if($slut != $slutTid)
 
     $slTime = explode(":", $slut);
     $slDate = new DateTime('0000-01-01');
-    $slDate->setTime($slTime[0],$stTime[1]);
+    $slDate->setTime($slTime[0],$slTime[1]);
 
 try 
 		{
@@ -148,10 +150,10 @@ try
 				':sttid' => $passObj['sttid']));
 
 			$schemalagdapass = ($results -> fetchAll(PDO::FETCH_ASSOC));
-			$results->closeCursor();
+			//$results->closeCursor();
 	foreach($schemalagdapass as $row)
 	{
-		echo $row['bokningsbarID'];
+		//echo $row['bokningsbarID'];
 		$sql = 'UPDATE bokningsbara set
 		antalplatser = :antP,
 		passnamn = :pNamn,
@@ -168,23 +170,23 @@ try
 					':iNamn' => $_POST["instruktor"],
 					':stTid' => $stDate->format('Y-m-d H:i:s'),
 					':slTid' => $slDate->format('Y-m-d H:i:s'),
-					':passId' => $_GET["passid"]));
+					':passId' => $row['bokningsbarID']));
 
 		
 		$results->closeCursor();
 	}
-} 
+	if($sql){
+                echo '<div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>';
+            } 
+	//echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";	
+}
 		catch (Exception $e) 
 		{
 			echo $e;
 		}
 	/*uppdatera schema ett pass bara
 	updatera orginal alla på samma dag tid och schema*/
-	if($sql){ ?>
-                <div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>
-             <?php  } 
-	//echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";	
+	
 }
-
 
 ?>
