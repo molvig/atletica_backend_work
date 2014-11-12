@@ -26,7 +26,7 @@
       </div>
 </div>
       <div class="grid_12">
-      <button type="submit" class="btn btn-default">Hämta gästlista
+      <button type="submit" name="gastlista_datum" class="btn btn-default">Hämta gästlista
 
        </div> 
    </form>

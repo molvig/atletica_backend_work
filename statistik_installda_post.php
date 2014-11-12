@@ -15,12 +15,12 @@
   <div class="grid_12">
       <div class="grid_6">
                   <label>Från
-                    <input type="text" name="instfran" id="instfran" class="tcal" value="<?php echo date('Y-m-d', mktime(0, 0, 0, date("m")-1, date("d"), date("Y")));?>" >
+                    <input type="text" name="instfran" id="instfran" class="tcal" value="<?php echo $instfran;?>" >
                   </label>
       </div>
             <div class="grid_6">
                   <label>Till
-                    <input type="text" name="insttill" id="insttill" class="tcal" value="<?php echo date('Y-m-d', mktime(0, 0, 0, date("m"), date("d"), date("Y"))) ;?>" >
+                    <input type="text" name="insttill" id="insttill" class="tcal" value="<?php echo $insttill ;?>" >
                   </label>
       </div>
 </div>
@@ -31,14 +31,28 @@
    </form>
 </div>   
 
-
-
-
-
-
-
- </div> 
+<div class="grid_12">
+ <div class="panel panel-info">
   
+  <div class="panel-heading">
+      <th><h4><?php echo "Antal inställda pass: ", $antal;  ?></h4></th>
+  </div>
+
+  <div class="panel panel-default">
+      <table class="table">
+      <tr>
+        <td><h5>Datum</h5></td>
+        <td><h5>Pass</h5></td>
+        <td><h5>Instruktör</h5></td>
+        <td><h5>Orsak</h5></td>
+      </tr>   
+    <?php echo $found; ?>
+      </table> 
+
+  </div>
+  
+</div>
+        </div> 
   
 
 
