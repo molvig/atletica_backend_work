@@ -2,6 +2,7 @@
 <?php include("inc/header.php"); ?>
 <?php include("inc/getveckansfokus.php"); ?>
 <?php include("inc/boka_gast.php"); ?>
+<?php include("inc/klipp_kort.php"); ?>
 
 <div class="grid_12">
 <div class="grid_3">
@@ -143,7 +144,7 @@
 						    <div class="form-group">
 						    <input type="text" class="form-control" id="medlemsnummer_klippkort" placeholder="Medlemsnummer" onkeypress="return isNumberKey(event)" required>
 						  </div>
-						  <button type="submit" class="btn btn-default">Klipp!</button>
+						  <button type="submit" name="klipp-kort" class="btn btn-default">Klipp!</button>
 						</form>
 				      </div>
 				    </div>
