@@ -77,116 +77,131 @@ $start = $passObj['sttid'];
 	}
 	
 }
-if(!empty($_POST)){
-	$slutTid = "";
-	$startTid = "";
-	if($_POST["starttid"] != "")
-	{
-		$startTid = $_POST["starttid"];
-		
-	}
-	else
-	{
-		$startTid = $_POST["datetimepicker1"];		
-	}
-
-	if($_POST["sluttid"] != "")
-	{
-		$slutTid = $_POST["sluttid"];
-		
-	}
-	else
-	{
-		$slutTid = $_POST["datetimepicker2"];
-	}
-	
-
-/*if($slut == "0000-00-00 00:00:00")
+if(!empty($_POST))
 {
-	//använd slut
-	$slut = $_POST["sluttid"];
-}
-elseif ($slut == $_POST["sluttid"]) {
-	$slut = $_POST["sluttid"];
-}*/
+	/*if($_POST["del"])
+	{
+	}*/
+	//if ($_POST["aboart"]) 
+	//{
+	//	echo "<meta http-equiv=\"Location\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";
+	//}
+	//elseif($_POST["update"])
+	//{
 
-//Då var det dags att uppdatera passen på orginalschemat
-/*uppdatera ett pass på schemat plocka bara det befintliga passid*/
-//select * from bokningsbara where bokningsbarID = :passId
-//select * from schemat where bokningsbarID = :passId
-	
-	/*uppdatera alla pass på schemat börja med att plocka ut alla passId*/
-	$sql = 'SELECT distinct b.bokningsbarID FROM bokningsbara as b , schemat as s 
-		WHERE b.passnamn = (select bInner.passnamn from bokningsbara as bInner where bInner.bokningsbarID = :passId)
-		AND s.schematyp = :scId  
-	    AND veckodag = :vDag
-	    AND starttid = :sttid';
-
-
-if($start != $startTid)
-{
-	$start = $startTid;
-}
-
-if($slut != $slutTid)
-{
-	$slut = $slutTid;
-}
-
- $stTime = explode(":", $start);
-    $stDate = new DateTime('0000-01-01');
-    $stDate->setTime($stTime[0],$stTime[1]);
-
-    $slTime = explode(":", $slut);
-    $slDate = new DateTime('0000-01-01');
-    $slDate->setTime($slTime[0],$slTime[1]);
-
-try 
+		$slutTid = "";
+		$startTid = "";
+		if($_POST["starttid"] != "")
 		{
-			$results = $db -> prepare ($sql);
-			$results->execute(array(':passId' => $_GET["passid"],
-				':scId' => $passObj['schematyp'],
-				':vDag' => $passObj['veckodag'],
-				':sttid' => $passObj['sttid']));
-
-			$schemalagdapass = ($results -> fetchAll(PDO::FETCH_ASSOC));
-			//$results->closeCursor();
-	foreach($schemalagdapass as $row)
-	{
-		//echo $row['bokningsbarID'];
-		$sql = 'UPDATE bokningsbara set
-		antalplatser = :antP,
-		passnamn = :pNamn,
-		instnamn = :iNamn,
-		starttid = :stTid,
-		sluttid = :slTid
-		where
-		bokningsbarID = :passId';
-
-		
-			$results = $db -> prepare ($sql);
-			$results->execute(array(':antP' => $_POST["platser"],
-					':pNamn' => $_POST["pass"],
-					':iNamn' => $_POST["instruktor"],
-					':stTid' => $stDate->format('Y-m-d H:i:s'),
-					':slTid' => $slDate->format('Y-m-d H:i:s'),
-					':passId' => $row['bokningsbarID']));
-
-		
-		$results->closeCursor();
-	}
-	if($sql){
-                echo '<div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>';
-            } 
-	//echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";	
-}
-		catch (Exception $e) 
-		{
-			echo $e;
+			$startTid = $_POST["starttid"];
+			
 		}
-	/*uppdatera schema ett pass bara
-	updatera orginal alla på samma dag tid och schema*/
-	
-}
+		
+		if($_POST["sluttid"] != "")
+		{
+			$slutTid = $_POST["sluttid"];
+			
+		}
+		
+		
 
+	/*if($slut == "0000-00-00 00:00:00")
+	{
+		//använd slut
+		$slut = $_POST["sluttid"];
+	}
+	elseif ($slut == $_POST["sluttid"]) {
+		$slut = $_POST["sluttid"];
+	}*/
+
+	//Då var det dags att uppdatera passen på orginalschemat
+	/*uppdatera ett pass på schemat plocka bara det befintliga passid*/
+	//select * from bokningsbara where bokningsbarID = :passId
+	//select * from schemat where bokningsbarID = :passId
+		
+		/*uppdatera alla pass på schemat börja med att plocka ut alla passId*/
+		$sql = 'SELECT distinct b.bokningsbarID FROM bokningsbara as b , schematyp as s 
+			WHERE b.passnamn = (select bInner.passnamn from bokningsbara as bInner where bInner.bokningsbarID = :passId)
+			AND s.schematyp = :scId  
+		    AND veckodag = :vDag
+		    AND starttid = :sttid';
+
+
+	if($_POST["starttid"])
+	{	
+		$stTime = explode(":", $startTid);
+	    $stDate = new DateTime('0000-01-01');
+	    $stDate->setTime($stTime[0],$stTime[1]);
+	}
+	else
+	{	
+		$stTime = explode(":", $start);
+	    $stDate = new DateTime('0000-01-01');
+	    $stDate->setTime($stTime[0],$stTime[1]);
+	}
+
+	if($_POST["sluttid"])
+	{	
+		$slTime = explode(":", $slutTid);
+	    $slDate = new DateTime('0000-01-01');
+	    $slDate->setTime($slTime[0],$slTime[1]);
+	}
+	else
+	{	
+		$slTime = explode(":", $slut);
+	    $slDate = new DateTime('0000-01-01');
+	    $slDate->setTime($slTime[0],$slTime[1]);
+	}
+
+	    $starttimeforselect = '0000-01-01 '.$passObj['sttid']; 
+	try 
+			{
+				$results = $db -> prepare ($sql);
+				$results->execute(array(':passId' => $_GET["passid"],
+					':scId' => $passObj['schematyp'],
+					':vDag' => $passObj['veckodag'],
+					':sttid' => $starttimeforselect));
+
+				$schemalagdapass = ($results -> fetchAll(PDO::FETCH_ASSOC));
+				//$results->closeCursor();
+
+		foreach($schemalagdapass as $row)
+		{
+			//echo $row['bokningsbarID'];
+			$sql = 'UPDATE bokningsbara set
+			antalplatser = :antP,
+			passnamn = :pNamn,
+			instnamn = :iNamn,
+			starttid = :stTid,
+			sluttid = :slTid
+			where
+			bokningsbarID = :passId';
+
+			
+				$results = $db -> prepare ($sql);
+				$results->execute(array(':antP' => $_POST["platser"],
+						':pNamn' => $_POST["pass"],
+						':iNamn' => $_POST["instruktor"],
+						':stTid' => $stDate->format('Y-m-d H:i:s'),
+						':slTid' => $slDate->format('Y-m-d H:i:s'),
+						':passId' => $row['bokningsbarID']));
+
+			
+			$results->closeCursor();
+		}
+		if($sql){
+	                echo '<div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>';
+	                
+	            } 
+		echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";	
+	}
+			catch (Exception $e) 
+			{
+				echo $e;
+			}
+		/*uppdatera schema ett pass bara
+		updatera orginal alla på samma dag tid och schema*/
+		
+	//}
+}
 ?>
