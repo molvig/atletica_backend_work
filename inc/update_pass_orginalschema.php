@@ -79,15 +79,20 @@ $start = $passObj['sttid'];
 }
 if(!empty($_POST))
 {
-	/*if($_POST["del"])
+	if(isset($_POST["delete"]))
 	{
-	}*/
-	//if ($_POST["aboart"]) 
-	//{
-	//	echo "<meta http-equiv=\"Location\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";
-	//}
-	//elseif($_POST["update"])
-	//{
+		//för att ta bort ett pass ska vi vara säkra på att passet verkligen ska tas bort.
+		$someJs = '<script>if(confirm("Vill du verkligen ta bort dett passet?"))
+		{alert("Passet passets namn har nu blivit borttaget.");}else{alert("Borttagning avbrutet");}</script>';
+
+		echo $someJs;
+	}
+	elseif (isset($_POST["cancel"]))
+	{
+		echo "<meta http-equiv=\"refresh\" content=\"0;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";
+	}
+	elseif(isset($_POST["update"]))
+	{
 
 		$slutTid = "";
 		$startTid = "";
@@ -202,6 +207,6 @@ if(!empty($_POST))
 		/*uppdatera schema ett pass bara
 		updatera orginal alla på samma dag tid och schema*/
 		
-	//}
+	}
 }
 ?>
