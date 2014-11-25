@@ -140,11 +140,13 @@
 				    </div>
 				    <div id="klippkort" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 				      <div class="panel-body">
-						 <form class="form-inline" role="form">
+						 <form class="form-inline" role="form" action="#" method="post">
 						    <div class="form-group">
 						    <input type="text" class="form-control" id="medlemsnummer_klippkort" placeholder="Medlemsnummer" onkeypress="return isNumberKey(event)" required>
 						  </div>
 						  <button type="submit" name="klipp-kort" class="btn btn-default">Klipp!</button>
+
+
 						</form>
 				      </div>
 				    </div>
@@ -152,7 +154,19 @@
 				</div>
 	</div>	
 
+  <?php
+  if(!empty($_POST))
+{
+	if(isset($_POST["klipp-kort"]))
+	{
+		//för att ta bort ett pass ska vi vara säkra på att passet verkligen ska tas bort.
+		$klipp = '<script>if(confirm("Frida har 4 klipp kvar. Vill du göra ett klipp?"))
+		{alert("Frida och hon har nu 3 klipp kvar som måste förbrukas innan 2014-12-24.");}else{alert("Klippet är avbrutet");}</script>';
 
+		echo $klipp;
+	}
+	}
+	?>
 
 </div>
 <script>
