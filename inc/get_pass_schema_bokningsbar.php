@@ -30,7 +30,7 @@ $sonuppdate ="";
 
 
 
-$sql = 'SELECT distinct b.bokningsbarID, datum, Time(starttid) as tid, passnamn, extrapass, uppdaterad FROM bokningsbara as b , schemat as s 
+$sql = 'SELECT distinct b.bokningsbarID, datum, TIME_FORMAT(starttid, "%H:%i") as tid, passnamn, extrapass, uppdaterad FROM bokningsbara as b , schemat as s 
 	WHERE b.bokningsbarID = s.bokningsbarID 
 	AND s.schematyp = :scID
 	order by starttid asc;';
