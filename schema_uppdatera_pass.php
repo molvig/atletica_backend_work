@@ -1,6 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
-<!--<?php include("inc/getpass.php"); ?>-->
+<!--<?php include("inc/update_pass_bokningsbar.php"); ?>-->
 <?php include("inc/getinstruktorer.php"); ?>
 
 
@@ -19,9 +19,9 @@
 }
 </script>
 
-<h3>Lägg till pass i schema 2014</h3>
+<h3>Uppdatera pass i schema 2014</h3>
 <?php $scid = $passObj['schematyp']; //schema_uppdatera_original.php?schemaid=<?php echo $scid; ?>
-<form class="form-horizontal" role="form" action="#" name="updateForm" method="post">
+<form class="form-horizontal" role="form" action="schema_uppdatera_pass.php" name="updateForm" method="post">
 <script>
   function test(){
     alert("något");
@@ -44,7 +44,7 @@
     <div class="form-group">
                     <label for="datetimepicker" class="col-sm-2 control-label">Starttid</label>
                     <div class="col-sm-4">
-                        <input id="datetimepicker1" type="text" class="form-control" onChange="changeHiddenStart(this.value)" value="<?php echo $passObj['starttid']; ?>">
+                        <input id="datetimepicker1" type="text" class="form-control" onChange="changeHiddenStart(this.value)" value="<?php echo $start; ?>">
                     </div>
                   <input type="hidden" id="starttid" name="starttid" value=""/> 
 
@@ -59,7 +59,7 @@
   <div class="form-group">
             <label for="datetimepicker" class="col-sm-2 control-label">Sluttid</label>
             <div class="col-sm-4">
-                <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut(this.value)" value="<?php echo $passObj['sluttid']; ?>" >
+                <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut(this.value)" value="<?php echo $slut; ?>" >
             </div>
           <input type="hidden" id="sluttid" name="sluttid" value=""/> 
         <script>
@@ -172,7 +172,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-    <A href="javascript:test()" class="btn btn-default">Uppdatera</A>
+    <!-- <a href="javascript:test()" class="btn btn-default">Uppdatera</a> -->
       <button type="submit" onclick="" class="btn btn-default">Uppdatera</button>
     </div>
   </div>
