@@ -3,6 +3,7 @@
 <?php include("inc/getveckansfokus.php"); ?>
 <?php include("inc/boka_gast.php"); ?>
 <?php include("inc/klipp_kort.php"); ?>
+<?php include("inc/get_veckans_pass.php"); ?>
 
 <div class="grid_12">
 <div class="grid_3">
@@ -12,10 +13,13 @@
   		</div>
 	  	<div class="panel-body">
 			<div class="list-group">
-				 <a href="#" class="list-group-item">  <span class="badge pull-right">bokade/antal platser</span>Passnamn</a>
+				 <?php echo $pass; ?>
 			</div>
 		</div>
 	</div>
+	<?php echo "idag: ". $today;
+			echo " om sex dagar: ". $sixdays;
+			?>
 </div>
 
 	<div class="grid_5">

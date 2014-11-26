@@ -20,7 +20,7 @@ if(isset($_GET['passid']))
           
 
 	try {
-		$sql = "SELECT b.bokningsbarID, s.schematyp, b.instnamn, b.passnamn, TIME_FORMAT(b.starttid, '%H:%i') as sttid, TIME_FORMAT(b.sluttid, '%H:%i') as sltid, b.veckodag, b.antalplatser 
+		$sql = "SELECT b.bokningsbarID, s.schematyp, b.information, b.instnamn, b.passnamn, TIME_FORMAT(b.starttid, '%H:%i') as sttid, TIME_FORMAT(b.sluttid, '%H:%i') as sltid, b.veckodag, b.antalplatser 
 					from bokningsbara as b, schemat as s 
 					where b.bokningsbarID = :passId";
 
@@ -35,6 +35,7 @@ if(isset($_GET['passid']))
 	$passObj = ($results -> fetch(PDO::FETCH_ASSOC));
 	$results->closeCursor();
 	echo $passObj['schematyp'];
+	$info = $passObj['information'];
 	$slut = $passObj['sltid'];
 	$start = $passObj['sttid'];
 	foreach($passnamn as $p)
@@ -87,7 +88,7 @@ if(!empty($_POST))
 	//{
 	//	echo "<meta http-equiv=\"Location\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";
 	//}
-	if($_POST["update"])
+	if(isset($_POST["update"]))
 	{
 
 		$slutTid = "";
@@ -150,14 +151,15 @@ if(!empty($_POST))
 	    $starttimeforselect = '0000-01-01 '.$passObj['sttid']; 
 	try 
 			{ 
-			$sql = 'UPDATE bokningsbara set
+			$sql = 'UPDATE bokningsbara SET
 			antalplatser = :antP,
 			instnamn = :iNamn,
 			starttid = :stTid,
 			sluttid = :slTid,
-			uppdaterad = :uppdaterad
-			where
-			bokningsbarID = :passId';
+			uppdaterad = :uppdaterad,
+			information = :information
+			WHERE
+			bokningsbarID = :passid';
 
 			
 				$results = $db -> prepare ($sql);
@@ -165,8 +167,9 @@ if(!empty($_POST))
 						':iNamn' => $_POST["instruktor"],
 						':stTid' => $stDate->format('Y-m-d H:i:s'),
 						':slTid' => $slDate->format('Y-m-d H:i:s'),
-						':passId' => $row['bokningsbarID'],
-						':uppdaterad' =>1
+						':passid' => $_GET['passid'],
+						':information' => $_POST["information"],
+						':uppdaterad' => 1
 						));
 
 			
@@ -176,7 +179,7 @@ if(!empty($_POST))
 	                echo '<div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>';
 	                
 	            } 
-		echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema_uppdatera_pass.php?schemaid=".$passObj["schematyp"]."'\" />";	
+		echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema.php?schemaid=".$passObj["schematyp"]."'\" />";	
 	}
 			catch (Exception $e) 
 			{

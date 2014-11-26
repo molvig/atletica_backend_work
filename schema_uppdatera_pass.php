@@ -20,8 +20,8 @@
 </script>
 
 <h3>Uppdatera pass i schema 2014</h3>
-<?php $scid = $passObj['schematyp']; //schema_uppdatera_original.php?schemaid=<?php echo $scid; ?>
-<form class="form-horizontal" role="form" action="schema_uppdatera_pass.php" name="updateForm" method="post">
+<?php $scid = $passObj['schematyp']; ?>
+<form class="form-horizontal" role="form" action="#" name="updateForm" method="post">
 <script>
   function test(){
     alert("något");
@@ -171,7 +171,7 @@
     <div class="form-group">
     <label for="information" class="col-sm-2 control-label">Kommentar</label>
     <div class="col-sm-4">     
-    <input type="text" name="information" class="form-control" id="information" placeholder="Test" >
+    <input type="text" name="information" class="form-control" id="information" value="<?php echo $info; ?>" >
     </div>
     </div>
 

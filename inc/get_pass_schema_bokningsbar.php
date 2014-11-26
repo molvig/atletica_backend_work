@@ -33,7 +33,7 @@ $sonuppdate ="";
 $sql = 'SELECT distinct b.bokningsbarID, datum, TIME_FORMAT(starttid, "%H:%i") as tid, passnamn, extrapass, uppdaterad FROM bokningsbara as b , schemat as s 
 	WHERE b.bokningsbarID = s.bokningsbarID 
 	AND s.schematyp = :scID
-	order by starttid asc;';
+	order by starttid asc;'
 
 try {
 	$results = $db -> prepare ($sql);
@@ -60,8 +60,8 @@ foreach ($sc as $row)
 {	 
 	if (date('d-m-Y', strtotime($row['datum'])) == $mandag)
 	{		
-		$monextrapass .= $row['extrapass'];
-		$monuppdate .= $row['uppdaterad'];
+		$monextrapass = $row['extrapass'];
+		$monuppdate = $row['uppdaterad'];
 		
 		if ($monextrapass == 1){
 		$mon .=  '<a style="background-color:#DF007B; color:white" class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'.' '. $row['tid'].' '.$row['passnamn'] . '</a>';
@@ -74,8 +74,8 @@ foreach ($sc as $row)
 		}
 	}
 	else if (date('d-m-Y', strtotime($row['datum'])) == $tisdag) {
-		$tisextrapass .= $row['extrapass'];
-		$tisuppdate .= $row['uppdaterad'];
+		$tisextrapass = $row['extrapass'];
+		$tisuppdate = $row['uppdaterad'];
 		
 		if ($tisextrapass == 1){
 		$tue .= '<a style="background-color:#DF007B; color:white" class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'.' '. $row['tid'].' '.$row['passnamn'] . '</a>';
@@ -89,8 +89,8 @@ foreach ($sc as $row)
 
 	}
 	elseif (date('d-m-Y', strtotime($row['datum'])) == $onsdag) {
-		$onsextrapass .= $row['extrapass'];
-		$onsuppdate .= $row['uppdaterad'];
+		$onsextrapass = $row['extrapass'];
+		$onsuppdate = $row['uppdaterad'];
 		
 		if ($onsextrapass == 1){
 		$wed .=  '<a style="background-color:#DF007B; color:white" class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'.' '. $row['tid'].' '.$row['passnamn'] . '</a>';
@@ -103,8 +103,8 @@ foreach ($sc as $row)
 		}
 	}
 	elseif (date('d-m-Y', strtotime($row['datum'])) == $torsdag) {
-		$torsextrapass .= $row['extrapass'];
-		$torsuppdate .= $row['uppdaterad'];
+		$torsextrapass = $row['extrapass'];
+		$torsuppdate = $row['uppdaterad'];
 		
 		if ($torsextrapass == 1){
 		$thu .=  '<a style="background-color:#DF007B; color:white" class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'.' '. $row['tid'].' '.$row['passnamn'] . '</a>';
@@ -117,8 +117,8 @@ foreach ($sc as $row)
 		}
 	}
 	elseif (date('d-m-Y', strtotime($row['datum'])) == $fredag) {
-		$freextrapass .= $row['extrapass'];
-		$freuppdate .= $row['uppdaterad'];
+		$freextrapass = $row['extrapass'];
+		$freuppdate = $row['uppdaterad'];
 		
 		if ($freextrapass == 1){
 		$fri .=  '<a style="background-color:#DF007B; color:white" class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'.' '. $row['tid'].' '.$row['passnamn'] . '</a>';
@@ -131,8 +131,8 @@ foreach ($sc as $row)
 		}
 	}
 	elseif (date('d-m-Y', strtotime($row['datum'])) == $lordag) {
-		$lorextrapass .= $row['extrapass'];
-		$loruppdate .= $row['uppdaterad'];
+		$lorextrapass = $row['extrapass'];
+		$loruppdate = $row['uppdaterad'];
 		
 		if ($lorextrapass == 1){
 		$sat .=  '<a style="background-color:#DF007B; color:white" class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'.' '. $row['tid'].' '.$row['passnamn'] . '</a>';
@@ -145,8 +145,8 @@ foreach ($sc as $row)
 		}
 	}
 	elseif (date('d-m-Y', strtotime($row['datum'])) == $sondag) {
-		$sonextrapass .= $row['extrapass'];
-		$sonuppdate .= $row['uppdaterad'];
+		$sonextrapass = $row['extrapass'];
+		$sonuppdate = $row['uppdaterad'];
 		
 		if ($sonextrapass == 1){
 		$sun .=  '<a style="background-color:#DF007B; color:white" class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. '<span style="color:#FFF; font-size:18px;" class="glyphicon glyphicon-star-empty"></span>'.' '. $row['tid'].' '.$row['passnamn'] . '</a>';
