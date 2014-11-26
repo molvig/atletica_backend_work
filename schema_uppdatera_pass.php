@@ -44,7 +44,7 @@
     <div class="form-group">
                     <label for="datetimepicker" class="col-sm-2 control-label">Starttid</label>
                     <div class="col-sm-4">
-                        <input id="datetimepicker1" type="text" class="form-control" onChange="changeHiddenStart(this.value)" value="<?php echo $start; ?>">
+                        <input id="datetimepicker1" type="text" class="form-control" onChange="changeHiddenStart(this.value)" value="<?php echo $passObj['sttid']; ?>">
                     </div>
                   <input type="hidden" id="starttid" name="starttid" value=""/> 
 
@@ -59,7 +59,7 @@
   <div class="form-group">
             <label for="datetimepicker" class="col-sm-2 control-label">Sluttid</label>
             <div class="col-sm-4">
-                <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut(this.value)" value="<?php echo $slut; ?>" >
+                <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut(this.value)" value="<?php echo $passObj['sltid']; ?>" >
             </div>
           <input type="hidden" id="sluttid" name="sluttid" value=""/> 
         <script>

@@ -12,7 +12,7 @@
 				    <div class="panel-heading" role="tab" id="headingOne">
 				      <h4 class="panel-title">
 				        <a data-toggle="collapse" data-parent="#accordion" href="#orsaken" aria-expanded="true" aria-controls="collapseOne">
-				          Ställ in passet
+				          Ställ in passnamn
 				        </a>
 				      </h4>
 				    </div>
@@ -24,6 +24,10 @@
 						  </div>
 						  <button type="submit" class="btn btn-default">Ställ in passet</button>
 						</form>
+						<br>
+						Lista med alla bokade
+						<br>
+						Kundnummer + Namn + Telefonnummer <button type="submit" class="btn btn-default">Avboka</button>
 				      </div>
 				    </div>
 				  </div>
@@ -39,7 +43,7 @@
 				    <div class="panel-heading" role="tab" id="headingOne">
 				      <h4 class="panel-title">
 				        <a data-toggle="collapse" data-parent="#accordion" href="#bokagast" aria-expanded="true" aria-controls="collapseOne">
-				          Ändra passet
+				          Ändra passnamn
 				        </a>
 				      </h4>
 				    </div>

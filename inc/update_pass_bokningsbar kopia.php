@@ -19,7 +19,9 @@ if(isset($_GET['passid']))
 	try {
 		$sql = "SELECT b.bokningsbarID, s.schematyp, b.instnamn, b.passnamn, TIME_FORMAT(b.starttid, '%H:%i') as sttid, TIME_FORMAT(b.sluttid, '%H:%i') as sltid, b.veckodag, b.antalplatser 
 					from bokningsbara as b, schemat as s 
-					where b.bokningsbarID = :passId";
+					where b.bokningsbarID = :passId
+					and b.bokningsbarID = s.bokningsbarID
+					and s.bokningsbarID = :passId";
 
 		$results = $db -> prepare ($sql);
 		$results->execute(array(':passId' => $_GET["passid"]));	
