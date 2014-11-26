@@ -83,7 +83,15 @@ if(!empty($_POST))
 	{
 		//för att ta bort ett pass ska vi vara säkra på att passet verkligen ska tas bort.
 		$someJs = '<script>if(confirm("Vill du verkligen ta bort dett passet?"))
-		{alert("Passet passets namn har nu blivit borttaget.");}else{alert("Borttagning avbrutet");}</script>';
+		{
+			location.href = original_pass_delete.php;
+			//alert("Passet passets namn har nu blivit borttaget.");
+		}
+		else
+			{
+				alert("Borttagning avbrutet");
+			}
+			</script>';
 
 		echo $someJs;
 	}
