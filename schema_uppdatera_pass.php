@@ -1,6 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
-<!--<?php include("inc/update_pass_bokningsbar.php"); ?>-->
+<?php include("inc/update_pass_bokningsbar.php"); ?>
 <?php include("inc/getinstruktorer.php"); ?>
 
 
@@ -168,13 +168,21 @@
     </div>
   </div>
   </div>
-
+    <div class="form-group">
+    <label for="information" class="col-sm-2 control-label">Kommentar</label>
+    <div class="col-sm-4">     
+    <input type="text" name="information" class="form-control" id="information" placeholder="Ex. Ny koreografi" >
+    </div>
+    </div>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-    <!-- <a href="javascript:test()" class="btn btn-default">Uppdatera</a> -->
-      <button type="submit" onclick="" class="btn btn-default">Uppdatera</button>
+    
+      <button type="submit" name="update" class="btn btn-default">Uppdatera</button>
+      <button type="submit" name="cancel" class="btn btn-default">Avbryt</button>
+      <button type="submit" name="stall_in" class="btn btn-default">Ställ in</button>
     </div>
+  
   </div>
 </form>
 </div>
