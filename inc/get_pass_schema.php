@@ -16,6 +16,7 @@ if($url =='/atletica_backend_work/schema_uppdatera_original.php')
 $sql = "SELECT distinct b.bokningsbarID, veckodag, TIME_FORMAT(starttid, '%H:%i') as tid, passnamn FROM bokningsbara as b , schemat as s 
 	WHERE b.bokningsbarID = s.bokningsbarID 
 	AND s.schematyp = :scID
+	AND b.extrapass = 0
 	group by passnamn, veckodag
 	order by b.veckodag, tid asc;";
 

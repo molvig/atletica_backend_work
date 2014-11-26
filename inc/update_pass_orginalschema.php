@@ -84,7 +84,7 @@ if(!empty($_POST))
 		//för att ta bort ett pass ska vi vara säkra på att passet verkligen ska tas bort.
 		$someJs = '<script>if(confirm("Vill du verkligen ta bort dett passet?"))
 		{
-			location.href = original_pass_delete.php;
+			window.location.href = original_pass_delete.php;
 			//alert("Passet passets namn har nu blivit borttaget.");
 		}
 		else
@@ -188,7 +188,7 @@ if(!empty($_POST))
 			starttid = :stTid,
 			sluttid = :slTid
 			where
-			bokningsbarID = :passId';
+			bokningsbarID = :passId and extrapass = 0 and uppdaterad = 0';
 
 			
 				$results = $db -> prepare ($sql);
@@ -204,8 +204,9 @@ if(!empty($_POST))
 		}
 		if($sql){
 	                echo '<div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>';
-	                
-	            } 
+	            
+   					  
+	            } 	            
 		echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";	
 	}
 			catch (Exception $e) 
