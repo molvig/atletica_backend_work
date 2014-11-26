@@ -1,5 +1,8 @@
 <?php
 //Fyll fälten som ska uppdateras
+	$slut = "";
+	$start = "";
+
 if(isset($_GET['passid']))
 {
 	try {
@@ -24,16 +27,16 @@ if(isset($_GET['passid']))
 		$results = $db -> prepare ($sql);
 		$results->execute(array(':passId' => $_GET["passid"]));	
 		
-}
+		}
 	 catch (Exception $e) {
 		echo "Det blev något fel när databasen skulle kontaktas";
 	}
 
 	$passObj = ($results -> fetch(PDO::FETCH_ASSOC));
 	$results->closeCursor();
-echo $passObj['schematyp'];
-$slut = $passObj['sltid'];
-$start = $passObj['sttid'];
+	echo $passObj['schematyp'];
+	$slut = $passObj['sltid'];
+	$start = $passObj['sttid'];
 	foreach($passnamn as $p)
 	{
 		if ($p['passnamn'] == $passObj['passnamn']) 
@@ -84,8 +87,8 @@ if(!empty($_POST))
 	//{
 	//	echo "<meta http-equiv=\"Location\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";
 	//}
-	//elseif($_POST["update"])
-	//{
+	if($_POST["update"])
+	{
 
 		$slutTid = "";
 		$startTid = "";
@@ -152,7 +155,7 @@ if(!empty($_POST))
 			instnamn = :iNamn,
 			starttid = :stTid,
 			sluttid = :slTid,
-			information = :information
+			uppdaterad = :uppdaterad
 			where
 			bokningsbarID = :passId';
 
@@ -162,8 +165,9 @@ if(!empty($_POST))
 						':iNamn' => $_POST["instruktor"],
 						':stTid' => $stDate->format('Y-m-d H:i:s'),
 						':slTid' => $slDate->format('Y-m-d H:i:s'),
-						':information' => $_POST["information"],
-						':passId' => $row['bokningsbarID']));
+						':passId' => $row['bokningsbarID'],
+						':uppdaterad' =>1
+						));
 
 			
 			$results->closeCursor();
@@ -172,15 +176,14 @@ if(!empty($_POST))
 	                echo '<div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>';
 	                
 	            } 
-		//echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";	
+		echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema_uppdatera_pass.php?schemaid=".$passObj["schematyp"]."'\" />";	
 	}
 			catch (Exception $e) 
 			{
 				echo $e;
 			}
-		/*uppdatera schema ett pass bara
-		updatera orginal alla på samma dag tid och schema*/
+
 		
-	//}
+	}
 }
 ?>

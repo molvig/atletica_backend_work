@@ -171,7 +171,7 @@
     <div class="form-group">
     <label for="information" class="col-sm-2 control-label">Kommentar</label>
     <div class="col-sm-4">     
-    <input type="text" name="information" class="form-control" id="information" placeholder="Ex. Ny koreografi" >
+    <input type="text" name="information" class="form-control" id="information" placeholder="Test" >
     </div>
     </div>
 
