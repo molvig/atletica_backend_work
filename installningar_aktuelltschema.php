@@ -19,14 +19,14 @@
     	<div class="grid_4">
           
           <label>Vårschemat gäller från
-          	<input type="text" class="tcal" name="dateVarStart" value="<?php echo $start; ?>">
+          	<input type="text" class="tcal" name="dateVarStart" value="<?php echo $startVar; ?>">
           </label>
         </div>
 
 
 		<div class="grid_6">
           <label>Till  <br>
-          <input type="text" name="dateVarEnd" class="tcal" value="<?php echo $slut; ?>"></label>
+          <input type="text" name="dateVarEnd" class="tcal" value="<?php echo $slutVar; ?>"></label>
         </div>
 	    	
 
@@ -36,13 +36,13 @@
     	<div class="grid_4">
           
           <label>Sommarschemat gäller från
-          	<input type="text" class="form-control"name="date" value="<?php echo $start; ?>" readonly>
+          	<input type="text" class="form-control"name="date" value="<?php echo $startSommar; ?>" readonly>
           </label>
         </div>
 
 		<div class="grid_6">
           <label>Till  <br>
-          <input type="text" name="dateSommarEnd" class="tcal" value="<?php echo $slut; ?>"></label>
+          <input type="text" name="dateSommarEnd" class="tcal" value="<?php echo $slutSommar; ?>"></label>
         </div>
 	</div>
 
@@ -51,13 +51,13 @@
     	<div class="grid_4">
           
           <label>Höstschemat gäller från
-          	<input type="text" class="form-control" name="date" value="<?php echo $start; ?>" readonly>
+          	<input type="text" class="form-control" name="date" value="<?php echo $startHost; ?>" readonly>
           </label>
         </div>
 
 		<div class="grid_6">
           <label>Till  <br>
-          <input type="text" name="dateHostEnd" class="tcal" value="<?php echo $slut; ?>"></label>
+          <input type="text" name="dateHostEnd" class="tcal" value="<?php echo $slutHost; ?>"></label>
         </div>
 	</div>
 
@@ -66,13 +66,14 @@
     	<div class="grid_4">
           
           <label>Vinterschemat gäller från
-          	<input type="text" class="form-control" name="date" value="<?php echo $start; ?>" readonly>
+          	<input type="text" class="form-control" name="date" value="<?php echo $startVinter; ?>" readonly>
           </label>
         </div>
 		<div class="grid_6">
           <label>Till  <br>
-          <input type="text" name="dateVinterEnd" class="tcal" value="<?php echo $slut; ?>"></label>
+          <input type="text" name="dateVinterEnd" class="tcal" value="<?php echo $slutVinter; ?>"></label>          
         </div>
+
 	</div>
 
         <div class="grid_6">
