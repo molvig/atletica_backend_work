@@ -4,18 +4,105 @@
 <?php include("inc/boka_gast.php"); ?>
 <?php include("inc/klipp_kort.php"); ?>
 <?php include("inc/get_veckans_pass.php"); ?>
+<?php include("inc/aktuellt_pass.php"); ?>
+<?php include("inc/get_bokade.php"); ?>
+<?php include("inc/boka_medlem.php"); ?>
+
+
 
 <div class="grid_12">
 <div class="grid_3">
-	<?php echo $pass; ?>
+
+<div class="panel panel-default">
+ 	<div class="panel-heading">
+   		<h3 class="panel-title">  <?php echo $veckodag;?> <?php echo $today;?></h3>
+  	</div>
+	<div class="panel-body">
+		<div class="list-group">
+
+				<?php echo $dagspass; ?>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+ 	<div class="panel-heading">
+   		<h3 class="panel-title">  <?php echo $veckodag1;?> <?php echo $oneday;?></h3>
+  	</div>
+	<div class="panel-body">
+		<div class="list-group">
+
+				<?php echo $dagspass1; ?>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+ 	<div class="panel-heading">
+   		<h3 class="panel-title">  <?php echo $veckodag2;?> <?php echo $twoday;?></h3>
+  	</div>
+	<div class="panel-body">
+		<div class="list-group">
+
+				<?php echo $dagspass2; ?>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+ 	<div class="panel-heading">
+   		<h3 class="panel-title">  <?php echo $veckodag3;?> <?php echo $threeday;?></h3>
+  	</div>
+	<div class="panel-body">
+		<div class="list-group">
+
+				<?php echo $dagspass3; ?>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+ 	<div class="panel-heading">
+   		<h3 class="panel-title">  <?php echo $veckodag4;?> <?php echo $fourday;?></h3>
+  	</div>
+	<div class="panel-body">
+		<div class="list-group">
+
+				<?php echo $dagspass4; ?>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+ 	<div class="panel-heading">
+   		<h3 class="panel-title">  <?php echo $veckodag5;?> <?php echo $fiveday;?></h3>
+  	</div>
+	<div class="panel-body">
+		<div class="list-group">
+
+				<?php echo $dagspass5; ?>
+		</div>
+	</div>
+</div>
+<div class="panel panel-default">
+ 	<div class="panel-heading">
+   		<h3 class="panel-title">  <?php echo $veckodag6;?> <?php echo $sixday;?></h3>
+  	</div>
+	<div class="panel-body">
+		<div class="list-group">
+
+				<?php echo $dagspass6; ?>
+		</div>
+	</div>
+</div>
+
+
+
 
 	<?php echo "idag: ". $today;
-			echo " om sex dagar: ". $sixdays;
+			echo " om sex dagar: ". $sixday;
 			?>
 </div>
 
+
 	<div class="grid_5">
 		<div class="grid_12">
+			<?php if(isset($_GET["passid"])){ ?>
 			<div class="grid_4">
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 				  <div class="panel panel-default">
@@ -30,9 +117,9 @@
 				      <div class="panel-body">
 						 <form class="form-inline" role="form" method="post">
 						    <div class="form-group">
-						    <input type="text" class="form-control" id="medlemsnummer" placeholder="Medlemsnummer" onkeypress="return isNumberKey(event)" required>
+						    <input type="text" class="form-control" name="bokamedlem" id="medlemsnummer" placeholder="Medlemsnummer" onkeypress="return isNumberKey(event)" required>
 						  </div>
-						  <button type="submit" class="btn btn-default">Boka medlem</button>
+						  <button type="submit" name ="submit-medlem" class="btn btn-default">Boka medlem</button>
 						</form>
 				      </div>
 				    </div>
@@ -88,28 +175,38 @@
 				</div>
 		</div>
 
-
+	
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
-			<h3 class="panel-title">Passnamn + Datum </h3>
+					<p>	<?php echo $datum; ?></p> 
+					<h3 class="panel-title"><?php echo $passnamn; ?> </h3>
+					<p> Instruktör: <?php echo $inst; ?> </p>
+					<p> Ev information: <?php echo $info; ?> </p>
 			</div>
-			<div class="table-responsive">
-			  <table class="table">
-				<?php  ?>
-				<tr class='alert alert-danger'>
-					<td>Kundnr</td>
-					<td>Fnamn</td>
-					<td>Enamn</td>
-					<td>dagar kvar medlemskort</td>
-					<td><button type='submit' class='btn btn-default btn-sm' ><span class='glyphicon glyphicon-ok'></span></button></td>
-					<td><button type='submit' class='btn btn-default btn-sm' data-toggle="tooltip" data-placement="right" title="Ta bort kund från passet"><span class='glyphicon glyphicon-trash'></span></button></td>
-				</tr>
-			  </table>
-			</div>
-		</div>
-	</div>
 
+		  <div class="panel-heading">
+		      <th><h4><?php echo "Antal bokade: ", $antal;  ?></h4></th>
+		  </div>
+
+		  <div class="panel panel-default">
+		      <table class="table">
+		      <tr>
+		        <td><h5>Kundnummer</h5></td>
+		        <td><h5>Förnamn</h5></td>
+		        <td><h5>Efternamn</h5></td>
+		        <td><h5>Dagar kvar</h5></td>
+		      </tr>   
+		    <?php echo $found; ?>
+		      </table> 
+
+		  </div>
+
+		</div>
+
+		
+	</div>
+<?php } ?>
 <div class="grid_1">
 </div>
 
@@ -149,7 +246,7 @@
 				  </div>
 				</div>
 	</div>	
-
+<!--
   <?php
   if(!empty($_POST))
 {
@@ -190,7 +287,7 @@
 	}
 	}
 	?>
-
+-->
 </div>
 <script>
 function isNumberKey(evt){

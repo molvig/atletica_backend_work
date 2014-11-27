@@ -1,4 +1,6 @@
 <?php
+	if(isset($_GET["passid"])){
+$passid = htmlspecialchars($_GET["passid"]);
 	 
 	if(!empty($_POST['gastlista-submit'])){
 		
@@ -6,7 +8,7 @@
 	    $enamn = $_POST['enamn_gast'];
 	    $mail = $_POST['email_gast'];
 	    $tel = $_POST['tel_gast'];
-	    $bokningID = 1;
+	    $bokningID = $passid;
 
 
 		try {
@@ -29,5 +31,6 @@
 		<?php }
 			   
 
+	}
 	}
 ?>
