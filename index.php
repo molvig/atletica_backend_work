@@ -7,16 +7,8 @@
 
 <div class="grid_12">
 <div class="grid_3">
-	<div class="panel panel-default">
- 		<div class="panel-heading">
-   			<h3 class="panel-title">Veckodag + datum</h3>
-  		</div>
-	  	<div class="panel-body">
-			<div class="list-group">
-				 <?php echo $pass; ?>
-			</div>
-		</div>
-	</div>
+	<?php echo $pass; ?>
+
 	<?php echo "idag: ". $today;
 			echo " om sex dagar: ". $sixdays;
 			?>

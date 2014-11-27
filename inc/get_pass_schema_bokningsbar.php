@@ -33,7 +33,7 @@ $sonuppdate ="";
 $sql = 'SELECT distinct b.bokningsbarID, datum, TIME_FORMAT(starttid, "%H:%i") as tid, passnamn, extrapass, uppdaterad FROM bokningsbara as b , schemat as s 
 	WHERE b.bokningsbarID = s.bokningsbarID 
 	AND s.schematyp = :scID
-	order by starttid asc;'
+	order by starttid asc';
 
 try {
 	$results = $db -> prepare ($sql);
@@ -88,7 +88,7 @@ foreach ($sc as $row)
 		}
 
 	}
-	elseif (date('d-m-Y', strtotime($row['datum'])) == $onsdag) {
+	else if (date('d-m-Y', strtotime($row['datum'])) == $onsdag) {
 		$onsextrapass = $row['extrapass'];
 		$onsuppdate = $row['uppdaterad'];
 		
@@ -102,7 +102,7 @@ foreach ($sc as $row)
 		$wed .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
 		}
 	}
-	elseif (date('d-m-Y', strtotime($row['datum'])) == $torsdag) {
+	else if (date('d-m-Y', strtotime($row['datum'])) == $torsdag) {
 		$torsextrapass = $row['extrapass'];
 		$torsuppdate = $row['uppdaterad'];
 		
@@ -116,7 +116,7 @@ foreach ($sc as $row)
 		$thu .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
 		}
 	}
-	elseif (date('d-m-Y', strtotime($row['datum'])) == $fredag) {
+	else if (date('d-m-Y', strtotime($row['datum'])) == $fredag) {
 		$freextrapass = $row['extrapass'];
 		$freuppdate = $row['uppdaterad'];
 		
@@ -130,7 +130,7 @@ foreach ($sc as $row)
 		$fri .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
 		}
 	}
-	elseif (date('d-m-Y', strtotime($row['datum'])) == $lordag) {
+	else if (date('d-m-Y', strtotime($row['datum'])) == $lordag) {
 		$lorextrapass = $row['extrapass'];
 		$loruppdate = $row['uppdaterad'];
 		
@@ -144,7 +144,7 @@ foreach ($sc as $row)
 		$sat .= '<a class="list-group-item"'. ' '. 'href="schema_uppdatera_pass.php?passid='.$row['bokningsbarID'].'">'. $row['tid'].' '.$row['passnamn'] .'</a>';
 		}
 	}
-	elseif (date('d-m-Y', strtotime($row['datum'])) == $sondag) {
+	else if (date('d-m-Y', strtotime($row['datum'])) == $sondag) {
 		$sonextrapass = $row['extrapass'];
 		$sonuppdate = $row['uppdaterad'];
 		
