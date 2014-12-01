@@ -12,13 +12,14 @@ $passid = htmlspecialchars($_GET["passid"]);
 
 
 		try {
-			 $query = ("INSERT INTO gastlista (fnamn, enamn, telefon, mail, bokningID) VALUES (:fnamn, :enamn,  :tel, :email, :bokningID)");
+			 $query = ("INSERT INTO gastlista (fnamn, enamn, telefon, mail, bokningID), bokningar (kundnr, bokningsbarID, gast) VALUES (:fnamn, :enamn,  :tel, :email, :bokningID), (:kundnr, :bokningsbarID, :gast)");
 			    $q = $db -> prepare($query);
 			    $q-> execute(array(':fnamn'=>$fnamn,
 			    					':enamn'=>$enamn,
 			    					':tel'=>$tel,
 			    					':email'=>$mail,
-			    					':bokningID'=>$bokningID
+			    					':bokningID'=>$bokningID,
+			    					
 			    ));
 
 		  		if($query){?>

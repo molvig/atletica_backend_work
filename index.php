@@ -7,6 +7,7 @@
 <?php include("inc/aktuellt_pass.php"); ?>
 <?php include("inc/get_bokade.php"); ?>
 <?php include("inc/boka_medlem.php"); ?>
+<?php include("inc/checka_in.php"); ?>
 
 
 
@@ -115,7 +116,7 @@
 				    </div>
 				    <div id="bokamedlem" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 				      <div class="panel-body">
-						 <form class="form-inline" role="form" method="post">
+						 <form class="form-inline" role="form" method="post" action="index.php?passid=<?php echo $passid; ?>">
 						    <div class="form-group">
 						    <input type="text" class="form-control" name="bokamedlem" id="medlemsnummer" placeholder="Medlemsnummer" onkeypress="return isNumberKey(event)" required>
 						  </div>
@@ -186,20 +187,26 @@
 			</div>
 
 		  <div class="panel-heading">
-		      <th><h4><?php echo "Antal bokade: ", $antal;  ?></h4></th>
+		      <th><h4><?php echo "Antal bokade: ", $antalbokade;  ?></h4></th>
 		  </div>
 
 		  <div class="panel panel-default">
+		  	
 		      <table class="table">
 		      <tr>
+
 		        <td><h5>Kundnummer</h5></td>
 		        <td><h5>Förnamn</h5></td>
 		        <td><h5>Efternamn</h5></td>
-		        <td><h5>Dagar kvar</h5></td>
+		        <td><h5>Kortstatus</h5></td>
+		        <td><h5>Avboka</h5></td>
+		        <td><h5>Checka in</h5></td>
 		      </tr>   
+			
 		    <?php echo $found; ?>
-		      </table> 
 
+		      </table> 
+		
 		  </div>
 
 		</div>
