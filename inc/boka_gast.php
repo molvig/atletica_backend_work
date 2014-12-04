@@ -2,7 +2,8 @@
 	if(isset($_GET["passid"])){
 $passid = htmlspecialchars($_GET["passid"]);
 	 
-	if(!empty($_POST['gastlista-submit'])){
+	if(!empty($_POST['gastlista-submit'])){ 
+
 		
 	    $fnamn = $_POST['fnamn_gast'];
 	    $enamn = $_POST['enamn_gast'];
@@ -10,21 +11,61 @@ $passid = htmlspecialchars($_GET["passid"]);
 	    $tel = $_POST['tel_gast'];
 	    $bokningID = $passid;
 
+		try {
+
+		$query = "SELECT datum FROM bokningsbara WHERE bokningsbara.bokningsbarID = {$passid}";  
+		$stmt = $db ->prepare($query);
+		$stmt->execute();		
+		$result = ($stmt->fetch(PDO::FETCH_ASSOC)); 
+	
+		$passdatum = $result['datum'];
+		
+		$stmt->closeCursor(); 	
+		}   
+		catch (Exception $e) {
+
+			 echo $e;
+		}   
+
 
 		try {
-			 $query = ("INSERT INTO gastlista (fnamn, enamn, telefon, mail, bokningID), bokningar (kundnr, bokningsbarID, gast) VALUES (:fnamn, :enamn,  :tel, :email, :bokningID), (:kundnr, :bokningsbarID, :gast)");
+			$db->beginTransaction();
+
+				$query = "INSERT INTO gastlista (gastID, fnamn, enamn, telefon, mail, bokningID, passdatum) VALUES (:gastid, :fnamn, :enamn,  :tel, :email, :bokningID, :passdatum)";
 			    $q = $db -> prepare($query);
-			    $q-> execute(array(':fnamn'=>$fnamn,
+			    $q-> execute(array(':gastid'=>$biggestgastid,
+			    					':fnamn'=>$fnamn,
 			    					':enamn'=>$enamn,
 			    					':tel'=>$tel,
 			    					':email'=>$mail,
 			    					':bokningID'=>$bokningID,
+			    					':passdatum'=>$passdatum
 			    					
 			    ));
 
-		  		if($query){?>
+
+				$query ="INSERT INTO bokningar (kundnr, bokningsbarID, gastID) VALUES (:kundnr, :bokningsbarID, :gastID)";
+			    $q = $db -> prepare($query);
+			    $q-> execute(array(':kundnr'=>null, 
+			    					':bokningsbarID'=>$bokningID, 
+			    					':gastID'=>$biggestgastid
+			    					
+			    ));
+
+
+
+			    $db->commit();
+
+
+
+
+		  		if($query){
+
+		  			//SKICKA EMAIL TILL GÄSTEN
+
+		  			?>
 		    	<div class="grid_12"> <?php echo '<h4>' . 'Du har bokat '. '<strong>' . $fnamn  .'</strong>' .' som gäst!' . '</h4>'; ?></div>
-			 <?php	}
+			 <?php	         echo "<meta http-equiv=\"refresh\" content=\"1;URL='index.php?passid=".$passid."'\" />";	}
 		} 
 		catch (Exception $e) { ?>
 
@@ -34,4 +75,5 @@ $passid = htmlspecialchars($_GET["passid"]);
 
 	}
 	}
+ 
 ?>

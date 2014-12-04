@@ -13,18 +13,20 @@ try{
 
 		$res = $stmt->fetch(PDO::FETCH_ASSOC); 
 		$stmt->closeCursor(); 
+
+		
 }
 
 catch (Exception $e) { 
 
 	echo $e;
-	}
-
-		$antalplatser = $res['antalplatser'];
+}
 
 
-echo "antalplatser:".$antalplatser . "<br>";
-echo "bokade på passet".$antalbokade;
+
+
+//echo "antalplatser: ". $antalplatserna . "<br>";
+//echo "bokade på passet: ". $antalbokade;
 
 
 	 if(!empty($_POST['bokamedlem'])){
@@ -36,18 +38,20 @@ echo "bokade på passet".$antalbokade;
 
 	    $bokningID = $passid;
 
-	    if ($antalplatser > $antalbokade){
+	    if ($antalplatserna > $antalbokade){
 
 			try {
-				 $query = ("INSERT INTO bokningar (kundnr, bokningsbarID) VALUES (:kundnr, :bokningsbarID)");
+				 $query = ("INSERT INTO bokningar (kundnr, bokningsbarID, gastID) VALUES (:kundnr, :bokningsbarID, :gastID)");
 				    $q = $db -> prepare($query);
 				    $q-> execute(array(':kundnr'=>$kundnr,
-				    					':bokningsbarID'=>$passid
+				    					':bokningsbarID'=>$passid,
+				    					':gastID'=>null
 				    ));
 
 			  		if($query){?>
 			    	<div class="grid_12"> <?php echo '<h4>' . 'Du har bokat '. '<strong>' . $kundnr  .'</strong>' .' som gäst!' . '</h4>'; ?></div>
-				 <?php	}
+				 <?php	         echo "<meta http-equiv=\"refresh\" content=\"1;URL='index.php?passid=".$passid."'\" />";	
+				}
 			} 
 			catch (Exception $e) { ?>
 
@@ -58,7 +62,7 @@ echo "bokade på passet".$antalbokade;
 
 		else {
 
-			echo "<form method='post'>". "Det är fullt på detta passet! <br>". "<input type='submit'". "value='Boka en reservplats'>". "</form>";
+			echo "<form method='post'>". "Det är fullt på detta passet! <br>" . "</form>";
 		}  
 
 	}
@@ -67,6 +71,4 @@ echo "bokade på passet".$antalbokade;
 }
 
 
-include('inc/get_bokade.php');
-include('inc/get_veckans_pass.php');
 ?>

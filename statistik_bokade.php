@@ -2,6 +2,7 @@
 <?php include("inc/header.php"); ?>
 <?php include("inc/getinstruktorer.php"); ?>
 <?php include("inc/getpass.php"); ?>
+<?php include("inc/get_bokade_stat.php"); ?>
 
 
 <div class="grid_2"><?php include("inc/menystatistik.php"); ?></div> 
@@ -39,7 +40,7 @@
         </select>
       </div>
     <div class="grid_6">
-      <button type="submit" class="btn btn-default">Sök på instruktör
+      <button type="submit" name="inst-submit" class="btn btn-default">Sök på instruktör
     </div> 
   </form>
 </div> 

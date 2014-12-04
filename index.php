@@ -1,14 +1,14 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
 <?php include("inc/getveckansfokus.php"); ?>
-<?php include("inc/boka_gast.php"); ?>
+<?php include("inc/nytt_gastID.php"); ?>
 <?php include("inc/klipp_kort.php"); ?>
 <?php include("inc/get_veckans_pass.php"); ?>
 <?php include("inc/aktuellt_pass.php"); ?>
 <?php include("inc/get_bokade.php"); ?>
 <?php include("inc/boka_medlem.php"); ?>
 <?php include("inc/checka_in.php"); ?>
-
+<?php include("inc/boka_gast.php"); ?>
 
 
 <div class="grid_12">
@@ -93,17 +93,11 @@
 </div>
 
 
-
-
-	<?php echo "idag: ". $today;
-			echo " om sex dagar: ". $sixday;
-			?>
 </div>
 
-
-	<div class="grid_5">
+<?php if(isset($_GET["passid"])){ ?>
+	<div class="grid_6">
 		<div class="grid_12">
-			<?php if(isset($_GET["passid"])){ ?>
 			<div class="grid_4">
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 				  <div class="panel panel-default">
@@ -141,6 +135,9 @@
 				    <div id="bokagast" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 				      <div class="panel-body">
 						 <form class="form-inline" role="form" method="post" name="gastlista">
+						 <div class="form-group">
+						    <input type="text" class="form-control" name="gastID" placeholder="GästID" value="<?php echo "GästID: " . $biggestgastid; ?>" readonly>
+						  </div>	
 						  <div class="form-group">
 						    <input type="text" class="form-control" name="fnamn_gast" placeholder="Förnamn" required>
 						  </div>
@@ -166,7 +163,7 @@
 				  <div class="panel panel-default">
 				    <div class="panel-heading" role="tab" id="headingOne">
 				      <h4 class="panel-title">
-				        <a href="stall_in_pass.php">
+				        <a href="stall_in_pass.php?passid=<?php echo $passid; ?>">
 				          Ställ in/Ändra pass
 				        </a>
 				      </h4>
@@ -179,15 +176,22 @@
 	
 
 		<div class="panel panel-default">
+			<?php echo $installt; ?> 
 			<div class="panel-heading">
-					<p>	<?php echo $datum; ?></p> 
-					<h3 class="panel-title"><?php echo $passnamn; ?> </h3>
-					<p> Instruktör: <?php echo $inst; ?> </p>
-					<p> Ev information: <?php echo $info; ?> </p>
+				
+
+					<tr><h4> <strong><?php echo $passnamn; ?></strong> </h4></tr>
+					<tr> Instruktör: <strong><?php echo $inst; ?></strong>  </tr><br>
+					<tr> Tid: <?php echo "<strong>". $starttid. "</strong>". " - ".$sluttid ; ?> </tr> <br>
+					<tr> Datum: <?php echo $passdatum; ?> </tr> <br>
+					<tr> Antalplatser: <?php echo $antalplatserna; ?> </tr><br>
+					<tr> <?php echo $info; ?> </tr>
+
+					
 			</div>
 
 		  <div class="panel-heading">
-		      <th><h4><?php echo "Antal bokade: ", $antalbokade;  ?></h4></th>
+		      <th><?php echo "Antal bokade: ", $antalbokade;  ?></th>
 		  </div>
 
 		  <div class="panel panel-default">
@@ -213,7 +217,37 @@
 
 		
 	</div>
-<?php } ?>
+<?php } 
+else { ?>
+
+	<div class="grid_6">
+		<div class="grid_12">
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">					
+			</div>
+		  <div class="panel-heading">
+		  </div>
+		  <div class="panel panel-default">
+		  	
+		      <table class="table">
+		      <tr>
+
+		        <td><h5>Kundnummer</h5></td>
+		        <td><h5>Förnamn</h5></td>
+		        <td><h5>Efternamn</h5></td>
+		        <td><h5>Kortstatus</h5></td>
+		        <td><h5>Avboka</h5></td>
+		        <td><h5>Checka in</h5></td>
+		      </tr>   
+		      </table> 
+		  </div>
+		</div>	
+	</div>
+
+<?php }
+?>
+
 <div class="grid_1">
 </div>
 

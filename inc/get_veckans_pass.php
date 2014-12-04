@@ -122,17 +122,20 @@ catch (Exception $e) {
 
 
 
+
 $antalplatser = $row['antalplatser'];
+if($row['installt']==1){$install="<strong style='color:red;'>". " INSTÄLLT!". "</strong>";}
+else {$install="";}
 
 	if (date('Y-m-d', strtotime($row['datum'])) == $today)
 	{	
 
 		if 	($antal<$antalplatser){
-			$dagspass .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';
+			$dagspass .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. $install. '</a>';
 			}
 
 		else if ($antal>=$antalplatser){
-			$dagspass .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';
+			$dagspass .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. $install.'</a>';
 			}
 		}
 
@@ -141,11 +144,11 @@ $antalplatser = $row['antalplatser'];
 	{		
 		
 		if 	($antal<$antalplatser){
-			$dagspass1 .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';
+			$dagspass1 .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. $install.'</a>';
 			}
 
 		else if ($antal>=$antalplatser){
-			$dagspass1 .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';
+			$dagspass1 .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. $install.'</a>';
 			}
 	}
 
@@ -154,53 +157,53 @@ $antalplatser = $row['antalplatser'];
 
 			
 		if 	($antal<$antalplatser){
-			$dagspass2 .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';
+			$dagspass2 .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn'].$install. '</a>';
 			}
 
 		else if ($antal>=$antalplatser){
-			$dagspass2 .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';
+			$dagspass2 .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn'].$install. '</a>';
 			}
 	
 	}
 	if (date('Y-m-d', strtotime($row['datum'])) == $threeday)
 	{		
 		if 	($antal<$antalplatser){
-		$dagspass3 .= '<a href="index.php?passid='. $row['bokningsbarID'].'"'. 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';
+		$dagspass3 .= '<a href="index.php?passid='. $row['bokningsbarID'].'"'. 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn'].$install. '</a>';
 		}
 
 		else if ($antal>=$antalplatser){
-		$dagspass3 .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"'. 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';
+		$dagspass3 .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"'. 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn'].$install. '</a>';
 		}	
 
 	}
 	if (date('Y-m-d', strtotime($row['datum'])) == $fourday)
 	{		
 		if 	($antal<$antalplatser){
-		$dagspass4 .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';
+		$dagspass4 .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. $install.'</a>';
 		}
 
 		else if ($antal>=$antalplatser){
-		$dagspass4 .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';
+		$dagspass4 .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn'].$install. '</a>';
 		}	
 	}
 	if (date('Y-m-d', strtotime($row['datum'])) == $fiveday)
 	{		
 		if 	($antal<$antalplatser){
-		$dagspass5 .= '<a href="index.php?passid='. $row['bokningsbarID'].'"'. 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';
+		$dagspass5 .= '<a href="index.php?passid='. $row['bokningsbarID'].'"'. 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn'].$install. '</a>';
 		}
 
 		else if ($antal>=$antalplatser){
-		$dagspass5 .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"'. 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';	
+		$dagspass5 .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"'. 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. $install.'</a>';	
 		}
 	}
 	if (date('Y-m-d', strtotime($row['datum'])) == $sixday)
 	{		
 		if 	($antal<$antalplatser){
-		$dagspass6 .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';
+		$dagspass6 .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. $install.'</a>';
 		}
 
 		else if ($antal>=$antalplatser){
-		$dagspass6 .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. '</a>';
+		$dagspass6 .= '<a style="background-color:#FFCCCC;"' . 'href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. date('H:i', strtotime($row['starttid'])) ." ". $row['passnamn']. $install.'</a>';
 		}
 
 	}
