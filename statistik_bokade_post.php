@@ -77,7 +77,7 @@
         <td><h5>Datum</h5></td>
         <td><h5>Pass</h5></td>
         <td><h5>Instruktör</h5></td>
-        <td><h5>Antal deltagare</h5></td>
+        <td><h5>Antal platser</h5></td>
       </tr>   
     <?php echo $found;  ?>
       </table> 

@@ -4,24 +4,37 @@
 
 	if(isset($_POST['inst-submit'])){
 		
+		try {
 	    $instnamn = $_POST['instruktor'];
 
-			try {
-					$query = "SELECT * FROM bokningar, bokningsbara WHERE bokningsbara.bokningsbarID=bokningar.bokningsbarID AND bokningsbara.instnamn={$instnamn} order by datum asc";  
-					
-					$stmt = $db ->prepare($query);
-					$stmt->execute();
+			
+		$query = "SELECT * FROM bokningsbara WHERE instnamn='{$instnamn}' ORDER BY datum, passnamn DESC";  
+		$stmt = $db ->prepare($query);
+		$stmt->execute();
+		$result = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+		$stmt->closeCursor(); 
+		$found="";
 
-					$antal = $stmt->rowCount(); 
 
-					$result = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+		foreach( $result as $row ) {
+		$query = "SELECT * FROM bokningar WHERE bokningsbarID={$passid}";  
+		$stmt = $db ->prepare($query);
+		$stmt->execute();
+		$antalbokade = $stmt->rowCount(); 
+		$hitta = $stmt->fetchAll(PDO::FETCH_ASSOC); 
 
-					foreach ($result as $row) {
+		$antalplatser= $hitta['antalplatser'];
+		$passid= $row['bokningsbarID'];
 
-					$found .= "<tr>" . "<td>" .$row["datum"] . "</td>" . "<td>" . $row["passnamn"] .  "</td>" . "<td>"  . $row["instnamn"] . "</td>" . "<td>"  . $row["antalplatser"] .  "</td>" . "</tr>" ;
-					}
+
+			$found .= "<tr>" . "<td>" .date('Y-m-d', strtotime($row["datum"])) . "</a>" . "</td>" . "<td>" . $row["passnamn"]  .  "</td>" . "<td>" . $row["instnamn"] . "</td>" . "<td>" . $row["antalplatser"] . "</td>" . "</tr>" ;
+		} 
+
+
+		$stmt->closeCursor(); 
+
 		
-				}
+		}
 			 
 			catch (Exception $e) { 
 

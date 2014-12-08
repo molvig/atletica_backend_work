@@ -48,7 +48,7 @@ catch (Exception $e) {
 			catch (Exception $e) { ?>
 
 				<div class="grid_12"> <?php echo '<h4>' . 'Hoppsan! <br> Det gick inte att boka in medlemmen... Försök igen!' . '</h4>';?> </div>
-			<?php }
+			<?php  echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";	 }
 		
 		}
 
