@@ -4,7 +4,7 @@
 	$passid = htmlspecialchars($_GET["passid"]);
 
 	try {
-		$query = "SELECT * FROM bokningar WHERE bokningsbarID = {$passid} order by datum asc";  
+		$query = "SELECT * FROM bokningar WHERE bokningsbarID = {$passid} AND reservplats=0 order by datum asc";  
 		$stmt = $db ->prepare($query);
 		$stmt->execute();
 
@@ -29,6 +29,7 @@
 				$stmt = $db ->prepare($query);
 				$stmt->execute();
 				$hitta = ($stmt->fetch(PDO::FETCH_ASSOC)); 
+				$stmt->closeCursor(); 	
 
 				$fnamn = $hitta['fnamn'];
 				$enamn = $hitta['enamn'];
@@ -39,6 +40,7 @@
 						$stmt->execute();
 
 						$giltigt = $stmt->fetch(PDO::FETCH_ASSOC); 
+						$stmt->closeCursor(); 	
 
 
 						$dagarkvar = $giltigt['giltigttill'];
@@ -58,7 +60,7 @@
 				}	
 
 					if ($incheckad==0){
-						$found .= "<tr style='background-color:#FFCCCC;'>" . '<form method="post">'.
+						$found .= "<tr>" . '<form method="post">'.
 							"<td>" . "<a href='medlem_uppdatera.php?pid=". $hitta['kundnr'] ."'>" .$hitta['kundnr']. "</a>" . 
 							'<input type="hidden"'. 'name="getkundnrin"'. 'value="' .$hitta['kundnr']. '">'."</td>" . 
 							"<td>" . $fnamn .  "</td>" . 
@@ -102,10 +104,10 @@
 
 			$daysleft = "GÄST";
 
-			
+			//"<tr style='background-color:#FFCCCC;'>"
 
 			if ($incheckad==0){
-						$found .= "<tr style='background-color:#FFCCCC;'>" . '<form method="post">'.
+						$found .= "<tr>" . '<form method="post">'.
 							"<td>" . "<a href='gast.php?pid=". $row["gastID"] ."'>" . $row["gastID"]. "</a>" . 
 							'<input type="hidden"'. 'name="getgastin"'. 'value="' .$row["gastID"]. '">'."</td>" . 
 							"<td>" . $hitta['fnamn'] .  "</td>" . 
@@ -148,6 +150,9 @@
 	}
 
 }
+
+
+
 	?>
 
 

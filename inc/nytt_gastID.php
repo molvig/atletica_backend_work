@@ -1,24 +1,24 @@
 
     <?php
-$rows="";
 
+		try {
+		$query=("SELECT gastID FROM gastlista ORDER BY gastID DESC LIMIT 1");
+		$stmt = $db ->prepare($query);
+		$stmt->execute();
 
-		 try {
-				$results = $db->query("SELECT gastID FROM gastlista");
+		$antalbokade = $stmt->rowCount(); 
+		$result = ($stmt->fetchAll(PDO::FETCH_ASSOC)); 
+		$stmt->closeCursor(); 
+			
+		foreach ($result as $row) {
+	   	$gast = $row['gastID'];
+		}
+
+		$biggestgastid = $gast+1;
 		} 
+
 		catch (Exception $e) {
 				echo "Data could not be retrieved from the database";
 				exit;
 		}
-
-		$rows = ($results -> fetchAll(PDO::FETCH_ASSOC));
-		$kund="";
-		foreach ($rows as $row) {
-	   $kund = $row['gastID'];
-		}
-
-
-		$biggestgastid = $kund+1;
-	
-
 ?>

@@ -1,6 +1,7 @@
 
     <?php
-$rows="";
+
+$biggestkundnr="";
 
 
 		 try {

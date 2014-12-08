@@ -107,7 +107,7 @@ $results->closeCursor();
 
 
 try {
-	$sql ="SELECT * FROM bokningar, bokningsbara WHERE bokningar.bokningsbarID =  bokningsbara.bokningsbarID AND bokningar.bokningsbarID = {$row['bokningsbarID']}";
+	$sql ="SELECT * FROM bokningar, bokningsbara WHERE bokningar.bokningsbarID =  bokningsbara.bokningsbarID AND bokningar.bokningsbarID = {$row['bokningsbarID']} AND reservplats=0";
   $stmt = $db ->prepare($sql);
   $stmt->execute();
 

@@ -9,8 +9,6 @@ try{
 		
 		$stmt->execute();
 
-		$antalbokade = $stmt->rowCount(); 
-
 		$res = $stmt->fetch(PDO::FETCH_ASSOC); 
 		$stmt->closeCursor(); 
 
@@ -21,12 +19,6 @@ catch (Exception $e) {
 
 	echo $e;
 }
-
-
-
-
-//echo "antalplatser: ". $antalplatserna . "<br>";
-//echo "bokade på passet: ". $antalbokade;
 
 
 	 if(!empty($_POST['bokamedlem'])){
@@ -50,7 +42,7 @@ catch (Exception $e) {
 
 			  		if($query){?>
 			    	<div class="grid_12"> <?php echo '<h4>' . 'Du har bokat '. '<strong>' . $kundnr  .'</strong>' .' som gäst!' . '</h4>'; ?></div>
-				 <?php	         echo "<meta http-equiv=\"refresh\" content=\"1;URL='index.php?passid=".$passid."'\" />";	
+				 <?php	         echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />";	
 				}
 			} 
 			catch (Exception $e) { ?>

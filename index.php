@@ -1,14 +1,16 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
 <?php include("inc/getveckansfokus.php"); ?>
-<?php include("inc/nytt_gastID.php"); ?>
 <?php include("inc/klipp_kort.php"); ?>
 <?php include("inc/get_veckans_pass.php"); ?>
 <?php include("inc/aktuellt_pass.php"); ?>
 <?php include("inc/get_bokade.php"); ?>
 <?php include("inc/boka_medlem.php"); ?>
-<?php include("inc/checka_in.php"); ?>
+<?php include("inc/nytt_gastID.php"); ?> 
 <?php include("inc/boka_gast.php"); ?>
+<?php include("inc/checka_in.php"); ?>
+<?php include("inc/get_bokade.php"); ?>
+
 
 
 <div class="grid_12">
@@ -122,6 +124,11 @@
 				</div>
 				</div>
 
+
+	 <?php   if ($antalplatserna > $antalbokade){ 
+
+	 			?>
+
 				<div class="grid_4">
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 				  <div class="panel panel-default">
@@ -136,7 +143,7 @@
 				      <div class="panel-body">
 						 <form class="form-inline" role="form" method="post" name="gastlista">
 						 <div class="form-group">
-						    <input type="text" class="form-control" name="gastID" placeholder="GästID" value="<?php echo "GästID: " . $biggestgastid; ?>" readonly>
+						    <input type="text" class="form-control" name="gastID" placeholder="GästID" value="<?php echo 'GästID: ' . $biggestgastid; ?>" readonly>
 						  </div>	
 						  <div class="form-group">
 						    <input type="text" class="form-control" name="fnamn_gast" placeholder="Förnamn" required>
@@ -157,6 +164,40 @@
 				  </div>
 				</div>
 				</div>
+
+				<?php 
+		
+		}
+
+		else { 
+			?>
+
+				<div class="grid_4">
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				  <div class="panel panel-default">
+				    <div class="panel-heading" role="tab" id="headingOne">
+				      <h4 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#accordion" href="#bokagast" aria-expanded="true" aria-controls="collapseOne">
+				          Boka gäst
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="bokagast" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+				      <div class="panel-body">
+						<p>Det är fullt på passet så inga gästbokningar kan göras!</p>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				</div>
+
+				<?php
+
+		}   ?>
+
+
+
+
 
 				<div class="grid_4">
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -184,14 +225,14 @@
 					<tr> Instruktör: <strong><?php echo $inst; ?></strong>  </tr><br>
 					<tr> Tid: <?php echo "<strong>". $starttid. "</strong>". " - ".$sluttid ; ?> </tr> <br>
 					<tr> Datum: <?php echo $passdatum; ?> </tr> <br>
-					<tr> Antalplatser: <?php echo $antalplatserna; ?> </tr><br>
+					<tr> Antal platser: <?php echo $antalplatserna; ?> </tr><br>
 					<tr> <?php echo $info; ?> </tr>
 
 					
 			</div>
 
 		  <div class="panel-heading">
-		      <th><?php echo "Antal bokade: ", $antalbokade;  ?></th>
+		      <th><?php echo "Bokade på passet: ". $antalbokade;  ?></th>
 		  </div>
 
 		  <div class="panel panel-default">
@@ -215,8 +256,27 @@
 
 		</div>
 
+		<div class="panel-heading">
+			 <th>Reservlista</th>
+		</div>
+		<div class="panel panel-default">
+		 <?php include("inc/reservplats.php"); ?>
+		  <table class="table">
+		      <tr>
+		      	<td><h5>Reservplats</h5></td>
+		        <td><h5>Kundnummer</h5></td>
+		        <td><h5>Förnamn</h5></td>
+		        <td><h5>Efternamn</h5></td>
+		        <td><h5>Avboka</h5></td>
+		      </tr>   
+			
+		    <?php echo $reserv ; ?>
+
+		  </table> 
 		
+		</div>	
 	</div>
+
 <?php } 
 else { ?>
 
@@ -230,17 +290,7 @@ else { ?>
 		  </div>
 		  <div class="panel panel-default">
 		  	
-		      <table class="table">
-		      <tr>
-
-		        <td><h5>Kundnummer</h5></td>
-		        <td><h5>Förnamn</h5></td>
-		        <td><h5>Efternamn</h5></td>
-		        <td><h5>Kortstatus</h5></td>
-		        <td><h5>Avboka</h5></td>
-		        <td><h5>Checka in</h5></td>
-		      </tr>   
-		      </table> 
+<h4>  <-- Välj pass från sidmenyn :)</h4>
 		  </div>
 		</div>	
 	</div>
