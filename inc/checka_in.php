@@ -9,13 +9,15 @@ $stTime = explode(":", $starttid);
 $stDate = new DateTime('0000-01-01');
 $stDate->setTime($stTime[0],$stTime[1]);
     
+
+/*
 echo "tid nu: ". $nowtime ."<br>";
 echo "starttid: ". $starttid."<br>";
 echo "senaste tid att avboka sig på: ". $avbokad."<br>" ;
 echo "passdatum: " . $passdatum. "<br>";
 echo "dagens datum: " . $today;
 
-
+*/
 
 
 
@@ -36,7 +38,7 @@ $passid = htmlspecialchars($_GET["passid"]);
           $q-> execute(array(':incheckad'=>1));
 
           if($query){
-          echo '<center>' . '<h4>' . 'Du har checkat in!' . '</h4>' . '</center>';
+         // echo '<center>' . '<h4>' . 'Du har checkat in!' . '</h4>' . '</center>';
          echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
 	
         }
@@ -61,7 +63,7 @@ $passid = htmlspecialchars($_GET["passid"]);
           $q-> execute(array(':incheckad'=>0));
 
           if($query){
-          echo '<center>' . '<h4>' . 'Du har checkat ut!' . '</h4>' . '</center>';
+        //  echo '<center>' . '<h4>' . 'Du har checkat ut!' . '</h4>' . '</center>';
           echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
   
         }
@@ -122,7 +124,7 @@ $passid = htmlspecialchars($_GET["passid"]);
               }
           }
 
-          echo '<center>' . '<h4>' . 'Du har avbokat kunden!' . '</h4>' . '</center>';
+        //  echo '<center>' . '<h4>' . 'Du har avbokat kunden!' . '</h4>' . '</center>';
          //echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
         
 
@@ -193,7 +195,7 @@ $passid = htmlspecialchars($_GET["passid"]);
               }
           }
 
-          echo '<center>' . '<h4>' . 'Du har avbokat kunden!' . '</h4>' . '</center>';
+          //echo '<center>' . '<h4>' . 'Du har avbokat kunden!' . '</h4>' . '</center>';
          echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
         
 
@@ -208,10 +210,10 @@ $passid = htmlspecialchars($_GET["passid"]);
 
 
 
+    $sen = '<script>
+    alert("Kunden är sen avbokad och hamnar nu på skuldlistan!");</script>';
 
-
-
-    echo "sen avbokning blir skuld!";
+    echo $sen;
 
 
   }      
@@ -233,7 +235,7 @@ $passid = htmlspecialchars($_GET["passid"]);
           $q-> execute(array(':incheckad'=>1));
 
           if($query){
-          echo '<center>' . '<h4>' . 'Du har checkat in gästen!' . '</h4>' . '</center>';
+         // echo '<center>' . '<h4>' . 'Du har checkat in gästen!' . '</h4>' . '</center>';
            echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
   
         }
@@ -258,7 +260,7 @@ $passid = htmlspecialchars($_GET["passid"]);
           $q-> execute(array(':incheckad'=>0));
 
 
-          echo '<center>' . '<h4>' . 'Du har checkat ut gästen!' . '</h4>' . '</center>';
+       //   echo '<center>' . '<h4>' . 'Du har checkat ut gästen!' . '</h4>' . '</center>';
                    echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
   
         }
@@ -326,7 +328,7 @@ $passid = htmlspecialchars($_GET["passid"]);
           }
 
 
-          echo '<center>' . '<h4>' . 'Du har avbokat gästen!' . '</h4>' . '</center>';
+         // echo '<center>' . '<h4>' . 'Du har avbokat gästen!' . '</h4>' . '</center>';
                    echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
   
         }
