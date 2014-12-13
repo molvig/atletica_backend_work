@@ -19,7 +19,7 @@
       $anteckning = $_POST['note'];
       $korttyp = $_POST['nyttkort'];
       $today = date("Y-m-d"); 
-      $kortantal = $_POST['antal10kort']; 
+      $kortantal = $_POST['kortantal']; 
 
 
       if (isset($_POST['nyckelkort'])) {$nyckelkort = 1;}
@@ -27,7 +27,7 @@
 
 
 
-    if(isset($_POST['checknyttkort'])){ 
+    if(isset($_POST['submit-nyttkort'])){ 
 
           if(($nyttkortgiltigtfran >= $today && $nyttkortgiltigtfran > $giltigttill))
           {
@@ -98,7 +98,7 @@
 
 
               if ($korttyp == "10"){ $antalklipp = 10 * $kortantal;
-                  $giltigttill = null; 
+                  $nyttgiltigttill = null; 
                   $nyttkortgiltigtfran = null;
                   $bindningsdatum = null ;
                   $ag_aktivt=0;

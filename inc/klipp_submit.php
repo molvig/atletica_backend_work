@@ -8,9 +8,9 @@
 	$fnamn ="";
 	$enamn ="";
 
-	if(isset($_POST["klipp-kort"]))
+	if(isset($_POST["klipp-submit"]))
 	{
-			$id_medlem = $_POST["medlemsnummer_klippkort"];
+			$id_medlem = $_POST["getkundnrut"];
 			try {
 					$query = ("SELECT * FROM medlemmar WHERE kundnr ={$id_medlem}");
 					$stmt = $db ->prepare($query);

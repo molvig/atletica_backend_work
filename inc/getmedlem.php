@@ -88,7 +88,7 @@
 
 
  try {
-			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, aktivtkort, ag_aktivt FROM medlemskort WHERE kundnr ={$kundnr} ORDER BY giltigttill DESC");
+			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, aktivtkort, ag_aktivt FROM medlemskort WHERE kundnr ={$kundnr} ORDER BY kortID DESC");
 			$stmt = $db ->prepare($query);
 			$stmt->execute();
 
@@ -193,7 +193,17 @@ else {
 }
 
 
+	$query = "SELECT * FROM skulder WHERE kundnr = {$kundnr} ";
+	$stmt = $db ->prepare($query);
+	$stmt->execute();
+	$skuld=$stmt->rowCount(); 
+	$stmt->closeCursor(); 	
+	$skulden="";
+	if($skuld>0){
+	
+	$skulden = '<a style="text-decoration:none;"' .'href="medlem_skuldlista.php">'. '<div class="alert alert-danger">' . '<span class="glyphicon glyphicon-exclamation-sign"></span> Denna medlem har skulder! Klicka för att se dessa.</div></a>';
 
+	}
 
 
 ?>

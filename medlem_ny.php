@@ -54,7 +54,7 @@
 
           <div class="grid_6">
             <label>Telefonnummer
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder="" required></label>
+              <input type="tel" class="form-control" name="phone" id="phone" placeholder="" onkeypress="return isNumberKey(event)" required></label>
           </div>
 
           <div class="grid_6">

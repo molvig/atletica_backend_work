@@ -1,7 +1,7 @@
    <?php
 
 	try {
-		$query = "SELECT * FROM skulder order by datum desc";  
+		$query = "SELECT * FROM skulder order by datum, kundnr desc";  
 		$stmt = $db ->prepare($query);
 		$stmt->execute();
 		$result = ($stmt->fetchAll(PDO::FETCH_ASSOC)); 

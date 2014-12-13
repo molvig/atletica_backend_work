@@ -32,24 +32,62 @@ catch (Exception $e) {
 
 	    if ($antalplatserna > $antalbokade){
 
-			try {
-				 $query = ("INSERT INTO bokningar (kundnr, bokningsbarID, gastID) VALUES (:kundnr, :bokningsbarID, :gastID)");
-				    $q = $db -> prepare($query);
-				    $q-> execute(array(':kundnr'=>$kundnr,
-				    					':bokningsbarID'=>$passid,
-				    					':gastID'=>null
-				    ));
 
-			  		if($query){?>
-			    	<div class="grid_12"> <?php echo '<h4>' . 'Du har bokat '. '<strong>' . $kundnr  .'</strong>' .' som gäst!' . '</h4>'; ?></div>
-				 <?php	         echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />";	
+			if ($kundnr==1){
+
+							try {
+								 $query = ("INSERT INTO bokningar (kundnr, bokningsbarID, datum, gastID) VALUES (:kundnr, :bokningsbarID, :datum, :gastID)");
+								    $q = $db -> prepare($query);
+								    $q-> execute(array(':kundnr'=>$kundnr,
+								    					':bokningsbarID'=>$passid,
+								    					':datum'=>'2014-01-01 12:00:00',
+								    					':gastID'=>null
+								    ));
+
+							  		if($query){?>
+							    	<div class="grid_12"> <?php echo '<h4>' . 'Du har bokat '. '<strong>' . $kundnr  .'</strong>' .' som gäst!' . '</h4>'; ?></div>
+								 <?php	         echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />";	
+								}
+							} 
+							catch (Exception $e) { ?>
+
+								<div class="grid_12"> <?php echo '<h4>' . 'Hoppsan! <br> Det gick inte att boka in medlemmen... Försök igen!' . '</h4>';?> </div>
+							<?php  echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";	 }
+
+
 				}
-			} 
-			catch (Exception $e) { ?>
 
-				<div class="grid_12"> <?php echo '<h4>' . 'Hoppsan! <br> Det gick inte att boka in medlemmen... Försök igen!' . '</h4>';?> </div>
-			<?php  echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";	 }
-		
+			else {
+
+						try {
+							 $query = ("INSERT INTO bokningar (kundnr, bokningsbarID, gastID) VALUES (:kundnr, :bokningsbarID, :gastID)");
+							    $q = $db -> prepare($query);
+							    $q-> execute(array(':kundnr'=>$kundnr,
+							    					':bokningsbarID'=>$passid,
+							    					':gastID'=>null
+							    ));
+
+						  		if($query){?>
+						    	<div class="grid_12"> <?php echo '<h4>' . 'Du har bokat '. '<strong>' . $kundnr  .'</strong>' .' som gäst!' . '</h4>'; ?></div>
+							 <?php	         echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />";	
+							}
+						} 
+						catch (Exception $e) { ?>
+
+							<div class="grid_12"> <?php echo '<h4>' . 'Hoppsan! <br> Det gick inte att boka in medlemmen... Försök igen!' . '</h4>';?> </div>
+						<?php  echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";	 }
+					
+					
+
+			}
+
+
+
+
+
+
+
+
 		}
 
 		else {

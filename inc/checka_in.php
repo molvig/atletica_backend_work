@@ -38,6 +38,7 @@ $passid = htmlspecialchars($_GET["passid"]);
           $q-> execute(array(':incheckad'=>1));
 
           if($query){
+
          // echo '<center>' . '<h4>' . 'Du har checkat in!' . '</h4>' . '</center>';
          echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
 	

@@ -35,7 +35,7 @@
 				$enamn = $hitta['enamn'];
 
 				foreach ($hitta as $row) { 
-						$query = "SELECT giltigtfran, giltigttill, fryst, kort, ag_aktivt FROM medlemskort WHERE kundnr = {$hitta['kundnr']} AND aktivtkort=1";
+						$query = "SELECT giltigtfran, giltigttill, fryst, kort, ag_aktivt, antalklipp FROM medlemskort WHERE kundnr = {$hitta['kundnr']} AND aktivtkort=1";
 						$stmt = $db ->prepare($query);
 						$stmt->execute();
 
@@ -47,15 +47,30 @@
 						$fryst = $giltigt['fryst'];
 						$giltigtfran = $giltigt['giltigtfran'];
 						$korttyp = $giltigt['kort'];
+						$antalklipp = $giltigt['antalklipp'];
 						$ag_aktivt = $giltigt['ag_aktivt'];
 
 						$today = date("Y-m-d");  
+
+						
+						$query = "SELECT * FROM skulder WHERE kundnr = {$hitta['kundnr']}";
+						$stmt = $db ->prepare($query);
+						$stmt->execute();
+						$skuld=$stmt->rowCount(); 
+						$stmt->closeCursor(); 	
+						$skulden="";
+						if($skuld>0){
+							$skulden = '<a title="Kunden har skulder. Klicka för att visa."'. 'style="color:red;font-size:20px;"'.'href="medlem_skuldlista.php">'.'<span class=" glyphicon glyphicon-exclamation-sign"></span>'.'</a>';
+						}
+
 
 
 						if($fryst==1){$daysleft="Fryst";}
 						else if ($giltigtfran > $today){$daysleft="Ej börjat gälla";}
 						else if (($korttyp=="AG12" ||$korttyp=="AG12+2" || $korttyp=="AG24" ||$korttyp=="AG24+2" || $korttyp=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
-						else if ($korttyp=="10"){ $daysleft="Klippkort";} 
+						else if ($korttyp=="10")
+						{ $daysleft = '<input type="submit"'. 'onClick="this.disabled=true;"'.
+         ' name="klipp-submits"'. ' class="btn btn-default btn-sm"'.'value="Klipp:  ' . $antalklipp. '">'  ;} 
 						else {$daysleft = (strtotime("$dagarkvar 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; }
 				}	
 
@@ -65,7 +80,7 @@
 							'<input type="hidden"'. 'name="getkundnrin"'. 'value="' .$hitta['kundnr']. '">'."</td>" . 
 							"<td>" . $fnamn .  "</td>" . 
 							"<td>" . $enamn . "</td>" . 
-							"<td>"  . $daysleft . "</td>" . 
+							"<td>"  . $daysleft ." ". $skulden ."</td>" . 
 							"<td>"  . '<input type="submit"'.' name="avboka-submit"'. ' class="btn btn-default btn-sm"'.'value="Avboka"' .'>'.
 				  			 "</td>" . 
 							"<td>"  . '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-default btn-sm"'.'value="Checka in"' .'>'.
@@ -79,7 +94,7 @@
 							'<input type="hidden"'. 'name="getkundnrut"'. 'value="' .$hitta['kundnr']. '">'."</td>" .  "</td>" . 
 							"<td>" . $hitta['fnamn'] .  "</td>" . 
 							"<td>" . $hitta['enamn'] . "</td>" . 
-							"<td>"  . $daysleft . "</td>" . 
+							"<td>"  . $daysleft ." ". $skulden . "</td>" . 
 							"<td>"  . '<input type="submit"'.' name="avboka-submit"'. ' class="btn btn-default btn-sm"'.'value="Avboka" disabled' .'>'.
 							"<td>"  . '<input type="submit"'.' name="angra-submit"'. ' class="btn btn-default btn-sm"'.'value="Ångra"' .'>'.
 				  			 "</td>" . '</form>'.
@@ -154,9 +169,5 @@
 
 
 	?>
-
-
-
-
 
 

@@ -61,13 +61,13 @@
 				                   <input type="text" name="pass" class="form-control" id="pass" value="<?php echo $passnamn;?>" readonly>
 				              </label>
 				          </div>
-
 				          <div class="grid_6">
-				              <label>Instruktör
-				                   <input type="text" name="instruktor" class="form-control" id="instruktor" value="<?php echo $inst;?>" readonly>
-				              </label>
-				              </select>
-				          </div>
+							    <label>Instruktör 
+							     <select name="instruktor" class="form-control"> 
+							          <?php echo $instnamnet ?>
+							        </select>Aktuell instruktör: <?php echo $inst;?>
+							        </label>  
+							    </div>
 
 				  </div>
 

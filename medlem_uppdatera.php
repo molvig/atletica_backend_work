@@ -22,7 +22,11 @@
         <?php if ($fryst==1)
         { ?>
         <div class="alert alert-info"><span class="glyphicon glyphicon-lock"></span> Denna medlem har fryst sitt kort!</div>
-       <?php } ?>
+
+       <?php } 
+      echo $skulden;
+
+       ?>
    </div>
 
     <div class="grid_12">
@@ -58,7 +62,7 @@
 
           <div class="grid_6">
             <label>Telefonnummer
-              <input type="tel" class="form-control" name="phone" id="phone" value="<?php echo $telefon; ?>" ></label>
+              <input type="tel" class="form-control" name="phone" id="phone" value="<?php echo $telefon; ?>" onkeypress="return isNumberKey(event)"></label>
           </div>
 
           <div class="grid_6">
@@ -103,7 +107,7 @@
            </div>
           <div class="grid_6">
             <label>Passantal
-              <input type="text" class="form-control" name="passantal" id="passantal" value="<?php echo $passantal; ?>"></label>
+              <input type="text" class="form-control" name="passantal" id="passantal" value="<?php echo $passantal; ?>" onkeypress="return isNumberKey(event)"></label>
            </div>
         </div>
 
@@ -164,22 +168,19 @@
             </div>
           <div class="grid_6">
             <label>Gäller till <br>
-              <input type="text" name="date" class="form-control" value="" readonly>
+              <input type="text" name="date" class="form-control" value="<?php echo date('Y-m-d', strtotime($giltigttill)); ?>" readonly>
             </label>
            </div>
         </div>
 <?php } ?>
+
+        <div class="grid_6">
+          <button type="submit" name="submit"  class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Uppdatera</button>
+        </div>
 </fieldset>
 <br>
 <legend>Nytt medlemskort</legend>
 <fieldset>
-            <div class="grid_12">
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="checknyttkort" id="checknyttkort"> <h4>Lägg till nytt kort</h4> <i>(Måste vara ikryssad för att lägga till ett nytt kort)</i>
-                </label>
-              </div>
-            </div>
       <div class="grid_12"> 
           <div class="grid_6">
              <div class="form-group">
@@ -196,17 +197,12 @@
             </div>
         </div>
 
-<!--
-        <div class="grid_12">
-          <div class="alert alert-danger" role="alert">Det finns redan ett kort som gäller för detta datum</div>
-        </div>
--->
-
+        
         <div class="grid_12"  id="specialkort" name="specialkort" style="visibility:hidden"> 
 
             <div class="grid_6" id="10kort" name="10kort" style="visibility:hidden">
               <label>Antal 10-kort<br>
-               <select class="form-control" name="antal10kort" id="antal10kort">
+               <select class="form-control" name="kortantal" id="kortantal">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -228,6 +224,13 @@
             </label>
              </div>
         </div>
+
+
+        <div class="grid_6">
+          <button type="submit" name="submit-nyttkort"  class="btn btn-default"><span class="glyphicon glyphicon-tag"></span> Lägg till nytt kort</button>
+        </div>
+
+
 
           <div class="grid_12">
             <div class="grid_12">
@@ -254,12 +257,6 @@
 
 
 
-        <div class="grid_6">
-          <button type="submit" name="submit"  class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> Uppdatera</button>
-        </div>
-
-
-
 </form>
 </div>
 
@@ -283,18 +280,26 @@ function specialkort()
 
     if (x.value=='10')
     {
-      document.getElementById("gallerfran").style.visibility='hidden';
+      document.getElementById("nyttgallerfran").style.visibility='hidden';
       document.getElementById("specialkort").style.visibility='hidden';
       document.getElementById("10kort").style.visibility='visible';
     }
     else {
-       document.getElementById("gallerfran").style.visibility='visible';
+       document.getElementById("nyttgallerfran").style.visibility='visible';
        document.getElementById("10kort").style.visibility='hidden';
     }
 
 }
 </script>
 
+<script>
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+</script>
 
 
 <?php include("inc/footer.php"); ?>

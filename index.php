@@ -337,48 +337,6 @@ else { ?>
 				  </div>
 				</div>
 	</div>	
-<!--
-  <?php
-  if(!empty($_POST))
-{
-	if(isset($_POST["klipp-kort"]))
-	$id_medlem = $_POST["medlemsnummer_klippkort"];
-	$kundnr ="";
-	$fnamn ="";
-	$enamn ="";
-
-	{
-		
-			try {
-					$query = ("SELECT kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, meddelande, medlemsstart, passantal, nyckelkort FROM medlemmar WHERE kundnr ={$id_medlem}");
-					$stmt = $db ->prepare($query);
-					$stmt->execute();
-					}
-					catch (Exception $e) {
-					echo "Data could not be retrieved from the database";
-					exit;
-					}
-					$member = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-					foreach($member as $m){
-						$kundnr .= $m['kundnr'];
-						$fnamn .= $m['fnamn'];
-						$enamn .= $m['enamn'];
-					}
-					
-					$stmt->closeCursor(); 
-
-
-
-		//för att ta bort ett pass ska vi vara säkra på att passet verkligen ska tas bort.
-		$klipp = '<script>if(confirm("' .$fnamn. ' ' .$enamn. ' med medlemsnummer '. $kundnr .' har 4 klipp kvar. Vill du göra ett klipp?"))
-		{alert("' .$fnamn. ' ' .$enamn. ' och hon har nu 3 klipp kvar som måste förbrukas innan 2014-12-24.");}else{alert("Klippet är avbrutet");}</script>';
-
-		echo $klipp;
-	}
-	}
-	?>
--->
 </div>
 <script>
 function isNumberKey(evt){
@@ -388,6 +346,11 @@ function isNumberKey(evt){
     return true;
 }
 </script>
+
+
+
+
+
 
 <?php include("inc/footer.php"); ?>
 

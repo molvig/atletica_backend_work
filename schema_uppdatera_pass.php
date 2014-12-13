@@ -38,7 +38,7 @@
     <div class="form-group">
     <label for="platser" class="col-sm-2 control-label">Antal platser</label>
     <div class="col-sm-4">
-      <input type="number" name="platser" min="0" max="100" class="form-control" id="platser" value="<?php echo $passObj['antalplatser']; ?>" >
+      <input type="number" name="platser" min="0" max="100" class="form-control" id="platser" onkeypress="return isNumberKey(event)" value="<?php echo $passObj['antalplatser']; ?>" >
     </div>
   </div>
     <div class="form-group">
@@ -186,5 +186,14 @@
   </div>
 </form>
 </div>
+
+<script>
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+</script>
 <?php include("inc/footer.php"); ?>
 
