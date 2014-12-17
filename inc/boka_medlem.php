@@ -44,15 +44,15 @@ catch (Exception $e) {
 								    					':gastID'=>null
 								    ));
 
-							  		if($query){?>
-							    	<div class="grid_12"> <?php echo '<h4>' . 'Du har bokat '. '<strong>' . $kundnr  .'</strong>' .' som gäst!' . '</h4>'; ?></div>
-								 <?php	         echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />";	
+							  		if($query){
+							    	echo '<h4>' . 'Du har bokat '. '<strong>' . $kundnr  .'</strong>' .' som gäst!' . '</h4>';
+								 echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />";	
 								}
 							} 
-							catch (Exception $e) { ?>
+							catch (Exception $e) { 
 
-								<div class="grid_12"> <?php echo '<h4>' . 'Hoppsan! <br> Det gick inte att boka in medlemmen... Försök igen!' . '</h4>';?> </div>
-							<?php  echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";	 }
+							echo '<h4>' . 'Hoppsan! <br> Det gick inte att boka in medlemmen... Försök igen!' . '</h4>';
+							echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />"; }
 
 
 				}
@@ -67,15 +67,15 @@ catch (Exception $e) {
 							    					':gastID'=>null
 							    ));
 
-						  		if($query){?>
-						    	<div class="grid_12"> <?php echo '<h4>' . 'Du har bokat '. '<strong>' . $kundnr  .'</strong>' .' som gäst!' . '</h4>'; ?></div>
-							 <?php	         echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />";	
+						  		if($query){
+						  //   echo '<h4>' . 'Du har bokat '. '<strong>' . $kundnr  .'</strong>' .' som gäst!' . '</h4>';
+							 echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />";	
 							}
 						} 
-						catch (Exception $e) { ?>
+						catch (Exception $e) {
 
-							<div class="grid_12"> <?php echo '<h4>' . 'Hoppsan! <br> Det gick inte att boka in medlemmen... Försök igen!' . '</h4>';?> </div>
-						<?php  echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";	 }
+						 echo '<h4>' . 'Hoppsan! <br> Det gick inte att boka in medlemmen... Försök igen!' . '</h4>';
+						 echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";}
 					
 					
 

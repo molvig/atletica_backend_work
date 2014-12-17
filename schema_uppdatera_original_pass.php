@@ -19,7 +19,7 @@
 }
 </script>
 
-<h3>Lägg till pass i schema 2014</h3>
+<h3>Uppdatera pass i schema 2014</h3>
 <?php $scid = $passObj['schematyp']; //schema_uppdatera_original.php?schemaid=<?php echo $scid; ?>
 <form class="form-horizontal" role="form" action="#" name="updateForm" method="post">
   <div class="form-group">

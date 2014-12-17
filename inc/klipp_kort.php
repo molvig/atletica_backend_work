@@ -7,6 +7,7 @@
 	$kundnr ="";
 	$fnamn ="";
 	$enamn ="";
+	$korttyp="";
 
 	if(isset($_POST["klipp-kort"]))
 	{
@@ -15,38 +16,40 @@
 					$query = ("SELECT * FROM medlemmar WHERE kundnr ={$id_medlem}");
 					$stmt = $db ->prepare($query);
 					$stmt->execute();
+					$member = $stmt->fetch(PDO::FETCH_ASSOC);
+					$stmt->closeCursor(); 
 			}
 
 			catch (Exception $e) {
-					echo "Data could not be retrieved from the database";
+					echo "Data could not be retrieved from the database 1";
 					exit;
 			}
 					
-			$member = $stmt->fetch(PDO::FETCH_ASSOC);
-			$stmt->closeCursor(); 
+
 
 			$fnamn = $member['fnamn']; 
 			$enamn = $member['enamn']; 
-
+			$kundnr = $member['kundnr']; 
 
 				foreach($member as $m){
 						try {
-								$query = ("SELECT * FROM medlemskort WHERE kundnr ={$member['kundnr']} AND aktivtkort=1");
+								$query = ("SELECT * FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1");
 								$stmt = $db ->prepare($query);
 								$stmt->execute();
+								$membercard = $stmt->fetch(PDO::FETCH_ASSOC);
+								$stmt->closeCursor(); 
 						}
 
 						catch (Exception $e) {
-								echo "Data could not be retrieved from the database";
+								echo "Data could not be retrieved from the database 2";
 								exit;
 						}
-								
-						$membercard = $stmt->fetch(PDO::FETCH_ASSOC);
-						$stmt->closeCursor(); 
+						$korttyp=$membercard['kort'];		
+
 					}
 
 
-			if ($membercard['kort'] == "10" ) {
+			if ($korttyp == "10" ) {
 
 					 	$kortID = $membercard['kortID'];
 					 	$today = date('Y-m-d');
@@ -55,7 +58,7 @@
 
 
 
-					 	if ($kortgiltigttill == null || $kortgiltigttill <= $today){
+					 	if ($kortgiltigttill == null || $kortgiltigttill >= $today){
 					 			$klippantal = $oldklippantal - 1;
 
 
@@ -63,11 +66,11 @@
 
 									$giltigttill = date('Y-m-d', strtotime($today. "+6 months"));
 									
-									$query = ("INSERT INTO klipplogg (kortID) VALUES (:kortID)");
+									$query = ("INSERT INTO klipplogg (kortID, gym) VALUES (:kortID, :gym)");
 					  				$q = $db -> prepare($query);
-					    			$q-> execute(array(':kortID'=>$kortID));
+					    			$q-> execute(array(':kortID'=>$kortID, ':gym'=>1));
 
-								 	$query = ("UPDATE medlemskort SET antalklipp=:antalklipp, giltigttill=:giltigttill WHERE kundnr={$member['kundnr']} AND aktivtkort=1");
+								 	$query = ("UPDATE medlemskort SET antalklipp=:antalklipp, giltigttill=:giltigttill WHERE kundnr={$kundnr} AND aktivtkort=1");
 			         				$q = $db -> prepare($query);
 			         				$q-> execute(array(':antalklipp'=>$klippantal,
 			         									'giltigttill'=>$giltigttill));
@@ -80,12 +83,12 @@
 
 
 								else{
-									$query = ("INSERT INTO klipplogg (kortID) VALUES (:kortID)");
+									$query = ("INSERT INTO klipplogg (kortID, gym) VALUES (:kortID, :gym)");
 					  				$q = $db -> prepare($query);
-					    			$q-> execute(array(':kortID'=>$kortID));
+					    			$q-> execute(array(':kortID'=>$kortID, ':gym'=>1));
 
 
-								 	$query = ("UPDATE medlemskort SET antalklipp=:antalklipp WHERE kundnr={$member['kundnr']} AND aktivtkort=1");
+								 	$query = ("UPDATE medlemskort SET antalklipp=:antalklipp WHERE kundnr={$kundnr} AND aktivtkort=1");
 			         				$q = $db -> prepare($query);
 			         				$q-> execute(array(':antalklipp'=>$klippantal));
 
@@ -113,7 +116,7 @@
 									$nyaklipp = $oldklippantal - $raderaklipp;
 
 
-									$query = ("UPDATE medlemskort SET antalklipp=:antalklipp WHERE kundnr={$member['kundnr']} AND aktivtkort=1");
+									$query = ("UPDATE medlemskort SET antalklipp=:antalklipp WHERE kundnr={$kundnr} AND aktivtkort=1");
 				         			$q = $db -> prepare($query);
 				         			$q-> execute(array(':antalklipp'=>$nyaklipp));
 
@@ -122,7 +125,7 @@
 								} 
 
 								else {
-										$query = ("UPDATE medlemskort SET antalklipp=:antalklipp WHERE kundnr={$member['kundnr']} AND aktivtkort=1");
+										$query = ("UPDATE medlemskort SET antalklipp=:antalklipp WHERE kundnr={$kundnr} AND aktivtkort=1");
 				         				$q = $db -> prepare($query);
 				         				$q-> execute(array(':antalklipp'=>0));
 
@@ -140,7 +143,7 @@
 
 			 else {
 
-			 	echo "Medlemmen har inget klippkort?!";
+			 	echo "Medlem ". $id_medlem. " har inget klippkort. Försök igen!";
 			 }
 
 

@@ -72,9 +72,10 @@
                   });
                 </script> 
           </div>
-
           <div class="grid_1"></div>
           <div class="grid_5">
+
+ 
             <label>Sluttid</label>
                 <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut(this.value)" value="<?php echo $passObj['sltid']; ?>" >
           <input type="hidden" id="sluttid" name="sluttid" value=""/> 
@@ -84,9 +85,9 @@
             format:'H:i'
           });
         </script> 
-        </div>
+</div>
 
-
+          </div>
   </div>
 
   <div class="grid_12">      

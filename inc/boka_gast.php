@@ -63,14 +63,16 @@ $passid = htmlspecialchars($_GET["passid"]);
 
 		  			//SKICKA EMAIL TILL GÄSTEN
 
-		  			?>
-		    	<div class="grid_12"> <?php echo '<h4>' . 'Du har bokat '. '<strong>' . $fnamn  .'</strong>' .' som gäst!' . '</h4>'; ?></div>
-			 <?php	         echo "<meta http-equiv=\"refresh\" content=\"1;URL='index.php?passid=".$passid."'\" />";	}
+		  			
+		    	echo '<h4>' . 'Du har bokat '. '<strong>' . $fnamn  .'</strong>' .' som gäst!' . '</h4>';
+			    echo "<meta http-equiv=\"refresh\" content=\"1;URL='index.php?passid=".$passid."'\" />";	
 		} 
-		catch (Exception $e) { ?>
+		}
+		catch (Exception $e) {
 
-			<div class="grid_12"> <?php echo '<h4>' . 'Hoppsan! <br> Det gick inte att boka in gästen... Försök igen!' . '</h4>'; echo $e;?> </div>
-		<?php }
+		 echo '<h4>' . 'Hoppsan! <br> Det gick inte att boka in gästen... Försök igen!' . '</h4>'; 
+		 echo $e;
+		}
 			   
 
 	}

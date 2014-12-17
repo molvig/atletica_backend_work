@@ -34,7 +34,7 @@ if(isset($_GET['passid']))
 
 	$passObj = ($results -> fetch(PDO::FETCH_ASSOC));
 	$results->closeCursor();
-	echo $passObj['schematyp'];
+	$passObj['schematyp'];
 	$info = $passObj['information'];
 	$slut = $passObj['sltid'];
 	$start = $passObj['sttid'];

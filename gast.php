@@ -4,7 +4,7 @@
 
 
 <div class="grid_8">
-<form role="form" action="#" method="post">
+<form role="form" action="index.php" method="post">
 				    <div class="grid_12">
 
 				          <div class="grid_12">
@@ -51,7 +51,7 @@
 
 
 				  <div class="grid_12">
-				    <input type="submit" class="btn btn-default" name="andra_pass" value="Uppdatera"/>
+				    <input type="submit" class="btn btn-default" name="andra_pass" value="Tillbaka"/>
 				  </div>
 
 

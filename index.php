@@ -1,7 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
 <?php include("inc/getveckansfokus.php"); ?>
-<?php include("inc/klipp_kort.php"); ?>
 <?php include("inc/get_veckans_pass.php"); ?>
 <?php include("inc/aktuellt_pass.php"); ?>
 <?php include("inc/get_bokade.php"); ?>
@@ -332,9 +331,11 @@ else { ?>
 
 
 						</form>
+
 				      </div>
 				    </div>
 				  </div>
+				  <?php include("inc/klipp_kort.php"); ?>
 				</div>
 	</div>	
 </div>

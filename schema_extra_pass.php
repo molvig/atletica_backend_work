@@ -16,7 +16,7 @@ $datum = date('d-m-Y', strtotime($dat));
    <?php include("inc/menyschema.php"); ?>
 </div>
 
-<div class="grid_5">
+<div class="grid_7">
   <div class="grid_12"> 
     <h3>Lägg till extrapass i 
       <?php if ($schemaID == '1'){echo "vårschema";}?>
@@ -32,8 +32,6 @@ $datum = date('d-m-Y', strtotime($dat));
           <div class="grid_12">
               <label>Datum
                    <input type="text" name="datum" class="form-control" id="datum" value="<?php echo $datum; ?>" readonly >
-                    
-                    </select>
               </label>
 
           </div>
@@ -41,21 +39,21 @@ $datum = date('d-m-Y', strtotime($dat));
 
   <div class="grid_12">
 
-          <div class="grid_6">
-              <label>Pass
+          <div class="grid_5">
+              <label>Pass</label>
                    <select class="form-control" id="pass" name="pass" required>
                     <?php echo $pass; ?>
                     </select>
-              </label>
+              
               <span class="help-block"><a href="installningar_nyttpass.php">Saknas passet? Klicka här</a></span>
           </div>
-
-          <div class="grid_6">
-              <label>Instruktör
+<div class="grid_1"></div>
+          <div class="grid_5">
+              <label>Instruktör</label>
                    <select class="form-control" id="instruktor" name="instruktor" required>
                     <?php echo $instnamnet; ?>
                     </select>
-              </label>
+              
               </select><span class="help-block"><a href="installningar_nyinstruktor.php">Saknas instruktören? Klicka här</a></span>
           </div>
 
@@ -64,17 +62,17 @@ $datum = date('d-m-Y', strtotime($dat));
 
   <div class="grid_12">
 
-          <div class="grid_6">
-              <label>Starttid
+          <div class="grid_5">
+              <label>Starttid</label>
                   <input id="datetimepicker1" type="text" class="form-control" onchange="changeHiddenStart()" onkeypress="return isNumberKey(event)" required>
-              </label>
+              
             <input type="hidden" id="starttid" name="starttid" value=""/>  
           </div>
-
-          <div class="grid_6">
-              <label>Sluttid
+          <div class="grid_1"></div>
+          <div class="grid_5">
+              <label>Sluttid </label>
                 <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut()" onkeypress="return isNumberKey(event)" required>
-              </label>
+             
             <input type="hidden" id="sluttid" name="sluttid" value=""/>   
           </div>
   </div>
@@ -82,8 +80,8 @@ $datum = date('d-m-Y', strtotime($dat));
 
   <div class="grid_12">
 
-          <div class="grid_6">
-              <label>Veckodag
+          <div class="grid_5">
+              <label>Veckodag </label>
                 <select name="days" class="form-control">
                   <?php if ($dagID == '1'){echo "<option value='1'>Måndag</option>";}?>
                   <?php if ($dagID == '2'){echo "<option value='2'>Tisdag</option>";}?>
@@ -93,34 +91,34 @@ $datum = date('d-m-Y', strtotime($dat));
                   <?php if ($dagID == '6'){echo "<option value='6'>Lördag</option>";}?>
                   <?php if ($dagID == '7'){echo "<option value='7'>Söndag</option>";}?>        
                 </select>
-              </label>
+             
           </div>
-
-          <div class="grid_6">
-              <label>Schema
+          <div class="grid_1"></div>
+          <div class="grid_5">
+              <label>Schema</label>
                 <select name="schema" class="form-control">
                     <?php if ($schemaID == '1'){echo "<option value='1'>Vår</option>";}?>
                     <?php if ($schemaID == '2'){echo "<option value='2'>Sommar</option>";}?>
                     <?php if ($schemaID == '3'){echo "<option value='3'>Höst</option>";}?>
                     <?php if ($schemaID == '4'){echo "<option value='4'>Vinter</option>";}?>
                 </select>
-              </label>
+              
           </div>
 
 
   </div>
 
   <div class="grid_12">      
-          <div class="grid_6">
-              <label>Antal platser
-                <input type="number" class="form-control" name="platser" min="0" max="100"  id="platser" onkeypress="return isNumberKey(event)" required >
-              </label>
+          <div class="grid_5">
+              <label>Antal platser</label>
+                <input type="number" class="form-control" name="platser" min="0" max="100"  id="platser" value="20" onkeypress="return isNumberKey(event)" required >
+              
           </div>
-    
-          <div class="grid_6">
-              <label>Kommentar
+           <div class="grid_1"></div>
+          <div class="grid_5">
+              <label>Kommentar</label>
                 <input type="text" name="information" class="form-control" id="information" placeholder="Ex. Ny koreografi" >
-              </label>
+              
           </div>
   </div>
 

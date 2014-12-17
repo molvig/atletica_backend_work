@@ -9,7 +9,6 @@ $stTime = explode(":", $starttid);
 $stDate = new DateTime('0000-01-01');
 $stDate->setTime($stTime[0],$stTime[1]);
     
-
 /*
 echo "tid nu: ". $nowtime ."<br>";
 echo "starttid: ". $starttid."<br>";
@@ -126,7 +125,7 @@ $passid = htmlspecialchars($_GET["passid"]);
           }
 
         //  echo '<center>' . '<h4>' . 'Du har avbokat kunden!' . '</h4>' . '</center>';
-         //echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
+         echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
         
 
 
@@ -139,18 +138,84 @@ $passid = htmlspecialchars($_GET["passid"]);
   }  
 
 
+  else if($passdatum == $today && $nowtime < $avbokad){ 
+    try {
+          $query = ("DELETE from bokningar WHERE kundnr = {$kundnr} AND bokningsbarID= {$passid}");
+          $q = $db -> prepare($query);
+          $q-> execute();
+
+                try {
+                $query=("SELECT * FROM bokningar WHERE bokningsbarID= {$passid} AND reservplats=1 ORDER BY datum ASC LIMIT 1");
+                $stmt = $db ->prepare($query);
+                $stmt->execute();
+                $reserver = $stmt->rowCount(); 
+                $result = ($stmt->fetchAll(PDO::FETCH_ASSOC)); 
+                $stmt->closeCursor(); 
+                $nyastkund="";
+                  foreach ($result as $row) {
+                    $nyastkund = $row['kundnr'];
+                  }
+                }
+
+                catch (Exception $e) {
+
+                echo '<center>' . '<h4>' . 'Det gick inte hämta från reservlistan' . '</h4>' . '</center>';
+                echo $e;
+                }
+
+                if ($reserver>0 ){
+              try {
+               $query = ("UPDATE bokningar SET reservplats=:reservplats WHERE kundnr = {$nyastkund} AND bokningsbarID= {$passid}");
+               $q = $db -> prepare($query);
+               $q-> execute(array(':reservplats'=>0)); 
+              $stmt->closeCursor();  
+
+                
+                } 
+
+               
+              catch (Exception $e) {
+
+                echo '<center>' . '<h4>' . 'Det gick inte att boka in från reservlistan' . '</h4>' . '</center>';
+                echo $e;
+              }
+          }
+
+        //  echo '<center>' . '<h4>' . 'Du har avbokat kunden!' . '</h4>' . '</center>';
+         echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
+        
+
+
+      } 
+      catch (Exception $e) {
+
+        echo '<center>' . '<h4>' . 'Hoppsan! Något är fel...' . '</h4>' . '</center>';
+         echo $e;
+      }
+  } 
+
+
+
   else if ($passdatum == $today && $nowtime > $avbokad){
           $kund = $_POST['getkundnrin'];
-          $query = ("INSERT INTO skulder (bokningsbarID, kundnr, sen_avbokning, datum, passnamn, starttid) VALUES (:bokningsbarID, :kundnr, :sen_avbokning, :datum, :passnamn, :starttid)");
-          $q = $db -> prepare($query);
-          $q-> execute(array(':bokningsbarID'=>$passid,
-                            ':kundnr'=>$kund,
-                            ':sen_avbokning'=>1,
-                            ':datum'=>$passdatum,
-                            ':passnamn'=>$passnamn,
-                            ':starttid'=>$stDate->format('Y-m-d H:i:s')
 
-           ));
+              if ($install==0){
+              $query = ("INSERT INTO skulder (bokningsbarID, kundnr, sen_avbokning, datum, passnamn, starttid) VALUES (:bokningsbarID, :kundnr, :sen_avbokning, :datum, :passnamn, :starttid)");
+              $q = $db -> prepare($query);
+              $q-> execute(array(':bokningsbarID'=>$passid,
+                                ':kundnr'=>$kund,
+                                ':sen_avbokning'=>1,
+                                ':datum'=>$passdatum,
+                                ':passnamn'=>$passnamn,
+                                ':starttid'=>$stDate->format('Y-m-d H:i:s')
+
+               ));
+
+                  $sen = '<script>
+              alert("Kunden är sen avbokad och hamnar nu på skuldlistan!");</script>';
+
+            echo $sen;
+             }
 
     try {
           $query = ("DELETE from bokningar WHERE kundnr = {$kundnr} AND bokningsbarID= {$passid}");
@@ -211,10 +276,7 @@ $passid = htmlspecialchars($_GET["passid"]);
 
 
 
-    $sen = '<script>
-    alert("Kunden är sen avbokad och hamnar nu på skuldlistan!");</script>';
 
-    echo $sen;
 
 
   }      

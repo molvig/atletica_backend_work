@@ -27,7 +27,7 @@ try {
     }    
  
 $start = date("d-m-Y", strtotime($startdatum));
-echo $start;
+
 
 
 $date = isset($_GET['date']) ? $_GET['date'] : $start;
@@ -49,11 +49,11 @@ $next_date = date('d-m-Y', strtotime($date .' +7 day'));
 
 
 
-
+/*
 echo "Schematyp: ". $schematyp. "<br>";
 echo "Startdatum: ".$startdatum. "<br>";
 echo "Slutdatum: ".$slutdatum;
-
+*/
 
 if ($mandag == $startdatum)
 {

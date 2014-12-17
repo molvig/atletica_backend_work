@@ -88,6 +88,7 @@ if ($veckoDag == 7) {
        $results->closeCursor();
         
         echo "Du har lagt till ett extrapass!";
+        echo "<meta http-equiv=\"refresh\" content=\"1;URL='schema.php?schemaid=".$schemaId."'\" />";   
         }
         catch(Exception $e)
         {
