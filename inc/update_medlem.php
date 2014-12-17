@@ -37,7 +37,7 @@
                             $bindningsdatum = date('Y-m-d', strtotime($nyttkortgiltigtfran. ' + 365 days'));
                             $ag_aktivt=1;  }
                if ($korttyp == "AG12+2"){$nyttgiltigttill = date('Y-m-d', strtotime($nyttkortgiltigtfran. ' + 425 days'));
-                            $bindningsdatum = date('Y-m-d', strtotime($nyttkortgiltigtfran. ' + 365 days'));
+                            $bindningsdatum = date('Y-m-d', strtotime($nyttkortgiltigtfran. ' + 425 days'));
                             $ag_aktivt=1;  }
 
                if ($korttyp == "AG12DAG"){$nyttgiltigttill = date('Y-m-d', strtotime($nyttkortgiltigtfran. ' + 365 days'));
@@ -49,7 +49,7 @@
                           $ag_aktivt=1; }
 
                if ($korttyp == "AG24+2"){$nyttgiltigttill = date('Y-m-d', strtotime($nyttkortgiltigtfran. ' + 790 days'));
-                            $bindningsdatum = date('Y-m-d', strtotime($nyttkortgiltigtfran. ' + 730 days')); 
+                            $bindningsdatum = date('Y-m-d', strtotime($nyttkortgiltigtfran. ' + 790 days')); 
                           $ag_aktivt=1; }
 
 
@@ -91,6 +91,12 @@
                             $antalklipp = null;}
 
               if ($korttyp == "SPECIAL"){$nyttgiltigttill = date('Y-m-d', strtotime($nyttgiltigttillspecial)); 
+                            $bindningsdatum = null ;
+                            $ag_aktivt=0;
+                            $antalklipp = null;}
+
+
+               if ($korttyp == "INST"){$nyttgiltigttill = date('Y-m-d', strtotime($nyttkortgiltigtfran. ' + 1000 days')); 
                             $bindningsdatum = null ;
                             $ag_aktivt=0;
                             $antalklipp = null;}

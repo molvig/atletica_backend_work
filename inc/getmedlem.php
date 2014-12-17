@@ -60,7 +60,7 @@
 
 	 try {
 	 		$today = date("Y-m-d"); 
-			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, fryst, frysdatum, antalklipp FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1"); 
+			$query = ("SELECT * FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1"); 
 			$stmt = $db ->prepare($query);
 			$stmt->execute();
 	} 
@@ -74,13 +74,23 @@
 	
           foreach($kort as $k){
 
-				$aktivtkortID .= $k['kortID'];
-				$kortet .= $k['kort'];
-				$giltigtfran .= $k['giltigtfran'];
-				$giltigttill .= $k['giltigttill'];
-				$fryst .= $k['fryst'];
-				$frysdatum.= $k['frysdatum'];
-				$antalklipp.= $k['antalklipp'];
+          		$kortet = $k['kort'];
+
+          		$query = ("SELECT * FROM korttyp WHERE kort = '{$kortet}'");
+				$stmt = $db ->prepare($query);
+				$stmt->execute();
+				$kortets = $stmt->fetch(PDO::FETCH_ASSOC); 
+				$korttypen = $kortets['korttyp']; 
+				$stmt->closeCursor(); 
+
+				$aktivtkortID = $k['kortID'];
+				
+				$giltigtfran = $k['giltigtfran'];
+				$giltigttill = $k['giltigttill'];
+				$fryst = $k['fryst'];
+				$frysdatum= $k['frysdatum'];
+				$frysdagar= $k['frysdagar'];
+				$antalklipp= $k['antalklipp'];
 				
              }
 
@@ -99,15 +109,18 @@
 
 
            foreach($rows as $row){
-           /*
-	           	$query = ("SELECT korttyp FROM korttyp WHERE kort = {$row['kort']}");
+           
+				$ag_aktivt=$row['ag_aktivt'];
+				$korttyp = $row['kort'];
+
+	           	$query = ("SELECT * FROM korttyp WHERE kort = '{$korttyp}'");
 				$stmt = $db ->prepare($query);
 				$stmt->execute();
 				$kortet = $stmt->fetch(PDO::FETCH_ASSOC); 
-				$korttyp = $kortet['korttyp']; 
-			*/
-				$ag_aktivt=$row['ag_aktivt'];
-				$korttyp=$row['kort'];
+				$korts = $kortet['korttyp']; 
+				$stmt->closeCursor(); 
+
+
 
 				if ($row['aktivtkort'] == 1 && $row['giltigtfran']<=$today || $ag_aktivt==1) 
 						{$kortstatus = "Aktivt";}
@@ -123,12 +136,12 @@
 						{$kortstatus = "Ej aktivt";}
 
 				if($ag_aktivt==0){		
-				$allakort.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $row['kort'] . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . $row["giltigttill"] . "</td>" . "<td>"  . $kortstatus .  "</td>". "</tr>" ;
+				$allakort.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $korts  . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . $row["giltigttill"] . "</td>" . "<td>"  . $kortstatus .  "</td>". "</tr>" ;
 	 			}
 
 	 			else if($ag_aktivt==1) 
 	 				{		
-				$allakort.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $row['kort'] . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . "Autogiro" . "</td>" . "<td>"  . $kortstatus .  "</td>". "</tr>" ;
+				$allakort.= "<tr>" . "<td>" . $row['kortID'] . "</td>" . "<td>"  . $korts . "</td>" . "<td>" . $row["giltigtfran"] .  "</td>" . "<td>"  . "Autogiro" . "</td>" . "<td>"  . $kortstatus .  "</td>". "</tr>" ;
 	 			}
 	 			$stmt->closeCursor(); 
  			}
@@ -140,57 +153,29 @@
 			exit;
 	}
 				
-	/*			if ($row['giltigtfran']>$today) 
-						{$daysleft = "Inaktivt";}
-					
-				else 
-						{$daysleft = ((strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400). " dagar kvar";}
-*/
-
-if($fryst==1){$daysleft="Fryst";}
-else if ($giltigtfran > $today){$daysleft="Ej börjat gälla";}
-else if (($korttyp=="AG12" || $korttyp=="AG12+2" || $korttyp=="AG24" || $korttyp=="AG24+2" || $korttyp=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
-else {$daysleft = ((strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400) . " dagar kvar"; }
-
-$today = date("Y-m-d");  
-
-     
 
 
+	if($fryst==1){$daysleft="Fryst";}
+	else if ($giltigtfran > $today){$daysleft="Ej börjat gälla";}
+	else if ($korttyp=="INST"){$daysleft="Instruktör";}
+	else if (($korttyp=="AG12" || $korttyp=="AG12+2" || $korttyp=="AG24" || $korttyp=="AG24+2" || $korttyp=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
+	else {$daysleft = ((strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400) . " dagar kvar"; }
 
-	 try {
-	 		$query = ("SELECT korttyp FROM korttyp WHERE kort = '{$kortet}'");
-			$stmt = $db ->prepare($query);
-			$stmt->execute();
-
-			while ($rows = $stmt->fetch(PDO::FETCH_ASSOC))
-			{
-				$korttypen = ($rows['korttyp']);
-			}
-			$stmt->closeCursor(); 
-
-
-	} 
-	catch (Exception $e) {
-			echo "Data could not be retrieved from the database";
-			echo $e;
-			exit;
-	}
-
+	$today = date("Y-m-d");  
 
 
       $today = date("Y-m-d"); 
       $nyttdatum = "";
 
 
-if ($giltigttill >= $today){
-  $nyttdatum = date('Y-m-d', strtotime($giltigttill. ' + 1 day')); 
-}
+	if ($giltigttill >= $today){
+	  $nyttdatum = date('Y-m-d', strtotime($giltigttill. ' + 1 day')); 
+	}
 
-else {
-   $nyttdatum = $today;
+	else {
+	   $nyttdatum = $today;
 
-}
+	}
 
 
 	$query = "SELECT * FROM skulder WHERE kundnr = {$kundnr} ";

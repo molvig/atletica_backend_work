@@ -16,9 +16,9 @@
         { ?>
         <div class="alert alert-info"><span class="glyphicon glyphicon-lock"></span> Denna medlem har fryst sitt kort!</div>
        <?php } ?>
-        <?php if ($frysdatum=="1986-11-28")
+        <?php if ($frysdatum != null)
         { ?>
-        <div class="alert alert-warning"><span class="glyphicon glyphicon-flag"></span> Denna medlem har fryst sitt kort tidigare</div>
+        <div class="alert alert-warning"><span class="glyphicon glyphicon-flag"></span> Denna medlem frös sitt kort senast <?php echo date('Y-m-d', strtotime($frysdatum));?> </div>
        <?php } ?>
    </div>
 

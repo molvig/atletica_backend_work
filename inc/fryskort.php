@@ -54,7 +54,7 @@
 
 	 try {
 	 		$today = date("Y-m-d"); 
-			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, fryst, frysdatum FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1"); 
+			$query = ("SELECT * FROM medlemskort WHERE kundnr ={$kundnr} AND aktivtkort=1"); 
 			$stmt = $db ->prepare($query);
 			$stmt->execute();
 
@@ -69,7 +69,7 @@
 			$giltigtfran .= $k['giltigtfran'];
 			$giltigttill .= $k['giltigttill'];
 			$fryst .= $k['fryst'];
-			$frysdatum .= date('Y-m-d', strtotime($k['frysdatum']));
+			$frysdatum .= $k['frysdatum'];
 			
          }
 
@@ -86,7 +86,9 @@
 			$today = date("Y-m-d");  
 			$daysleft = (strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400;
 			
-			$aktuellafrysdagar = (strtotime("$today 00:00:00 GMT")-strtotime("$frysdatum 00:00:00 GMT")) / 86400 ;
+			$dbfrysdatum = date('Y-m-d', strtotime($frysdatum));
+
+			$aktuellafrysdagar = (strtotime("$today 00:00:00 GMT")-strtotime("$dbfrysdatum 00:00:00 GMT")) / 86400 ;
 			
 
 
@@ -115,7 +117,7 @@
 ?>
 <?php
 
-// check if the form was submitted
+
 if (isset($_POST['fryskort'])) {
     $today = date("Y-m-d"); 
     $kundnummer = $_POST['kundnr'];
@@ -148,11 +150,37 @@ if (isset($_POST['tinakort'])) {
     $today = date("Y-m-d"); 
     $kundnummer = $_POST['kundnr'];
     $frysdatum = $_POST['frysdatum'];
-    $nyttfrysdatum = "1986-11-28";
+    $nyttfrysdatum = $today;
     $frystkort = 0;
     $frysdagar = (strtotime("$today 00:00:00 GMT")-strtotime("$frysdatum 00:00:00 GMT")) / 86400 ;
     $giltigtill_frys = date('Y-m-d', strtotime($giltigttill.' +'. $frysdagar . 'days')); 
 
+if ($kortet == "AG12" || $kortet == "AG24" || $kortet == "AG12+2"  || $kortet == "AG24+2"){
+
+		    try {
+		       $query = ("UPDATE medlemskort SET fryst=:fryst, frysdatum=:nyttfrysdatum, frysdagar=:frysdagar WHERE kundnr={$kundnummer} AND aktivtkort=1");
+		          $q = $db -> prepare($query);
+		          $q-> execute(array(':fryst'=>$frystkort,
+		                            ':nyttfrysdatum'=>$nyttfrysdatum,
+		                            ':frysdagar'=>$frysdagar
+
+		            ));
+		         
+					if($query){
+					          echo '<center>' . '<h4>' . 'Kortet är nu tinat för' . '</h4>' . '</center>';
+					  
+					        }
+		    } 
+		    catch (Exception $e) {
+
+		      echo '<center>' . '<h4>' . 'Hoppsan! Något är fel...' . '</h4>' . '</center>';
+		      echo $e;
+		    }
+
+    }
+
+
+else{
 
     try {
        $query = ("UPDATE medlemskort SET fryst=:fryst, frysdatum=:nyttfrysdatum, giltigttill=:giltigttill WHERE kundnr={$kundnummer} AND aktivtkort=1");
@@ -173,6 +201,14 @@ if($query){
       echo '<center>' . '<h4>' . 'Hoppsan! Något är fel...' . '</h4>' . '</center>';
       echo $e;
     }
+
+    }
+
+
+
+
+
+
   }
 
 ?>

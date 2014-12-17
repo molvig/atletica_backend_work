@@ -67,10 +67,10 @@
 
 						if($fryst==1){$daysleft="Fryst";}
 						else if ($giltigtfran > $today){$daysleft="Ej börjat gälla";}
+						else if ($korttyp=="INST"){$daysleft="INSTRUKTÖR";}
 						else if (($korttyp=="AG12" ||$korttyp=="AG12+2" || $korttyp=="AG24" ||$korttyp=="AG24+2" || $korttyp=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
 						else if ($korttyp=="10")
-						{ $daysleft = '<input type="submit"'. 'onClick="this.disabled=true;"'.
-         ' name="klipp-submits"'. ' class="btn btn-default btn-sm"'.'value="Klipp:  ' . $antalklipp. '">'  ;} 
+						{ $daysleft = '<input type="submit"'.' name="klipp-submits"'. ' class="btn btn-default btn-sm"'.'value="Klipp:  ' . $antalklipp. '">'  ;} 
 						else {$daysleft = (strtotime("$dagarkvar 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; }
 				}	
 
