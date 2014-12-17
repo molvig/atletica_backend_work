@@ -35,14 +35,13 @@
 				$enamn = $hitta['enamn'];
 
 				foreach ($hitta as $row) { 
-						$query = "SELECT giltigtfran, giltigttill, fryst, kort, ag_aktivt, antalklipp FROM medlemskort WHERE kundnr = {$hitta['kundnr']} AND aktivtkort=1";
+						$query = "SELECT * FROM medlemskort WHERE kundnr = {$hitta['kundnr']} AND aktivtkort=1";
 						$stmt = $db ->prepare($query);
 						$stmt->execute();
-
 						$giltigt = $stmt->fetch(PDO::FETCH_ASSOC); 
 						$stmt->closeCursor(); 	
 
-
+						$kortID = $giltigt['kortID'];
 						$dagarkvar = $giltigt['giltigttill'];
 						$fryst = $giltigt['fryst'];
 						$giltigtfran = $giltigt['giltigtfran'];
@@ -52,6 +51,15 @@
 
 						$today = date("Y-m-d");  
 
+						if ($korttyp == "10"){
+						$query = "SELECT * FROM klipplogg WHERE kortID = {$kortID} AND bokningsbarID = {$passid}";
+						$stmt = $db ->prepare($query);
+						$stmt->execute();
+						$klippt = $stmt->fetch(PDO::FETCH_ASSOC); 
+						$stmt->closeCursor(); 
+
+						$klippbokningsbarID = $klippt['bokningsbarID'];
+						}
 						
 						$query = "SELECT * FROM skulder WHERE kundnr = {$hitta['kundnr']}";
 						$stmt = $db ->prepare($query);
@@ -69,8 +77,9 @@
 						else if ($giltigtfran > $today){$daysleft="Ej börjat gälla";}
 						else if ($korttyp=="INST"){$daysleft="INSTRUKTÖR";}
 						else if (($korttyp=="AG12" ||$korttyp=="AG12+2" || $korttyp=="AG24" ||$korttyp=="AG24+2" || $korttyp=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
-						else if ($korttyp=="10")
-						{ $daysleft = '<input type="submit"'.' name="klipp-submits"'. ' class="btn btn-default btn-sm"'.'value="Klipp:  ' . $antalklipp. '">'  ;} 
+						else if ($korttyp=="10" && $klippbokningsbarID != $passid && $incheckad==0){ $daysleft = '<input type="submit"'.' name="klipp-submit"'. ' class="btn btn-default btn-sm"'.'value="Klipp:  ' . $antalklipp. '" disabled>'  ;} 
+						else if ($korttyp=="10" && $klippbokningsbarID != $passid){ $daysleft = '<input type="submit"'.' name="klipp-submit"'. ' class="btn btn-default btn-sm"'.'value="Klipp:  ' . $antalklipp. '">'  ;} 
+						else if ($korttyp=="10" && $klippbokningsbarID == $passid){ $daysleft = "Klipp:  " . $antalklipp ;} 
 						else {$daysleft = (strtotime("$dagarkvar 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; }
 				}	
 

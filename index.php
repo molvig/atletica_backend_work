@@ -9,7 +9,7 @@
 <?php include("inc/boka_gast.php"); ?>
 <?php include("inc/checka_in.php"); ?>
 <?php include("inc/get_bokade.php"); ?>
-
+<?php include("inc/klipp_submit.php"); ?>
 
 
 <div class="grid_12">

@@ -1,8 +1,7 @@
 <?php
 
-  if(!empty($_POST))
-{
-
+  if(!empty($_POST)){
+	$passid = htmlspecialchars($_GET["passid"]);
 
 	$kundnr ="";
 	$fnamn ="";
@@ -19,6 +18,7 @@
 
 			catch (Exception $e) {
 					echo "Data could not be retrieved from the database";
+					echo $e;
 					exit;
 			}
 					
@@ -27,7 +27,7 @@
 
 			$fnamn = $member['fnamn']; 
 			$enamn = $member['enamn']; 
-
+			 echo $fnamn; //Hittar
 
 				foreach($member as $m){
 						try {
@@ -38,6 +38,7 @@
 
 						catch (Exception $e) {
 								echo "Data could not be retrieved from the database";
+								echo $e;
 								exit;
 						}
 								
@@ -53,45 +54,58 @@
 					 	$kortgiltigttill = $membercard['giltigttill'];
 					 	$oldklippantal = $membercard['antalklipp'];
 
+					 	echo $kortID; //Hittar
+						echo $kortgiltigttill; //Hittar
+						echo $oldklippantal; //Hittar
+						echo $today;//
 
 
-					 	if ($kortgiltigttill == null || $kortgiltigttill <= $today){
+					 	if ($kortgiltigttill == null || $kortgiltigttill >= $today){
 					 			$klippantal = $oldklippantal - 1;
+
+						echo $klippantal;
 
 
 								if ($oldklippantal=="10" || $oldklippantal=="20" || $oldklippantal=="30" || $oldklippantal=="40" || $oldklippantal=="50"){
 
 									$giltigttill = date('Y-m-d', strtotime($today. "+6 months"));
 									
-									$query = ("INSERT INTO klipplogg (kortID) VALUES (:kortID)");
+									$query = ("INSERT INTO klipplogg (kortID, pass, bokningsbarID) VALUES (:kortID, :pass, :bokningsbarID)");
 					  				$q = $db -> prepare($query);
-					    			$q-> execute(array(':kortID'=>$kortID));
+					    			$q-> execute(array(':kortID'=>$kortID,
+					    								':pass'=>1,
+					    								':bokningsbarID'=>$passid
+					    				));
 
 								 	$query = ("UPDATE medlemskort SET antalklipp=:antalklipp, giltigttill=:giltigttill WHERE kundnr={$member['kundnr']} AND aktivtkort=1");
 			         				$q = $db -> prepare($query);
 			         				$q-> execute(array(':antalklipp'=>$klippantal,
 			         									'giltigttill'=>$giltigttill));
 
-								 	$klipp = '<script> alert("' .$fnamn. ' ' .$enamn. ' och hon har nu ' . $klippantal . ' klipp kvar som måste förbrukas innan '. $giltigttill. '");</script>';
+								 	//$klipp = '<script> alert("' .$fnamn. ' ' .$enamn. ' och hon har nu ' . $klippantal . ' klipp kvar som måste förbrukas innan '. $giltigttill. '");</script>';
 
-									echo $klipp;
+									echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
 
 								}
 
 
 								else{
-									$query = ("INSERT INTO klipplogg (kortID) VALUES (:kortID)");
+									$query = ("INSERT INTO klipplogg (kortID, pass, bokningsbarID) VALUES (:kortID, :pass, :bokningsbarID)");
 					  				$q = $db -> prepare($query);
-					    			$q-> execute(array(':kortID'=>$kortID));
+					    			$q-> execute(array(':kortID'=>$kortID,
+					    								':pass'=>1,
+					    								':bokningsbarID'=>$passid
+					    				));
 
 
 								 	$query = ("UPDATE medlemskort SET antalklipp=:antalklipp WHERE kundnr={$member['kundnr']} AND aktivtkort=1");
 			         				$q = $db -> prepare($query);
 			         				$q-> execute(array(':antalklipp'=>$klippantal));
 
-								 	$klipp = '<script> alert("' .$fnamn. ' ' .$enamn. ' och hon har nu ' . $klippantal . ' klipp kvar som måste förbrukas innan '. $kortgiltigttill. '");</script>';
+								 	//$klipp = '<script> alert("' .$fnamn. ' ' .$enamn. ' och hon har nu ' . $klippantal . ' klipp kvar som måste förbrukas innan '. $kortgiltigttill. '");</script>';
 
-									echo $klipp;
+									
+									echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
 								}
 
 
@@ -146,10 +160,10 @@
 
 
 	}
+
+
+
 }
-
-
-
 
 
 
