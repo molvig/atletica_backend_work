@@ -34,6 +34,8 @@ if(isset($_GET['passid']))
 	$passObj = ($results -> fetch(PDO::FETCH_ASSOC));
 	$results->closeCursor();
 echo $passObj['schematyp'];
+$st = $passObj['schematyp'];
+$pi = $_GET["passid"];
 $slut = $passObj['sltid'];
 $start = $passObj['sttid'];
 	foreach($passnamn as $p)
@@ -81,11 +83,13 @@ if(!empty($_POST))
 {
 	if(isset($_POST["delete"]))
 	{
+		$st = $passObj['schematyp'];
+		$pi = $_GET["passid"];
+		$endUrl = "original_pass_delete.php?schemaid=".$st."&passid=".$pi;
 		//för att ta bort ett pass ska vi vara säkra på att passet verkligen ska tas bort.
-		$someJs = '<script>if(confirm("Vill du verkligen ta bort dett passet?"))
+		$someJs = '<script>if(confirm("Vill du verkligen ta bort detta passet?"))
 		{
-			window.location.href = original_pass_delete.php;
-			//alert("Passet passets namn har nu blivit borttaget.");
+			window.location.href = "'.$endUrl.'";					
 		}
 		else
 			{
