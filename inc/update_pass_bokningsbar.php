@@ -3,6 +3,8 @@
 	$slut = "";
 	$start = "";
 
+$dis = trus;
+
 if(isset($_GET['passid']))
 {
 	try {
@@ -20,7 +22,7 @@ if(isset($_GET['passid']))
           
 
 	try {
-		$sql = "SELECT b.bokningsbarID, s.schematyp, b.information, b.instnamn, b.passnamn, TIME_FORMAT(b.starttid, '%H:%i') as sttid, TIME_FORMAT(b.sluttid, '%H:%i') as sltid, b.veckodag, b.antalplatser 
+		$sql = "SELECT b.bokningsbarID, s.schematyp, b.information, b.instnamn, b.passnamn, datum, TIME_FORMAT(b.starttid, '%H:%i') as sttid, TIME_FORMAT(b.sluttid, '%H:%i') as sltid, b.veckodag, b.antalplatser 
 					from bokningsbara as b, schemat as s 
 					where b.bokningsbarID = :passId";
 
@@ -38,6 +40,16 @@ if(isset($_GET['passid']))
 	$info = $passObj['information'];
 	$slut = $passObj['sltid'];
 	$start = $passObj['sttid'];
+
+	$datum = new DateTime('NOW');
+	$passDatum = new DateTime($passObj["datum"]);
+
+	$diff=$passDatum->diff($datum);
+	echo $diff;
+	if ($diff > 6) {
+
+	 $dis = false;
+	}
 	foreach($passnamn as $p)
 	{
 		if ($p['passnamn'] == $passObj['passnamn']) 
@@ -81,13 +93,28 @@ if(isset($_GET['passid']))
 }
 if(!empty($_POST))
 {
-	/*if($_POST["del"])
+	if($_POST["delete"])
 	{
-	}*/
-	//if ($_POST["aboart"]) 
-	//{
-	//	echo "<meta http-equiv=\"Location\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";
-	//}
+		$st = $passObj['schematyp'];
+		$pi = $_GET["passid"];
+		$endUrl = "bokningsbar_pass_delete.php?schemaid=".$st."&passid=".$pi. "&datum=";
+		//för att ta bort ett pass ska vi vara säkra på att passet verkligen ska tas bort.
+		$someJs = '<script>if(confirm("Vill du verkligen ta bort detta passet?"))
+		{
+			window.location.href = "'.$endUrl.'";					
+		}
+		else
+			{
+				alert("Borttagning avbrutet");
+			}
+			</script>';
+
+		echo $someJs;
+	}
+	if ($_POST["cancel"]) 
+	{
+		//echo "<meta http-equiv=\"Location\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";
+	}
 	if(isset($_POST["update"]))
 	{
 

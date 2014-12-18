@@ -141,7 +141,8 @@ if(!empty($_POST))
 			WHERE b.passnamn = (select bInner.passnamn from bokningsbara as bInner where bInner.bokningsbarID = :passId)
 			AND s.schematyp = :scId  
 		    AND veckodag = :vDag
-		    AND starttid = :sttid';
+		    AND starttid = :sttid
+		    and b.datum > CURDATE()';
 
 
 	if($_POST["starttid"])

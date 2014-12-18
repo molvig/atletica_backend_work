@@ -17,6 +17,7 @@ $sql = "SELECT distinct b.bokningsbarID, veckodag, TIME_FORMAT(starttid, '%H:%i'
 	WHERE b.bokningsbarID = s.bokningsbarID 
 	AND s.schematyp = :scID
 	AND b.extrapass = 0
+	and b.datum > (CURDATE() + INTERVAL 6 DAY)
 	group by passnamn, veckodag
 	order by b.veckodag, tid asc;";
 

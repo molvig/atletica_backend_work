@@ -2,25 +2,52 @@
 if(isset($_GET["passid"]))
 {
 	try{
-	//plocka fram info för att ta bort från schemat	
-	$info = "SELECT passnamn, instnamn, TIME_FORMAT(starttid, '%H:%i'), TIME_FORMAT(sluttid, '%H:%i') 
-			from bokningsbara where bokningsbarID = :pid";
+		//plocka fram info för att ta bort från schemat	
+		$info = "SELECT passnamn, instnamn, TIME_FORMAT(starttid, '%H:%i'), TIME_FORMAT(sluttid, '%H:%i'), veckodag 
+				from bokningsbara where bokningsbarID = :pid";
 
-	$results = $db -> prepare ($info);
-	$results->execute(array(':pid' => $_GET["passid"]));
+		$results = $db -> prepare ($info);
+		$results->execute(array(':pid' => $_GET["passid"]));
 
-	$passInfo = ($results -> fetch(PDO::FETCH_ASSOC));
-	$results->closeCursor();
+		$passInfo = ($results -> fetch(PDO::FETCH_ASSOC));
+		$results->closeCursor();
 
-	$namn = $passInfo["passnamn"];
-	$starttid = $passInfo["starttid"];
-	$sluttid = $passInfo["sluttid"];
-	$inst = $passInfo["instnamn"];
+		$namn = $passInfo["passnamn"];
+		$starttid = $passInfo["starttid"];
+		$sluttid = $passInfo["sluttid"];
+		$inst = $passInfo["instnamn"];
+
+		$veckoDag = $passInfo["veckodag"];
+
+		$day = "";
+		if ($veckoDag == 1) {
+		    $day = "Monday";
+		}
+		if ($veckoDag == 2) {
+		    $day = "Tuesday";
+		}
+		if ($veckoDag == 3) {
+		    $day = "Wednesday";
+		}
+		if ($veckoDag == 4) {
+		    $day = "Thursday";
+		}
+		if ($veckoDag == 5) {
+		    $day = "Friday";
+		}
+		if ($veckoDag == 6) {
+		    $day = "Saturday";
+		}
+		if ($veckoDag == 7) {
+		    $day = "Sunday";
+		}
 	}
 	catch(Exception $e){
 
 	}	
 
+	$back = "<a href='schema_uppdatera_original.php?schemaid=". $_GET["schemaid"] ."'>Tillbaka till schemat</a>";
+	
 	try{
 	//plocka fram info för att ta bort från schemat	
 	$start = "SELECT * 
@@ -73,4 +100,5 @@ if(isset($_GET["passid"]))
 
 	}	
 }
+
 ?>
