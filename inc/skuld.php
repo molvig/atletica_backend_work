@@ -28,7 +28,7 @@
 			$found .= "<tr>" . '<form method="post">'.
 			"<td>"  . $row['datum']. "</td>" .
 			"<td>"  . $starten. "</td>" . 
-			"<td>"  . $row['passnamn']. "</td>" . 
+			"<td>"  . $row['passnamn'].'<input type="hidden"'. 'name="passid"'. 'value="' .$passID. '">' ."</td>" . 
 
 			"<td>"  . $orsak. "</td>" . 
 			"<td>" . "<a href='medlem_uppdatera.php?pid=". $hitta['kundnr'] ."'>" .$hitta['kundnr']. "</a>" . 
@@ -54,6 +54,7 @@
 
  if(isset($_POST['skuld-submit'])){
 	$kund = $_POST['kundnr-skuld'];
+	$passID = $_POST['passid'];
  	try{
  		
           $query = ("DELETE FROM skulder WHERE kundnr = {$kund} AND bokningsbarID= {$passID}");

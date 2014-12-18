@@ -18,8 +18,10 @@
 	 $korttyp="";
 	 $giltigtfran="";
 	 $giltigttill="";
+	 $kortgiltigt="";
 	 $korttypen="";
 	 $fryst="";
+	 $frysdagar="";
 	 $frysdatum="";
 	 $nyckelkort="";
 	 $aktivtkortID="";

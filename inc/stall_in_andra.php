@@ -33,18 +33,6 @@ $passdatum = date('Y-m-d', strtotime($sc['datum']));
 
 
 
-
-
-
-
-
-
-
-
-
-
-	
-
 	try {
 		$query = "SELECT * FROM bokningar WHERE bokningsbarID = {$passid} order by datum asc";  
 		$stmt = $db ->prepare($query);

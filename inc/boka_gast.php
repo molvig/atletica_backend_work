@@ -44,10 +44,11 @@ $passid = htmlspecialchars($_GET["passid"]);
 			    ));
 
 
-				$query ="INSERT INTO bokningar (kundnr, bokningsbarID, gastID) VALUES (:kundnr, :bokningsbarID, :gastID)";
+				$query ="INSERT INTO bokningar (kundnr, bokningsbarID, passdatum, gastID) VALUES (:kundnr, :bokningsbarID, :passdatum, :gastID)";
 			    $q = $db -> prepare($query);
 			    $q-> execute(array(':kundnr'=>null, 
 			    					':bokningsbarID'=>$bokningID, 
+			    					'passdatum'=>$passdatum,
 			    					':gastID'=>$biggestgastid
 			    					
 			    ));

@@ -59,15 +59,44 @@ catch (Exception $e) {
 
 			else {
 
+				$today = date('Y-m-d');
+				$sixdays = date('Y-m-d', strtotime($today. "+ 6 days"));
+
+							$query = "SELECT * FROM medlemmar WHERE kundnr= {$kundnr}";  
+							$stmt = $db ->prepare($query);
+							$stmt->execute();
+							$pass = $stmt->fetch(PDO::FETCH_ASSOC); 
+							$stmt->closeCursor(); 
+							$passantal = $pass['passantal'];
+							$fnamn = $pass['fnamn'];
+							$enamn = $pass['enamn'];
+							$stmt->closeCursor(); 
+
+							$query = "SELECT * FROM bokningar WHERE kundnr= {$kundnr} AND passdatum <= '{$sixdays}' AND passdatum >= '{$today}' "; 
+							$stmt = $db ->prepare($query);
+							$stmt->execute();
+							$bokningar = $stmt->rowCount();
+							$stmt->closeCursor(); 
+
+							$query = "SELECT * FROM skulder WHERE kundnr= {$kundnr}"; 
+							$stmt = $db ->prepare($query);
+							$stmt->execute();
+							$skulder = $stmt->rowCount();
+							$stmt->closeCursor(); 
+
+						if ($skulder < 3){
+
+					if ($bokningar < $passantal){
 						try {
-							 $query = ("INSERT INTO bokningar (kundnr, bokningsbarID, gastID) VALUES (:kundnr, :bokningsbarID, :gastID)");
+							 $query = ("INSERT INTO bokningar (kundnr, bokningsbarID, passdatum,  gastID) VALUES (:kundnr, :bokningsbarID, :passdatum, :gastID)");
 							    $q = $db -> prepare($query);
 							    $q-> execute(array(':kundnr'=>$kundnr,
 							    					':bokningsbarID'=>$passid,
+							    					':passdatum'=>$passdatum,
 							    					':gastID'=>null
 							    ));
 
-						  		if($query){
+						  	if($query){
 						  //   echo '<h4>' . 'Du har bokat '. '<strong>' . $kundnr  .'</strong>' .' som gäst!' . '</h4>';
 							 echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />";	
 							}
@@ -75,9 +104,18 @@ catch (Exception $e) {
 						catch (Exception $e) {
 
 						 echo '<h4>' . 'Hoppsan! <br> Det gick inte att boka in medlemmen... Försök igen!' . '</h4>';
-						 echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";}
+						 echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";
+						}
 					
-					
+					}else {
+
+
+							echo $fnamn. " ".$enamn. " kan bara vara bokad på ". $passantal. " st pass samtidigt!";
+							echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";	
+					}
+
+				}else{ echo $fnamn. " ".$enamn. " har 3 skulder som måste lösas innan det går att göra en bokning";
+						echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";}
 
 			}
 
