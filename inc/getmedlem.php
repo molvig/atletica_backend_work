@@ -87,10 +87,46 @@
 				
 				$giltigtfran = $k['giltigtfran'];
 				$giltigttill = $k['giltigttill'];
+				if ($giltigttill ==null){
+					$kortgiltigt="Inga klipp gjorda";
+				} else {
+					$kortgiltigt= date('Y-m-d', strtotime($giltigttill));
+				}
 				$fryst = $k['fryst'];
-				$frysdatum= $k['frysdatum'];
-				$frysdagar= $k['frysdagar'];
-				$antalklipp= $k['antalklipp'];
+				$frysdatum = $k['frysdatum'];
+				$frysdagar = $k['frysdagar'];
+				$antalklipp = $k['antalklipp'];
+
+
+					if ($kortet == "10" ) {
+					 	$kortID = $k['kortID'];
+					 	$today = date('Y-m-d');
+					 	$antalklipp = $k['antalklipp'];
+
+					 	if ($giltigttill == null || $giltigttill >= $today){
+					 		$klippantal = $antalklipp;
+
+						}else if ($giltigttill < $today){
+							if ($antalklipp>10){
+								$firstklipp = date('Y-m-d', strtotime($giltigttill. "-6 months")); 
+								$query = "SELECT * FROM klipplogg WHERE kortID ={$kortID} AND klipptid <= '$giltigttill' AND klipptid >= '$firstklipp' ";
+								$stmt = $db ->prepare($query);
+								$stmt->execute();	
+								$totalklipp = $stmt->rowCount();
+								$raderaklipp = 10 - $totalklipp;
+								$klippantal = $antalklipp - $raderaklipp;
+								$query = ("UPDATE medlemskort SET antalklipp=:antalklipp, giltigttill=:giltigttill WHERE kundnr={$kundnr} AND aktivtkort=1");
+								$q = $db -> prepare($query);
+								$q-> execute(array(':antalklipp'=>$klippantal, ':giltigttill'=>null));
+							} else {
+								$klippantal = 0;
+								$query = ("UPDATE medlemskort SET antalklipp=:antalklipp, giltigttill=:giltigttill WHERE kundnr={$kundnr} AND aktivtkort=1");
+								$q = $db -> prepare($query);
+								$q-> execute(array(':antalklipp'=>0, ':giltigttill'=>null));
+							}
+						}
+
+					}
 				
              }
 
@@ -98,7 +134,7 @@
 
 
  try {
-			$query = ("SELECT kortID, kort, giltigtfran, giltigttill, aktivtkort, ag_aktivt FROM medlemskort WHERE kundnr ={$kundnr} ORDER BY kortID DESC");
+			$query = ("SELECT * FROM medlemskort WHERE kundnr ={$kundnr} ORDER BY kortID DESC");
 			$stmt = $db ->prepare($query);
 			$stmt->execute();
 

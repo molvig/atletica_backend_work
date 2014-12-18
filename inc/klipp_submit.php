@@ -1,14 +1,14 @@
 <?php
 
   if(!empty($_POST)){
-	$passid = htmlspecialchars($_GET["passid"]);
+
 
 	$kundnr ="";
 	$fnamn ="";
 	$enamn ="";
 
 	if(isset($_POST["klipp-submit"]))
-	{
+	{	$passid = htmlspecialchars($_GET["passid"]);
 			$id_medlem = $_POST["getkundnrut"];
 			try {
 					$query = ("SELECT * FROM medlemmar WHERE kundnr ={$id_medlem}");
@@ -27,7 +27,7 @@
 
 			$fnamn = $member['fnamn']; 
 			$enamn = $member['enamn']; 
-			 echo $fnamn; //Hittar
+			
 
 				foreach($member as $m){
 						try {
@@ -54,16 +54,10 @@
 					 	$kortgiltigttill = $membercard['giltigttill'];
 					 	$oldklippantal = $membercard['antalklipp'];
 
-					 	echo $kortID; //Hittar
-						echo $kortgiltigttill; //Hittar
-						echo $oldklippantal; //Hittar
-						echo $today;//
-
 
 					 	if ($kortgiltigttill == null || $kortgiltigttill >= $today){
 					 			$klippantal = $oldklippantal - 1;
 
-						echo $klippantal;
 
 
 								if ($oldklippantal=="10" || $oldklippantal=="20" || $oldklippantal=="30" || $oldklippantal=="40" || $oldklippantal=="50"){
@@ -111,7 +105,7 @@
 
 						}	
 
-
+/*
 						else if ($kortgiltigttill < $today){
 
 								if ($oldklippantal>10){
@@ -127,23 +121,23 @@
 									$nyaklipp = $oldklippantal - $raderaklipp;
 
 
-									$query = ("UPDATE medlemskort SET antalklipp=:antalklipp WHERE kundnr={$member['kundnr']} AND aktivtkort=1");
+									$query = ("UPDATE medlemskort SET antalklipp=:antalklipp, giltigttill=:giltigttill WHERE kundnr={$member['kundnr']} AND aktivtkort=1");
 				         			$q = $db -> prepare($query);
-				         			$q-> execute(array(':antalklipp'=>$nyaklipp));
+				         			$q-> execute(array(':antalklipp'=>$nyaklipp, ':giltigttill'=>null));
 
 
 
 								} 
 
 								else {
-										$query = ("UPDATE medlemskort SET antalklipp=:antalklipp WHERE kundnr={$member['kundnr']} AND aktivtkort=1");
+										$query = ("UPDATE medlemskort SET antalklipp=:antalklipp, giltigttill=:giltigttill WHERE kundnr={$member['kundnr']} AND aktivtkort=1");
 				         				$q = $db -> prepare($query);
-				         				$q-> execute(array(':antalklipp'=>0));
+				         				$q-> execute(array(':antalklipp'=>0, ':giltigttill'=>null));
 
 								}
 						}
 
-
+*/
 
 
 					 		

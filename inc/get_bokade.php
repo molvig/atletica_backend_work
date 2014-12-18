@@ -2,7 +2,9 @@
 	if(isset($_GET["passid"])){
 
 	$passid = htmlspecialchars($_GET["passid"]);
-
+ $today = date('Y-m-d');
+$dis="";
+ if ($passdatum != $today){$dis="disabled";}
 	try {
 		$query = "SELECT * FROM bokningar WHERE bokningsbarID = {$passid} AND reservplats=0 order by datum asc";  
 		$stmt = $db ->prepare($query);
@@ -18,7 +20,6 @@
 		$antalplatser = $res['antalplatser'];
 
 		foreach ($result as $row) { 
-
 				$incheckad = $row["incheckad"];
 				$reservplats = $row["reservplats"];
 
@@ -51,14 +52,41 @@
 
 						$today = date("Y-m-d");  
 
-						if ($korttyp == "10"){
-						$query = "SELECT * FROM klipplogg WHERE kortID = {$kortID} AND bokningsbarID = {$passid}";
-						$stmt = $db ->prepare($query);
-						$stmt->execute();
-						$klippt = $stmt->fetch(PDO::FETCH_ASSOC); 
-						$stmt->closeCursor(); 
+						if ($korttyp == "10" ) {
+						 	$today = date('Y-m-d');
 
-						$klippbokningsbarID = $klippt['bokningsbarID'];
+						 	if ($dagarkvar == null || $dagarkvar >= $today){
+						 		$klippantal = $antalklipp;
+						 		$query = "SELECT * FROM klipplogg WHERE kortID = {$kortID} AND bokningsbarID = {$passid}";
+								$stmt = $db ->prepare($query);
+								$stmt->execute();
+								$klippt = $stmt->fetch(PDO::FETCH_ASSOC); 
+								$stmt->closeCursor(); 
+
+								$klippbokningsbarID = $klippt['bokningsbarID'];
+
+							}else if ($dagarkvar < $today){
+								if ($antalklipp>10){
+									$firstklipp = date('Y-m-d', strtotime($dagarkvar. "-6 months")); 
+									$query = "SELECT * FROM klipplogg WHERE kortID ={$kortID} AND klipptid <= '{$dagarkvar}' AND klipptid >= '{$firstklipp}' ";
+									$stmt = $db ->prepare($query);
+									$stmt->execute();	
+									$totalklipp = $stmt->rowCount();
+									$raderaklipp = 10 - $totalklipp;
+									$nyttklippantal = $antalklipp - $raderaklipp;
+									$query = ("UPDATE medlemskort SET antalklipp=:antalklipp, giltigttill=:giltigttill WHERE kundnr={$hitta['kundnr']} AND aktivtkort=1");
+									$q = $db -> prepare($query);
+									$q-> execute(array(':antalklipp'=>$nyttklippantal, ':giltigttill'=>null));
+								} else {
+									$klippantal = 0;
+									$query = ("UPDATE medlemskort SET antalklipp=:antalklipp, giltigttill=:giltigttill WHERE kundnr={$hitta['kundnr']} AND aktivtkort=1");
+									$q = $db -> prepare($query);
+									$q-> execute(array(':antalklipp'=>0, ':giltigttill'=>null));
+									$klippbokningsbarID = "";
+								}
+							}	
+
+
 						}
 						
 						$query = "SELECT * FROM skulder WHERE kundnr = {$hitta['kundnr']}";
@@ -92,7 +120,7 @@
 							"<td>"  . $daysleft ." ". $skulden ."</td>" . 
 							"<td>"  . '<input type="submit"'.' name="avboka-submit"'. ' class="btn btn-default btn-sm"'.'value="Avboka"' .'>'.
 				  			 "</td>" . 
-							"<td>"  . '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-default btn-sm"'.'value="Checka in"' .'>'.
+							"<td>"  . '<input type="submit"'.' name="checkain-submit"'. ' class="btn btn-default btn-sm"'.'value="Checka in"' . $dis. '>'.
 				  			 "</td>" . '</form>'.
 							"</tr>" ;
 				}    
@@ -129,6 +157,9 @@
 			$daysleft = "GÄST";
 
 			//"<tr style='background-color:#FFCCCC;'>"
+
+
+
 
 			if ($incheckad==0){
 						$found .= "<tr>" . '<form method="post">'.

@@ -200,8 +200,8 @@ $passdatum = date('Y-m-d', strtotime($sc['datum']));
 
 
           if($query){
-          echo '<center>' . '<h4>' . 'Du har ställt in passet!' . '</h4>' . '</center>';
-          echo "<meta http-equiv=\"refresh\" content=\"2;URL='stall_in_pass.php?passid=".$passid."'\" />";	
+         // echo '<center>' . '<h4>' . 'Du har ställt in passet!' . '</h4>' . '</center>';
+          echo "<meta http-equiv=\"refresh\" content=\"0.25;URL='stall_in_pass.php?passid=".$passid."'\" />";	
   
         }
     } 
@@ -217,12 +217,14 @@ $passdatum = date('Y-m-d', strtotime($sc['datum']));
     if(isset($_POST['andra_pass'])){
 
     $information = $_POST['information'];
+    $instnamn = $_POST['instruktor'];
 
     
     try {
-       $query = ("UPDATE bokningsbara SET information=:info WHERE bokningsbarID= {$passid}");
+       $query = ("UPDATE bokningsbara SET information=:info, instnamn=:instnamn WHERE bokningsbarID= {$passid}");
 				$results = $db -> prepare ($query);
-				$results->execute(array(':info' => $information
+				$results->execute(array(':info' => $information,
+					':instnamn'=>$instnamn
 						));
 
 			
@@ -230,8 +232,8 @@ $passdatum = date('Y-m-d', strtotime($sc['datum']));
 
 
           if($query){
-          echo '<center>' . '<h4>' . 'Du har ändra passinformationen!' . '</h4>' . '</center>';
-          echo "<meta http-equiv=\"refresh\" content=\"1;URL='stall_in_pass.php?passid=".$passid."'\" />";	
+          //echo '<center>' . '<h4>' . 'Du har ändra passinformationen!' . '</h4>' . '</center>';
+          echo "<meta http-equiv=\"refresh\" content=\"0.25;URL='stall_in_pass.php?passid=".$passid."'\" />";	
   
         }
     } 

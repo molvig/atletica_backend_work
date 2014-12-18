@@ -156,7 +156,7 @@
             </div>
           <div class="grid_6">
             <label>Gäller till <br>
-              <input type="text" name="oldgiltigttill" id="oldgiltigttill" class="form-control" value="<?php echo date('Y-m-d', strtotime($giltigttill)); ?>" readonly>
+              <input type="text" name="oldgiltigttill" id="oldgiltigttill" class="form-control" value="<?php echo $kortgiltigt; ?>" readonly>
             </label>
            </div>
         </div>
@@ -165,13 +165,8 @@
           <div class="grid_12">
             <div class="grid_6">
               <label>Antal klipp kvar
-                <input type="text" class="form-control" name="kort" id="kort" value="<?php echo $antalklipp; ?>" readonly></label>
+                <input type="text" class="form-control" name="kort" id="kort" value="<?php echo $klippantal; ?>" readonly></label>
             </div>
-          <div class="grid_6">
-            <label>Gäller till <br>
-              <input type="text" name="date" class="form-control" value="<?php echo date('Y-m-d', strtotime($giltigttill)); ?>" readonly>
-            </label>
-           </div>
         </div>
 <?php } ?>
 

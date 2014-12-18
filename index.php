@@ -97,6 +97,25 @@
 </div>
 
 <?php if(isset($_GET["passid"])){ ?>
+ <?php   if ($install==1){ ?>
+
+
+
+
+	<div class="grid_6">
+		<div class="grid_12">
+
+			<div class="grid_8">
+			<h4>Inga bokningar kan göras!</h4>
+			</div>	
+
+
+
+
+<?php 	}
+
+ 	else { ?>
+
 	<div class="grid_6">
 		<div class="grid_12">
 			<div class="grid_4">
@@ -196,7 +215,7 @@
 
 
 
-
+<?php } ?>
 
 				<div class="grid_4">
 				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">

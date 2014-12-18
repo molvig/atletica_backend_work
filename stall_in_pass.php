@@ -11,10 +11,18 @@
    		<h3 class="panel-title">  Ställ in <?php echo $passnamn; ?></h3>
   	</div>
   				<form class="form-inline" role="form" method="post">
+
+  	<?php if($install==1){echo "<h3 style='color:red'>PASSET ÄR INSTÄLLT</h3>";}
+  			else { ?>
+
 			<div class="form-group">
 			<input type="text" class="form-control" name="orsak" placeholder="Varför ställs passet in?" required>
 			</div>
 			<button type="submit" name="stall-in" class="btn btn-default">Ställ in passet</button>
+
+	<?php	}?>
+
+
 			</form>
 	<div class="panel-body">
 		<div class="list-group">
