@@ -110,14 +110,14 @@ if(!empty($_POST))
 
 		echo $someJs;
 	}
-	if (isset($_POST["cancel"])) 
+	/*if (isset($_POST["cancel"])) 
 	{		
 		$cancelSomeJs = '<script>
 			window.location.href = '"schema.php?schemaid=". $_SESSION["schemaId"] . "&date=".$_SESSION["schemaDatum"]. "'";								
 			</script>';
 
 		echo $cancelSomeJs;
-	}
+	}*/
 	if(isset($_POST["update"]))
 	{
 
