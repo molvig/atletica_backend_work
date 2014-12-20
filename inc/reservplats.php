@@ -1,12 +1,7 @@
 <?php 
+
 	if(isset($_GET["passid"])){
 	$passid = htmlspecialchars($_GET["passid"]);
-
-
-
-
-	
-
 		try {
 				$query = "SELECT * FROM bokningar WHERE bokningsbarID = {$passid} AND reservplats=1 order by datum asc";  
 				$stmt = $db ->prepare($query);
