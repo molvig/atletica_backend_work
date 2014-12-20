@@ -3,7 +3,7 @@
 	$slut = "";
 	$start = "";
 
-$dis = trus;
+$dis = "disabled";
 
 if(isset($_GET['passid']))
 {
@@ -41,14 +41,14 @@ if(isset($_GET['passid']))
 	$slut = $passObj['sltid'];
 	$start = $passObj['sttid'];
 
-	$datum = new DateTime('NOW');
-	$passDatum = new DateTime($passObj["datum"]);
-
-	$diff=$passDatum->diff($datum);
-	echo $diff;
-	if ($diff > 6) {
-
-	 $dis = false;
+	$today = date("Y-m-d");
+	$ts1 = date_create($today);
+	$passDatum = date("Y-m-d",strtotime($passObj["datum"]));
+	$ts2 = date_create($passDatum);
+	$datediff = $ts1->diff($ts2);
+	
+	if ($datediff->format('%R%a days') > 6) {		
+	 	$dis = "";
 	}
 	foreach($passnamn as $p)
 	{
@@ -97,7 +97,7 @@ if(!empty($_POST))
 	{
 		$st = $passObj['schematyp'];
 		$pi = $_GET["passid"];
-		$endUrl = "bokningsbar_pass_delete.php?schemaid=".$st."&passid=".$pi. "&datum=";
+		$endUrl = "bokningsbar_pass_delete.php?schemaid=".$st."&passid=".$pi. "&datum=". $passObj["datum"];
 		//för att ta bort ett pass ska vi vara säkra på att passet verkligen ska tas bort.
 		$someJs = '<script>if(confirm("Vill du verkligen ta bort detta passet?"))
 		{
@@ -111,10 +111,10 @@ if(!empty($_POST))
 
 		echo $someJs;
 	}
-	if ($_POST["cancel"]) 
+	/*if ($_POST["cancel"]) 
 	{
 		//echo "<meta http-equiv=\"Location\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";
-	}
+	}*/
 	if(isset($_POST["update"]))
 	{
 

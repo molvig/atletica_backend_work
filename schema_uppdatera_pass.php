@@ -139,7 +139,7 @@
     
       <button type="submit" name="update" class="btn btn-default">Uppdatera</button>
       <button type="submit" name="cancel" class="btn btn-default">Avbryt</button>
-      <button type="submit" formaction="stall_in_schema.php?passid=<?php echo $passid;?>" name="stall_in" class="btn btn-default" >Ställ in</button>
+      
       <button type="submit" name="delete" class="btn btn-default" <?php echo $dis;?>>Ta Bort</button>
   </div>
   
