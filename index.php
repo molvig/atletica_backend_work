@@ -1,5 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
+<?php include("inc/ej_incheckad.php"); ?>
 <?php include("inc/getveckansfokus.php"); ?>
 <?php include("inc/get_veckans_pass.php"); ?>
 <?php include("inc/aktuellt_pass.php"); ?>

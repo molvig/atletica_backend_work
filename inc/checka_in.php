@@ -199,7 +199,7 @@ $passid = htmlspecialchars($_GET["passid"]);
   else if ($passdatum == $today && $nowtime > $avbokad){
           $kund = $_POST['getkundnrin'];
 
-              if ($install==0){
+              if ($install==0 && $kundnr!=1){
               $query = ("INSERT INTO skulder (bokningsbarID, kundnr, sen_avbokning, datum, passnamn, starttid) VALUES (:bokningsbarID, :kundnr, :sen_avbokning, :datum, :passnamn, :starttid)");
               $q = $db -> prepare($query);
               $q-> execute(array(':bokningsbarID'=>$passid,
