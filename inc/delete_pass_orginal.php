@@ -3,7 +3,7 @@ if(isset($_GET["passid"]))
 {
 	try{
 		//plocka fram info för att ta bort från schemat	
-		$info = "SELECT passnamn, instnamn, TIME_FORMAT(starttid, '%H:%i'), TIME_FORMAT(sluttid, '%H:%i'), veckodag 
+		$info = "SELECT passnamn, instnamn, TIME_FORMAT(starttid, '%H:%i') as stt, TIME_FORMAT(sluttid, '%H:%i') as slt, veckodag 
 				from bokningsbara where bokningsbarID = :pid";
 
 		$results = $db -> prepare ($info);
@@ -13,33 +13,33 @@ if(isset($_GET["passid"]))
 		$results->closeCursor();
 
 		$namn = $passInfo["passnamn"];
-		$starttid = $passInfo["starttid"];
-		$sluttid = $passInfo["sluttid"];
+		$starttid = $passInfo["stt"];
+		$sluttid = $passInfo["slt"];
 		$inst = $passInfo["instnamn"];
 
 		$veckoDag = $passInfo["veckodag"];
 
 		$day = "";
 		if ($veckoDag == 1) {
-		    $day = "Monday";
+		    $day = "Måndag";
 		}
 		if ($veckoDag == 2) {
-		    $day = "Tuesday";
+		    $day = "Tisdag";
 		}
 		if ($veckoDag == 3) {
-		    $day = "Wednesday";
+		    $day = "Onsdag";
 		}
 		if ($veckoDag == 4) {
-		    $day = "Thursday";
+		    $day = "Torsdag";
 		}
 		if ($veckoDag == 5) {
-		    $day = "Friday";
+		    $day = "Fredag";
 		}
 		if ($veckoDag == 6) {
-		    $day = "Saturday";
+		    $day = "Lördag";
 		}
 		if ($veckoDag == 7) {
-		    $day = "Sunday";
+		    $day = "Söndag";
 		}
 	}
 	catch(Exception $e){
