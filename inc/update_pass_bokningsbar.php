@@ -22,7 +22,7 @@ if(isset($_GET['passid']))
           
 
 	try {
-		$sql = "SELECT b.bokningsbarID, s.schematyp, b.information, b.instnamn, b.passnamn, datum, TIME_FORMAT(b.starttid, '%H:%i') as sttid, TIME_FORMAT(b.sluttid, '%H:%i') as sltid, b.veckodag, b.antalplatser 
+		$sql = "SELECT b.bokningsbarID, s.schematyp, b.information, b.instnamn as inamn, b.passnamn, datum, TIME_FORMAT(b.starttid, '%H:%i') as sttid, TIME_FORMAT(b.sluttid, '%H:%i') as sltid, b.veckodag, b.antalplatser 
 					from bokningsbara as b, schemat as s 
 					where b.bokningsbarID = :passId";
 
@@ -78,7 +78,7 @@ if(isset($_GET['passid']))
 		$instnamnet ="";
             foreach($instnamn as $i)
             {
-		          if($passObj['instnamn'] == $i['instnamn'])
+		          if($passObj['inamn'] == $i['instnamn'])
 		          {
 		          	$instnamnet .= "<option value='".$i['instnamn']."' selected = 'selected'>".$i['instnamn']."</option>";
 		          }

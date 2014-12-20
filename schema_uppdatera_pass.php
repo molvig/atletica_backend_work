@@ -1,7 +1,7 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
 <?php include("inc/update_pass_bokningsbar.php"); ?>
-<?php include("inc/getinstruktorer.php"); ?>
+<!--<?php include("inc/getinstruktorer.php"); ?>-->
 
 
 
@@ -53,7 +53,7 @@
                     <?php echo $instnamnet; ?>
                     </select>
               
-              </select><span class="help-block"><a href="installningar_nyinstruktor.php">Saknas instruktören? Klicka här</a></span>
+              <span class="help-block"><a href="installningar_nyinstruktor.php">Saknas instruktören? Klicka här</a></span>
           </div>
 
   </div>
