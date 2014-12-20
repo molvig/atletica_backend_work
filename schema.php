@@ -1,7 +1,9 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/date.php"); ?>
 <?php include("inc/get_pass_schema_bokningsbar.php"); ?>
-<?php $schemaID =  htmlspecialchars($_GET["schemaid"]) ;?>
+<?php $schemaID =  htmlspecialchars($_GET["schemaid"]); 
+$_SESSION["schemaDatum"] = $startdatum;
+$_SESSION["schemaId"] = $_GET["schemaid"];?>
 <?php include("inc/header.php"); ?>
 
   <div class="grid_2">

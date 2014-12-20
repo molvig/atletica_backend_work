@@ -93,11 +93,10 @@ if(isset($_GET['passid']))
 }
 if(!empty($_POST))
 {
-	if($_POST["delete"])
-	{
-		$st = $passObj['schematyp'];
+	if(isset($_POST["delete"]))
+	{		
 		$pi = $_GET["passid"];
-		$endUrl = "bokningsbar_pass_delete.php?schemaid=".$st."&passid=".$pi. "&datum=". $passObj["datum"];
+		$endUrl = "bokningsbar_pass_delete.php?passid=".$pi. "&datum=". $passObj["datum"];
 		//för att ta bort ett pass ska vi vara säkra på att passet verkligen ska tas bort.
 		$someJs = '<script>if(confirm("Vill du verkligen ta bort detta passet?"))
 		{
@@ -111,10 +110,14 @@ if(!empty($_POST))
 
 		echo $someJs;
 	}
-	/*if ($_POST["cancel"]) 
-	{
-		//echo "<meta http-equiv=\"Location\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";
-	}*/
+	if (isset($_POST["cancel"])) 
+	{		
+		$cancelSomeJs = '<script>
+			window.location.href = '"schema.php?schemaid=". $_SESSION["schemaId"] . "&date=".$_SESSION["schemaDatum"]. "'";								
+			</script>';
+
+		echo $cancelSomeJs;
+	}
 	if(isset($_POST["update"]))
 	{
 
