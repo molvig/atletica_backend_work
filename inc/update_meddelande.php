@@ -10,7 +10,8 @@ $meddelande_text ="";
           $q-> execute(array(':meddelande_text'=>$meddelande_text));
 
           if($query){
-          echo '<center>' . '<h4>' . 'Du har nu meddelat alla medlemmar!' . '</h4>' . '</center>';
+          echo '<h4>' . 'Du har nu meddelat alla medlemmar!' . '</h4>';
+          echo "<meta http-equiv=\"refresh\" content=\"1;URL='installningar_kontaktmedlemmar.php'\" />";  
 	
         }
     } 

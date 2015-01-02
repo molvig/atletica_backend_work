@@ -82,7 +82,7 @@
 			echo $e;
 			exit;
 		}
-
+			$giltigttill= date('Y-m-d', strtotime($giltigttill));
 			$today = date("Y-m-d");  
 			$daysleft = (strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400;
 			

@@ -10,7 +10,7 @@
 </div>
 <div class="grid_6">
 
- 	<form role="form" action="installningar_kontaktmedlemmar_post.php" method="post">
+ 	<form role="form" action="" method="post">
 
     
 

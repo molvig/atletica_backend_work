@@ -51,6 +51,9 @@ $dis="";
 						$ag_aktivt = $giltigt['ag_aktivt'];
 
 						$today = date("Y-m-d");  
+						if ($dagarkvar != null)
+						{$dagarkvar = date ('Y-m-d', strtotime($dagarkvar));}
+						
 
 						if ($korttyp == "10" ) {
 						 	$today = date('Y-m-d');
@@ -108,6 +111,7 @@ $dis="";
 						else if ($korttyp=="10" && $klippbokningsbarID != $passid && $incheckad==0){ $daysleft = '<input type="submit"'.' name="klipp-submit"'. ' class="btn btn-default btn-sm"'.'value="Klipp:  ' . $antalklipp. '" disabled>'  ;} 
 						else if ($korttyp=="10" && $klippbokningsbarID != $passid){ $daysleft = '<input type="submit"'.' name="klipp-submit"'. ' class="btn btn-default btn-sm"'.'value="Klipp:  ' . $antalklipp. '">'  ;} 
 						else if ($korttyp=="10" && $klippbokningsbarID == $passid){ $daysleft = "Klipp:  " . $antalklipp ;} 
+						else if ($dagarkvar == null){$daysleft="Inget kort";}
 						else {$daysleft = (strtotime("$dagarkvar 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400; }
 				}	
 

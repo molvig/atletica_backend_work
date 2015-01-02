@@ -33,7 +33,7 @@
 	 
 
 	try {
-					$query = ("SELECT kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, meddelande, medlemsstart, passantal, nyckelkort FROM medlemmar WHERE kundnr ={$id_medlem}");
+					$query = ("SELECT * FROM medlemmar WHERE kundnr ={$id_medlem}");
 					$stmt = $db ->prepare($query);
 					$stmt->execute();
 					}
@@ -191,12 +191,15 @@
 			exit;
 	}
 				
-
+	if($giltigttill==null){$giltigttill="no";}
+	else {$giltigttill = date ('Y-m-d', strtotime($giltigttill));}	
+	
 
 	if($fryst==1){$daysleft="Fryst";}
 	else if ($giltigtfran > $today){$daysleft="Ej börjat gälla";}
 	else if ($korttyp=="INST"){$daysleft="Instruktör";}
 	else if (($korttyp=="AG12" || $korttyp=="AG12+2" || $korttyp=="AG24" || $korttyp=="AG24+2" || $korttyp=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
+	else if ($giltigttill == "no"){$daysleft="Har inget kort";}
 	else {$daysleft = ((strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400) . " dagar kvar"; }
 
 	$today = date("Y-m-d");  
@@ -205,17 +208,23 @@
       $today = date("Y-m-d"); 
       $nyttdatum = "";
 
+    if($giltigttill!="no")  {
+			if ($giltigttill >= $today){
+			  $nyttdatum = date('Y-m-d', strtotime($giltigttill. ' + 1 day')); 
+			}
 
-	if ($giltigttill >= $today){
-	  $nyttdatum = date('Y-m-d', strtotime($giltigttill. ' + 1 day')); 
+			else {
+			   $nyttdatum = $today;
+
+			}
+
 	}
-
 	else {
 	   $nyttdatum = $today;
 
 	}
 
-
+	
 	$query = "SELECT * FROM skulder WHERE kundnr = {$kundnr} ";
 	$stmt = $db ->prepare($query);
 	$stmt->execute();
