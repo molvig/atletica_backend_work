@@ -6,6 +6,8 @@
 <?php }else if ($admin_check=="repan"){ ?>
 <?php include("inc/header.php");?>
 <?php } ?>
+
+
 <?php include("inc/skuld.php"); ?>
 
 
@@ -16,6 +18,13 @@
 <div class="grid_8">
 
   <h3>Skuldlista </h3>
+
+<form class="form-inline" role="form" method="POST" action="">
+	<div class="form-group">
+		<input type="text" class="form-control" name="member" placeholder="Sök kundnummer" onkeypress="return isNumberKey(event)">
+	</div>
+	<button type="submit" class="btn btn-default" name="submit-skuld">Sök</button>
+</form>
 
 
 		      <table class="table">
@@ -41,7 +50,14 @@
 
   </div>
 
-
+<script>
+function isNumberKey(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+</script>
 
 
 

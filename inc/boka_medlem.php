@@ -112,12 +112,14 @@ catch (Exception $e) {
 					
 					}else {
 
-
-							echo $fnamn. " ".$enamn. " kan bara vara bokad på ". $passantal. " st pass samtidigt!";
+							$max = '<script> alert("'. $fnamn. " ".$enamn. " kan bara vara bokad på ". $passantal. " st pass samtidigt!" .'");</script>';
+							echo $max;
 							echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";	
 					}
 
-				}else{ echo $fnamn. " ".$enamn. " har 3 skulder som måste lösas innan det går att göra en bokning";
+				}else{ 
+							$skul = '<script> alert("'. $fnamn. " ".$enamn. " har 3 skulder som måste lösas innan det går att göra en bokning". '");</script>';
+							echo $skul;
 						echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";}
 
 			}

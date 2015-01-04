@@ -20,20 +20,19 @@
 
 
 <div class="grid_9">
-<form action="#">
 	<div class="grid_12">
 
     	<div class="grid_4">
           
-          <label>Vårschemat gäller från
-          	<input type="text" class="tcal" name="dateVarStart" value="<?php echo $startVar; ?>">
+          <label>Vårschemat gäller från 
+          	<input type="text"  class="form-control"  name="dateVarStart" value="<?php echo $startVar; ?>"  readonly>
           </label>
         </div>
 
 
 		<div class="grid_6">
           <label>Till  <br>
-          <input type="text" name="dateVarEnd" class="tcal" value="<?php echo $slutVar; ?>"></label>
+          <input type="text" name="dateVarEnd"  class="form-control"  value="<?php echo $slutVar; ?>" readonly></label>
         </div>
 	    	
 
@@ -43,13 +42,13 @@
     	<div class="grid_4">
           
           <label>Sommarschemat gäller från
-          	<input type="text" class="form-control"name="date" value="<?php echo $startSommar; ?>" readonly>
+          	<input type="text" class="form-control" name="date" value="<?php echo $startSommar; ?>" readonly>
           </label>
         </div>
 
 		<div class="grid_6">
           <label>Till  <br>
-          <input type="text" name="dateSommarEnd" class="tcal" value="<?php echo $slutSommar; ?>"></label>
+          <input type="text" name="dateSommarEnd" class="form-control" value="<?php echo $slutSommar; ?>" readonly></label>
         </div>
 	</div>
 
@@ -64,7 +63,7 @@
 
 		<div class="grid_6">
           <label>Till  <br>
-          <input type="text" name="dateHostEnd" class="tcal" value="<?php echo $slutHost; ?>"></label>
+          <input type="text" name="dateHostEnd" class="form-control" value="<?php echo $slutHost; ?>" readonly></label>
         </div>
 	</div>
 
@@ -78,15 +77,10 @@
         </div>
 		<div class="grid_6">
           <label>Till  <br>
-          <input type="text" name="dateVinterEnd" class="tcal" value="<?php echo $slutVinter; ?>"></label>          
+          <input type="text" name="dateVinterEnd"  class="form-control"  value="<?php echo $slutVinter; ?>"readonly></label>          
         </div>
 
 	</div>
-
-        <div class="grid_6">
-          <button type="submit" name="submit" onclick="inc/update_schemaperioder.php" class="btn btn-default">Spara</button>
-        </div>
-</form>
 </div> 
 
 
