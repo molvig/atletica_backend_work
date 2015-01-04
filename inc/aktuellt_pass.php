@@ -5,7 +5,9 @@ $passnamn ="";
  $passid = htmlspecialchars($_GET["passid"]);
 
 try {
-	$sql ="SELECT * FROM bokningsbara WHERE bokningsbarID = {$passid}";
+	$sql ="SELECT bokningsbarID, installt, installt_orsak, antalplatser, reservplatser, 
+			datum, information, passnamn, instnamn, TIME_FORMAT(starttid, '%H:%i') as sttid, TIME_FORMAT(sluttid, '%H:%i') as sltid, veckodag, 
+			extrapass, uppdaterad FROM bokningsbara WHERE bokningsbarID = {$passid}";
 	$results = $db -> prepare ($sql);
 	$results->execute();
 	} 
@@ -23,8 +25,8 @@ $install = $sc['installt'];
 $orsaken = $sc['installt_orsak'];
 $installt="";
 if ($install==1){$installt = "<div class='installt'>" . "<h1>". "INSTÄLLT" . "</h1>"."<p> Orsak: " . $orsaken. "</p>". "</div>" ;}
-$starttid = date('H:i', strtotime($sc['starttid']));
-$sluttid = date('H:i', strtotime($sc['sluttid']));
+$starttid = $sc['sttid'];	//date('H:i', strtotime($sc['starttid']));
+$sluttid = $sc['sltid']; //date('H:i', strtotime($sc['sluttid']));
 $inst = $sc['instnamn'];
 $antalplatserna = $sc['antalplatser'];
 $infot = $sc['information'];

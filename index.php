@@ -15,7 +15,7 @@
 
 
 <div class="grid_12">
-<div class="grid_3">
+<div id="vPass" class="grid_3">
 
 <div class="panel panel-default">
  	<div class="panel-heading">
@@ -97,6 +97,20 @@
 
 
 </div>
+<script type="text/javascript">
+	setInterval("my_function();",5000); 
+  
+    function my_function(){
+    	//$('#vPass').load('/inc/get_veckans_pass.php');
+        window.location = location.href;
+    }
+	/*$(document).ready(function() {
+ 	 $("#vPass").load("/inc/get_veckans_pass.php");
+   var refreshId = setInterval(function() {
+      $("#vPass").load('/inc/get_veckans_pass.php');
+   }, 9000);*/
+   //$.ajaxSetup({ cache: false });
+</script>
 
 <?php if(isset($_GET["passid"])){ ?>
  <?php   if ($install==1){ ?>

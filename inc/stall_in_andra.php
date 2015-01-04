@@ -4,7 +4,9 @@ if(isset($_GET["passid"])){
 $passid = htmlspecialchars($_GET["passid"]);
 
 try {
-	$sql ="SELECT * FROM bokningsbara WHERE bokningsbarID = {$passid}";
+	$sql ="SELECT bokningsbarID, installt, installt_orsak, antalplatser, reservplatser, 
+			datum, information, passnamn, instnamn, TIME_FORMAT(starttid, '%H:%i') as sttid, TIME_FORMAT(sluttid, '%H:%i') as sltid, veckodag, 
+			extrapass, uppdaterad FROM bokningsbara WHERE bokningsbarID = {$passid}";
 	$results = $db -> prepare ($sql);
 	$results->execute();
 	} 
@@ -22,14 +24,37 @@ $install = $sc['installt'];
 $orsaken = $sc['installt_orsak'];
 $installt="";
 if ($install==1){$installt = "<div class='installt'>" . "<h1>". "INSTÄLLT" . "</h1>"."<p> Orsak: " . $orsaken. "</p>". "</div>" ;}
-$starttid = date('H:i', strtotime($sc['starttid']));
-$sluttid = date('H:i', strtotime($sc['sluttid']));
+$starttid = $sc['sttid'];
+$sluttid = $sc['sltid'];
 $inst = $sc['instnamn'];
 $antalplatserna = $sc['antalplatser'];
 $info = $sc['information'];
 $passdatum = date('Y-m-d', strtotime($sc['datum']));
 }
 
+ try {
+				$results = $db -> query ("SELECT instnamn FROM instruktorer");
+		} 
+		catch (Exception $e) {
+				echo "Data could not be retrieved from the database";
+				exit;
+		}
+
+		$instnamn = ($results -> fetchAll(PDO::FETCH_ASSOC));
+		$results->closeCursor();
+
+		$inamnet ="";
+            foreach($instnamn as $i)
+            {
+		          if($sc['instnamn'] == $i['instnamn'])
+		          {
+		          	$inamnet .= "<option value='".$i['instnamn']."' selected = 'selected'>".$i['instnamn']."</option>";
+		          }
+		          else
+		          {
+		          	$inamnet .= "<option value='".$i['instnamn']."'>".$i['instnamn']."</option>";
+		          }
+			}
 
 
 

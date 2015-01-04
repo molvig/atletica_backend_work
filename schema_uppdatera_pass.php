@@ -1,7 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
 <?php include("inc/update_pass_bokningsbar.php"); ?>
-<!--<?php include("inc/getinstruktorer.php"); ?>-->
 
 
 

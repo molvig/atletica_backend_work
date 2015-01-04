@@ -1,6 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/header.php"); ?>
-<?php include("inc/getinstruktorer.php"); ?>
+
 <?php include("inc/stall_in_andra.php"); ?>
 
 
@@ -72,8 +72,8 @@
 				          <div class="grid_6">
 							    <label>Instruktör 
 							     <select name="instruktor" class="form-control"> 
-							          <?php echo $instnamnet ?>
-							        </select>Aktuell instruktör: <?php echo $inst;?>
+							          <?php echo $inamnet ?>
+							        </select>
 							        </label>  
 							    </div>
 
