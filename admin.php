@@ -30,7 +30,7 @@
             
           </label>
         </div>
-        <button class="btn btn-lg btn-default btn-block" type="submit">Logga in</button>
+        <button class="btn btn-lg btn-default btn-block" name="submit-login" type="submit">Logga in</button>
       </form>
 
     </div>

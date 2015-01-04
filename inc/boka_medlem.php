@@ -61,6 +61,7 @@ catch (Exception $e) {
 			else {
 
 				$today = date('Y-m-d');
+				$now= date('Y-m-d H:i:s');
 				$sixdays = date('Y-m-d', strtotime($today. "+ 6 days"));
 
 							$query = "SELECT * FROM medlemmar WHERE kundnr= {$kundnr}";  
@@ -89,10 +90,11 @@ catch (Exception $e) {
 
 					if ($bokningar < $passantal){
 						try {
-							 $query = ("INSERT INTO bokningar (kundnr, bokningsbarID, passdatum,  gastID) VALUES (:kundnr, :bokningsbarID, :passdatum, :gastID)");
+							 $query = ("INSERT INTO bokningar (kundnr, bokningsbarID, passdatum, datum, gastID) VALUES (:kundnr, :bokningsbarID, :passdatum, :datum, :gastID)");
 							    $q = $db -> prepare($query);
 							    $q-> execute(array(':kundnr'=>$kundnr,
 							    					':bokningsbarID'=>$passid,
+							    					':datum'=>$now,
 							    					':passdatum'=>$passdatum,
 							    					':gastID'=>null
 							    ));
@@ -126,7 +128,7 @@ catch (Exception $e) {
 
 
 
-
+ 
 		}
 
 		else {

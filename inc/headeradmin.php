@@ -86,6 +86,30 @@
       -->
 
         </li>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-stats"></span> Statistik<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="statistik_bokade.php">Bokade pass</a></li>
+            <li><a href="statistik_korttyp.php">Sök korttyp</a></li>
+            <li><a href="statistik_nyamedlemmar.php">Nya medlemmar</a></li>
+            <li><a href="statistik_frystakort.php">Frysta kort</a></li>
+            <li><a href="statistik_uppsagda_autogiro.php">Uppsagda autogiro</a></li>
+            <li><a href="statistik_aktuella_autogiro.php">Aktuella autogiro</a></li>
+            <li><a href="statistik_gastlista.php">Gästlista</a></li>
+            <li><a href="statistik_installda.php">Inställda pass</a></li>
+          </ul>
+        </li>
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> Systeminställningar<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="installningar_veckansfokus.php">Veckans fokus</a></li>
+            <li><a href="installningar_aktuelltschema.php">Välj aktuellt schema</a></li>
+            <li><a href="installningar_schema_uppdatera.php">Ändra i originalschema</a></li>
+            <li><a href="installningar_nyinstruktor.php">Instruktörer</a></li>
+            <li><a href="installningar_nyttpass.php">Pass</a></li>
+            <li><a href="installningar_kontaktmedlemmar.php">Meddela alla medlemmar</a></li>
+          </ul>
+        </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">

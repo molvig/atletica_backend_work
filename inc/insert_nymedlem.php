@@ -14,6 +14,7 @@
 	   	$kortantal = $_POST['kortantal']; 
 
 
+
 	   	if (isset($_POST['nyckelkort'])) {$nyckelkort = 1;}
 	   		else {$nyckelkort = 0;}
 
@@ -105,7 +106,7 @@
 if (($kortgiltigtfran >= $today) && ($giltigttill > $kortgiltigtfran)) { 
 		try {
 			$db->beginTransaction();
-			 $query = ("INSERT INTO medlemmar (kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, nyckelkort) VALUES (:kundnr, :personnr, :fnamn, :enamn, :phone, :mail, :note, :nyckelkort)");
+			 $query = ("INSERT INTO medlemmar (kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, nyckelkort, medlemsstart) VALUES (:kundnr, :personnr, :fnamn, :enamn, :phone, :mail, :note, :nyckelkort, :start)");
 			    $q = $db -> prepare($query);
 			    $q -> execute(array(':kundnr'=>$biggestkundnr,
 			    					':personnr'=>$personnr,
@@ -114,7 +115,8 @@ if (($kortgiltigtfran >= $today) && ($giltigttill > $kortgiltigtfran)) {
 			    					':phone'=>$telefonnr,
 			    					':mail'=>$email,
 			    					':note'=>$anteckning,
-			    					':nyckelkort'=>$nyckelkort
+			    					':nyckelkort'=>$nyckelkort,
+			    					':start'=>$today
 
 			    					));
 
