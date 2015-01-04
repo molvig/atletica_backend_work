@@ -113,7 +113,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="admin.php"><span class="glyphicon glyphicon-log-out"></span>  Logga ut</a></li>
+        <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>  Logga ut  <?php echo $admin_check; ?></a></li>
       </ul>
 
     </div><!-- /.navbar-collapse -->

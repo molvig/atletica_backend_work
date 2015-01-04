@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>ATLETICA LOGGA IN</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -19,18 +19,18 @@
     <![endif]-->
   </head>
   <body>
+    <?php include('inc/db_con.php');?>
+    <?php include('inc/login.php');?>
     <div class="container">
 
-      <form class="form-signin" role="form" action="index.php">
+      <form class="form-signin" role="form" action="" method="POST">
         <h2 class="form-signin-heading">Logga in i ATLETICAS administrationssystem</h2>
-        <input type="text" class="form-control" placeholder="Användarnamn" required autofocus>
-        <input type="password" class="form-control" placeholder="Lösenord" required>
+        <input type="text" name="admin-namn" class="form-control" placeholder="Användarnamn" required autofocus>
+        <input type="password" name="password" class="form-control" placeholder="Lösenord" required>
         <div class="checkbox">
-          <label>
-            
-          </label>
         </div>
         <button class="btn btn-lg btn-default btn-block" name="submit-login" type="submit">Logga in</button>
+        <?php echo $error;?>
       </form>
 
     </div>

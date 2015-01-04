@@ -42,7 +42,6 @@
 
   </head>
   <body>
-
 <nav class="navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -89,7 +88,7 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="admin.php"><span class="glyphicon glyphicon-log-out"></span>  Logga ut</a></li>
+        <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>  Logga ut <?php echo  $admin_check ;?></a></li>
       </ul>
 
     </div><!-- /.navbar-collapse -->
