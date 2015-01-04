@@ -1,11 +1,18 @@
 <?php include("inc/db_con.php"); ?>
+<?php include("inc/login_session.php"); ?>
+
+<?php if ($admin_check=="admin"){ ?>
+<?php include("inc/headeradmin.php"); ?>
+<?php }else if ($admin_check=="repan"){ ?>
+<?php include("inc/header.php");?>
+<?php } ?>
 <?php include("inc/get_pass_schema.php"); ?>
 <?php include("inc/update_pass_orginalschema.php"); ?>
 <?php $_SESSION['schemaID'] = $schemaID ; ?>
 
 
 
-<?php include("inc/header.php"); ?>
+
 
 
   <div class="grid_2">

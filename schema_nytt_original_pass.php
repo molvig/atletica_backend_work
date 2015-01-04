@@ -1,9 +1,16 @@
 <?php include("inc/db_con.php"); ?>
+<?php include("inc/login_session.php"); ?>
+
+<?php if ($admin_check=="admin"){ ?>
+<?php include("inc/headeradmin.php"); ?>
+<?php }else if ($admin_check=="repan"){ ?>
+<?php include("inc/header.php");?>
+<?php } ?>
 
 <?php $schemasID = $_SESSION['schemaID']; ?>
 
 
-<?php include("inc/header.php"); ?>
+
 <?php include("inc/get_dag_schema.php"); ?>
 <?php include("inc/get_pass_schema.php"); ?>
 <?php include("inc/getpass.php"); ?>
