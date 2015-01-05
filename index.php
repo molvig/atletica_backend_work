@@ -105,7 +105,7 @@
 
 </div>
 <script type="text/javascript">
-	setInterval("my_function();",5000); 
+	setInterval("my_function();",50000); 
   
     function my_function(){
     	//$('#vPass').load('/inc/get_veckans_pass.php');
@@ -379,6 +379,38 @@ else { ?>
 				  </div>
 				  <?php include("inc/klipp_kort.php"); ?>
 				</div>
+
+						<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				  <div class="panel panel-default">
+				    <div class="panel-heading" role="tab" id="headingOne">
+				      <h4 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#accordion" href="#search" aria-expanded="true" aria-controls="collapseOne">
+				          Sök på personnummer
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="search" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+				      <div class="panel-body">
+						 <form class="form-inline" role="form" action="#" method="post">
+						    <div class="form-group">
+						    <input type="text" class="form-control" name="medlemsnummer" id="medlemsnummer" placeholder="ÅÅMMDD" onkeypress="return isNumberKey(event)" required>
+						  </div>
+						  <button type="submit" name="submit-search" class="btn btn-default">Sök!</button>
+
+
+						</form>
+
+				      </div>
+				    </div>
+				  </div>
+				  <?php include("inc/search.php"); ?>
+				</div>
+
+
+
+
+
+
 	</div>	
 </div>
 <script>
