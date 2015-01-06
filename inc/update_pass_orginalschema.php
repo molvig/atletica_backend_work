@@ -109,13 +109,13 @@ if(!empty($_POST))
 
 		$slutTid = "";
 		$startTid = "";
-		if($_POST["starttid"] != "")
+		if(isset($_POST["starttid"]))
 		{
 			$startTid = $_POST["starttid"];
 			
 		}
 		
-		if($_POST["sluttid"] != "")
+		if(isset($_POST["sluttid"]))
 		{
 			$slutTid = $_POST["sluttid"];
 			
@@ -147,7 +147,7 @@ if(!empty($_POST))
 		    and b.datum > DATE_ADD(CURDATE(), INTERVAL 6 DAY)';
 
 
-	if(isset($_POST["starttid"]))
+	if(isset($_POST["starttid"]) && $_POST["starttid"] != "")
 	{	
 		$stTime = explode(":", $startTid);
 	    $stDate = new DateTime('0000-01-01');
@@ -160,7 +160,7 @@ if(!empty($_POST))
 	    $stDate->setTime($stTime[0],$stTime[1]);
 	}
 
-	if(isset($_POST["sluttid"]))
+	if(isset($_POST["sluttid"]) && $_POST["sluttid"] != "")
 	{	
 		$slTime = explode(":", $slutTid);
 	    $slDate = new DateTime('0000-01-01');

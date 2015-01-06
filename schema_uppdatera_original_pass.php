@@ -8,7 +8,8 @@
 <?php } ?>
 <!--<?php include("inc/getpass.php"); ?>-->
 <?php include("inc/getinstruktorer.php"); ?>
-<?php include("inc/update_pass_orginalschema.php"); ?>
+<?php include("inc/update_pass_orginalschema.php"); 
+$_SESSION["backurl"] = $_SERVER["REQUEST_URI"]; ?>
 
 <div class="grid_1">
 </div>

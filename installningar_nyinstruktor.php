@@ -22,6 +22,10 @@
     <input type="text" class="form-control" id="nyinst" name="nyinst" placeholder="Namn på instruktören">
   </div>
   <button type="submit" class="btn btn-default">Spara</button>
+  <?php if(isset($_SESSION["backurl"]))
+  { $back = $_SESSION["backurl"]; ?>  
+  <a href='<?php echo $back; ?>' class="btn btn-default">Tillbaka</a>  
+  <?php $_SESSION['backurl']=NULL; } ?>
 </form>
 
 <?php include("inc/insert_nyinstruktor.php"); ?>

@@ -27,11 +27,10 @@
     <textarea type="text" class="form-control" id="passbeskrivning" name="passbeskrivning"></textarea>
   </div>
   <button type="submit" class="btn btn-default">Spara</button>
-  <?php if(isset($_SESSION["backurl"])){
-    //skicka tillbaka användaren till föregående sida..
-    
-  } 
-  ?>
+   <?php if(isset($_SESSION["backurl"]))
+  { $back = $_SESSION["backurl"]; ?>  
+  <a href='<?php echo $back; ?>' class="btn btn-default">Tillbaka</a>  
+  <?php $_SESSION['backurl']=NULL; } ?>
 </form>
 
 <?php include("inc/insert_nyttpass.php");?>

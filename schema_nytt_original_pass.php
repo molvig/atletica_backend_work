@@ -7,7 +7,8 @@
 <?php include("inc/header.php");?>
 <?php } ?>
 
-<?php $schemasID = $_SESSION['schemaID']; ?>
+<?php $schemasID = $_SESSION['schemaID']; 
+$_SESSION["backurl"] = $_SERVER["REQUEST_URI"]; ?>
 
 
 
