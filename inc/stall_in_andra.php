@@ -234,10 +234,11 @@ $passdatum = date('Y-m-d', strtotime($sc['datum']));
 
     
     try {
-       $query = ("UPDATE bokningsbara SET information=:info, instnamn=:instnamn WHERE bokningsbarID= {$passid}");
+       $query = ("UPDATE bokningsbara SET information=:info, instnamn=:instnamn, uppdaterad=:upp WHERE bokningsbarID= {$passid}");
 				$results = $db -> prepare ($query);
 				$results->execute(array(':info' => $information,
-					':instnamn'=>$instnamn
+					':instnamn'=>$instnamn,
+					':upp'=>1
 						));
 
 			
