@@ -1,6 +1,6 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/login_session.php"); ?>
-
+<?php include("inc/update_aktivt_schema.php"); ?>
 <?php if ($admin_check=="admin"){ ?>
 <?php include("inc/headeradmin.php"); ?>
 <?php	}else if ($admin_check=="repan"){ ?>
