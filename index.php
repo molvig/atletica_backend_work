@@ -104,20 +104,7 @@
 
 
 </div>
-<script type="text/javascript">
-	setInterval("my_function();",50000); 
-  
-    function my_function(){
-    	//$('#vPass').load('/inc/get_veckans_pass.php');
-        window.location = location.href;
-    }
-	/*$(document).ready(function() {
- 	 $("#vPass").load("/inc/get_veckans_pass.php");
-   var refreshId = setInterval(function() {
-      $("#vPass").load('/inc/get_veckans_pass.php');
-   }, 9000);*/
-   //$.ajaxSetup({ cache: false });
-</script>
+
 
 <?php if(isset($_GET["passid"])){ ?>
  <?php   if ($install==1){ ?>
@@ -331,7 +318,7 @@ else { ?>
 		  </div>
 		  <div class="panel panel-default">
 		  	
-<h4>  <-- Välj pass från sidmenyn :)</h4>
+<h4>  <-- Välj pass från sidmenyn</h4>
 		  </div>
 		</div>	
 	</div>

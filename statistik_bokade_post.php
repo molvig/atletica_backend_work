@@ -32,7 +32,7 @@
       </div>
 </div>
       <div class="grid_12">
-      <button type="submit" class="btn btn-default">Sök på datumintervall
+      <button type="submit" name="date-submit" class="btn btn-default">Sök på datumintervall
 
        </div> 
    </form>
@@ -62,7 +62,7 @@
         </select>
       </div>
     <div class="grid_6">
-      <button type="submit" class="btn btn-default">Sök på pass
+      <button type="submit" name="pass-submit" class="btn btn-default">Sök på pass
     </div> 
   </form>
 </div> 
@@ -75,7 +75,7 @@
  <div class="panel panel-info">
   
   <div class="panel-heading">
-      <th><h4><?php echo "Antal pass: ";  ?></h4></th>
+      <th><h4><?php echo "Antal pass: ".$antalpass;  ?></h4></th>
   </div>
 
   <div class="panel panel-default">
@@ -84,7 +84,8 @@
         <td><h5>Datum</h5></td>
         <td><h5>Pass</h5></td>
         <td><h5>Instruktör</h5></td>
-        <td><h5>Antal platser</h5></td>
+        <td><h5>Bokade/Antal platser</h5></td>
+        <td><h5>Procent</h5></td>
       </tr>   
     <?php echo $found;  ?>
       </table> 

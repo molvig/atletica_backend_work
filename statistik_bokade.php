@@ -31,7 +31,7 @@
       </div>
 </div>
       <div class="grid_12">
-      <button type="submit" class="btn btn-default">Sök på datumintervall
+      <button type="submit" name="date-submit" class="btn btn-default">Sök på datumintervall
 
        </div> 
    </form>
@@ -61,7 +61,7 @@
         </select>
       </div>
     <div class="grid_6">
-      <button type="submit" class="btn btn-default">Sök på pass
+      <button type="submit" name="pass-submit"  class="btn btn-default">Sök på pass
     </div> 
   </form>
 </div> 

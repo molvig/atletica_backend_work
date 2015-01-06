@@ -73,6 +73,13 @@ catch (Exception $e) {
 							$fnamn = $pass['fnamn'];
 							$enamn = $pass['enamn'];
 							$stmt->closeCursor(); 
+							$medlem = $stmt->rowCount(); 
+			if ($medlem==0)	{
+				$ingen = '<script> alert("'. "Det finns ingen som har medlemsnummer: ".$kundnr .'");</script>';
+				echo $ingen;
+				echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";
+
+			}else {			
 
 							$query = "SELECT * FROM bokningar WHERE kundnr= {$kundnr} AND passdatum <= '{$sixdays}' AND passdatum >= '{$today}' "; 
 							$stmt = $db ->prepare($query);
@@ -106,7 +113,8 @@ catch (Exception $e) {
 						} 
 						catch (Exception $e) {
 
-						 echo '<h4>' . 'Hoppsan! <br> Det gick inte att boka in medlemmen... Försök igen!' . '</h4>';
+							$bok = '<script> alert("'. $fnamn. " ".$enamn. " är redan bokad på detta passet!" .'");</script>';
+							echo $bok;
 						 echo "<meta http-equiv=\"refresh\" content=\"2;URL='index.php?passid=".$passid."'\" />";
 						}
 					
@@ -128,7 +136,7 @@ catch (Exception $e) {
 
 
 
-
+}
 
  
 		}
@@ -160,11 +168,13 @@ catch (Exception $e) {
 				}
 				else{
 
-			echo "<form method='post'>". "Det är fullt på detta passet! <br>" . "</form>";
+						$fullt = '<script> alert("'. "Detta passet är fullt!". '");</script>';
+						echo $fullt;
 			}
 		}  
 
 	}
+
 }
 
 }
