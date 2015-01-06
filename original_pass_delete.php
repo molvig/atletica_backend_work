@@ -8,10 +8,13 @@
 <?php } ?>
 <?php include("inc/delete_pass_orginal.php"); ?>
 <div>
-Du har nu tagit bort följande pass<br />
-Pass: <?php echo $namn;?> med <?php echo $inst; ?> <br />
-Dag: <?php echo $day; ?><br />
-Tid: <?php echo $starttid;?>-<?php echo $sluttid; ?> <br />
+<div class="grid_1">
+</div>
+<div class="grid_6">	
+<h3>Du har nu tagit bort följande pass</h3>
+<p>Pass: <?php echo $namn;?> med <?php echo $inst; ?> </p>
+<p>Dag: <?php echo $day; ?></p>
+<p>Tid: <?php echo $starttid;?>-<?php echo $sluttid; ?> </p>
 
 <?php echo $back;?>
 </div>

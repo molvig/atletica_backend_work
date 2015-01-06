@@ -65,7 +65,7 @@ try {
 
     $slTime = explode(":", $slutTid);
     $slDate = new DateTime('0000-01-01');
-    $slDate->setTime($slTime[0],$stTime[1]);
+    $slDate->setTime($slTime[0],$slTime[1]);
 
 
 $date2 = strtotime($date2);
@@ -118,6 +118,7 @@ $cnt = 0;
     }
     if($cnt > 0){ ?>
                 <div class="grid_12"> <?php echo  '<h4>' . 'Du har lagt till '. '<strong>' . $_POST['pass']  .'</strong>' .' som ett nytt pass!' . '</h4>'; ?> </div>
+             
              <?php  }
 }
 

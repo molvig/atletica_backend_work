@@ -24,7 +24,7 @@
    <?php include("inc/menyinst_original.php"); ?>
 </div>
 
-<div class="grid_5">
+<div class="grid_6">
   <div class="grid_12"> 
     <h3>Lägg till pass i 
       <?php if ($schemasID == 'schemaid=1'){echo "vårschema";}?>
@@ -39,20 +39,20 @@
   <div class="grid_12">
 
           <div class="grid_6">
-              <label>Pass
+              <label>Pass </label>
                    <select class="form-control" id="pass" name="pass">
                     <?php echo $pass; ?>
                     </select>
-              </label>
+              
               <span class="help-block"><a href="installningar_nyttpass.php">Saknas passet? Klicka här</a></span>
           </div>
 
           <div class="grid_6">
-              <label>Instruktör
+              <label>Instruktör</label>
                    <select class="form-control" id="instruktor" name="instruktor">
                     <?php echo $instnamnet; ?>
                     </select>
-              </label>
+              
               </select><span class="help-block"><a href="installningar_nyinstruktor.php">Saknas instruktören? Klicka här</a></span>
           </div>
 
@@ -62,16 +62,16 @@
   <div class="grid_12">
 
           <div class="grid_6">
-              <label>Starttid
-                  <input id="datetimepicker1" type="text" class="form-control" onchange="changeHiddenStart()" >
-              </label>
+              <label>Starttid</label>
+                  <input id="datetimepicker1" type="text" class="form-control" onchange="changeHiddenStart()" required>
+              
             <input type="hidden" id="starttid" name="starttid" value=""/>  
           </div>
 
           <div class="grid_6">
-              <label>Sluttid
-                <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut()">
-              </label>
+              <label>Sluttid</label>
+                <input id="datetimepicker2" type="text" class="form-control" onchange="changeHiddenSlut()"required>
+              
             <input type="hidden" id="sluttid" name="sluttid" value=""/>   
           </div>
   </div>
@@ -80,7 +80,7 @@
   <div class="grid_12">
 
           <div class="grid_6">
-              <label>Veckodag
+              <label>Veckodag </label>
                 <select name="days" class="form-control">
                   <?php if ($dagID == 'dagid=1'){echo "<option value='1'>Måndag</option>";}?>
                   <?php if ($dagID == 'dagid=2'){echo "<option value='2'>Tisdag</option>";}?>
@@ -90,18 +90,18 @@
                   <?php if ($dagID == 'dagid=6'){echo "<option value='6'>Lördag</option>";}?>
                   <?php if ($dagID == 'dagid=7'){echo "<option value='7'>Söndag</option>";}?>        
                 </select>
-              </label>
+              
           </div>
 
           <div class="grid_6">
-              <label>Schema
+              <label>Schema </label>
                 <select name="schema" class="form-control">
                     <?php if ($schemasID == 'schemaid=1'){echo "<option value='1'>Vår</option>";}?>
                     <?php if ($schemasID == 'schemaid=2'){echo "<option value='2'>Sommar</option>";}?>
                     <?php if ($schemasID == 'schemaid=3'){echo "<option value='3'>Höst</option>";}?>
                     <?php if ($schemasID == 'schemaid=4'){echo "<option value='4'>Vinter</option>";}?>
                 </select>
-              </label>
+              
           </div>
 
 
@@ -109,9 +109,9 @@
 
   <div class="grid_12">      
           <div class="grid_6">
-              <label>Antal platser
-                <input type="number" name="platser" min="0" max="100" class="form-control" id="platser" >
-              </label>
+              <label>Antal platser </label>
+                <input type="number" name="platser" min="0" max="100" class="form-control" id="platser" value="20"required>
+              
           </div>
   </div>
 

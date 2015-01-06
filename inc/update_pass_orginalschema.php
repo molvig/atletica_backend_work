@@ -210,7 +210,7 @@ if(!empty($_POST))
 			$results->closeCursor();
 		}
 		if($sql){
-	                echo $_POST["starttid"] .' '.'<div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>';
+	                echo '<div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>';
 	            
    					  
 	            } 	            
