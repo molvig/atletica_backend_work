@@ -21,7 +21,8 @@ if(isset($_GET['passid']))
 					from bokningsbara as b, schemat as s 
 					where b.bokningsbarID = :passId
 					and b.bokningsbarID = s.bokningsbarID
-					and s.bokningsbarID = :passId";
+					and s.bokningsbarID = :passId
+					and uppdaterad = 0";
 
 		$results = $db -> prepare ($sql);
 		$results->execute(array(':passId' => $_GET["passid"]));	
@@ -142,10 +143,11 @@ if(!empty($_POST))
 			AND s.schematyp = :scId  
 		    AND veckodag = :vDag
 		    AND starttid = :sttid
-		    and b.datum > CURDATE()';
+		    and uppdaterad = 0
+		    and b.datum > DATE_ADD(CURDATE(), INTERVAL 6 DAY)';
 
 
-	if($_POST["starttid"])
+	if(isset($_POST["starttid"]))
 	{	
 		$stTime = explode(":", $startTid);
 	    $stDate = new DateTime('0000-01-01');
@@ -158,7 +160,7 @@ if(!empty($_POST))
 	    $stDate->setTime($stTime[0],$stTime[1]);
 	}
 
-	if($_POST["sluttid"])
+	if(isset($_POST["sluttid"]))
 	{	
 		$slTime = explode(":", $slutTid);
 	    $slDate = new DateTime('0000-01-01');
@@ -208,11 +210,11 @@ if(!empty($_POST))
 			$results->closeCursor();
 		}
 		if($sql){
-	                echo '<div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>';
+	                echo $_POST["starttid"] .' '.'<div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>';
 	            
    					  
 	            } 	            
-		echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";	
+		//echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema_uppdatera_original.php?schemaid=".$passObj["schematyp"]."'\" />";	
 	}
 			catch (Exception $e) 
 			{
