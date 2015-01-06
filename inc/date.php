@@ -32,11 +32,25 @@ $start = date("d-m-Y", strtotime($startdatum));
 
 $date = isset($_GET['date']) ? $_GET['date'] : $start;
 
+try {
+        $query = "SELECT * FROM schematyp WHERE aktivt=1";  
+        $stmt = $db ->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC); 
+        $stmt->closeCursor(); 
+        $aktivt=$result['schematyp'];
+
+    } 
+    catch (Exception $e) {
+            echo "Data could not be retrieved from the database";
+            echo $e;
+            exit;
+    }
 
 $thimonday=date('d-m-Y', strtotime('monday this week'));
 $current_able= "disabled";
 
-if ($thimonday >= $start && $thimonday < $slutdatum)
+if ($schemaID==$aktivt)
 {
 
 $aktuell_vecka = '<a href="schema.php?schemaid='.$schemaID. '&date='. $thimonday. '">'.'<button style="float:center;"'. 'type="submit"'. 'class="btn btn-default"> Aktuell vecka</button></a>';
