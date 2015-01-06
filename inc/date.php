@@ -33,6 +33,18 @@ $start = date("d-m-Y", strtotime($startdatum));
 $date = isset($_GET['date']) ? $_GET['date'] : $start;
 
 
+$thimonday=date('d-m-Y', strtotime('monday this week'));
+$current_able= "disabled";
+
+if ($thimonday >= $start && $thimonday < $slutdatum)
+{
+
+$aktuell_vecka = '<a href="schema.php?schemaid='.$schemaID. '&date='. $thimonday. '">'.'<button style="float:center;"'. 'type="submit"'. 'class="btn btn-default"> Aktuell vecka</button></a>';
+
+} else {
+$aktuell_vecka=""
+;}
+
 
 $mandag =  $date;
 $tisdag = date('d-m-Y', strtotime($mandag .' +1 day'));

@@ -13,12 +13,14 @@ $passid = htmlspecialchars($_GET["passid"]);
 
 		try {
 
-		$query = "SELECT datum FROM bokningsbara WHERE bokningsbara.bokningsbarID = {$passid}";  
+		$query = "SELECT * FROM bokningsbara WHERE bokningsbara.bokningsbarID = {$passid}";  
 		$stmt = $db ->prepare($query);
 		$stmt->execute();		
 		$result = ($stmt->fetch(PDO::FETCH_ASSOC)); 
 	
 		$passdatum = $result['datum'];
+		$passnamn = $result['passnamn'];
+		$starttid = date('H:i', strtotime($result['starttid']));
 		
 		$stmt->closeCursor(); 	
 		}   
@@ -62,7 +64,32 @@ $passid = htmlspecialchars($_GET["passid"]);
 
 		  		if($query){
 
-		  			//SKICKA EMAIL TILL GÄSTEN
+		  		$to = $mail;
+				$subject = $passnamn. " på Atletica";
+				$txt = "
+				<html>
+				<head>
+				<title>Gruppträning Atletica</title>
+				</head>
+				<body>
+				<h4>Hej, ".$fnamn."!</h4>
+				<p>Du är bokad på  ".$passnamn. " som börjar kl ".$starttid.". </p>
+				<p>Datum: ". $passdatum.".</p>
+				<p>Var snäll och kom senast 10 minuter innan passet startar för att inte riskera att förlora din plats.</p>
+
+				<h4>Avbokning</h4>
+				<p>Om du skulle få förhinder och vill avboka din plats måste detta göras senast två timmar
+				innan passet startar.</p>
+				<p>Kontakta oss på telefon: 0340-14703</p>
+
+				<h4>Välommen, vi ser fram emot att träffa dig!</h4>
+				</body>
+				</html>
+				" ;
+
+				$headers = "From: info@atletica.se";
+
+				mail($to,$subject,$txt,$headers); 
 
 		  			
 		    	echo '<h4>' . 'Du har bokat '. '<strong>' . $fnamn  .'</strong>' .' som gäst!' . '</h4>';

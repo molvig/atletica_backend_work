@@ -28,11 +28,13 @@
 <div class="grid_2">
    <?php include("inc/menyschema.php"); ?>
 </div>
-
+<?php $scid = $_SESSION["schemaId"];?>
 <div class="grid_7">
-<h3>Uppdatera pass i schema 2014</h3>
-
-<?php $scid = $passObj['schematyp']; ?>
+  <?php if ($scid== '1'){$sh="vårschema";}?>
+  <?php if ($scid == '2'){$sh="sommarschema";}?>
+  <?php if ($scid== '3'){$sh="höstschema";}?>
+  <?php if ($scid == '4'){  $sh="vinterschema";}?>
+<h3>Uppdatera pass i <?php echo $sh;?></h3>
 
 <form role="form" action="#" method="post" name="updateForm" >
 <script>
@@ -130,10 +132,10 @@
           <div class="grid_5">
               <label>Schema</label>
                 <select name="schema" class="form-control">
-                  <?php if ($passObj['schematyp'] == '1'){echo "<option value='1'>Vår</option>";}?>
-                  <?php if ($passObj['schematyp'] == '2'){echo "<option value='2'>Sommar</option>";}?>
-                  <?php if ($passObj['schematyp'] == '3'){echo "<option value='3'>Höst</option>";}?>
-                  <?php if ($passObj['schematyp'] == '4'){echo "<option value='4'>Vinter</option>";}?>
+                  <?php if ($scid == '1'){echo "<option value='1'>Vår</option>";}?>
+                  <?php if ($scid == '2'){echo "<option value='2'>Sommar</option>";}?>
+                  <?php if ($scid == '3'){echo "<option value='3'>Höst</option>";}?>
+                  <?php if ($scid == '4'){echo "<option value='4'>Vinter</option>";}?>
                 </select>
           </div>
   </div>

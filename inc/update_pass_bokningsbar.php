@@ -210,7 +210,7 @@ if(!empty($_POST))
 	                echo '<div class="grid_12"> <h4>Du har nu uppdaterat passet du kommer snart skickas tillbaka till schemat</h4></div>';
 	                
 	            } 
-		echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema.php?schemaid=".$passObj["schematyp"]."'\" />";	
+		echo "<meta http-equiv=\"refresh\" content=\"2;URL='schema.php?schemaid=".$_SESSION["schemaId"]."&date=".$_SESSION["schemaDatum"]."'\" />";	
 	}
 			catch (Exception $e) 
 			{
