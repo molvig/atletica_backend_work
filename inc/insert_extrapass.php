@@ -87,7 +87,7 @@ if ($veckoDag == 7) {
         $stmt->execute(array(':bId' => $insertId, ':scId'=> $schemaId));
        $results->closeCursor();
         
-        echo "Du har lagt till ett extrapass!";
+        echo '<div class="grid_12"> <h4>Du har nu lagt till ett extrapass! Du kommer snart skickas tillbaka till schemat</h4></div>';
         echo "<meta http-equiv=\"refresh\" content=\"1;URL='schema.php?schemaid=".$schemaId."'\" />";   
         }
         catch(Exception $e)

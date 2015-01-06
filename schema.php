@@ -3,7 +3,7 @@
 
 <?php if ($admin_check=="admin"){ ?>
 <?php include("inc/headeradmin.php"); ?>
-<?php }else if ($admin_check=="repan"){ ?>
+<?php }else if ($admin_check=="repan"){?>
 <?php include("inc/header.php");?>
 <?php } ?>
 
@@ -55,7 +55,7 @@ $_SESSION["schemaId"] = $_GET["schemaid"];?>
 
 	<a href="schema.php?schemaid=<?=$schemaID;?>&date=<?=$next_date;?>"><button style="float:right;" type="submit" class="btn btn-default" <?php echo $next_able;?> >Nästa vecka &rarr;</button></a>
 
-	<?echo $aktuell_vecka;?>
+	<?php echo $aktuell_vecka;?>
 
 	<a href="schema.php?schemaid=<?=$schemaID;?>&date=<?=$prev_date;?>"><button style="float:left;" type="submit" class="btn btn-default"  <?php echo $prev_able;?> >&larr; Föregående vecka</button></a>
 

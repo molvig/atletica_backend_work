@@ -1,12 +1,13 @@
 <?php include("inc/db_con.php"); ?>
 <?php include("inc/login_session.php"); ?>
 
-<?php if ($admin_check=="admin"){ ?>
+<?php if ($admin_check=="admin"){  $isAdmin = true;?>
 <?php include("inc/headeradmin.php"); ?>
-<?php }else if ($admin_check=="repan"){ ?>
+<?php }else if ($admin_check=="repan"){ $isAdmin = false;?>
 <?php include("inc/header.php");?>
 <?php } ?>
-<?php include("inc/update_pass_bokningsbar.php"); ?>
+<?php include("inc/update_pass_bokningsbar.php"); 
+$_SESSION["backurl"] = $_SERVER["REQUEST_URI"];?>
 
 
 
@@ -51,7 +52,9 @@
                     <?php echo $pass; ?>
                     </select>
               
-              <span class="help-block"><a href="installningar_nyttpass.php">Saknas passet? Klicka här</a></span>
+            <?php if($isAdmin){ ?>  
+            <span class="help-block"><a href="installningar_nyttpass.php">Saknas passet? Klicka här</a></span>
+            <?php } ?>
           </div>
           <div class="grid_1"></div>
           <div class="grid_5">
@@ -59,8 +62,9 @@
                    <select class="form-control" id="instruktor" name="instruktor" required>
                     <?php echo $instnamnet; ?>
                     </select>
-              
+              <?php if($isAdmin){ ?>
               <span class="help-block"><a href="installningar_nyinstruktor.php">Saknas instruktören? Klicka här</a></span>
+              <?php } ?>
           </div>
 
   </div>

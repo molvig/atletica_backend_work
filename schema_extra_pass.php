@@ -8,7 +8,8 @@
 <?php } ?>
 <?php include("inc/getpass.php"); ?>
 <?php include("inc/getinstruktorer.php"); ?>
-<?php include("inc/insert_extrapass.php"); ?>
+<?php include("inc/insert_extrapass.php"); 
+$_SESSION["backurl"] = $_SERVER["REQUEST_URI"];?>
 
 
 <?php 
