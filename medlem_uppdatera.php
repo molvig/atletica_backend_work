@@ -39,7 +39,7 @@
 
           <div class="grid_6">
             <label>Medlemsnummer
-              <input type="date" class="form-control" name="kundnr" id="kundnr" value="<?php echo $kundnr; ?>" readonly></label>
+              <input type="text" class="form-control" name="kundnr" id="kundnr" value="<?php echo $kundnr; ?>" readonly></label>
           </div>
 
        <div class="grid_6">
