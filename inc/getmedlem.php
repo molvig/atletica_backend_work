@@ -191,7 +191,8 @@
 			exit;
 	}
 				
-	if($giltigttill==null){$giltigttill="no";}
+	if($giltigttill==null && $korttyp!="10"){$giltigttill="no";}
+	if($giltigttill==null && $korttyp=="10"){$giltigttill="not";}
 	else {$giltigttill = date ('Y-m-d', strtotime($giltigttill));}	
 	
 
@@ -200,6 +201,7 @@
 	else if ($korttyp=="INST"){$daysleft="Instruktör";}
 	else if (($korttyp=="AG12" || $korttyp=="AG12+2" || $korttyp=="AG24" || $korttyp=="AG24+2" || $korttyp=="AG12DAG") && $ag_aktivt ==1){ $daysleft="Autogiro";} 
 	else if ($giltigttill == "no"){$daysleft="Har inget kort";}
+	else if ($giltigttill == "not"){$daysleft="Inga klipp gjorda";}
 	else {$daysleft = ((strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400) . " dagar kvar"; }
 
 	$today = date("Y-m-d");  
@@ -229,11 +231,11 @@
 	$stmt = $db ->prepare($query);
 	$stmt->execute();
 	$skuld=$stmt->rowCount(); 
-	$stmt->closeCursor(); 	
+	$stmt->closeCursor();
 	$skulden="";
 	if($skuld>0){
 	
-	$skulden = '<a style="text-decoration:none;"' .'href="medlem_skuldlista.php">'. '<div class="alert alert-danger">' . '<span class="glyphicon glyphicon-exclamation-sign"></span> Denna medlem har skulder! Klicka för att se dessa.</div></a>';
+	$skulden = '<a style="text-decoration:none;"' .'href="medlem_skuldlista.php?member=' .$kundnr ."&submit-skuld=" .'">'. '<div class="alert alert-danger">' . '<span class="glyphicon glyphicon-exclamation-sign"></span> Denna medlem har skulder! Klicka för att se dessa.</div></a>';
 
 	}
 

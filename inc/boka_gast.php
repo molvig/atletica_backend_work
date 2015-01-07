@@ -63,7 +63,6 @@ $passid = htmlspecialchars($_GET["passid"]);
 
 
 		  		if($query){
-
 		  		$to = $mail;
 				$subject = $passnamn. " på Atletica";
 				$txt = "
@@ -73,8 +72,7 @@ $passid = htmlspecialchars($_GET["passid"]);
 				</head>
 				<body>
 				<h4>Hej, ".$fnamn."!</h4>
-				<p>Du är bokad på  ".$passnamn. " som börjar kl ".$starttid.". </p>
-				<p>Datum: ". $passdatum.".</p>
+				<p>Du är bokad på  ".$passnamn. " ". $passdatum. " som börjar kl ".$starttid." </p>
 				<p>Var snäll och kom senast 10 minuter innan passet startar för att inte riskera att förlora din plats.</p>
 
 				<h4>Avbokning</h4>
@@ -82,12 +80,22 @@ $passid = htmlspecialchars($_GET["passid"]);
 				innan passet startar.</p>
 				<p>Kontakta oss på telefon: 0340-14703</p>
 
-				<h4>Välommen, vi ser fram emot att träffa dig!</h4>
+				<h4>Välommen!<br>
+				Hälsningar, Atletica <br>
+
+				www.atletica.se
+				</h4>
 				</body>
 				</html>
 				" ;
 
-				$headers = "From: info@atletica.se";
+				// Always set content-type when sending HTML email
+				$headers = "MIME-Version: 1.0" . "\r\n";
+				$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+				// More headers
+				$headers .= 'From: Atletica <info@atletica.se>' . "\r\n";
+
 
 				mail($to,$subject,$txt,$headers); 
 

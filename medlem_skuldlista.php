@@ -19,7 +19,7 @@
 
   <h3>Skuldlista </h3>
 
-<form class="form-inline" role="form" method="POST" action="">
+<form class="form-inline" role="form" method="GET" action="">
 	<div class="form-group">
 		<input type="text" class="form-control" name="member" placeholder="Sök kundnummer" onkeypress="return isNumberKey(event)">
 	</div>

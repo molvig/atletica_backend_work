@@ -8,9 +8,11 @@
 <?php	} ?>
 <?php include("inc/delete_bokningsbar_pass.php"); ?>
 <div>
-Du har nu tagit bort följande pass<br />
-Pass: <?php echo $namn;?> med <?php echo $inst; ?> <br />
-Datum: <?php echo $veckoDag; ?>
-<br />
+<div class="grid_1">
+</div>
+<div class="grid_6">	
+<h3>Du har nu tagit bort följande pass</h3>
+<p>Pass: <?php echo $namn;?> med <?php echo $inst; ?> </p>
+<p>Datum: <?php echo $veckoDag; ?></p>
 <?php echo $back;?>
 </div>

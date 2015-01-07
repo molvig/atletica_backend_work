@@ -99,7 +99,7 @@ $dis="";
 						$stmt->closeCursor(); 	
 						$skulden="";
 						if($skuld>0){
-							$skulden = '<a title="Kunden har skulder. Klicka för att visa."'. 'style="color:red;font-size:20px;"'.'href="medlem_skuldlista.php">'.'<span class=" glyphicon glyphicon-exclamation-sign"></span>'.'</a>';
+							$skulden = '<a title="Kunden har skulder. Klicka för att visa."'. 'style="color:red;font-size:20px;"'.'href="medlem_skuldlista.php?member='.$hitta['kundnr']."&submit-skuld=".'">'.'<span class=" glyphicon glyphicon-exclamation-sign"></span>'.'</a>';
 						}
 
 
@@ -174,7 +174,7 @@ $dis="";
 							"<td>"  . $daysleft . "</td>" . 
 							"<td>"  . '<input type="submit"'.' name="avboka-gast-submit"'. ' class="btn btn-default btn-sm"'.'value="Avboka"' .'>'.
 				  			 "</td>" . 
-							"<td>"  . '<input type="submit"'.' name="checkain-gast-submit"'. ' class="btn btn-default btn-sm"'.'value="Checka in"' .'>'.
+							"<td>"  . '<input type="submit"'.' name="checkain-gast-submit"'. ' class="btn btn-default btn-sm"'.'value="Checka in"' .$dis.'>'.
 				  			 "</td>" . '</form>'.
 							"</tr>" ;
 				}    

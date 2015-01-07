@@ -1,7 +1,7 @@
    <?php
 
-   if(isset($_POST['submit-skuld'])){
-   	$member=$_POST['member'];
+   if(isset($_GET['submit-skuld'])){
+   	$member=$_GET['member'];
 
 	try {
 		$query = "SELECT * FROM skulder WHERE kundnr='{$member}' ORDER By datum DESC";  
