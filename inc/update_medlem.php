@@ -96,7 +96,7 @@
                             $antalklipp = null;}
 
 
-               if ($korttyp == "INST"){$nyttgiltigttill = date('Y-m-d', strtotime($nyttkortgiltigtfran. ' + 1000 days')); 
+               if ($korttyp == "INST"){$nyttgiltigttill = null; 
                             $bindningsdatum = null ;
                             $ag_aktivt=0;
                             $antalklipp = null;}

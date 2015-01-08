@@ -82,13 +82,14 @@
 	   							$ag_aktivt=0;
 	   							$antalklipp = null;}
 
-	   	if ($korttyp == "INST"){$giltigttill = date('Y-m-d', strtotime($kortgiltigtfran. ' + 1000 days')); 
-		   						$bindningsdatum = null ;
-	   							$ag_aktivt=0;
-	   							$antalklipp = null;}
-
 		if($kortgiltigtfran >= $today) {$aktivtkort=1;}
 		else {$aktivtkort=0;}
+
+		if ($korttyp == "INST"){$giltigttill = null; 
+		   						$bindningsdatum = null ;
+	   							$ag_aktivt=0;
+	   							$antalklipp = null;
+	   							$aktivtkort=1;}
 
 
 
@@ -103,7 +104,7 @@
 
 
 
-if (($kortgiltigtfran >= $today) && ($giltigttill > $kortgiltigtfran)) { 
+if (($kortgiltigtfran >= $today) && ($giltigttill >= $kortgiltigtfran) ||($giltigttill==null) ) { 
 		try {
 			$db->beginTransaction();
 			 $query = ("INSERT INTO medlemmar (kundnr, personnr, fnamn, enamn, telefon, mail, anteckning, nyckelkort, medlemsstart) VALUES (:kundnr, :personnr, :fnamn, :enamn, :phone, :mail, :note, :nyckelkort, :start)");
@@ -148,7 +149,8 @@ if (($kortgiltigtfran >= $today) && ($giltigttill > $kortgiltigtfran)) {
 
 	}
 
-       else { ?>
+       else {    echo $kortgiltigtfran. " >= ".$today. " && " . $giltigttill. " >= ". $kortgiltigtfran; ?>
+
         <div class="alert alert-danger" role="alert"><span><p>Det gick <u>INTE</u> att lägga till en ny medlem eftersom startdatumet för kortet ligger tidigare än dagens datum.</p></span></div>
         
       <?php }

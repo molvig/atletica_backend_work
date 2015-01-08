@@ -64,9 +64,10 @@ if(!empty($_POST)){
 				 	$klipp = '<script> alert("' .$fnamn. ' ' .$enamn. ' och hon har nu ' . $klippantal . ' klipp kvar som måste förbrukas innan '. $giltigttill. '");</script>';
 					echo $klipp;
 				}else{
-					$query = ("INSERT INTO klipplogg (kortID, gym) VALUES (:kortID, :gym)");
+					$today= date('Y-m-d H:i:s');
+					$query = ("INSERT INTO klipplogg (kortID, klipptid, gym) VALUES (:kortID, :klipptid, :gym)");
 	  				$q = $db -> prepare($query);
-	    			$q-> execute(array(':kortID'=>$kortID, ':gym'=>1));
+	    			$q-> execute(array(':kortID'=>$kortID, ':klipptid'=>$today, ':gym'=>1));
 				 	$query = ("UPDATE medlemskort SET antalklipp=:antalklipp WHERE kundnr={$kundnr} AND aktivtkort=1");
      				$q = $db -> prepare($query);
      				$q-> execute(array(':antalklipp'=>$klippantal));

@@ -84,9 +84,11 @@
 
 
 								else{
-									$query = ("INSERT INTO klipplogg (kortID, pass, bokningsbarID) VALUES (:kortID, :pass, :bokningsbarID)");
+									$today=date('Y-m-d H:i:s');
+									$query = ("INSERT INTO klipplogg (kortID, klipptid, pass, bokningsbarID) VALUES (:kortID, :klipptid, :pass, :bokningsbarID)");
 					  				$q = $db -> prepare($query);
 					    			$q-> execute(array(':kortID'=>$kortID,
+					    								':klipptid'=>$today,
 					    								':pass'=>1,
 					    								':bokningsbarID'=>$passid
 					    				));

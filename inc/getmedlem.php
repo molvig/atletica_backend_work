@@ -89,9 +89,11 @@
 				
 				$giltigtfran = $k['giltigtfran'];
 				$giltigttill = $k['giltigttill'];
-				if ($giltigttill ==null){
+				if ($giltigttill ==null && $kortet=="10"){
 					$kortgiltigt="Inga klipp gjorda";
-				} else {
+				}else if ($giltigttill ==null && $kortet=="INST"){
+					$kortgiltigt=""; }
+				else {
 					$kortgiltigt= date('Y-m-d', strtotime($giltigttill));
 				}
 				$fryst = $k['fryst'];
@@ -190,9 +192,11 @@
 			echo $e;
 			exit;
 	}
-				
+	
+
 	if($giltigttill==null && $korttyp!="10"){$giltigttill="no";}
 	if($giltigttill==null && $korttyp=="10"){$giltigttill="not";}
+
 	else {$giltigttill = date ('Y-m-d', strtotime($giltigttill));}	
 	
 
@@ -204,15 +208,16 @@
 	else if ($giltigttill == "not"){$daysleft="Inga klipp gjorda";}
 	else {$daysleft = ((strtotime("$giltigttill 00:00:00 GMT")-strtotime("$today 00:00:00 GMT")) / 86400) . " dagar kvar"; }
 
-	$today = date("Y-m-d");  
+
 
 
       $today = date("Y-m-d"); 
       $nyttdatum = "";
 
-    if($giltigttill!="no")  {
+    if(($giltigttill!="no") && ($giltigttill!="not")) {
 			if ($giltigttill >= $today){
 			  $nyttdatum = date('Y-m-d', strtotime($giltigttill. ' + 1 day')); 
+
 			}
 
 			else {
@@ -225,7 +230,6 @@
 	   $nyttdatum = $today;
 
 	}
-
 	
 	$query = "SELECT * FROM skulder WHERE kundnr = {$kundnr} ";
 	$stmt = $db ->prepare($query);
