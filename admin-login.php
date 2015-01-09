@@ -26,7 +26,7 @@
       <form class="form-signin" role="form" action="" method="POST">
         <h2 class="form-signin-heading">Logga in i ATLETICAS administrationssystem</h2>
         <input type="text" name="admin-namn" class="form-control" placeholder="Användarnamn" required autofocus>
-        <input type="password" name="password" class="form-control" placeholder="Lösenord" required>
+        <input type="password" name="password" class="form-control" placeholder="Lösenord" required autocomplete="off">
         <div class="checkbox">
         </div>
         <button class="btn btn-lg btn-default btn-block" name="submit-login" type="submit">Logga in</button>
