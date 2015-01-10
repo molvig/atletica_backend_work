@@ -123,14 +123,19 @@ catch (Exception $e) {
 
 
 
-
+$now=date('H:i');
 
 $antalplatser = $row['antalplatser'];
+$slut = "<strong style='color:grey;float:right;'>". " SLUT". "</strong>";
 if($row['installt']==1){$install="<strong style='color:red;'>". " INSTÄLLT!". "</strong>";}
 else {$install="";}
 
 	if (date('Y-m-d', strtotime($row['datum'])) == $today)
 	{	
+		if (date('H:i', strtotime($row['sttid'])) < $now){
+			$dagspass .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item"'.'style="color:grey;">' . $row['sttid'] ." ". $row['passnamn']. $slut. '</a>';
+		}
+		else{
 
 		if 	($antal<$antalplatser){
 			$dagspass .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. $row['sttid'] ." ". $row['passnamn']. $install. '</a>';
@@ -141,9 +146,10 @@ else {$install="";}
 			}
 		}
 
-
+		}
 	if (date('Y-m-d', strtotime($row['datum'])) == $oneday)
 	{		
+
 		
 		if 	($antal<$antalplatser){
 			$dagspass1 .= '<a href="index.php?passid='. $row['bokningsbarID'].'"' . 'class="list-group-item">' . '<span class="badge pull-right">'. $antal. '/'. $antalplatser .'</span>'. $row['sttid'] ." ". $row['passnamn']. $install.'</a>';

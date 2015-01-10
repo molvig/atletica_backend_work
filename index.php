@@ -26,7 +26,7 @@
 
 <div class="panel panel-default">
  	<div class="panel-heading">
-   		<h3 class="panel-title">  <?php echo $veckodag;?> <?php echo $today;?></h3>
+   		<h3 class="panel-title">  <?php echo $veckodag;?> <?php echo date('j/n', strtotime($today));?></h3>
   	</div>
 	<div class="panel-body">
 		<div class="list-group">
@@ -37,7 +37,7 @@
 </div>
 <div class="panel panel-default">
  	<div class="panel-heading">
-   		<h3 class="panel-title">  <?php echo $veckodag1;?> <?php echo $oneday;?></h3>
+   		<h3 class="panel-title">  <?php echo $veckodag1;?> <?php echo date('j/n', strtotime($oneday));?></h3>
   	</div>
 	<div class="panel-body">
 		<div class="list-group">
@@ -48,7 +48,7 @@
 </div>
 <div class="panel panel-default">
  	<div class="panel-heading">
-   		<h3 class="panel-title">  <?php echo $veckodag2;?> <?php echo $twoday;?></h3>
+   		<h3 class="panel-title">  <?php echo $veckodag2;?> <?php echo date('j/n', strtotime($twoday));?></h3>
   	</div>
 	<div class="panel-body">
 		<div class="list-group">
@@ -59,7 +59,7 @@
 </div>
 <div class="panel panel-default">
  	<div class="panel-heading">
-   		<h3 class="panel-title">  <?php echo $veckodag3;?> <?php echo $threeday;?></h3>
+   		<h3 class="panel-title">  <?php echo $veckodag3;?> <?php echo date('j/n', strtotime($threeday));?></h3>
   	</div>
 	<div class="panel-body">
 		<div class="list-group">
@@ -70,7 +70,7 @@
 </div>
 <div class="panel panel-default">
  	<div class="panel-heading">
-   		<h3 class="panel-title">  <?php echo $veckodag4;?> <?php echo $fourday;?></h3>
+   		<h3 class="panel-title">  <?php echo $veckodag4;?> <?php echo date('j/n', strtotime($fourday));?></h3>
   	</div>
 	<div class="panel-body">
 		<div class="list-group">
@@ -81,7 +81,7 @@
 </div>
 <div class="panel panel-default">
  	<div class="panel-heading">
-   		<h3 class="panel-title">  <?php echo $veckodag5;?> <?php echo $fiveday;?></h3>
+   		<h3 class="panel-title">  <?php echo $veckodag5;?> <?php echo date('j/n', strtotime($fiveday));?></h3>
   	</div>
 	<div class="panel-body">
 		<div class="list-group">
@@ -92,7 +92,7 @@
 </div>
 <div class="panel panel-default">
  	<div class="panel-heading">
-   		<h3 class="panel-title">  <?php echo $veckodag6;?> <?php echo $sixday;?></h3>
+   		<h3 class="panel-title">  <?php echo $veckodag6;?> <?php echo date('j/n', strtotime($sixday));?></h3>
   	</div>
 	<div class="panel-body">
 		<div class="list-group">
