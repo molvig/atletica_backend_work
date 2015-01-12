@@ -11,6 +11,25 @@ $passid = htmlspecialchars($_GET["passid"]);
 	    $tel = $_POST['tel_gast'];
 	    $bokningID = $passid;
 
+
+		$query = "SELECT * FROM bokningsbara WHERE bokningsbarID= {$passid}";  
+		$stmt = $db ->prepare($query);
+		$stmt->execute();
+		$plats= $stmt->fetch(PDO::FETCH_ASSOC); 
+		$stmt->closeCursor(); 
+		$antalplatserna  = $plats['antalplatser'];
+		$passdatum  = $plats['datum'];
+		$stmt->closeCursor(); 
+
+		$query = "SELECT * FROM bokningar WHERE bokningsbarID= {$passid} AND reservplats=0";  
+		$stmt = $db ->prepare($query);
+		$stmt->execute();
+		$antalbokade = $stmt->rowCount(); 
+		$stmt->closeCursor(); 
+
+		 if ($antalplatserna > $antalbokade){
+
+
 		try {
 
 		$query = "SELECT * FROM bokningsbara WHERE bokningsbara.bokningsbarID = {$passid}";  
@@ -100,8 +119,8 @@ $passid = htmlspecialchars($_GET["passid"]);
 
 				mail($to,$subject,$txt,$headers); 
 
-		  			
-		    	echo '<h4>' . 'Du har bokat '. '<strong>' . $fnamn  .'</strong>' .' som gäst!' . '</h4>';
+		  		$gast = '<script> alert("'. 'Du har bokat '.  $fnamn  .' som gäst!' . '");</script>';
+				echo $gast;	
 			    echo "<meta http-equiv=\"refresh\" content=\"1;URL='index.php?passid=".$passid."'\" />";	
 		} 
 		}
@@ -113,6 +132,11 @@ $passid = htmlspecialchars($_GET["passid"]);
 			   
 
 	}
-	}
+
+	else {$fullt = '<script> alert("'. "Detta passet är fullt!". '");</script>';
+		echo $fullt;
+				    echo "<meta http-equiv=\"refresh\" content=\"1;URL='index.php?passid=".$passid."'\" />";	}
+}
+}
  
 ?>

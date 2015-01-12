@@ -30,6 +30,23 @@ catch (Exception $e) {
 
 	    $bokningID = $passid;
 
+
+		$query = "SELECT * FROM bokningsbara WHERE bokningsbarID= {$passid}";  
+		$stmt = $db ->prepare($query);
+		$stmt->execute();
+		$plats= $stmt->fetch(PDO::FETCH_ASSOC); 
+		$stmt->closeCursor(); 
+		$antalplatserna  = $plats['antalplatser'];
+		$passdatum  = $plats['datum'];
+		$stmt->closeCursor(); 
+
+		$query = "SELECT * FROM bokningar WHERE bokningsbarID= {$passid} AND reservplats=0";  
+		$stmt = $db ->prepare($query);
+		$stmt->execute();
+		$antalbokade = $stmt->rowCount(); 
+		$stmt->closeCursor(); 
+		
+
 	    if ($antalplatserna > $antalbokade){
 
 

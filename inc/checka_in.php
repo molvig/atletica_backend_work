@@ -87,33 +87,50 @@ $passid = htmlspecialchars($_GET["passid"]);
           $q = $db -> prepare($query);
           $q-> execute();
 
-                try {
-                $query=("SELECT * FROM bokningar WHERE bokningsbarID= {$passid} AND reservplats=1 ORDER BY datum ASC LIMIT 1");
-                $stmt = $db ->prepare($query);
-                $stmt->execute();
-                $reserver = $stmt->rowCount(); 
-                $result = ($stmt->fetchAll(PDO::FETCH_ASSOC)); 
-                $stmt->closeCursor(); 
-                $nyastkund="";
-                  foreach ($result as $row) {
-                    $nyastkund = $row['kundnr'];
-                  }
-                }
+                 $query = "SELECT * FROM bokningsbara WHERE bokningsbarID= {$passid}";  
+                  $stmt = $db ->prepare($query);
+                  $stmt->execute();
+                  $plats= $stmt->fetch(PDO::FETCH_ASSOC); 
+                  $stmt->closeCursor(); 
+                  $antalplatserna  = $plats['antalplatser'];
+                  $passdatum  = $plats['datum'];
+                  $stmt->closeCursor(); 
 
-                catch (Exception $e) {
+                   $query = "SELECT * FROM bokningar WHERE bokningsbarID= {$passid} AND reservplats=0";  
+                    $stmt = $db ->prepare($query);
+                    $stmt->execute();
+                    $antalbokade = $stmt->rowCount(); 
+                    $stmt->closeCursor(); 
 
-                echo '<center>' . '<h4>' . 'Det gick inte hämta från reservlistan' . '</h4>' . '</center>';
-                echo $e;
-                }
 
-                if ($reserver>0 ){
-              try {
-               $query = ("UPDATE bokningar SET reservplats=:reservplats WHERE kundnr = {$nyastkund} AND bokningsbarID= {$passid}");
-               $q = $db -> prepare($query);
-               $q-> execute(array(':reservplats'=>0)); 
-              $stmt->closeCursor();  
+                  if ($antalplatserna > $antalbokade){
+                      try {
+                      $query=("SELECT * FROM bokningar WHERE bokningsbarID = {$passid} AND reservplats=1 ORDER BY datum ASC LIMIT 1");
+                      $stmt = $db ->prepare($query);
+                      $stmt->execute();
+                      $reserver = $stmt->rowCount(); 
+                      $result = ($stmt->fetchAll(PDO::FETCH_ASSOC)); 
+                      $stmt->closeCursor(); 
+                      $nyastkund="";
+                        foreach ($result as $row) {
+                          $nyastkund = $row['kundnr'];
+                        }
+                      }
 
-              if($query){
+                      catch (Exception $e) {
+
+                      echo '<center>' . '<h4>' . 'Det gick inte hämta från reservlistan' . '</h4>' . '</center>';
+                      echo $e;
+                      }
+
+                     if ($reserver>0 ){
+                    try {
+                     $query = ("UPDATE bokningar SET reservplats=:reservplats WHERE kundnr = {$nyastkund} AND bokningsbarID = {$passid}");
+                     $q = $db -> prepare($query);
+                     $q-> execute(array(':reservplats'=>0)); 
+                    $stmt->closeCursor();  
+
+                      if($query){
                       $query=("SELECT * FROM medlemmar WHERE kundnr= {$nyastkund}");
                       $stmt = $db ->prepare($query);
                       $stmt->execute();
@@ -122,9 +139,9 @@ $passid = htmlspecialchars($_GET["passid"]);
                       $stmt->closeCursor(); 
 
                       $fnamn=$mem['fnamn'];
-                      $mail=$mem['mail'];
+              $mail=$mem['mail'];
 
-                      $query=("SELECT * FROM bokningsbara WHERE bokningsbarID= {$passid}");
+              $query=("SELECT * FROM bokningsbara WHERE bokningsbarID= {$passid}");
                       $stmt = $db ->prepare($query);
                       $stmt->execute();
                       $reserver = $stmt->rowCount(); 
@@ -132,55 +149,62 @@ $passid = htmlspecialchars($_GET["passid"]);
                       $stmt->closeCursor(); 
 
                       $passnamn=$pass['passnamn'];
-                      $starttid=date('H:i',strtotime($pass['starttid']));
-                      $passdatum = $pass['datum'];
+              $starttid=date('H:i',strtotime($pass['starttid']));
+              $passdatum = $pass['datum'];
 
 
-                      $to = $mail;
-                      $subject = $passnamn. " på Atletica";
-                      $txt = "
-                      <html>
-                      <head>
-                      <title>Gruppträning Atletica</title>
-                      </head>
-                      <body>
-                      <h4>Hej, ".$fnamn."!</h4>
-                      <p>Du har fått en plats på  ".$passnamn. " ". $passdatum. " som börjar kl ".$starttid." </p>
-                      <p>Var snäll och kom senast 10 minuter innan passet startar för att inte riskera att förlora din plats.</p>
+                $to = $mail;
+              $subject = $passnamn.  "på Atletica";
+              $txt = "
+              <html>
+              <head>
+              <title>Gruppträning Atletica</title>
+              </head>
+              <body>
+              <h4>Hej, ".$fnamn."!</h4>
+              <p>Du har fått en plats på  ".$passnamn. " ". $passdatum. " som börjar kl ".$starttid." </p>
+              <p>Var snäll och kom senast 10 minuter innan passet startar för att inte riskera att förlora din plats.</p>
 
-                      <h4>Avbokning</h4>
-                      <p>Om du skulle få förhinder och vill avboka din plats måste detta göras senast TVÅ timmar
-                      innan passet startar. Annars får du en skuld som kan lösas för 40kr.</p>
-                      <p>Kontakta oss på telefon: 0340-14703</p>
+              <h4>Avbokning</h4>
+              <p>Om du skulle få förhinder och vill avboka din plats måste detta göras senast TVÅ timmar
+              innan passet startar. Annars får du en skuld som kan lösas för 40kr.</p>
+              <p>Kontakta oss på telefon: 0340-14703</p>
 
-                      <h4>Välommen!<br>
-                      Hälsningar, Atletica <br>
+              <h4>Välommen!<br>
+              Hälsningar, Atletica <br>
 
-                      www.atletica.se
-                      </h4>
-                      </body>
-                      </html>
-                      " ;
+              www.atletica.se
+              </h4>
+              </body>
+              </html>
+              " ;
 
-                      // Always set content-type when sending HTML email
-                      $headers = "MIME-Version: 1.0" . "\r\n";
-                      $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-                      // More headers
-                      $headers .= 'From: Atletica <info@atletica.se>' . "\r\n";
-                      mail($to,$subject,$txt,$headers); 
+              // Always set content-type when sending HTML email
+              $headers = "MIME-Version: 1.0" . "\r\n";
+              $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+              // More headers
+              $headers .= 'From: Atletica <info@atletica.se>' . "\r\n";
+
+
+              mail($to,$subject,$txt,$headers); 
+
 
                       }
 
-                
-                } 
+                      
+                      } 
 
-               
-              catch (Exception $e) {
+                     
+                    catch (Exception $e) {
 
-                echo '<center>' . '<h4>' . 'Det gick inte att boka in från reservlistan' . '</h4>' . '</center>';
-                echo $e;
-              }
+                      echo '<center>' . '<h4>' . 'Det gick inte att boka in från reservlistan' . '</h4>' . '</center>';
+                      echo $e;
+
+                    }
+                }
           }
+
 
         //  echo '<center>' . '<h4>' . 'Du har avbokat kunden!' . '</h4>' . '</center>';
          echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
@@ -202,6 +226,24 @@ $passid = htmlspecialchars($_GET["passid"]);
           $q = $db -> prepare($query);
           $q-> execute();
 
+              $query = "SELECT * FROM bokningsbara WHERE bokningsbarID= {$passid}";  
+              $stmt = $db ->prepare($query);
+              $stmt->execute();
+              $plats= $stmt->fetch(PDO::FETCH_ASSOC); 
+              $stmt->closeCursor(); 
+              $antalplatserna  = $plats['antalplatser'];
+              $passdatum  = $plats['datum'];
+              $stmt->closeCursor(); 
+
+              $query = "SELECT * FROM bokningar WHERE bokningsbarID= {$passid} AND reservplats=0";  
+              $stmt = $db ->prepare($query);
+              $stmt->execute();
+              $antalbokade = $stmt->rowCount(); 
+              $stmt->closeCursor(); 
+
+
+              if ($antalplatserna > $antalbokade){
+
                 try {
                 $query=("SELECT * FROM bokningar WHERE bokningsbarID= {$passid} AND reservplats=1 ORDER BY datum ASC LIMIT 1");
                 $stmt = $db ->prepare($query);
@@ -242,7 +284,7 @@ $passid = htmlspecialchars($_GET["passid"]);
         //  echo '<center>' . '<h4>' . 'Du har avbokat kunden!' . '</h4>' . '</center>';
          echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
         
-
+      }
 
       } 
       catch (Exception $e) {
@@ -279,6 +321,25 @@ $passid = htmlspecialchars($_GET["passid"]);
           $query = ("DELETE from bokningar WHERE kundnr = {$kundnr} AND bokningsbarID= {$passid}");
           $q = $db -> prepare($query);
           $q-> execute();
+
+
+              $query = "SELECT * FROM bokningsbara WHERE bokningsbarID= {$passid}";  
+              $stmt = $db ->prepare($query);
+              $stmt->execute();
+              $plats= $stmt->fetch(PDO::FETCH_ASSOC); 
+              $stmt->closeCursor(); 
+              $antalplatserna  = $plats['antalplatser'];
+              $passdatum  = $plats['datum'];
+              $stmt->closeCursor(); 
+
+              $query = "SELECT * FROM bokningar WHERE bokningsbarID= {$passid} AND reservplats=0";  
+              $stmt = $db ->prepare($query);
+              $stmt->execute();
+              $antalbokade = $stmt->rowCount(); 
+              $stmt->closeCursor(); 
+
+
+              if ($antalplatserna > $antalbokade){
 
                 try {
                 $query=("SELECT * FROM bokningar WHERE bokningsbarID= {$passid} AND reservplats=1 ORDER BY datum ASC LIMIT 1");
@@ -369,7 +430,7 @@ $passid = htmlspecialchars($_GET["passid"]);
 
                 
                 } 
-
+      
                
               catch (Exception $e) {
 
@@ -384,6 +445,7 @@ $passid = htmlspecialchars($_GET["passid"]);
 
 
       } 
+} 
       catch (Exception $e) {
 
         echo '<center>' . '<h4>' . 'Hoppsan! Något är fel...' . '</h4>' . '</center>';
@@ -464,9 +526,24 @@ $passid = htmlspecialchars($_GET["passid"]);
           $q = $db -> prepare($query);
           $q-> execute();
 
-          if($query){
+
+              $query = "SELECT * FROM bokningsbara WHERE bokningsbarID= {$passid}";  
+              $stmt = $db ->prepare($query);
+              $stmt->execute();
+              $plats= $stmt->fetch(PDO::FETCH_ASSOC); 
+              $stmt->closeCursor(); 
+              $antalplatserna  = $plats['antalplatser'];
+              $passdatum  = $plats['datum'];
+              $stmt->closeCursor(); 
+
+              $query = "SELECT * FROM bokningar WHERE bokningsbarID= {$passid} AND reservplats=0";  
+              $stmt = $db ->prepare($query);
+              $stmt->execute();
+              $antalbokade = $stmt->rowCount(); 
+              $stmt->closeCursor(); 
 
 
+              if ($antalplatserna > $antalbokade){
 
                 try {
                 $query=("SELECT * FROM bokningar WHERE bokningsbarID= {$passid} AND reservplats=1 ORDER BY datum ASC LIMIT 1");
@@ -494,10 +571,70 @@ $passid = htmlspecialchars($_GET["passid"]);
                $q-> execute(array(':reservplats'=>0)); 
               $stmt->closeCursor();  
 
+              if($query){
+                      $query=("SELECT * FROM medlemmar WHERE kundnr= {$nyastkund}");
+                      $stmt = $db ->prepare($query);
+                      $stmt->execute();
+                      $reserver = $stmt->rowCount(); 
+                      $mem = ($stmt->fetch(PDO::FETCH_ASSOC)); 
+                      $stmt->closeCursor(); 
 
+                      $fnamn=$mem['fnamn'];
+              $mail=$mem['mail'];
+
+              $query=("SELECT * FROM bokningsbara WHERE bokningsbarID= {$passid}");
+                      $stmt = $db ->prepare($query);
+                      $stmt->execute();
+                      $reserver = $stmt->rowCount(); 
+                      $pass = ($stmt->fetch(PDO::FETCH_ASSOC)); 
+                      $stmt->closeCursor(); 
+
+                      $passnamn=$pass['passnamn'];
+              $starttid=date('H:i',strtotime($pass['starttid']));
+              $passdatum = $pass['datum'];
+
+
+                $to = $mail;
+              $subject = $passnamn. " på Atletica";
+              $txt = "
+              <html>
+              <head>
+              <title>Gruppträning Atletica</title>
+              </head>
+              <body>
+              <h4>Hej, ".$fnamn."!</h4>
+              <p>Du har fått en plats på  ".$passnamn. " ". $passdatum. " som börjar kl ".$starttid." </p>
+              <p>Var snäll och kom senast 10 minuter innan passet startar för att inte riskera att förlora din plats.</p>
+
+              <h4>Avbokning</h4>
+              <p>Om du skulle få förhinder och vill avboka din plats måste detta göras senast TVÅ timmar
+              innan passet startar. Annars får du en skuld som kan lösas för 40kr.</p>
+              <p>Kontakta oss på telefon: 0340-14703</p>
+
+              <h4>Välommen!<br>
+              Hälsningar, Atletica <br>
+
+              www.atletica.se
+              </h4>
+              </body>
+              </html>
+              " ;
+
+              // Always set content-type when sending HTML email
+              $headers = "MIME-Version: 1.0" . "\r\n";
+              $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+              // More headers
+              $headers .= 'From: Atletica <info@atletica.se>' . "\r\n";
+
+
+              mail($to,$subject,$txt,$headers); 
+
+                      }
 
                 
                 } 
+      
 
                
               catch (Exception $e) {
@@ -507,8 +644,6 @@ $passid = htmlspecialchars($_GET["passid"]);
               }
           }
 
-
-         // echo '<center>' . '<h4>' . 'Du har avbokat gästen!' . '</h4>' . '</center>';
                    echo "<meta http-equiv=\"refresh\" content=\"0.5;URL='index.php?passid=".$passid."'\" />"; 
   
         }

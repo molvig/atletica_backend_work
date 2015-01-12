@@ -1,8 +1,8 @@
 <?php
 
 try{
-		$db = new PDO("mysql:host=localhost;dbname=atleticadb","root","");
-		//$db = new PDO("mysql:host=atleticas-195665.mysql.binero.se;dbname=195665-atleticas","195665_hs74404","atletica2015"); //online
+		//$db = new PDO("mysql:host=localhost;dbname=atletica_nya","root","");
+		$db = new PDO("mysql:host=atletica2015-167083.mysql.binero.se;dbname=167083-atletica2015","167083_bg88004","EAqEGP4Ygu"); //online
 		$db -> setAttribute (PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 		$db -> exec("SET NAMES 'utf8'");
 	

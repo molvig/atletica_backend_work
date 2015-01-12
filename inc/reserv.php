@@ -13,14 +13,13 @@ $res = ($stmt->fetchAll(PDO::FETCH_ASSOC));
 
 
 	foreach ($res as $r) {
-		$kundnr = $r['kundnr'];
 		$passid = $r['bokningsbarID'];
 		$starttid = date('H:i:s', strtotime($r['starttid']));
 		$reservtid = date('H:i:s',strtotime($starttid. '-105 minutes'));
 		
 		if ($reservtid < $timenow){
 
-	          $query = ("DELETE from bokningar WHERE kundnr = {$kundnr} AND bokningsbarID= {$passid} AND reservplats=1");
+	          $query = ("DELETE from bokningar WHERE bokningsbarID= {$passid} AND reservplats=1");
 	          $q = $db -> prepare($query);
 	          $q-> execute();
 
