@@ -34,12 +34,12 @@
 
           <div class="grid_6">
             <label>Medlemsnummer
-              <input type="date" class="form-control" name="kundnr" id="kundnr" value="<?php echo $kundnr; ?>" readonly></label>
+              <input type="text" class="form-control" name="kundnr" id="kundnr" value="<?php echo $kundnr; ?>" readonly></label>
           </div>
 
        <div class="grid_6">
           <label>Personnummer
-            <input type="personnr" class="form-control" name="personnr" id="personr" value="<?php echo $personnr; ?>" readonly></label>
+            <input type="text" class="form-control" name="personnr" id="personr" value="<?php echo $personnr; ?>" readonly></label>
         </div>
 
     </div>
@@ -49,7 +49,7 @@
 
           <div class="grid_6">
             <label>Förnamn
-              <input type="fnamn" class="form-control" name="fnamn" id="fnamn" value="<?php echo $fnamn; ?>" readonly></label>
+              <input type="text" class="form-control" name="fnamn" id="fnamn" value="<?php echo $fnamn; ?>" readonly></label>
           </div>
 
           <div class="grid_6">

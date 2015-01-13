@@ -754,6 +754,17 @@ pre code {
     width: 1170px;
   }
 }
+.container-boka {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (max-width: 768px) {
+  .container-boka {
+    width: 100%;
+  }
+}
 .container-fluid {
   padding-right: 15px;
   padding-left: 15px;
@@ -771,6 +782,9 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+}.col-boka{
+  position: relative;
+  min-height: 1px;
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;

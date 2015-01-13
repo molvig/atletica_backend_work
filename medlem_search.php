@@ -19,7 +19,7 @@
   
     <h3>Sök efter medlemmar </h3>
     <p>Du kan söka på förnamn, efternamm, personnummer (ååmmdd) eller kundnummer. <br> 
-    Tänk på att sökordet måste vara minst 4 tecken långt. </p>
+    Tänk på att sökordet måste vara minst 3 tecken långt. </p>
 
     <form role="form" method="GET" action="medlem_search_result.php">
 

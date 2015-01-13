@@ -2,8 +2,8 @@
  $schemaID = $_SERVER['QUERY_STRING'] ;
  $url=strtok($_SERVER["REQUEST_URI"],'?');
 
-if($url =='/atletica_backend_work/schema_uppdatera_original.php')
-// if($url =='/admin/schema_uppdatera_original.php')
+//if($url =='/atletica_backend_work/schema_uppdatera_original.php')
+ if($url =='/admin/schema_uppdatera_original.php')
 {
  $mon = "";
  $tue = "";

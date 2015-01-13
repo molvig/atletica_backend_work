@@ -4,7 +4,7 @@
 	
 
 	 try {
-			$results = $db -> query ("SELECT meddelande FROM medlemmar limit 1");
+			$results = $db -> query ("SELECT meddelande FROM medlemmar Where kundnr=9609");
 	} 
 	catch (Exception $e) {
 			echo "Data could not be retrieved from the database";

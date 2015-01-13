@@ -46,13 +46,14 @@
 						$stmt->closeCursor(); 
 					}
 
-
-			if ($membercard['kort'] == "10" ) {
+				$oldklippantal = $membercard['antalklipp'];
+				
+			if ($membercard['kort'] == "10" && $$oldklippantal > 0 ) {
 
 					 	$kortID = $membercard['kortID'];
 					 	$today = date('Y-m-d');
 					 	$kortgiltigttill = $membercard['giltigttill'];
-					 	$oldklippantal = $membercard['antalklipp'];
+					 	
 
 
 					 	if ($kortgiltigttill == null || $kortgiltigttill >= $today){

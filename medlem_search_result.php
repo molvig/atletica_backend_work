@@ -18,7 +18,7 @@
   
     <h3>Sök efter medlemmar </h3>
     <p>Du kan söka på förnamn, efternamm, personnummer (ex 861128) eller kundnummer. <br> 
-    Tänk på att sökordet måste vara minst 4 tecken långt. </p>
+    Tänk på att sökordet måste vara minst 3 tecken långt. </p>
 
     <form role="form" method="GET" action="medlem_search_result.php">
 
@@ -38,13 +38,13 @@
 	$medlem = $_GET['medlem'];
 	$sok = $_GET['submit'];
 
- if(strlen($medlem)<=3) { ?>
+ if(strlen($medlem)<=2) { ?>
 
 
   <div class="grid_12">
         <div class="grid_2"></div> 
         <div class="grid_5">
-			<?php echo "<center>" . "<h5>" . "Ditt sökord är för kort! <br>" . "</h5>" . "<p>Tänk på att sökordet måste bestå av minst fyra tecken.</p>" . "</center>"; ?>
+			<?php echo "<center>" . "<h5>" . "Ditt sökord är för kort! <br>" . "</h5>" . "<p>Tänk på att sökordet måste bestå av minst tre tecken.</p>" . "</center>"; ?>
  		</div>
     
   </div>
@@ -106,7 +106,7 @@ $stmt->closeCursor();
 
   <div class="grid_12">
         <div class="grid_2"></div> 
-        <div class="grid_5">
+        <div class="grid_8">
 
 <div class="panel panel-success">
   <!-- Default panel contents -->

@@ -33,13 +33,14 @@ if(!empty($_POST)){
 				echo "Data could not be retrieved from the database 2";
 				exit;
 			}
-			$korttyp=$membercard['kort'];		
+			$korttyp=$membercard['kort'];
+			$oldklippantal = $membercard['antalklipp'];
 		}		
-		if ($korttyp == "10" ) {
+		if ($korttyp == "10" && $oldklippantal > 0) {
 		 	$kortID = $membercard['kortID'];
 		 	$today = date('Y-m-d');
 		 	$kortgiltigttill = $membercard['giltigttill'];
-		 	$oldklippantal = $membercard['antalklipp'];
+		 	
 		 	//if ($kortgiltigttill == null || $kortgiltigttill >= $today){
 	 			$klippantal = $oldklippantal - 1;
 				if ($oldklippantal=="10" || $oldklippantal=="20" || $oldklippantal=="30" || $oldklippantal=="40" || $oldklippantal=="50"){
@@ -61,7 +62,7 @@ if(!empty($_POST)){
 						echo "Data could not be retrieved from the database 1";
 						exit;
 					}
-				 	$klipp = '<script> alert("' .$fnamn. ' ' .$enamn. ' och hon har nu ' . $klippantal . ' klipp kvar som måste förbrukas innan '. $giltigttill. '");</script>';
+				 	$klipp = '<script> alert("' .$fnamn. ' ' .$enamn. ' och har nu ' . $klippantal . ' klipp kvar som måste förbrukas innan '. $giltigttill. '");</script>';
 					echo $klipp;
 				}else{
 					$today= date('Y-m-d H:i:s');
@@ -71,7 +72,7 @@ if(!empty($_POST)){
 				 	$query = ("UPDATE medlemskort SET antalklipp=:antalklipp WHERE kundnr={$kundnr} AND aktivtkort=1");
      				$q = $db -> prepare($query);
      				$q-> execute(array(':antalklipp'=>$klippantal));
-				 	$klipp = '<script> alert("' .$fnamn. ' ' .$enamn. ' och hon har nu ' . $klippantal . ' klipp kvar som måste förbrukas innan '. $kortgiltigttill. '");</script>';
+				 	$klipp = '<script> alert("' .$fnamn. ' ' .$enamn. ' och har nu ' . $klippantal . ' klipp kvar som måste förbrukas innan '. $kortgiltigttill. '");</script>';
 					echo $klipp;
 				}
 		/*	}else if ($kortgiltigttill < $today){
